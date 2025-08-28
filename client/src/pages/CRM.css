@@ -1,0 +1,131 @@
+/* =========================
+   CRM Page Layout (6 columns)
+   ========================= */
+
+   .crm-grid {
+      --gap: 16px;
+      display: grid;
+      gap: var(--gap);
+    
+      /* Desktop：4 欄 */
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-areas:
+        /* row-1：左 ratings（1欄x3列）、中 overview（2欄x3列）、右上 sessions+orders 並排、右下 leads */
+        "ratings ratings overview overview  sessions orders"
+        "ratings ratings overview overview leads leads"
+    
+        /* row-2：左 Top Sales（2欄）、中 Top Volume（1欄）、右 Earning（1欄） */
+        "topSales topSales topVolume topVolume earning earning"
+    
+        /* row-3：左 Sales Analytics（2欄）、中 Countries（1欄）、右 Stats（1欄） */
+        "salesAnalytics salesAnalytics salesCountries salesCountries salesStats salesStats"
+    
+        /* row-4：左 Team（2欄）、右 Customer 狀態表（2欄） */
+        "team team team customer customer customer";
+    }
+    
+    /* ---- Cards base ---- */
+    .card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 16px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow: hidden;
+    }
+    
+    .card__header {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .chart-box {
+      aspect-ratio: 16 / 9;
+    }
+    .chart-box > * {
+      width: 100%;
+      height: 100%;
+    }
+    
+    /* ---- Row-1 ---- */
+    .card--ratings  { grid-area: ratings;   min-height: 420px; }
+    .card--overview { grid-area: overview;  min-height: 420px; }
+    .card--sessions { grid-area: sessions;  min-height: 180px; }
+    .card--orders   { grid-area: orders;    min-height: 180px; }
+    .card--leads    { grid-area: leads;     min-height: 220px; }
+    
+    /* ---- Row-2 ---- */
+    .card--top-sales   { grid-area: topSales;   min-height: 300px; }
+    .card--top-volume  { grid-area: topVolume;  min-height: 300px; }
+    .card--earning     { grid-area: earning;    min-height: 300px; }
+    
+    /* ---- Row-3 ---- */
+    .card--sales-analytics { grid-area: salesAnalytics; min-height: 320px; }
+    .card--sales-countries { grid-area: salesCountries; min-height: 320px; }
+    .card--sales-stats     { grid-area: salesStats;     min-height: 320px; }
+    
+    /* ---- Row-4 ---- */
+    .card--team            { grid-area: team;     min-height: 360px; }
+    .card--customer-status { grid-area: customer; min-height: 360px; }
+    
+    /* =========================
+       RWD
+       ========================= */
+    
+    /* ≤ 1200px：3 欄 */
+    @media (max-width: 1200px) {
+      .crm-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-areas:
+          "ratings  overview overview"
+          "ratings  overview overview"
+          "sessions orders   leads"
+          "topSales topSales topVolume"
+          "earning  salesAnalytics salesAnalytics"
+          "salesCountries salesStats salesStats"
+          "team team customer";
+      }
+    }
+    
+    /* ≤ 900px：2 欄 */
+    @media (max-width: 900px) {
+      .crm-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+          "ratings  ratings"
+          "overview overview"
+          "sessions orders"
+          "leads    leads"
+          "topSales topSales"
+          "topVolume earning"
+          "salesAnalytics salesAnalytics"
+          "salesCountries salesStats"
+          "team team"
+          "customer customer";
+      }
+    }
+    
+    /* ≤ 600px：1 欄 */
+    @media (max-width: 600px) {
+      .crm-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "ratings"
+          "overview"
+          "sessions"
+          "orders"
+          "leads"
+          "topSales"
+          "topVolume"
+          "earning"
+          "salesAnalytics"
+          "salesCountries"
+          "salesStats"
+          "team"
+          "customer";
+      }
+    }
+    

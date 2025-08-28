@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Sales",
+    "amount": 4679,
+    "changePct": 28.14,
+    "currency": "USD",
+    "iconUrl": "https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png",
+    "asOf": { "$date": "2025-08-24T00:00:00Z" }
+  }
+]

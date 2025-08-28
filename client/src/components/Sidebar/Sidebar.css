@@ -1,0 +1,43 @@
+.sidenav {
+  height: 100%;
+  padding: 12px;
+}
+
+.sidenav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 8px 20px;
+}
+
+.fake-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #7c4dff; /* 紫色圓形 */
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 16px; /* 網站名稱稍大 */
+}
+
+.sidenav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidenav__link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+}
+
+.sidenav__link.is-active {
+  background: #f1edff;
+  color: #5b35ff;
+  font-weight: 600;
+}

@@ -1,0 +1,69 @@
+/* 只控制此卡片內部視覺，grid 位置沿用 .card--sales-analysis（在 Analytics.css 已映射到 area: sales） */
+.sales-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 180px;                 /* 小卡尺寸 */
+  background: #fff;
+  border-radius: 12px;
+}
+
+/* 頂部：左圖示、右更多（⋮） */
+.sales-stat__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sales-stat__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #f3f6ff;               /* 和示意圖接近的淡底 */
+  object-fit: contain;
+}
+
+.sales-stat__more {
+  border: 0;
+  background: transparent;
+  color: #9aa2b1;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* 標題 */
+.sales-stat__title {
+  font-size: 14px;
+  color: #94a3b8;                     /* slate-400 類似 */
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* 大數字 */
+.sales-stat__value {
+  font-size: clamp(22px, 2.2vw + 8px, 30px);
+  font-weight: 700;
+  color: #334155;                     /* slate-700 類似 */
+}
+
+/* 百分比 */
+.sales-stat__delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.sales-stat__delta.is-up   { color: #16a34a; } /* 綠 */
+.sales-stat__delta.is-down { color: #dc2626; } /* 紅 */
+.sales-stat__arrow { font-size: 14px; }
+
+/* 暗色模式（可選） */
+@media (prefers-color-scheme: dark) {
+  .sales-stat { background: #0b1020; }
+  .sales-stat__title { color: #8b95a7; }
+  .sales-stat__value { color: #d9e1f2; }
+  .sales-stat__more  { color: #6b7280; }
+}

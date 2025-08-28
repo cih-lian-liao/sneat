@@ -1,0 +1,155 @@
+/* ====== Layout base ====== */
+.ecom-grid {
+  --gap: 16px;
+  display: grid;
+  gap: var(--gap);
+
+  /* Desktop: 6 欄 */
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+    /* Row 1：左半 Congrat、右半 Visitors */
+    "congrats congrats visitors visitors visitors visitors"
+
+    /* Row 2：左側 2x2（Sales/Profit + Expenses/Transactions），右側 Total Income 直向跨兩列 */
+    "sales      profit       totalIncome totalIncome totalIncome totalIncome"
+    "expenses   transactions totalIncome totalIncome totalIncome totalIncome"
+
+    /* Row 3：左 Performance（跨兩列高）、中 Conversion（跨兩列高），右側上：Revenue/Sales，下：Expenses */
+    "performance performance conversion conversion revRight   salesRight"
+    "performance performance conversion conversion expRight   expRight"
+
+    /* Row 4：左 4 欄為表格/多區塊，右 2 欄為總餘額 */
+    "productTable productTable productTable productTable totalBalance totalBalance";
+}
+
+/* ====== Area mapping ====== */
+.card--congrats      { grid-area: congrats; min-height: 240px; }
+.card--visitors      { grid-area: visitors; min-height: 240px; }
+
+.card--sales         { grid-area: sales; }
+.card--profit        { grid-area: profit; }
+.card--expenses      { grid-area: expenses; }
+.card--transactions  { grid-area: transactions; }
+.card--total-income  { grid-area: totalIncome; min-height: 360px; }
+
+.card--performance   { grid-area: performance; min-height: 320px; }
+.card--conversion    { grid-area: conversion;  min-height: 320px; }
+.card--rev-right     { grid-area: revRight; }
+.card--sales-right   { grid-area: salesRight; }
+.card--exp-right     { grid-area: expRight;  min-height: 160px; }
+
+.card--product-table { grid-area: productTable; min-height: 360px; }
+.card--total-balance { grid-area: totalBalance; min-height: 360px; }
+
+/* ====== Cards base ====== */
+.card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.card__header {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* 圖表容器：比例穩定，避免抖動；若換成表格用 .table-box */
+.chart-box { aspect-ratio: 16 / 9; }
+.chart-box > * { width: 100%; height: 100%; }
+.card--visitors .chart-box { height: auto; aspect-ratio: auto; }
+
+.table-box { min-height: 280px; overflow: auto; }
+
+/* ====== Congrats inner layout ====== */
+.congrats {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.congrats__text h2 { margin: 0 0 6px; font-size: 20px; }
+.congrats__text p  { margin: 0 0 8px; color: #555; }
+.congrats__kpi { display: flex; align-items: baseline; gap: 8px; margin-bottom: 10px; }
+.congrats__kpi strong { font-size: 22px; }
+.congrats__kpi span   { color: #666; }
+.congrats__img { width: 100%; height: auto; object-fit: contain; }
+
+.btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #f6f6ff;
+  cursor: pointer;
+}
+
+/* ====== RWD ====== */
+/* ≤ 1200px：改為 4 欄，重排區塊 */
+@media (max-width: 1200px) {
+  .ecom-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "congrats congrats visitors visitors"
+      "sales    profit    totalIncome totalIncome"
+      "expenses transactions totalIncome totalIncome"
+      "performance performance conversion conversion"
+      "revRight   salesRight expRight   expRight"
+      "productTable productTable totalBalance totalBalance";
+  }
+  .congrats { grid-template-columns: 1fr; }
+}
+
+/* ≤ 900px：2 欄直覺排列 */
+@media (max-width: 900px) {
+  .ecom-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "congrats congrats"
+      "visitors visitors"
+
+      "sales profit"
+      "expenses transactions"
+      "totalIncome totalIncome"
+
+      "performance performance"
+      "conversion  conversion"
+      "revRight    salesRight"
+      "expRight    expRight"
+
+      "productTable productTable"
+      "totalBalance totalBalance";
+  }
+}
+
+/* ≤ 600px：單欄直排 */
+@media (max-width: 600px) {
+  .ecom-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "congrats"
+      "visitors"
+      "sales"
+      "profit"
+      "expenses"
+      "transactions"
+      "totalIncome"
+      "performance"
+      "conversion"
+      "revRight"
+      "salesRight"
+      "expRight"
+      "productTable"
+      "totalBalance";
+  }
+}
+
+
+
+
+

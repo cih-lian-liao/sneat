@@ -1,0 +1,129 @@
+/* ---- Layout base (6欄) ---- */
+.analytics-grid {
+  --gap: 16px;
+  display: grid;
+  gap: var(--gap);
+
+  /* Desktop：6欄 */
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+    /* row-1（左大右兩卡） */
+    "congrats congrats congrats congrats order  sales"
+
+    /* row-2（左大卡跨兩列，右上雙卡） */
+    "total    total total total    payments    revenue"
+    "total    total  total total   profit   profit"
+
+    /* row-3（三欄等寬） */
+    "orderstats orderstats income income transactions transactions"
+
+    /* row-4（左窄右寬） */
+    "timeline  timeline   timeline  visit    visit     visit";
+}
+
+/* ---- Cards base ---- */
+.card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+  
+}
+
+.card__header {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* 統一圖表容器比例，避免抖動 */
+.chart-box { aspect-ratio: 16 / 9; }
+.chart-box > * { width: 100%; height: 100%; }
+
+/* ---- Area mapping（名稱不變） ---- */
+.card--congrats         { grid-area: congrats;     min-height: 120px; }
+.card--order-analysis   { grid-area: order;        min-height: 120px; }
+.card--sales-analysis   { grid-area: sales;        min-height: 120px; }
+
+.card--total-revenue    { grid-area: total;        min-height: 420px; }
+.card--payments         { grid-area: payments;     min-height: 260px; }
+.card--revenue          { grid-area: revenue;      min-height: 260px; }
+.card--profit-report    { grid-area: profit;       min-height: 320px; }
+
+.card--order-statistics { grid-area: orderstats;   min-height: 400px; }
+.card--income-expense   { grid-area: income;       min-height: 400px; }
+.card--transactions     { grid-area: transactions; min-height: 400px; }
+
+.card--timeline         { grid-area: timeline;     min-height: 360px; }
+.card--visit-resources  { grid-area: visit;        min-height: 360px; }
+
+/* ---- Congrats card inner layout ---- */
+.congrats {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 12px;
+}
+.congrats__text h2 { margin: 0 0 6px; font-size: 20px; }
+.congrats__text p  { margin: 0 0 10px; color: #555; line-height: 1.5; }
+.congrats__img { max-height: 180px; object-fit: contain; }
+.btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #f6f6ff;
+  cursor: pointer;
+}
+
+/* ---- RWD ---- */
+@media (max-width: 1200px) {
+  .analytics-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "congrats congrats order   sales"
+      "total    total    payments revenue"
+      "total    total    profit   profit"
+      "orderstats income  transactions transactions"
+      "timeline  timeline visit    visit";
+  }
+  .congrats { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+  .analytics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "congrats     congrats"
+      "order        sales"
+      "total        total"
+      "payments     revenue"
+      "profit       profit"
+      "orderstats   income"
+      "transactions transactions"
+      "timeline     visit";
+  }
+  .congrats { grid-template-columns: 1fr; text-align: left; }
+}
+
+@media (max-width: 600px) {
+  .analytics-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "congrats"
+      "order"
+      "sales"
+      "total"
+      "payments"
+      "revenue"
+      "profit"
+      "orderstats"
+      "income"
+      "transactions"
+      "timeline"
+      "visit";
+  }
+}
