@@ -1,6 +1,7 @@
 const express = require("express"); // Web 伺服器框架
 const mongoose = require("mongoose"); // MongoDB ODM
 const cors = require("cors"); // 跨網域
+require('dotenv').config(); // 載入環境變數
 
 // 建立一個 Express 應用實例，後面所有的路由、中介層設定都會掛在這個 app 上
 const app = express();
@@ -12,8 +13,8 @@ const PORT = process.env.PORT || 8080;
 app.use(cors()); // 開發階段全開 CORS
 app.use(express.json()); // 讓 Express 解析 JSON body
 
-// 連線字串：mongodb://<IP位址>:<埠號>/<資料庫名稱>
-const MONGO_URI = "mongodb://127.0.0.1:27017/mydatas";
+// 連線字串：從環境變數讀取，開發環境預設為本地 MongoDB
+const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/mydatas";
 // 用 mongoose 連線到 MongoDB
 mongoose
   .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -31,6 +32,8 @@ mongoose
   const orderChartRouter = require("./routes/orderchart");
   app.use("/api/orderchart", orderChartRouter);
   app.use("/api/salesstat",  require("./routes/salesstat"));
+  app.use("/api/totalrevenue", require("./routes/totalrevenue"));
+  app.use("/api/payments", require("./routes/payments"));
 
 
 // 定義 MongoDB 集合中文件的結構（Schema）

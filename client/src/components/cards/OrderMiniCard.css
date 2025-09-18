@@ -58,3 +58,7 @@
   .order-mini__title { color: #8b95a7; }
   .order-mini__value { color: #d9e1f2; }
 }
+
+@media (max-width: 380px) {
+  .order-mini__sparkline { height: 84px; }
+}

@@ -1,0 +1,41 @@
+# 環境變數
+.env
+.env.local
+.env.production
+
+# 依賴
+node_modules/
+
+# 日誌
+logs
+*.log
+npm-debug.log*
+
+# 運行時數據
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# 覆蓋範圍目錄
+coverage/
+
+# 可選的 npm 緩存目錄
+.npm
+
+# 可選的 REPL 歷史
+.node_repl_history
+
+# 輸出目錄
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

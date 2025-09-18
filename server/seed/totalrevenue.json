@@ -1,0 +1,11 @@
+[
+  { "date": { "$date": "2025-01-01T00:00:00Z" }, "label": "Jan", "income": 280, "expenses": 190, "currency": "USD" },
+  { "date": { "$date": "2025-02-01T00:00:00Z" }, "label": "Feb", "income": 220, "expenses": 180, "currency": "USD" },
+  { "date": { "$date": "2025-03-01T00:00:00Z" }, "label": "Mar", "income": 300, "expenses": 210, "currency": "USD" },
+  { "date": { "$date": "2025-04-01T00:00:00Z" }, "label": "Apr", "income": 260, "expenses": 200, "currency": "USD" },
+  { "date": { "$date": "2025-05-01T00:00:00Z" }, "label": "May", "income": 310, "expenses": 220, "currency": "USD" },
+  { "date": { "$date": "2025-06-01T00:00:00Z" }, "label": "Jun", "income": 330, "expenses": 240, "currency": "USD" },
+  { "date": { "$date": "2025-07-01T00:00:00Z" }, "label": "Jul", "income": 360, "expenses": 230, "currency": "USD" }
+]
+
+

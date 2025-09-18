@@ -3,6 +3,8 @@ import "./Analytics.css";
 import OrderMiniCard from "../components/cards/OrderMiniCard";
 import OrderChartCard from "../components/cards/OrderChartCard";
 import SalesStatCard from "../components/cards/SalesStatCard";
+import TotalRevenueCard from "../components/cards/TotalRevenueCard";
+import PaymentsCard from "../components/cards/PaymentsCard";
 
 export default function Analytics() {
   return (
@@ -31,15 +33,9 @@ export default function Analytics() {
       <SalesStatCard />
 
       {/* row-2 */}
-      <section className="card card--total-revenue">
-        <header className="card__header">Total Revenue</header>
-        <div className="chart-box"></div>
-      </section>
+      <TotalRevenueCard />
 
-      <section className="card card--payments">
-        <header className="card__header">Payments</header>
-        <div className="chart-box"></div>
-      </section>
+      <PaymentsCard />
 
       <section className="card card--revenue">
         <header className="card__header">Revenue</header>
