@@ -19,25 +19,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 檢查是否是卡片端點請求
-    if (req.url && req.url.includes('/card')) {
-      return res.status(200).json({
-        totalAmount: 2468,
-        changePct: 14.82,
-        changeType: 'decrease',
-        currency: 'USD',
-        iconUrl: 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png'
-      });
-    }
-
-    // 原有的圖表數據端點
+    // 返回卡片數據
     return res.status(200).json({
-      labels: ['Credit Card', 'PayPal', 'Bank Transfer', 'Cash'],
-      values: [1240, 780, 520, 210],
-      colors: ['#7367F0', '#FF9F43', '#28C76F', '#EA5455'],
+      totalAmount: 2468,
+      changePct: 14.82,
+      changeType: 'decrease',
       currency: 'USD',
-      total: 2750,
-      count: 4
+      iconUrl: 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png'
     });
   } catch (err) {
     console.error('GET /api/payments error', err);
