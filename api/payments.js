@@ -3,6 +3,29 @@ export const config = {
   runtime: 'nodejs',
 };
 
+// 在模組頂層定義模型，避免重複定義
+const mongoose = require('mongoose');
+
+// 定義 Schema（只定義一次）
+const PaymentBreakdownSchema = new mongoose.Schema({
+  method: { type: String, required: true },
+  amount: { type: Number, required: true },
+  color: { type: String },
+  order: { type: Number, default: 0 },
+  currency: { type: String, default: 'USD' },
+  totalAmount: { type: Number, required: true },
+  changePct: { type: Number, required: true },
+  changeType: { type: String, enum: ['increase', 'decrease'], required: true },
+});
+
+// 檢查模型是否已存在，如果不存在則創建
+let PaymentBreakdown;
+try {
+  PaymentBreakdown = mongoose.model('PaymentBreakdown');
+} catch (error) {
+  PaymentBreakdown = mongoose.model('PaymentBreakdown', PaymentBreakdownSchema, 'payments');
+}
+
 export default async function handler(req, res) {
   // 設定 CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -23,9 +46,6 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 使用 Mongoose 連接 MongoDB
-    const mongoose = require('mongoose');
-    
     // 如果已經連接，直接使用
     if (mongoose.connection.readyState === 1) {
       console.log('Using existing MongoDB connection');
@@ -41,20 +61,6 @@ export default async function handler(req, res) {
       });
       console.log('Connected to MongoDB Atlas');
     }
-    
-    // 定義 Schema
-    const PaymentBreakdownSchema = new mongoose.Schema({
-      method: { type: String, required: true },
-      amount: { type: Number, required: true },
-      color: { type: String },
-      order: { type: Number, default: 0 },
-      currency: { type: String, default: 'USD' },
-      totalAmount: { type: Number, required: true },
-      changePct: { type: Number, required: true },
-      changeType: { type: String, enum: ['increase', 'decrease'], required: true },
-    });
-    
-    const PaymentBreakdown = mongoose.model('PaymentBreakdown', PaymentBreakdownSchema, 'payments');
     
     const rows = await PaymentBreakdown.find({}).sort({ order: 1 }).lean();
     
