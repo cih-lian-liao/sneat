@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const PaymentBreakdownSchema = new mongoose.Schema({
   method:   { type: String, required: true }, // e.g., 'Credit Card'
@@ -11,6 +11,6 @@ const PaymentBreakdownSchema = new mongoose.Schema({
 
 PaymentBreakdownSchema.index({ order: 1 });
 
-module.exports = mongoose.model('PaymentBreakdown', PaymentBreakdownSchema, 'payments');
+export default mongoose.model('PaymentBreakdown', PaymentBreakdownSchema, 'payments');
 
 

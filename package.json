@@ -1,0 +1,23 @@
+{
+  "name": "sneat",
+  "version": "1.0.0",
+  "description": "Sneat Admin Management System - Full Stack App",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "cd client && npm run build",
+    "start": "cd client && npm run preview"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^5.1.0",
+    "mongoose": "^8.17.1"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

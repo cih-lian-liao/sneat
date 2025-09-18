@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const OrderChartPointSchema = new mongoose.Schema({
   date:  { type: Date, required: true },
@@ -9,6 +9,6 @@ const OrderChartPointSchema = new mongoose.Schema({
 // 建議：讓「一天一筆」不重複（如果你就是這樣設計）
 OrderChartPointSchema.index({ date: 1 }, { unique: true });
 
-module.exports = mongoose.model('OrderChartPoint', OrderChartPointSchema, 'ordercharts');
+export default mongoose.model('OrderChartPoint', OrderChartPointSchema, 'ordercharts');
 
 

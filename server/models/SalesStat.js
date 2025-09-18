@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const SalesStatSchema = new mongoose.Schema({
   title:     { type: String, required: true },   // 'Sales'
@@ -11,4 +11,4 @@ const SalesStatSchema = new mongoose.Schema({
 
 SalesStatSchema.index({ asOf: -1 });
 
-module.exports = mongoose.model('SalesStat', SalesStatSchema, 'salesstats');
+export default mongoose.model('SalesStat', SalesStatSchema, 'salesstats');

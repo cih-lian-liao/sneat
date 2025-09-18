@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const TotalRevenuePointSchema = new mongoose.Schema({
   date:     { type: Date,   required: true },
@@ -11,6 +11,6 @@ const TotalRevenuePointSchema = new mongoose.Schema({
 // Ensure one point per date
 TotalRevenuePointSchema.index({ date: 1 }, { unique: true });
 
-module.exports = mongoose.model('TotalRevenuePoint', TotalRevenuePointSchema, 'totalrevenue');
+export default mongoose.model('TotalRevenuePoint', TotalRevenuePointSchema, 'totalrevenue');
 
 
