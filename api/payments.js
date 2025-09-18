@@ -23,30 +23,42 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 連接 MongoDB
-    const { MongoClient } = require('mongodb');
+    // 使用 Mongoose 連接 MongoDB
+    const mongoose = require('mongoose');
     
     if (!process.env.MONGO_URI) {
       throw new Error('MONGO_URI environment variable is not set');
     }
 
-    const client = new MongoClient(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      tls: true,
-      tlsAllowInvalidCertificates: false,
-      tlsAllowInvalidHostnames: false,
+    // 如果已經連接，直接使用
+    if (mongoose.connection.readyState === 1) {
+      console.log('Using existing MongoDB connection');
+    } else {
+      // 建立新連接
+      await mongoose.connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      console.log('Connected to MongoDB');
+    }
+    
+    // 定義 Schema
+    const PaymentBreakdownSchema = new mongoose.Schema({
+      method: { type: String, required: true },
+      amount: { type: Number, required: true },
+      color: { type: String },
+      order: { type: Number, default: 0 },
+      currency: { type: String, default: 'USD' },
+      totalAmount: { type: Number, required: true },
+      changePct: { type: Number, required: true },
+      changeType: { type: String, enum: ['increase', 'decrease'], required: true },
     });
     
-    await client.connect();
+    const PaymentBreakdown = mongoose.model('PaymentBreakdown', PaymentBreakdownSchema, 'payments');
     
-    const db = client.db('mydatas');
-    const collection = db.collection('payments');
-    
-    const rows = await collection.find({}).sort({ order: 1 }).toArray();
+    const rows = await PaymentBreakdown.find({}).sort({ order: 1 }).lean();
     
     if (rows.length === 0) {
-      await client.close();
       return res.status(200).json({
         totalAmount: 0,
         changePct: 0,
@@ -58,8 +70,6 @@ export default async function handler(req, res) {
 
     // 使用第一筆記錄的卡片數據
     const cardData = rows[0];
-    
-    await client.close();
     
     res.status(200).json({
       totalAmount: cardData.totalAmount || 0,
