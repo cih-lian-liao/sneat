@@ -32,28 +32,23 @@ export default async function handler(req, res) {
       });
     }
 
-    // 使用 Mongoose 連接 MongoDB，正確配置 SSL/TLS
+    // 使用 Mongoose 連接 MongoDB，使用正確的配置
     const mongoose = require('mongoose');
     
     // 如果已經連接，直接使用
     if (mongoose.connection.readyState === 1) {
       console.log('Using existing MongoDB connection');
     } else {
-      // 建立新連接，正確配置 SSL/TLS
+      // 建立新連接，使用正確的 Mongoose 配置
       await mongoose.connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        ssl: true,
-        sslValidate: true,
-        sslCA: undefined, // 使用默認 CA
-        bufferCommands: false,
-        bufferMaxEntries: 0,
         maxPoolSize: 10,
         serverSelectionTimeoutMS: 5000,
         socketTimeoutMS: 45000,
         family: 4 // 強制使用 IPv4
       });
-      console.log('Connected to MongoDB with SSL/TLS');
+      console.log('Connected to MongoDB Atlas');
     }
     
     // 定義 Schema
@@ -92,7 +87,8 @@ export default async function handler(req, res) {
       changeType: cardData.changeType || 'increase',
       currency: cardData.currency || 'USD',
       iconUrl: 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png',
-      debug: 'Data fetched from MongoDB successfully'
+      debug: 'Data fetched from MongoDB successfully',
+      dataCount: rows.length
     });
   } catch (err) {
     console.error('GET /api/payments error', err);
