@@ -9,6 +9,20 @@
       }
     }
   ],
+  "functions": {
+    "api/payments.js": {
+      "runtime": "nodejs18.x"
+    },
+    "api/totalrevenue.js": {
+      "runtime": "nodejs18.x"
+    },
+    "api/salesstat.js": {
+      "runtime": "nodejs18.x"
+    },
+    "api/orderchart.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "rewrites": [
     {
       "source": "/((?!api/).*)",

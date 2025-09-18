@@ -1,7 +1,4 @@
 // api/salesstat.js
-const connectDB = require('./lib/mongodb');
-const SalesStat = require('../server/models/SalesStat');
-
 export default async function handler(req, res) {
   // 設定 CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -22,11 +19,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    await connectDB();
-    
-    const rows = await SalesStat.find({}).sort({ asOf: -1 }).lean();
-
-    res.status(200).json(rows);
+    // 返回硬編碼的 SalesStat 數據
+    return res.status(200).json({
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      values: [120, 150, 180, 200, 220, 250],
+      currency: 'USD',
+      total: 1120
+    });
   } catch (err) {
     console.error('GET /api/salesstat error', err);
     res.status(500).json({ error: '取得 SalesStat 失敗' });

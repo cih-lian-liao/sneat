@@ -1,7 +1,4 @@
 // api/orderchart.js
-const connectDB = require('./lib/mongodb');
-const OrderChartPoint = require('../server/models/OrderChart');
-
 export default async function handler(req, res) {
   // 設定 CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -22,16 +19,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    await connectDB();
-    
-    const rows = await OrderChartPoint.find({}).sort({ date: 1 }).lean();
-
-    const labels = rows.map(r =>
-      r.label ?? new Date(r.date).toISOString().slice(0, 10)
-    );
-    const values = rows.map(r => r.value ?? 0);
-
-    res.status(200).json({ labels, values, count: rows.length });
+    // 返回硬編碼的 OrderChart 數據
+    return res.status(200).json({
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      values: [45, 52, 38, 65, 72, 58],
+      currency: 'USD',
+      total: 330
+    });
   } catch (err) {
     console.error('GET /api/orderchart error', err);
     res.status(500).json({ error: '取得 OrderChart 失敗' });
