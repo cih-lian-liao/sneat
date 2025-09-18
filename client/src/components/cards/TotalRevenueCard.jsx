@@ -97,9 +97,12 @@ export default function TotalRevenueCard() {
   useEffect(() => {
     const fetchYears = async () => {
       try {
-        const API_BASE = process.env.NODE_ENV === 'production' ? '/api' : 'http://127.0.0.1:8080/api';
-        const res = await axios.get(`${API_BASE}/api/totalrevenue/years`);
-        setAvailableYears(res.data.years);
+        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8080';
+        const res = await axios.get(`${API_BASE}/api/totalrevenue`);
+        // 從主要 API 獲取年份數據，而不是單獨的 years 端點
+        if (res.data && res.data.year1 && res.data.year2) {
+          setAvailableYears([res.data.year1.year, res.data.year2.year]);
+        }
       } catch (e) {
         console.error('Failed to fetch years:', e);
       }
@@ -140,21 +143,21 @@ export default function TotalRevenueCard() {
 
   // 圖表數據
   const chartData = useMemo(() => {
-    if (!data) return null;
+    if (!data || !data.year1 || !data.year2) return null;
 
     return {
-      labels: data.year1.labels,
+      labels: data.year1.labels || [],
       datasets: [
         {
           label: `${data.year1.year}`,
-          data: data.year1.netRevenue,
+          data: data.year1.netRevenue || [],
           backgroundColor: "#7367F0",
           borderRadius: 6,
           maxBarThickness: 20,
         },
         {
           label: `${data.year2.year}`,
-          data: data.year2.netRevenue,
+          data: data.year2.netRevenue || [],
           backgroundColor: "#E3DDFD",
           borderRadius: 6,
           maxBarThickness: 20,
@@ -259,7 +262,7 @@ export default function TotalRevenueCard() {
         <div className="total-revenue__stats-section">
           {/* 增長儀表 */}
           <div className="growth-section">
-            <GrowthGauge percentage={data.growthPercentage} />
+            <GrowthGauge percentage={data?.growthPercentage || 0} />
             <div className="company-growth">
               <span className="company-growth__percentage">62%</span>
               <span className="company-growth__text">Company Growth</span>
