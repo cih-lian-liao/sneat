@@ -1,43 +1,52 @@
 // api/salesstat.js
 export const config = {
-  runtime: 'edge',
+  runtime: 'nodejs',
 };
 
-export default async function handler(req) {
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  };
+export default async function handler(req, res) {
+  // 設定 CORS
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
 
   if (req.method === 'OPTIONS') {
-    return new Response(null, { status: 200, headers });
+    res.status(200).end();
+    return;
   }
 
   if (req.method !== 'GET') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-      status: 405,
-      headers: { ...headers, 'Content-Type': 'application/json' }
-    });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const data = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-      values: [120, 150, 180, 200, 220, 250],
-      currency: 'USD',
-      total: 1120
-    };
+    // 連接 MongoDB
+    const { MongoClient } = require('mongodb');
+    
+    if (!process.env.MONGO_URI) {
+      throw new Error('MONGO_URI environment variable is not set');
+    }
 
-    return new Response(JSON.stringify(data), {
-      status: 200,
-      headers: { ...headers, 'Content-Type': 'application/json' }
-    });
+    const client = new MongoClient(process.env.MONGO_URI);
+    await client.connect();
+    
+    const db = client.db('mydatas');
+    const collection = db.collection('salesstats');
+    
+    const rows = await collection.find({}).sort({ date: 1 }).toArray();
+    const labels = rows.map(r => r.label);
+    const values = rows.map(r => r.value);
+    const currency = rows[0]?.currency || 'USD';
+    const total = values.reduce((s, v) => s + (Number(v) || 0), 0);
+
+    await client.close();
+
+    res.json({ labels, values, currency, total, count: rows.length });
   } catch (err) {
-    console.error('SalesStat API error', err);
-    return new Response(JSON.stringify({ error: '取得 SalesStat 失敗' }), {
-      status: 500,
-      headers: { ...headers, 'Content-Type': 'application/json' }
-    });
+    console.error('GET /api/salesstat error', err);
+    res.status(500).json({ error: '取得 SalesStat 失敗: ' + err.message });
   }
 }
