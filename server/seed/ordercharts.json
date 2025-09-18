@@ -1,9 +1,9 @@
 [
-  { "date": { "$date": "2025-08-18T00:00:00Z" }, "label": "Mon", "value": 120 },
-  { "date": { "$date": "2025-08-19T00:00:00Z" }, "label": "Tue", "value": 180 },
-  { "date": { "$date": "2025-08-20T00:00:00Z" }, "label": "Wed", "value": 150 },
-  { "date": { "$date": "2025-08-21T00:00:00Z" }, "label": "Thu", "value": 200 },
-  { "date": { "$date": "2025-08-22T00:00:00Z" }, "label": "Fri", "value": 260 },
-  { "date": { "$date": "2025-08-23T00:00:00Z" }, "label": "Sat", "value": 220 },
-  { "date": { "$date": "2025-08-24T00:00:00Z" }, "label": "Sun", "value": 300 }
+  { "date": { "$date": "2025-08-18T00:00:00Z" }, "label": "Mon", "value": 1250 },
+  { "date": { "$date": "2025-08-19T00:00:00Z" }, "label": "Tue", "value": 1890 },
+  { "date": { "$date": "2025-08-20T00:00:00Z" }, "label": "Wed", "value": 1650 },
+  { "date": { "$date": "2025-08-21T00:00:00Z" }, "label": "Thu", "value": 2100 },
+  { "date": { "$date": "2025-08-22T00:00:00Z" }, "label": "Fri", "value": 2680 },
+  { "date": { "$date": "2025-08-23T00:00:00Z" }, "label": "Sat", "value": 2250 },
+  { "date": { "$date": "2025-08-24T00:00:00Z" }, "label": "Sun", "value": 3080 }
 ]
