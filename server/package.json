@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon --ext js,json --watch server.js --watch routes --watch models server.js",
-    "migrate": "node migrate.js"
+    "migrate": "node migrate.js",
+    "update-data": "node update-data.js"
   },
   "keywords": [],
   "author": "",
