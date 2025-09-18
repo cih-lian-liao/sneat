@@ -1,6 +1,6 @@
 // api/salesstat.js
-import connectDB from './lib/mongodb.js';
-import SalesStat from '../server/models/SalesStat.js';
+const connectDB = require('./lib/mongodb');
+const SalesStat = require('../server/models/SalesStat');
 
 export default async function handler(req, res) {
   // 設定 CORS

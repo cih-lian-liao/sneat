@@ -1,6 +1,6 @@
 // api/orderchart.js
-import connectDB from './lib/mongodb.js';
-import OrderChartPoint from '../server/models/OrderChart.js';
+const connectDB = require('./lib/mongodb');
+const OrderChartPoint = require('../server/models/OrderChart');
 
 export default async function handler(req, res) {
   // 設定 CORS

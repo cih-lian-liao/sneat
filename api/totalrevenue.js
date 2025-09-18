@@ -1,6 +1,6 @@
 // api/totalrevenue.js
-import connectDB from './lib/mongodb.js';
-import TotalRevenuePoint from '../server/models/TotalRevenuePoint.js';
+const connectDB = require('./lib/mongodb');
+const TotalRevenuePoint = require('../server/models/TotalRevenuePoint');
 
 export default async function handler(req, res) {
   // 設定 CORS

@@ -1,6 +1,6 @@
 // api/payments.js
-import connectDB from './lib/mongodb.js';
-import PaymentBreakdown from '../server/models/PaymentBreakdown.js';
+const connectDB = require('./lib/mongodb');
+const PaymentBreakdown = require('../server/models/PaymentBreakdown');
 
 export default async function handler(req, res) {
   // 設定 CORS
