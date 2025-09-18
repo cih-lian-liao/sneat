@@ -1,7 +1,4 @@
 // api/payments/card.js
-const connectDB = require('../lib/mongodb');
-const PaymentBreakdown = require('../../server/models/PaymentBreakdown').default;
-
 export default async function handler(req, res) {
   // 設定 CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -22,28 +19,12 @@ export default async function handler(req, res) {
   }
 
   try {
-    await connectDB();
-    
-    const rows = await PaymentBreakdown.find({}).sort({ order: 1 }).lean();
-    
-    if (rows.length === 0) {
-      return res.status(200).json({
-        totalAmount: 0,
-        changePct: 0,
-        changeType: 'increase',
-        currency: 'USD',
-        iconUrl: 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png'
-      });
-    }
-
-    // 使用第一筆記錄的卡片數據
-    const cardData = rows[0];
-    
+    // 暫時返回硬編碼的數據來測試
     return res.status(200).json({
-      totalAmount: cardData.totalAmount || 0,
-      changePct: cardData.changePct || 0,
-      changeType: cardData.changeType || 'increase',
-      currency: cardData.currency || 'USD',
+      totalAmount: 2468,
+      changePct: 14.82,
+      changeType: 'decrease',
+      currency: 'USD',
       iconUrl: 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png'
     });
   } catch (err) {
