@@ -143,27 +143,32 @@ export default function TotalRevenueCard() {
 
   // 圖表數據
   const chartData = useMemo(() => {
-    if (!data || !data.year1 || !data.year2) return null;
+    try {
+      if (!data || !data.year1 || !data.year2) return null;
 
-    return {
-      labels: data.year1.labels || [],
-      datasets: [
-        {
-          label: `${data.year1.year}`,
-          data: data.year1.netRevenue || [],
-          backgroundColor: "#7367F0",
-          borderRadius: 6,
-          maxBarThickness: 20,
-        },
-        {
-          label: `${data.year2.year}`,
-          data: data.year2.netRevenue || [],
-          backgroundColor: "#E3DDFD",
-          borderRadius: 6,
-          maxBarThickness: 20,
-        },
-      ],
-    };
+      return {
+        labels: data.year1.labels || [],
+        datasets: [
+          {
+            label: `${data.year1.year}`,
+            data: data.year1.netRevenue || [],
+            backgroundColor: "#7367F0",
+            borderRadius: 6,
+            maxBarThickness: 20,
+          },
+          {
+            label: `${data.year2.year}`,
+            data: data.year2.netRevenue || [],
+            backgroundColor: "#E3DDFD",
+            borderRadius: 6,
+            maxBarThickness: 20,
+          },
+        ],
+      };
+    } catch (error) {
+      console.error('TotalRevenue chartData error:', error);
+      return null;
+    }
   }, [data]);
 
   const chartOptions = useMemo(() => ({

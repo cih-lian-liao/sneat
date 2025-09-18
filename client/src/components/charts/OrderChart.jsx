@@ -34,14 +34,19 @@ export default function OrderChart({
 }) {
   const chartRef = useRef(null);
 
+  // 安全的數據處理
+  const safeLabels = Array.isArray(labels) ? labels : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const safeValues = Array.isArray(values) ? values.map(v => Number(v) || 0) : [120, 180, 150, 200, 260, 220, 300];
+
   // 用 scriptable options 動態建立漸層，避免初次渲染 chartArea 未準備好
   const data = useMemo(() => {
-    return {
-      labels,
-      datasets: [
-        {
-          label: "Orders",
-          data: values,
+    try {
+      return {
+        labels: safeLabels,
+        datasets: [
+          {
+            label: "Orders",
+            data: safeValues,
           borderColor: "#59c344ff",
           borderWidth: 2,
           tension: 0.35,         // 平滑
@@ -62,9 +67,27 @@ export default function OrderChart({
             return gradient;
           },
         },
-      ],
-    };
-  }, [labels, values]);
+        ],
+      };
+    } catch (error) {
+      console.error('OrderChart data error:', error);
+      return {
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        datasets: [
+          {
+            label: "Orders",
+            data: [120, 180, 150, 200, 260, 220, 300],
+            borderColor: "#59c344ff",
+            borderWidth: 2,
+            tension: 0.35,
+            pointRadius: 0,
+            fill: true,
+            backgroundColor: "rgba(91,53,255,0.12)",
+          },
+        ],
+      };
+    }
+  }, [safeLabels, safeValues]);
 
   const options = useMemo(
     () => ({
