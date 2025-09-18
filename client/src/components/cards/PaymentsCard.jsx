@@ -51,7 +51,7 @@ export default function PaymentsCard() {
     (async () => {
       try {
         setLoading(true);
-        const API_BASE = "http://127.0.0.1:8080";
+        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8080';
         const res = await axios.get(`${API_BASE}/api/payments/card`, {
           timeout: 10000,
           signal: controller.signal,
