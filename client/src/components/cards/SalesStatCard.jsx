@@ -26,7 +26,7 @@ export default function SalesStatCard() {
     (async () => {
       try {
         setLoading(true);
-        const API_BASE = "http://127.0.0.1:8080"; // 就地寫法（不統一 axios）
+        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8080';
         const res = await axios.get(`${API_BASE}/api/salesstat`, {
           timeout: 10000, signal: controller.signal
         });
