@@ -1,4 +1,4 @@
-import "./ecommerce.css";
+import "./Ecommerce.css";
 
 export default function Ecommerce() {
   return (
