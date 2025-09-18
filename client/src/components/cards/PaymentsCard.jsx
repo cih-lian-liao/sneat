@@ -103,6 +103,9 @@ export default function PaymentsCard() {
     );
   }
 
+  // 調試信息
+  console.log('PaymentsCard data:', cardData);
+
   return (
     <section className="card card--payments payments-card">
       <div className="payments-card__header">
