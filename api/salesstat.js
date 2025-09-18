@@ -6,12 +6,14 @@ export const config = {
 // 在模組頂層定義模型，避免重複定義
 const mongoose = require('mongoose');
 
-// 定義 Schema（只定義一次）
+// 定義 Schema（只定義一次）- 根據實際數據結構調整
 const SalesStatSchema = new mongoose.Schema({
-  date: { type: Date, required: true },
-  label: { type: String, required: true },
-  value: { type: Number, required: true },
+  title: { type: String, required: true },
+  amount: { type: Number, required: true },
+  changePct: { type: Number, required: true },
   currency: { type: String, default: 'USD' },
+  iconUrl: { type: String },
+  asOf: { type: Date, default: Date.now },
 });
 
 // 檢查模型是否已存在，如果不存在則創建
@@ -58,19 +60,30 @@ export default async function handler(req, res) {
       console.log('Connected to MongoDB Atlas');
     }
     
-    const rows = await SalesStat.find({}).sort({ date: 1 }).lean();
-    const labels = rows.map(r => r.label);
-    const values = rows.map(r => r.value);
-    const currency = rows[0]?.currency || 'USD';
-    const total = values.reduce((s, v) => s + (Number(v) || 0), 0);
+    const rows = await SalesStat.find({}).lean();
+    
+    if (rows.length === 0) {
+      return res.json({
+        title: 'Sales',
+        amount: 0,
+        changePct: 0,
+        currency: 'USD',
+        iconUrl: 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png',
+        debug: 'No data found in MongoDB'
+      });
+    }
 
-    res.json({ 
-      labels, 
-      values, 
-      currency, 
-      total, 
-      count: rows.length,
-      debug: 'Data fetched from MongoDB successfully'
+    // 使用第一筆記錄
+    const salesData = rows[0];
+    
+    res.json({
+      title: salesData.title || 'Sales',
+      amount: salesData.amount || 0,
+      changePct: salesData.changePct || 0,
+      currency: salesData.currency || 'USD',
+      iconUrl: salesData.iconUrl || 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png',
+      debug: 'Data fetched from MongoDB successfully',
+      dataCount: rows.length
     });
   } catch (err) {
     console.error('GET /api/salesstat error', err);
