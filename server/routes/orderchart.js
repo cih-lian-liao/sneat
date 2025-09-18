@@ -1,7 +1,7 @@
 // server/routes/orderchart.js
 const express = require('express');
 const router = express.Router();
-const OrderChartPoint = require('../models/OrderChart');
+const OrderChartPoint = require('../models/OrderChart').default;
 
 // GET /api/orderchart ：把全部資料依 date 由小到大回傳
 router.get('/', async (req, res) => {

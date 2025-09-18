@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const SalesStat = require('../models/SalesStat');
+const SalesStat = require('../models/SalesStat').default;
 
 // GET /api/salesstat  → 取最新一筆
 router.get('/', async (req, res) => {

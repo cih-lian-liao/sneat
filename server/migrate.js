@@ -5,10 +5,10 @@ const path = require('path');
 require('dotenv').config();
 
 // 導入所有模型
-const OrderChartPoint = require('./models/OrderChart');
-const PaymentBreakdown = require('./models/PaymentBreakdown');
-const SalesStat = require('./models/SalesStat');
-const TotalRevenuePoint = require('./models/TotalRevenuePoint');
+const OrderChartPoint = require('./models/OrderChart').default;
+const PaymentBreakdown = require('./models/PaymentBreakdown').default;
+const SalesStat = require('./models/SalesStat').default;
+const TotalRevenuePoint = require('./models/TotalRevenuePoint').default;
 
 async function migrateData() {
   try {
@@ -48,6 +48,19 @@ async function migrateData() {
     seedData.ordercharts = processDateFields(seedData.ordercharts, ['date']);
     seedData.salesstats = processDateFields(seedData.salesstats, ['asOf']);
     seedData.totalrevenue = processDateFields(seedData.totalrevenue, ['date']);
+    
+    // 為 totalrevenue 添加年份和月份字段（如果不存在）
+    seedData.totalrevenue = seedData.totalrevenue.map(item => {
+      if (!item.year || !item.month) {
+        const date = new Date(item.date);
+        return {
+          ...item,
+          year: item.year || date.getFullYear(),
+          month: item.month || (date.getMonth() + 1)
+        };
+      }
+      return item;
+    });
 
     // 插入數據
     await OrderChartPoint.insertMany(seedData.ordercharts);

@@ -1,11 +1,23 @@
 [
-  { "date": { "$date": "2025-01-01T00:00:00Z" }, "label": "Jan", "income": 280, "expenses": 190, "currency": "USD" },
-  { "date": { "$date": "2025-02-01T00:00:00Z" }, "label": "Feb", "income": 220, "expenses": 180, "currency": "USD" },
-  { "date": { "$date": "2025-03-01T00:00:00Z" }, "label": "Mar", "income": 300, "expenses": 210, "currency": "USD" },
-  { "date": { "$date": "2025-04-01T00:00:00Z" }, "label": "Apr", "income": 260, "expenses": 200, "currency": "USD" },
-  { "date": { "$date": "2025-05-01T00:00:00Z" }, "label": "May", "income": 310, "expenses": 220, "currency": "USD" },
-  { "date": { "$date": "2025-06-01T00:00:00Z" }, "label": "Jun", "income": 330, "expenses": 240, "currency": "USD" },
-  { "date": { "$date": "2025-07-01T00:00:00Z" }, "label": "Jul", "income": 360, "expenses": 230, "currency": "USD" }
+  { "date": { "$date": "2024-01-01T00:00:00Z" }, "label": "Jan", "income": 17000, "expenses": 5000, "currency": "USD", "year": 2024, "month": 1 },
+  { "date": { "$date": "2024-02-01T00:00:00Z" }, "label": "Feb", "income": 5000, "expenses": 0, "currency": "USD", "year": 2024, "month": 2 },
+  { "date": { "$date": "2024-03-01T00:00:00Z" }, "label": "Mar", "income": 14000, "expenses": 0, "currency": "USD", "year": 2024, "month": 3 },
+  { "date": { "$date": "2024-04-01T00:00:00Z" }, "label": "Apr", "income": 28000, "expenses": 0, "currency": "USD", "year": 2024, "month": 4 },
+  { "date": { "$date": "2024-05-01T00:00:00Z" }, "label": "May", "income": 17000, "expenses": 0, "currency": "USD", "year": 2024, "month": 5 },
+  { "date": { "$date": "2024-06-01T00:00:00Z" }, "label": "Jun", "income": 10000, "expenses": 0, "currency": "USD", "year": 2024, "month": 6 },
+  { "date": { "$date": "2024-07-01T00:00:00Z" }, "label": "Jul", "income": 7000, "expenses": 0, "currency": "USD", "year": 2024, "month": 7 },
+  { "date": { "$date": "2023-01-01T00:00:00Z" }, "label": "Jan", "income": 0, "expenses": 12000, "currency": "USD", "year": 2023, "month": 1 },
+  { "date": { "$date": "2023-02-01T00:00:00Z" }, "label": "Feb", "income": 0, "expenses": 18000, "currency": "USD", "year": 2023, "month": 2 },
+  { "date": { "$date": "2023-03-01T00:00:00Z" }, "label": "Mar", "income": 0, "expenses": 10000, "currency": "USD", "year": 2023, "month": 3 },
+  { "date": { "$date": "2023-04-01T00:00:00Z" }, "label": "Apr", "income": 0, "expenses": 15000, "currency": "USD", "year": 2023, "month": 4 },
+  { "date": { "$date": "2023-05-01T00:00:00Z" }, "label": "May", "income": 0, "expenses": 3000, "currency": "USD", "year": 2023, "month": 5 },
+  { "date": { "$date": "2023-06-01T00:00:00Z" }, "label": "Jun", "income": 0, "expenses": 17000, "currency": "USD", "year": 2023, "month": 6 },
+  { "date": { "$date": "2023-07-01T00:00:00Z" }, "label": "Jul", "income": 0, "expenses": 15000, "currency": "USD", "year": 2023, "month": 7 },
+  { "date": { "$date": "2025-01-01T00:00:00Z" }, "label": "Jan", "income": 32500, "expenses": 0, "currency": "USD", "year": 2025, "month": 1 },
+  { "date": { "$date": "2025-02-01T00:00:00Z" }, "label": "Feb", "income": 0, "expenses": 0, "currency": "USD", "year": 2025, "month": 2 },
+  { "date": { "$date": "2025-03-01T00:00:00Z" }, "label": "Mar", "income": 0, "expenses": 0, "currency": "USD", "year": 2025, "month": 3 },
+  { "date": { "$date": "2025-04-01T00:00:00Z" }, "label": "Apr", "income": 0, "expenses": 0, "currency": "USD", "year": 2025, "month": 4 },
+  { "date": { "$date": "2025-05-01T00:00:00Z" }, "label": "May", "income": 0, "expenses": 0, "currency": "USD", "year": 2025, "month": 5 },
+  { "date": { "$date": "2025-06-01T00:00:00Z" }, "label": "Jun", "income": 0, "expenses": 0, "currency": "USD", "year": 2025, "month": 6 },
+  { "date": { "$date": "2025-07-01T00:00:00Z" }, "label": "Jul", "income": 0, "expenses": 0, "currency": "USD", "year": 2025, "month": 7 }
 ]
-
-

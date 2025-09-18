@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const PaymentBreakdown = require('../models/PaymentBreakdown');
+const PaymentBreakdown = require('../models/PaymentBreakdown').default;
 
 // GET /api/payments → list payment methods distribution
 router.get('/', async (_req, res) => {
