@@ -3,6 +3,25 @@ export const config = {
   runtime: 'nodejs',
 };
 
+// 在模組頂層定義模型，避免重複定義
+const mongoose = require('mongoose');
+
+// 定義 Schema（只定義一次）
+const OrderChartPointSchema = new mongoose.Schema({
+  date: { type: Date, required: true },
+  label: { type: String, required: true },
+  value: { type: Number, required: true },
+  currency: { type: String, default: 'USD' },
+});
+
+// 檢查模型是否已存在，如果不存在則創建
+let OrderChartPoint;
+try {
+  OrderChartPoint = mongoose.model('OrderChartPoint');
+} catch (error) {
+  OrderChartPoint = mongoose.model('OrderChartPoint', OrderChartPointSchema, 'ordercharts');
+}
+
 export default async function handler(req, res) {
   // 設定 CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -23,28 +42,36 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 連接 MongoDB
-    const { MongoClient } = require('mongodb');
-    
-    if (!process.env.MONGO_URI) {
-      throw new Error('MONGO_URI environment variable is not set');
+    // 如果已經連接，直接使用
+    if (mongoose.connection.readyState === 1) {
+      console.log('Using existing MongoDB connection');
+    } else {
+      // 建立新連接
+      await mongoose.connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        maxPoolSize: 10,
+        serverSelectionTimeoutMS: 5000,
+        socketTimeoutMS: 45000,
+        family: 4
+      });
+      console.log('Connected to MongoDB Atlas');
     }
-
-    const client = new MongoClient(process.env.MONGO_URI);
-    await client.connect();
     
-    const db = client.db('mydatas');
-    const collection = db.collection('ordercharts');
-    
-    const rows = await collection.find({}).sort({ date: 1 }).toArray();
+    const rows = await OrderChartPoint.find({}).sort({ date: 1 }).lean();
     const labels = rows.map(r => r.label);
     const values = rows.map(r => r.value);
     const currency = rows[0]?.currency || 'USD';
     const total = values.reduce((s, v) => s + (Number(v) || 0), 0);
 
-    await client.close();
-
-    res.json({ labels, values, currency, total, count: rows.length });
+    res.json({ 
+      labels, 
+      values, 
+      currency, 
+      total, 
+      count: rows.length,
+      debug: 'Data fetched from MongoDB successfully'
+    });
   } catch (err) {
     console.error('GET /api/orderchart error', err);
     res.status(500).json({ error: '取得 OrderChart 失敗: ' + err.message });
