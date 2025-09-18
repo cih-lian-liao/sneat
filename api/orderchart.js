@@ -1,33 +1,43 @@
 // api/orderchart.js
-export default async function handler(req, res) {
-  // 設定 CORS
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
+export const config = {
+  runtime: 'edge',
+};
+
+export default async function handler(req) {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
 
   if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+    return new Response(null, { status: 200, headers });
   }
 
   if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: { ...headers, 'Content-Type': 'application/json' }
+    });
   }
 
   try {
-    // 返回硬編碼的 OrderChart 數據
-    return res.status(200).json({
+    const data = {
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
       values: [45, 52, 38, 65, 72, 58],
       currency: 'USD',
       total: 330
+    };
+
+    return new Response(JSON.stringify(data), {
+      status: 200,
+      headers: { ...headers, 'Content-Type': 'application/json' }
     });
   } catch (err) {
-    console.error('GET /api/orderchart error', err);
-    res.status(500).json({ error: '取得 OrderChart 失敗' });
+    console.error('OrderChart API error', err);
+    return new Response(JSON.stringify({ error: '取得 OrderChart 失敗' }), {
+      status: 500,
+      headers: { ...headers, 'Content-Type': 'application/json' }
+    });
   }
 }
