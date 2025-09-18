@@ -1,10 +1,11 @@
 // client/src/pages/Analytics.jsx
 import "./Analytics.css";
-import OrderMiniCard from "../components/cards/OrderMiniCard";
-import OrderChartCard from "../components/cards/OrderChartCard";
-import SalesStatCard from "../components/cards/SalesStatCard";
-import TotalRevenueCard from "../components/cards/TotalRevenueCard";
-import PaymentsCard from "../components/cards/PaymentsCard";
+import TestCard from "../components/TestCard";
+// import OrderMiniCard from "../components/cards/OrderMiniCard";
+// import OrderChartCard from "../components/cards/OrderChartCard";
+// import SalesStatCard from "../components/cards/SalesStatCard";
+// import TotalRevenueCard from "../components/cards/TotalRevenueCard";
+// import PaymentsCard from "../components/cards/PaymentsCard";
 
 export default function Analytics() {
   return (
@@ -28,14 +29,14 @@ export default function Analytics() {
         </div>
       </section>
 
-      <OrderMiniCard />
+      <TestCard />
 
-      <SalesStatCard />
+      <TestCard />
 
       {/* row-2 */}
-      <TotalRevenueCard />
+      <TestCard />
 
-      <PaymentsCard />
+      <TestCard />
 
       <section className="card card--revenue">
         <header className="card__header">Revenue</header>
