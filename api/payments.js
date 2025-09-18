@@ -30,7 +30,14 @@ export default async function handler(req, res) {
       throw new Error('MONGO_URI environment variable is not set');
     }
 
-    const client = new MongoClient(process.env.MONGO_URI);
+    const client = new MongoClient(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      tls: true,
+      tlsAllowInvalidCertificates: false,
+      tlsAllowInvalidHostnames: false,
+    });
+    
     await client.connect();
     
     const db = client.db('mydatas');
