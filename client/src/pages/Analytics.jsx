@@ -1,6 +1,11 @@
 // client/src/pages/Analytics.jsx
 import "./Analytics.css";
 import TestCard from "../components/TestCard";
+import SalesStatCard from "../components/cards/SalesStatCard";
+// import OrderMiniCard from "../components/cards/OrderMiniCard";
+// import OrderChartCard from "../components/cards/OrderChartCard";
+// import TotalRevenueCard from "../components/cards/TotalRevenueCard";
+// import PaymentsCard from "../components/cards/PaymentsCard";
 
 export default function Analytics() {
   return (
@@ -26,7 +31,7 @@ export default function Analytics() {
 
       <TestCard />
 
-      <TestCard />
+      <SalesStatCard />
 
       {/* row-2 */}
       <TestCard />
