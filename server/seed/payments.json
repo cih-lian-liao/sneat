@@ -1,8 +1,44 @@
 [
-  { "method": "Credit Card",   "amount": 1240, "color": "#7367F0", "order": 1, "currency": "USD" },
-  { "method": "PayPal",        "amount": 780,  "color": "#FF9F43", "order": 2, "currency": "USD" },
-  { "method": "Bank Transfer", "amount": 520,  "color": "#28C76F", "order": 3, "currency": "USD" },
-  { "method": "Cash",          "amount": 210,  "color": "#EA5455", "order": 4, "currency": "USD" }
+  { 
+    "method": "Credit Card",   
+    "amount": 1240, 
+    "color": "#7367F0", 
+    "order": 1, 
+    "currency": "USD",
+    "totalAmount": 2468,
+    "changePct": 14.82,
+    "changeType": "decrease"
+  },
+  { 
+    "method": "PayPal",        
+    "amount": 780,  
+    "color": "#FF9F43", 
+    "order": 2, 
+    "currency": "USD",
+    "totalAmount": 2468,
+    "changePct": 14.82,
+    "changeType": "decrease"
+  },
+  { 
+    "method": "Bank Transfer", 
+    "amount": 520,  
+    "color": "#28C76F", 
+    "order": 3, 
+    "currency": "USD",
+    "totalAmount": 2468,
+    "changePct": 14.82,
+    "changeType": "decrease"
+  },
+  { 
+    "method": "Cash",          
+    "amount": 210,  
+    "color": "#EA5455", 
+    "order": 4, 
+    "currency": "USD",
+    "totalAmount": 2468,
+    "changePct": 14.82,
+    "changeType": "decrease"
+  }
 ]
 
 

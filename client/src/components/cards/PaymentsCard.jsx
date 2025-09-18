@@ -1,10 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
-import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import "./PaymentsCard.css";
-
-ChartJS.register(ArcElement, Tooltip, Legend);
 
 function formatCurrency(amount, currency = "USD") {
   try {
@@ -12,74 +8,123 @@ function formatCurrency(amount, currency = "USD") {
   } catch { return `$${(Number(amount) || 0).toLocaleString()}`; }
 }
 
+// PayPal 風格的圖標組件
+function PayPalIcon() {
+  return (
+    <div className="payments-icon">
+      <div className="payments-icon__background">
+        <span className="payments-icon__letter">P</span>
+      </div>
+    </div>
+  );
+}
+
+// 變化指示器組件
+function ChangeIndicator({ changePct, changeType }) {
+  const isIncrease = changeType === 'increase';
+  
+  return (
+    <div className={`change-indicator ${isIncrease ? 'increase' : 'decrease'}`}>
+      <svg 
+        className="change-indicator__arrow" 
+        width="12" 
+        height="12" 
+        viewBox="0 0 12 12"
+        style={{ transform: isIncrease ? 'rotate(0deg)' : 'rotate(180deg)' }}
+      >
+        <path d="M6 2L10 8H2L6 2Z" fill="currentColor" />
+      </svg>
+      <span className="change-indicator__text">{changePct}%</span>
+    </div>
+  );
+}
+
 export default function PaymentsCard() {
-  const [labels, setLabels] = useState([]);
-  const [values, setValues] = useState([]);
-  const [colors, setColors] = useState([]);
-  const [currency, setCurrency] = useState("USD");
+  const [cardData, setCardData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
 
   useEffect(() => {
-    const controller = new AbortController(); let alive = true;
+    const controller = new AbortController();
+    let alive = true;
+
     (async () => {
       try {
         setLoading(true);
         const API_BASE = "http://127.0.0.1:8080";
-        const res = await axios.get(`${API_BASE}/api/payments`, { timeout: 10000, signal: controller.signal });
+        const res = await axios.get(`${API_BASE}/api/payments/card`, {
+          timeout: 10000,
+          signal: controller.signal,
+        });
         if (!alive) return;
-        setLabels(res.data?.labels ?? []);
-        setValues(res.data?.values ?? []);
-        setColors(res.data?.colors ?? []);
-        setCurrency(res.data?.currency ?? "USD");
+        setCardData(res.data || {});
         setErr("");
       } catch (e) {
         if (!alive) return;
-        if (axios.isCancel?.(e) || e.code === "ERR_CANCELED" || e.message === "canceled") return;
+        if (
+          axios.isCancel?.(e) ||
+          e.code === "ERR_CANCELED" ||
+          e.message === "canceled"
+        )
+          return;
         setErr(e?.response?.data?.error || e?.message || "Network error");
-      } finally { if (alive) setLoading(false); }
+      } finally {
+        if (alive) setLoading(false);
+      }
     })();
-    return () => { alive = false; controller.abort(); };
+
+    return () => {
+      alive = false;
+      controller.abort();
+    };
   }, []);
 
-  const total = useMemo(() => values.reduce((s, v) => s + (Number(v) || 0), 0), [values]);
+  if (loading) {
+    return (
+      <section className="card card--payments payments-card">
+        <div className="loading">載入中...</div>
+      </section>
+    );
+  }
 
-  const data = useMemo(() => ({
-    labels,
-    datasets: [{ data: values, backgroundColor: colors.length ? colors : ["#7367F0", "#FF9F43", "#28C76F", "#EA5455"] }],
-  }), [labels, values, colors]);
+  if (err) {
+    return (
+      <section className="card card--payments payments-card">
+        <div className="error">載入失敗: {err}</div>
+      </section>
+    );
+  }
 
-  const options = useMemo(() => ({
-    responsive: true,
-    maintainAspectRatio: false,
-    cutout: "72%",
-    plugins: { legend: { display: false }, tooltip: { bodyFont: { size: 11 } } },
-  }), []);
+  if (!cardData) {
+    return (
+      <section className="card card--payments payments-card">
+        <div className="no-data">暫無數據</div>
+      </section>
+    );
+  }
 
   return (
     <section className="card card--payments payments-card">
-      <header className="card__header">Payments</header>
-
-      <div className="payments-card__body">
-        <div className="payments-card__donut">
-          {loading || err ? <div className="placeholder" /> : <Doughnut data={data} options={options} />}
-          {!loading && !err && (
-            <div className="payments-card__center">
-              <div className="payments-card__sum">{formatCurrency(total, currency)}</div>
-              <div className="payments-card__label">Total</div>
-            </div>
-          )}
+      <div className="payments-card__header">
+        <PayPalIcon />
+        <div className="payments-card__menu">
+          <div className="menu-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
+      </div>
 
-        <ul className="payments-card__legend">
-          {(labels || []).map((label, i) => (
-            <li key={label} className="legend__item">
-              <span className="legend__dot" style={{ background: colors[i] || "#ccc" }} />
-              <span className="legend__text">{label}</span>
-              <span className="legend__value">{formatCurrency(values[i], currency)}</span>
-            </li>
-          ))}
-        </ul>
+      <div className="payments-card__content">
+        <h3 className="payments-card__title">Payments</h3>
+        <div className="payments-card__amount">
+          {formatCurrency(cardData.totalAmount, cardData.currency)}
+        </div>
+        <ChangeIndicator 
+          changePct={cardData.changePct} 
+          changeType={cardData.changeType} 
+        />
       </div>
     </section>
   );

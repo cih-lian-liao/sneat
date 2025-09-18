@@ -1,33 +1,200 @@
-.payments-card { display: flex; flex-direction: column; gap: 12px; }
-.payments-card__body { display: grid; grid-template-columns: 1fr 0.9fr; gap: 10px; align-items: start; }
-.payments-card__donut { position: relative; height: 170px; min-height: 170px; display: flex; align-items: center; justify-content: center; }
-.payments-card__center { position: absolute; text-align: center; }
-.payments-card__sum { font-weight: 800; color: #7367F0; font-size: 16px; }
-.payments-card__label { color: #A8A3D6; font-size: 11px; margin-top: 2px; }
+/* PaymentsCard.css - 簡潔的卡片設計 */
 
-.payments-card__legend { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.legend__item { display: grid; grid-template-columns: 12px 1fr auto; align-items: center; gap: 6px; }
-.legend__dot { width: 8px; height: 8px; border-radius: 999px; display: inline-block; }
-.legend__text { color: #334155; font-weight: 600; font-size: 12px; line-height: 1.2; }
-.legend__value { color: #64748b; font-weight: 600; font-size: 12px; line-height: 1.2; }
-
-.placeholder { width: 100%; height: 100%; background: repeating-linear-gradient(45deg, #f3f4f6, #f3f4f6 10px, #f8fafc 10px, #f8fafc 20px); border-radius: 10px; }
-
-@media (max-width: 900px) {
-  .payments-card__body { grid-template-columns: 1fr; }
-  .payments-card__donut { height: 160px; min-height: 160px; }
+.payments-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
+/* 卡片頭部 */
+.payments-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* PayPal 圖標 */
+.payments-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payments-icon__background {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #ffc439 0%, #ff9500 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(255, 149, 0, 0.3);
+}
+
+.payments-icon__letter {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* 菜單按鈕 */
+.payments-card__menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.menu-dots span {
+  width: 4px;
+  height: 4px;
+  background: #9ca3af;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.menu-dots:hover span {
+  background: #6b7280;
+}
+
+/* 卡片內容 */
+.payments-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.payments-card__title {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.payments-card__amount {
+  color: #1f2937;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 4px 0;
+}
+
+/* 變化指示器 */
+.change-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.change-indicator.increase {
+  color: #10b981;
+}
+
+.change-indicator.decrease {
+  color: #ef4444;
+}
+
+.change-indicator__arrow {
+  transition: transform 0.2s ease;
+}
+
+.change-indicator__text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* 載入和錯誤狀態 */
+.loading, .error, .no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.error {
+  color: #ef4444;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .payments-card {
+    padding: 16px;
+    min-height: 140px;
+  }
+  
+  .payments-card__amount {
+    font-size: 24px;
+  }
+  
+  .payments-icon__background {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .payments-icon__letter {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .payments-card {
+    padding: 12px;
+    min-height: 120px;
+  }
+  
+  .payments-card__amount {
+    font-size: 20px;
+  }
+  
+  .payments-card__title {
+    font-size: 13px;
+  }
+  
+  .change-indicator__text {
+    font-size: 13px;
+  }
+}
+
+/* 深色模式支持 */
 @media (prefers-color-scheme: dark) {
-  .legend__text { color: #d9e1f2; }
-  .legend__value { color: #8b95a7; }
-}
-
-/* Very small phones */
-@media (max-width: 380px) {
-  .payments-card__sum { font-size: 14px; }
-  .payments-card__label { font-size: 10px; }
-  .legend__text, .legend__value { font-size: 11px; }
+  .payments-card {
+    background: #1f2937;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .payments-card__title {
+    color: #9ca3af;
+  }
+  
+  .payments-card__amount {
+    color: #f9fafb;
+  }
+  
+  .menu-dots span {
+    background: #6b7280;
+  }
+  
+  .menu-dots:hover span {
+    background: #9ca3af;
+  }
 }
 
 
