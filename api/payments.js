@@ -23,30 +23,21 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 檢查環境變數
-    if (!process.env.MONGO_URI) {
-      console.error('MONGO_URI not set');
-      return res.status(500).json({ 
-        error: 'MongoDB connection string not configured',
-        debug: 'MONGO_URI environment variable is missing'
-      });
-    }
-
-    // 使用 Mongoose 連接 MongoDB，使用正確的配置
+    // 使用 Mongoose 連接 MongoDB
     const mongoose = require('mongoose');
     
     // 如果已經連接，直接使用
     if (mongoose.connection.readyState === 1) {
       console.log('Using existing MongoDB connection');
     } else {
-      // 建立新連接，使用正確的 Mongoose 配置
+      // 建立新連接
       await mongoose.connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         maxPoolSize: 10,
         serverSelectionTimeoutMS: 5000,
         socketTimeoutMS: 45000,
-        family: 4 // 強制使用 IPv4
+        family: 4
       });
       console.log('Connected to MongoDB Atlas');
     }
