@@ -3,6 +3,28 @@ export const config = {
   runtime: 'nodejs',
 };
 
+// 在模組頂層定義模型，避免重複定義
+const mongoose = require('mongoose');
+
+// 定義 Schema（只定義一次）
+const TotalRevenuePointSchema = new mongoose.Schema({
+  date: { type: Date, required: true },
+  label: { type: String, required: true },
+  income: { type: Number, required: true },
+  expenses: { type: Number, required: true },
+  currency: { type: String, default: 'USD' },
+  year: { type: Number, required: true },
+  month: { type: Number, required: true },
+});
+
+// 檢查模型是否已存在，如果不存在則創建
+let TotalRevenuePoint;
+try {
+  TotalRevenuePoint = mongoose.model('TotalRevenuePoint');
+} catch (error) {
+  TotalRevenuePoint = mongoose.model('TotalRevenuePoint', TotalRevenuePointSchema, 'totalrevenue');
+}
+
 export default async function handler(req, res) {
   // 設定 CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -23,23 +45,26 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 連接 MongoDB
-    const { MongoClient } = require('mongodb');
-    
-    if (!process.env.MONGO_URI) {
-      throw new Error('MONGO_URI environment variable is not set');
+    // 如果已經連接，直接使用
+    if (mongoose.connection.readyState === 1) {
+      console.log('Using existing MongoDB connection');
+    } else {
+      // 建立新連接
+      await mongoose.connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        maxPoolSize: 10,
+        serverSelectionTimeoutMS: 5000,
+        socketTimeoutMS: 45000,
+        family: 4
+      });
+      console.log('Connected to MongoDB Atlas');
     }
-
-    const client = new MongoClient(process.env.MONGO_URI);
-    await client.connect();
-    
-    const db = client.db('mydatas');
-    const collection = db.collection('totalrevenue');
     
     const { year1 = new Date().getFullYear(), year2 = new Date().getFullYear() - 1 } = req.query;
 
     const fetchDataForYear = async (year) => {
-      const rows = await collection.find({ year: Number(year) }).sort({ month: 1 }).toArray();
+      const rows = await TotalRevenuePoint.find({ year: Number(year) }).sort({ month: 1 }).lean();
       const labels = rows.map(r => r.label);
       const income = rows.map(r => r.income);
       const expenses = rows.map(r => r.expenses);
@@ -59,13 +84,12 @@ export default async function handler(req, res) {
       growthPercentage = ((totalYear1 - totalYear2) / totalYear2) * 100;
     }
 
-    await client.close();
-
     res.json({
       year1: dataYear1,
       year2: dataYear2,
       growthPercentage: Math.round(growthPercentage),
-      currency: dataYear1.currency || 'USD'
+      currency: dataYear1.currency || 'USD',
+      debug: 'Data fetched from MongoDB successfully'
     });
   } catch (err) {
     console.error('GET /api/totalrevenue error', err);
