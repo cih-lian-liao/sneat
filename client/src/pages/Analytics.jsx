@@ -2,10 +2,10 @@
 import "./Analytics.css";
 import TestCard from "../components/TestCard";
 import SalesStatCard from "../components/cards/SalesStatCard";
+import PaymentsCard from "../components/cards/PaymentsCard";
 // import OrderMiniCard from "../components/cards/OrderMiniCard";
 // import OrderChartCard from "../components/cards/OrderChartCard";
 // import TotalRevenueCard from "../components/cards/TotalRevenueCard";
-// import PaymentsCard from "../components/cards/PaymentsCard";
 
 export default function Analytics() {
   return (
@@ -36,7 +36,7 @@ export default function Analytics() {
       {/* row-2 */}
       <TestCard />
 
-      <TestCard />
+      <PaymentsCard />
 
       <section className="card card--revenue">
         <header className="card__header">Revenue</header>
