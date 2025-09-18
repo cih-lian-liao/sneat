@@ -1,0 +1,6 @@
+{
+  "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+  "values": [45, 52, 38, 65, 72, 58],
+  "currency": "USD",
+  "total": 330
+}

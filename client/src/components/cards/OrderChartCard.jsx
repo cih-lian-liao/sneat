@@ -33,8 +33,8 @@ export default function OrderChartCard({ height = 200 }) {
     (async () => {
       try {
         setLoading(true);
-        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8080';
-        const res = await axios.get(`${API_BASE}/api/orderchart`, {
+        const API_BASE = process.env.NODE_ENV === 'production' ? '/api' : 'http://127.0.0.1:8080/api';
+        const res = await axios.get(`${API_BASE}/orderchart.json`, {
           timeout: 10000,
           signal: controller.signal,
         });

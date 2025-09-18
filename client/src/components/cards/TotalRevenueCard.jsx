@@ -97,7 +97,7 @@ export default function TotalRevenueCard() {
   useEffect(() => {
     const fetchYears = async () => {
       try {
-        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8080';
+        const API_BASE = process.env.NODE_ENV === 'production' ? '/api' : 'http://127.0.0.1:8080/api';
         const res = await axios.get(`${API_BASE}/api/totalrevenue/years`);
         setAvailableYears(res.data.years);
       } catch (e) {
@@ -115,8 +115,8 @@ export default function TotalRevenueCard() {
     (async () => {
       try {
         setLoading(true);
-        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8080';
-        const res = await axios.get(`${API_BASE}/api/totalrevenue?year1=2024&year2=2023`, {
+        const API_BASE = process.env.NODE_ENV === 'production' ? '/api' : 'http://127.0.0.1:8080/api';
+        const res = await axios.get(`${API_BASE}/totalrevenue.json`, {
           timeout: 10000,
           signal: controller.signal,
         });
