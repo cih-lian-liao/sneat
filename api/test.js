@@ -1,26 +1,42 @@
 // api/test.js
-export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+export const config = {
+  runtime: 'edge',
+};
+
+export default async function handler(req) {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
 
   if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+    return new Response(null, { status: 200, headers });
   }
 
   if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: { ...headers, 'Content-Type': 'application/json' }
+    });
   }
 
   try {
-    res.status(200).json({ 
-      message: 'API is working!',
+    const data = { 
+      message: 'Edge Function is working!',
       timestamp: new Date().toISOString(),
-      env: process.env.NODE_ENV
+      runtime: 'edge'
+    };
+
+    return new Response(JSON.stringify(data), {
+      status: 200,
+      headers: { ...headers, 'Content-Type': 'application/json' }
     });
   } catch (err) {
     console.error('Test API error', err);
-    res.status(500).json({ error: 'Test failed' });
+    return new Response(JSON.stringify({ error: 'Test failed' }), {
+      status: 500,
+      headers: { ...headers, 'Content-Type': 'application/json' }
+    });
   }
 }
