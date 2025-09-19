@@ -8,6 +8,12 @@
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .order-card__content {
@@ -131,15 +137,6 @@
   color: #dc2626;
 }
 
-/* 動畫效果 */
-.order-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.order-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
 
 /* 確保圖表在卡片內正確顯示 */
 .order-card__chart svg {

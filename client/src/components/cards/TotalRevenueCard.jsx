@@ -101,14 +101,10 @@ export default function TotalRevenueCard() {
   useEffect(() => {
     const fetchYears = async () => {
       try {
-        const API_BASE = '';
-        const res = await axios.get(`${API_BASE}/api/totalrevenue.json`);
-        if (res.data) {
-          const years = [];
-          if (res.data.year1) years.push(res.data.year1.year);
-          if (res.data.year2) years.push(res.data.year2.year);
-          if (res.data.year3) years.push(res.data.year3.year);
-          const sortedYears = [...years].sort((a, b) => b - a);
+        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
+        const res = await axios.get(`${API_BASE}/api/totalrevenue/years`);
+        if (res.data && res.data.years) {
+          const sortedYears = [...res.data.years].sort((a, b) => b - a);
           setAvailableYears(sortedYears);
           if (sortedYears.length > 0) {
             setSelectedYear(sortedYears[0]);
@@ -128,8 +124,8 @@ export default function TotalRevenueCard() {
     (async () => {
       try {
         setLoading(true);
-        const API_BASE = '';
-        const res = await axios.get(`${API_BASE}/api/totalrevenue.json`, {
+        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
+        const res = await axios.get(`${API_BASE}/api/totalrevenue`, {
           timeout: 10000,
           signal: controller.signal,
         });
@@ -154,34 +150,22 @@ export default function TotalRevenueCard() {
   const chartData = useMemo(() => {
     if (!data) return null;
 
-    let year1Data, year2Data, labels;
-    
-    if (selectedYear === 2025 && data.year3) {
-      year1Data = data.year3.netRevenue || [];
-      year2Data = data.year2.netRevenue || [];
-      labels = data.year3.labels || [];
-    } else if (selectedYear === 2024 && data.year1) {
-      year1Data = data.year1.netRevenue || [];
-      year2Data = data.year2.netRevenue || [];
-      labels = data.year1.labels || [];
-    } else {
-      year1Data = data.year1?.netRevenue || [];
-      year2Data = data.year2?.netRevenue || [];
-      labels = data.year1?.labels || [];
-    }
+    const year1Data = data.year1?.netRevenue || [];
+    const year2Data = data.year2?.netRevenue || [];
+    const labels = data.year1?.labels || [];
 
     return {
       labels: labels,
       datasets: [
         {
-          label: selectedYear.toString(),
+          label: data.year1?.year?.toString() || selectedYear.toString(),
           data: year1Data,
           backgroundColor: "#7367F0",
           borderRadius: 6,
           maxBarThickness: 20,
         },
         {
-          label: (selectedYear - 1).toString(),
+          label: data.year2?.year?.toString() || (selectedYear - 1).toString(),
           data: year2Data,
           backgroundColor: "#E3DDFD",
           borderRadius: 6,
@@ -305,14 +289,6 @@ export default function TotalRevenueCard() {
                 amount={data.year2.total || 0}
                 icon={{ type: 'chart', color: '#E3DDFD' }}
                 isActive={selectedYear === data.year2.year}
-              />
-            )}
-            {data?.year3 && (
-              <RevenueCard
-                year={data.year3.year}
-                amount={data.year3.total || 0}
-                icon={{ type: 'dollar', color: '#7367F0' }}
-                isActive={selectedYear === data.year3.year}
               />
             )}
           </div>

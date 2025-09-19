@@ -51,8 +51,8 @@ export default function PaymentsCard() {
     (async () => {
       try {
         setLoading(true);
-        const API_BASE = process.env.NODE_ENV === 'production' ? '' : '';
-        const res = await axios.get(`${API_BASE}/api/payments.json`, {
+        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
+        const res = await axios.get(`${API_BASE}/api/payments/card`, {
           timeout: 10000,
           signal: controller.signal,
         });
