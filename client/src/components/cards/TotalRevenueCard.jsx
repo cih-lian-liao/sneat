@@ -49,8 +49,10 @@ export default function TotalRevenueCard() {
 
   // 格式化金額顯示
   const formatAmount = (amount) => {
-    if (amount >= 1000) {
-      return `$${(amount / 1000).toFixed(1)}k`;
+    if (amount >= 1000000) {
+      return `$${(amount / 1000000).toFixed(1)}M`;
+    } else if (amount >= 1000) {
+      return `$${(amount / 1000).toFixed(0)}k`;
     }
     return `$${amount}`;
   };
@@ -118,8 +120,8 @@ export default function TotalRevenueCard() {
               <div className="revenue-card is-active">
                 <div className="revenue-card__icon revenue-card__icon--purple">$</div>
                 <div className="revenue-card__content">
-                  <div className="revenue-card__year">{year1.year}</div>
-                  <div className="revenue-card__amount">{formatAmount(year1.total || 0)}</div>
+                  <div className="revenue-card__year">{year1.year} {year1.isProjection && '(預測)'}</div>
+                  <div className="revenue-card__amount">{formatAmount(year1.totalRevenue || 0)}</div>
                 </div>
               </div>
             )}
@@ -127,8 +129,8 @@ export default function TotalRevenueCard() {
               <div className="revenue-card">
                 <div className="revenue-card__icon revenue-card__icon--blue">📊</div>
                 <div className="revenue-card__content">
-                  <div className="revenue-card__year">{year2.year}</div>
-                  <div className="revenue-card__amount">{formatAmount(year2.total || 0)}</div>
+                  <div className="revenue-card__year">{year2.year} {year2.isProjection && '(預測)'}</div>
+                  <div className="revenue-card__amount">{formatAmount(year2.totalRevenue || 0)}</div>
                 </div>
               </div>
             )}

@@ -1,12 +1,11 @@
-// api/totalrevenue.js
+// api/test-totalrevenue.js - 測試新的 Total Revenue API
 export const config = {
   runtime: 'nodejs',
 };
 
-// 在模組頂層定義模型，避免重複定義
 const mongoose = require('mongoose');
 
-// 定義新的 Schema（重新設計）
+// 定義新的 Schema
 const TotalRevenueSchema = new mongoose.Schema({
   year: { 
     type: Number, 
@@ -45,10 +44,10 @@ const TotalRevenueSchema = new mongoose.Schema({
     default: Date.now 
   }
 }, { 
-  timestamps: true 
+  timestamps: true,
+  collection: 'totalrevenue_new'
 });
 
-// 檢查模型是否已存在，如果不存在則創建
 let TotalRevenue;
 try {
   TotalRevenue = mongoose.model('TotalRevenue');
@@ -103,9 +102,7 @@ export default async function handler(req, res) {
     if (!year1Data || !year2Data) {
       return res.status(404).json({ 
         error: `數據不存在: ${year1} 或 ${year2} 年份數據未找到`,
-        debug: 'No data found in MongoDB for specified years',
-        year1Data: year1Data ? 'found' : 'not found',
-        year2Data: year2Data ? 'found' : 'not found'
+        debug: 'No data found in MongoDB for specified years'
       });
     }
 
@@ -141,13 +138,13 @@ export default async function handler(req, res) {
         isProjection: year2Data.isProjection,
         ...year2Formatted
       },
-      growthPercentage: Math.round(growthPercentage * 10) / 10, // 保留一位小數
+      growthPercentage: Math.round(growthPercentage * 10) / 10,
       currency: 'USD',
       lastUpdated: new Date().toISOString(),
-      debug: 'Data fetched from MongoDB successfully with new schema v2'
+      debug: 'NEW API: Data fetched from MongoDB successfully with new schema'
     });
   } catch (err) {
-    console.error('GET /api/totalrevenue error', err);
+    console.error('GET /api/test-totalrevenue error', err);
     res.status(500).json({ error: '取得 TotalRevenue 失敗: ' + err.message });
   }
 }
