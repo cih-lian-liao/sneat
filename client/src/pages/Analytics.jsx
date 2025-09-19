@@ -3,8 +3,8 @@ import "./Analytics.css";
 import TestCard from "../components/TestCard";
 import SalesStatCard from "../components/cards/SalesStatCard";
 import PaymentsCard from "../components/cards/PaymentsCard";
+import OrderChartCard from "../components/cards/OrderChartCard";
 // import OrderMiniCard from "../components/cards/OrderMiniCard";
-// import OrderChartCard from "../components/cards/OrderChartCard";
 // import TotalRevenueCard from "../components/cards/TotalRevenueCard";
 
 export default function Analytics() {
@@ -34,7 +34,7 @@ export default function Analytics() {
       <SalesStatCard />
 
       {/* row-2 */}
-      <TestCard />
+      <OrderChartCard />
 
       <PaymentsCard />
 
