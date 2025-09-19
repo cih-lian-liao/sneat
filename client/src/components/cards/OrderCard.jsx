@@ -12,7 +12,6 @@ export default function OrderCard() {
       try {
         // 直接使用 localhost:54112，不依賴環境變量
         const res = await axios.get('http://localhost:54112/api/orderchart');
-        console.log('OrderCard API response:', res.data);
         setData(res.data || {});
         setError('');
       } catch (error) {
@@ -48,10 +47,6 @@ export default function OrderCard() {
   const changePct = previousValue > 0 ? ((currentValue - previousValue) / previousValue) * 100 : 0;
   const isUp = changePct >= 0;
 
-  console.log('OrderCard data:', data);
-  console.log('OrderCard values:', values);
-  console.log('OrderCard currentValue:', currentValue);
-  console.log('OrderCard changePct:', changePct);
 
   // 簡單的格式化
   const formatValue = (value) => {

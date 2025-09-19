@@ -12,7 +12,6 @@ export default function PaymentsCard() {
       try {
         // 直接使用 localhost:54112，不依賴環境變量
         const res = await axios.get('http://localhost:54112/api/payments/card');
-        console.log('PaymentsCard API response:', res.data);
         setData(res.data || {});
         setError('');
       } catch (error) {
@@ -46,10 +45,6 @@ export default function PaymentsCard() {
   const changePct = data.changePct || 0;
   const changeType = data.changeType || 'increase';
 
-  console.log('PaymentsCard data:', data);
-  console.log('PaymentsCard amount:', amount);
-  console.log('PaymentsCard changePct:', changePct);
-  console.log('PaymentsCard changeType:', changeType);
 
   return (
     <section className="card card--payments payments-card">
