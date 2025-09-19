@@ -202,7 +202,7 @@
   gap: 12px;
 }
 
-.revenue-card {
+.total-revenue-card {
   display: flex;
   align-items: center;
   padding: 12px;
@@ -212,12 +212,12 @@
   transition: all 0.2s ease;
 }
 
-.revenue-card.is-active {
+.total-revenue-card.is-active {
   background: #F0F0FF;
   border-color: #7367F0;
 }
 
-.revenue-card__icon {
+.total-revenue-card__icon {
   width: 32px;
   height: 32px;
   border-radius: 6px;
@@ -230,25 +230,25 @@
   margin-right: 12px;
 }
 
-.revenue-card__icon--purple {
+.total-revenue-card__icon--purple {
   background-color: #7367F0;
 }
 
-.revenue-card__icon--blue {
+.total-revenue-card__icon--blue {
   background-color: #A8B2FF;
 }
 
-.revenue-card__content {
+.total-revenue-card__content {
   flex: 1;
 }
 
-.revenue-card__year {
+.total-revenue-card__year {
   font-size: 12px;
   color: #6B7280;
   margin-bottom: 2px;
 }
 
-.revenue-card__amount {
+.total-revenue-card__amount {
   font-size: 14px;
   font-weight: 600;
   color: #2B2C40;
@@ -296,14 +296,14 @@
     gap: 8px;
   }
   
-  .revenue-card {
+  .total-revenue-card {
     flex: 1;
     flex-direction: column;
     text-align: center;
     padding: 8px;
   }
   
-  .revenue-card__icon {
+  .total-revenue-card__icon {
     margin-right: 0;
     margin-bottom: 8px;
   }
