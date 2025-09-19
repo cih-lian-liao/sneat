@@ -5,6 +5,7 @@ import "./TotalRevenueCard.css";
 export default function TotalRevenueCard() {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [selectedYear, setSelectedYear] = useState('2025');
 
   useEffect(() => {
@@ -13,8 +14,10 @@ export default function TotalRevenueCard() {
         const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
         const res = await axios.get(`${API_BASE}/api/totalrevenue`);
         setData(res.data || {});
+        setError('');
       } catch (error) {
         console.error('Error fetching revenue data:', error);
+        setError(error.message);
         setData({});
       } finally {
         setLoading(false);
@@ -31,8 +34,18 @@ export default function TotalRevenueCard() {
     );
   }
 
-  const growthPercentage = data.growthPercentage || 78;
-  const companyGrowth = data.companyGrowth || 62;
+  if (error) {
+    return (
+      <section className="card card--total-revenue">
+        <div style={{ color: 'red' }}>錯誤: {error}</div>
+      </section>
+    );
+  }
+
+  const year1 = data.year1 || {};
+  const year2 = data.year2 || {};
+  const growthPercentage = data.growthPercentage || 0;
+  const companyGrowth = Math.abs(growthPercentage) || 0;
 
   // 格式化金額顯示
   const formatAmount = (amount) => {
@@ -101,20 +114,24 @@ export default function TotalRevenueCard() {
 
           {/* 收入卡片 */}
           <div className="revenue-cards">
-            <div className="revenue-card is-active">
-              <div className="revenue-card__icon revenue-card__icon--purple">$</div>
-              <div className="revenue-card__content">
-                <div className="revenue-card__year">2025</div>
-                <div className="revenue-card__amount">{formatAmount(32500)}</div>
+            {year1.year && (
+              <div className="revenue-card is-active">
+                <div className="revenue-card__icon revenue-card__icon--purple">$</div>
+                <div className="revenue-card__content">
+                  <div className="revenue-card__year">{year1.year}</div>
+                  <div className="revenue-card__amount">{formatAmount(year1.total || 0)}</div>
+                </div>
               </div>
-            </div>
-            <div className="revenue-card">
-              <div className="revenue-card__icon revenue-card__icon--blue">📊</div>
-              <div className="revenue-card__content">
-                <div className="revenue-card__year">2024</div>
-                <div className="revenue-card__amount">{formatAmount(41200)}</div>
+            )}
+            {year2.year && (
+              <div className="revenue-card">
+                <div className="revenue-card__icon revenue-card__icon--blue">📊</div>
+                <div className="revenue-card__content">
+                  <div className="revenue-card__year">{year2.year}</div>
+                  <div className="revenue-card__amount">{formatAmount(year2.total || 0)}</div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
