@@ -1,0 +1,68 @@
+// 重新設計的 Total Revenue 種子數據
+const totalRevenueSeedData = [
+  {
+    year: 2023,
+    totalRevenue: 1085000,
+    monthlyRevenue: [
+      { month: "Jan", revenue: 85000 },
+      { month: "Feb", revenue: 90000 },
+      { month: "Mar", revenue: 95000 },
+      { month: "Apr", revenue: 100000 },
+      { month: "May", revenue: 105000 },
+      { month: "Jun", revenue: 110000 },
+      { month: "Jul", revenue: 115000 },
+      { month: "Aug", revenue: 120000 },
+      { month: "Sep", revenue: 125000 },
+      { month: "Oct", revenue: 130000 },
+      { month: "Nov", revenue: 135000 },
+      { month: "Dec", revenue: 140000 }
+    ],
+    growthRate: 8.5,
+    currency: "USD",
+    isProjection: false
+  },
+  {
+    year: 2024,
+    totalRevenue: 1250000,
+    monthlyRevenue: [
+      { month: "Jan", revenue: 95000 },
+      { month: "Feb", revenue: 110000 },
+      { month: "Mar", revenue: 105000 },
+      { month: "Apr", revenue: 120000 },
+      { month: "May", revenue: 115000 },
+      { month: "Jun", revenue: 130000 },
+      { month: "Jul", revenue: 125000 },
+      { month: "Aug", revenue: 140000 },
+      { month: "Sep", revenue: 135000 },
+      { month: "Oct", revenue: 150000 },
+      { month: "Nov", revenue: 145000 },
+      { month: "Dec", revenue: 160000 }
+    ],
+    growthRate: 15.2,
+    currency: "USD",
+    isProjection: false
+  },
+  {
+    year: 2025,
+    totalRevenue: 1450000,
+    monthlyRevenue: [
+      { month: "Jan", revenue: 120000 },
+      { month: "Feb", revenue: 125000 },
+      { month: "Mar", revenue: 130000 },
+      { month: "Apr", revenue: 135000 },
+      { month: "May", revenue: 140000 },
+      { month: "Jun", revenue: 145000 },
+      { month: "Jul", revenue: 150000 },
+      { month: "Aug", revenue: 155000 },
+      { month: "Sep", revenue: 160000 },
+      { month: "Oct", revenue: 165000 },
+      { month: "Nov", revenue: 170000 },
+      { month: "Dec", revenue: 175000 }
+    ],
+    growthRate: 16.0,
+    currency: "USD",
+    isProjection: true
+  }
+];
+
+module.exports = totalRevenueSeedData;
