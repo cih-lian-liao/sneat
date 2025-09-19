@@ -269,24 +269,28 @@ export default function TotalRevenueCard() {
           <div className="growth-section">
             <GrowthGauge percentage={data?.growthPercentage || 0} />
             <div className="company-growth">
-              <span className="company-growth__percentage">62%</span>
+              <span className="company-growth__percentage">{data?.growthPercentage || 0}%</span>
               <span className="company-growth__text">Company Growth</span>
             </div>
           </div>
 
           {/* 收入卡片 */}
           <div className="revenue-cards">
-            <RevenueCard
-              year={2025}
-              amount={32500}
-              icon={{ type: 'dollar', color: '#7367F0' }}
-              isActive={true}
-            />
-            <RevenueCard
-              year={2024}
-              amount={41200}
-              icon={{ type: 'chart', color: '#E3DDFD' }}
-            />
+            {data?.year1 && (
+              <RevenueCard
+                year={data.year1.year}
+                amount={data.year1.total || 0}
+                icon={{ type: 'dollar', color: '#7367F0' }}
+                isActive={true}
+              />
+            )}
+            {data?.year2 && (
+              <RevenueCard
+                year={data.year2.year}
+                amount={data.year2.total || 0}
+                icon={{ type: 'chart', color: '#E3DDFD' }}
+              />
+            )}
           </div>
         </div>
       </div>
