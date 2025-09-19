@@ -6,6 +6,7 @@ import SalesStatCard from "../components/cards/SalesStatCard";
 import PaymentsCard from "../components/cards/PaymentsCard";
 import TotalRevenueCard from "../components/cards/TotalRevenueCard";
 import RevenueCard from "../components/cards/RevenueCard";
+import ProfitReportCard from "../components/cards/ProfitReportCard";
 export default function Analytics() {
   return (
     <div className="analytics-grid">
@@ -39,10 +40,7 @@ export default function Analytics() {
 
       <RevenueCard />
 
-      <section className="card card--profit-report">
-        <header className="card__header">Profit Report</header>
-        <div className="chart-box"></div>
-      </section>
+      <ProfitReportCard />
 
       {/* row-3 */}
       <section className="card card--order-statistics">

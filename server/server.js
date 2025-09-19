@@ -35,6 +35,7 @@ mongoose
   app.use("/api/totalrevenue", require("./routes/totalrevenue"));
   app.use("/api/payments", require("./routes/payments"));
   app.use("/api/revenue", require("./routes/revenue"));
+  app.use("/api/profitreport", require("./routes/profitreport"));
 
 
 // 定義 MongoDB 集合中文件的結構（Schema）
