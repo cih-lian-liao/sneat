@@ -2,51 +2,37 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./SalesStatCard.css";
 
-function formatCurrency(amount, currency = "USD") {
-  try {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency,
-      maximumFractionDigits: 0
-    }).format(amount);
-  } catch {
-    // 後備：只做千分位與 $ 符號
-    const num = Number(amount) || 0;
-    return `$${num.toLocaleString()}`;
-  }
-}
-
 export default function SalesStatCard() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState("");
 
   useEffect(() => {
-    const controller = new AbortController(); let alive = true;
-    (async () => {
+    const fetchData = async () => {
       try {
-        setLoading(true);
         const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
-        const res = await axios.get(`${API_BASE}/api/salesstat`, {
-          timeout: 10000, signal: controller.signal
-        });
-        if (!alive) return;
+        const res = await axios.get(`${API_BASE}/api/salesstat`);
         setData(res.data || {});
-        setErr("");
-      } catch (e) {
-        if (!alive) return;
-        if (axios.isCancel?.(e) || e.code === "ERR_CANCELED" || e.message === "canceled") return;
-        setErr(e?.response?.data?.error || e?.message || "Network error");
-      } finally { if (alive) setLoading(false); }
-    })();
-    return () => { alive = false; controller.abort(); };
+      } catch (error) {
+        console.error('Error fetching sales data:', error);
+        setData({});
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
   }, []);
 
-  // 顯示邏輯
-  const title = data?.title || "Sales";
-  const amount = data?.amount ?? 0;
-  const currency = data?.currency ?? "USD";
-  const changePct = data?.changePct ?? 12.5; // 使用 API 返回的變化百分比
+  if (loading) {
+    return (
+      <section className="card card--sales-analysis sales-stat">
+        <div>載入中...</div>
+      </section>
+    );
+  }
+
+  const title = data.title || "Sales";
+  const amount = data.amount || 0;
+  const changePct = data.changePct || 0;
   const isUp = changePct >= 0;
 
   return (
@@ -54,27 +40,20 @@ export default function SalesStatCard() {
       <div className="sales-stat__row">
         <img
           className="sales-stat__icon"
-          src={data?.iconUrl || "https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png"}
+          src="https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png"
           alt="wallet"
-          width="40" height="40"
-          loading="lazy"
+          width="40" 
+          height="40"
         />
         <button className="sales-stat__more" aria-label="More actions">⋮</button>
       </div>
 
       <div className="sales-stat__title">{title}</div>
-
-      <div className="sales-stat__value">
-        {loading ? "—" : err ? "—" : formatCurrency(amount, currency)}
-      </div>
+      <div className="sales-stat__value">${amount.toLocaleString()}</div>
 
       <div className={`sales-stat__delta ${isUp ? "is-up" : "is-down"}`}>
-        {loading || err ? "—" : (
-          <>
-            <span className="sales-stat__arrow">{isUp ? "↑" : "↓"}</span>
-            <span>{Math.abs(changePct || 0).toFixed(2)}%</span>
-          </>
-        )}
+        <span className="sales-stat__arrow">{isUp ? "↑" : "↓"}</span>
+        <span>{Math.abs(changePct)}%</span>
       </div>
     </section>
   );

@@ -1,115 +1,47 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./PaymentsCard.css";
 
-function formatCurrency(amount, currency = "USD") {
-  try {
-    return new Intl.NumberFormat("en-US", { style: "currency", currency, maximumFractionDigits: 0 }).format(amount);
-  } catch { return `$${(Number(amount) || 0).toLocaleString()}`; }
-}
-
-// PayPal 風格的圖標組件
-function PayPalIcon() {
-  return (
-    <div className="payments-icon">
-      <div className="payments-icon__background">
-        <span className="payments-icon__letter">P</span>
-      </div>
-    </div>
-  );
-}
-
-// 變化指示器組件
-function ChangeIndicator({ changePct = 0, changeType = 'increase' }) {
-  const isIncrease = changeType === 'increase';
-  
-  return (
-    <div className={`change-indicator ${isIncrease ? 'increase' : 'decrease'}`}>
-      <svg 
-        className="change-indicator__arrow" 
-        width="12" 
-        height="12" 
-        viewBox="0 0 12 12"
-        style={{ transform: isIncrease ? 'rotate(0deg)' : 'rotate(180deg)' }}
-      >
-        <path d="M6 2L10 8H2L6 2Z" fill="currentColor" />
-      </svg>
-      <span className="change-indicator__text">{Math.abs(changePct).toFixed(1)}%</span>
-    </div>
-  );
-}
-
 export default function PaymentsCard() {
-  const [cardData, setCardData] = useState(null);
+  const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState("");
 
   useEffect(() => {
-    const controller = new AbortController();
-    let alive = true;
-
-    (async () => {
+    const fetchData = async () => {
       try {
-        setLoading(true);
         const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
-        const res = await axios.get(`${API_BASE}/api/payments/card`, {
-          timeout: 10000,
-          signal: controller.signal,
-        });
-        if (!alive) return;
-        setCardData(res.data || {});
-        setErr("");
-      } catch (e) {
-        if (!alive) return;
-        if (
-          axios.isCancel?.(e) ||
-          e.code === "ERR_CANCELED" ||
-          e.message === "canceled"
-        )
-          return;
-        setErr(e?.response?.data?.error || e?.message || "Network error");
+        const res = await axios.get(`${API_BASE}/api/payments/card`);
+        setData(res.data || {});
+      } catch (error) {
+        console.error('Error fetching payments data:', error);
+        setData({});
       } finally {
-        if (alive) setLoading(false);
+        setLoading(false);
       }
-    })();
-
-    return () => {
-      alive = false;
-      controller.abort();
     };
+    fetchData();
   }, []);
 
   if (loading) {
     return (
       <section className="card card--payments payments-card">
-        <div className="loading">載入中...</div>
+        <div>載入中...</div>
       </section>
     );
   }
 
-  if (err) {
-    return (
-      <section className="card card--payments payments-card">
-        <div className="error">載入失敗: {err}</div>
-      </section>
-    );
-  }
-
-  if (!cardData) {
-    return (
-      <section className="card card--payments payments-card">
-        <div className="no-data">暫無數據</div>
-      </section>
-    );
-  }
-
-  // 調試信息
-  console.log('PaymentsCard data:', cardData);
+  const amount = data.totalAmount || 0;
+  const changePct = data.changePct || 0;
+  const changeType = data.changeType || 'increase';
 
   return (
     <section className="card card--payments payments-card">
       <div className="payments-card__header">
-        <PayPalIcon />
+        <div className="payments-icon">
+          <div className="payments-icon__background">
+            <span className="payments-icon__letter">P</span>
+          </div>
+        </div>
         <div className="payments-card__menu">
           <div className="menu-dots">
             <span></span>
@@ -122,15 +54,15 @@ export default function PaymentsCard() {
       <div className="payments-card__content">
         <h3 className="payments-card__title">Payments</h3>
         <div className="payments-card__amount">
-          {formatCurrency(cardData.totalAmount || 0, cardData.currency || 'USD')}
+          ${amount.toLocaleString()}
         </div>
-        <ChangeIndicator 
-          changePct={cardData.changePct || 0} 
-          changeType={cardData.changeType || 'increase'} 
-        />
+        <div className={`change-indicator ${changeType === 'increase' ? 'increase' : 'decrease'}`}>
+          <span className="change-indicator__arrow">
+            {changeType === 'increase' ? '↑' : '↓'}
+          </span>
+          <span className="change-indicator__text">{Math.abs(changePct)}%</span>
+        </div>
       </div>
     </section>
   );
 }
-
-
