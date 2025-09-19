@@ -4,8 +4,8 @@ import TestCard from "../components/TestCard";
 import SalesStatCard from "../components/cards/SalesStatCard";
 import PaymentsCard from "../components/cards/PaymentsCard";
 import OrderChartCard from "../components/cards/OrderChartCard";
+import TotalRevenueCard from "../components/cards/TotalRevenueCard";
 // import OrderMiniCard from "../components/cards/OrderMiniCard";
-// import TotalRevenueCard from "../components/cards/TotalRevenueCard";
 
 export default function Analytics() {
   return (
@@ -34,7 +34,7 @@ export default function Analytics() {
       <SalesStatCard />
 
       {/* row-2 */}
-      <OrderChartCard />
+      <TotalRevenueCard />
 
       <PaymentsCard />
 
