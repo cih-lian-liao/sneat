@@ -11,7 +11,8 @@ export default function OrderCard() {
     const fetchData = async () => {
       try {
         // 直接使用 localhost:54112，不依賴環境變量
-        const res = await axios.get('http://localhost:54112/api/orderchart');
+        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
+        const res = await axios.get(`${API_BASE}/api/orderchart`);
         setData(res.data || {});
         setError('');
       } catch (error) {

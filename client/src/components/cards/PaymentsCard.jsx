@@ -11,7 +11,8 @@ export default function PaymentsCard() {
     const fetchData = async () => {
       try {
         // 直接使用 localhost:54112，不依賴環境變量
-        const res = await axios.get('http://localhost:54112/api/payments/card');
+        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
+        const res = await axios.get(`${API_BASE}/api/payments/card`);
         setData(res.data || {});
         setError('');
       } catch (error) {
@@ -44,6 +45,7 @@ export default function PaymentsCard() {
   const amount = data.totalAmount || 0;
   const changePct = data.changePct || 0;
   const changeType = data.changeType || 'increase';
+
 
 
   return (
