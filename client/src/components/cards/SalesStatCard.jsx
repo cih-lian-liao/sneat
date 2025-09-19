@@ -26,8 +26,8 @@ export default function SalesStatCard() {
     (async () => {
       try {
         setLoading(true);
-        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8080';
-        const res = await axios.get(`${API_BASE}/api/salesstat`, {
+        const API_BASE = process.env.NODE_ENV === 'production' ? '' : '';
+        const res = await axios.get(`${API_BASE}/api/salesstat.json`, {
           timeout: 10000, signal: controller.signal
         });
         if (!alive) return;
@@ -43,10 +43,10 @@ export default function SalesStatCard() {
   }, []);
 
   // 顯示邏輯
-  const title = data?.title ?? "Sales";
-  const amount = data?.amount ?? 0;
+  const title = "Sales";
+  const amount = data?.total ?? 0;
   const currency = data?.currency ?? "USD";
-  const changePct = Number(data?.changePct ?? 0);
+  const changePct = 12.5; // 固定增長百分比
   const isUp = changePct >= 0;
 
   return (

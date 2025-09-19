@@ -27,8 +27,8 @@ export default function TotalRevenueCard() {
     (async () => {
       try {
         setLoading(true);
-        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://127.0.0.1:8080';
-        const res = await axios.get(`${API_BASE}/api/totalrevenue`, {
+        const API_BASE = process.env.NODE_ENV === 'production' ? '' : '';
+        const res = await axios.get(`${API_BASE}/api/totalrevenue.json`, {
           timeout: 10000,
           signal: controller.signal,
         });
@@ -65,11 +65,7 @@ export default function TotalRevenueCard() {
 
   // 計算增長百分比
   const growthPercentage = useMemo(() => {
-    if (!data || !data.year1 || !data.year2) return 0;
-    const year1Total = data.year1.total || 0;
-    const year2Total = data.year2.total || 0;
-    if (year2Total === 0) return 0;
-    return ((year1Total - year2Total) / year2Total) * 100;
+    return data?.growthPercentage || 0;
   }, [data]);
 
   const isUp = growthPercentage >= 0;
