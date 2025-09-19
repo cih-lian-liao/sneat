@@ -1,0 +1,148 @@
+/* OrderCard 樣式 - 基於附圖設計 */
+.order-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 180px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.order-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+/* 標題 */
+.order-card__title {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  margin: 0;
+}
+
+/* 大數字 */
+.order-card__value {
+  font-size: clamp(24px, 2.5vw + 10px, 32px);
+  font-weight: 700;
+  color: #334155;
+  margin: 0;
+}
+
+/* 圖表容器 */
+.order-card__chart {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+/* SVG 圖表樣式 */
+.order-chart {
+  width: 100%;
+  height: 60px;
+  overflow: visible;
+}
+
+.order-chart__area {
+  transition: opacity 0.3s ease;
+}
+
+.order-chart__line {
+  transition: stroke-dasharray 0.3s ease;
+}
+
+.order-chart__point {
+  transition: r 0.2s ease;
+}
+
+.order-chart__point:hover {
+  r: 6;
+}
+
+/* 變化百分比 */
+.order-card__delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: auto;
+}
+
+.order-card__delta.is-up {
+  color: #16a34a;
+}
+
+.order-card__delta.is-down {
+  color: #dc2626;
+}
+
+.order-card__arrow {
+  font-size: 14px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .order-card {
+    padding: 16px;
+    min-height: 160px;
+  }
+  
+  .order-card__value {
+    font-size: 20px;
+  }
+  
+  .order-chart {
+    height: 50px;
+  }
+}
+
+/* 暗色模式 */
+@media (prefers-color-scheme: dark) {
+  .order-card {
+    background: #0b1020;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .order-card__title {
+    color: #8b95a7;
+  }
+  
+  .order-card__value {
+    color: #d9e1f2;
+  }
+}
+
+/* 載入狀態 */
+.order-card__value:empty::after {
+  content: "—";
+  color: #94a3b8;
+}
+
+/* 錯誤狀態 */
+.order-card__value[data-error="true"] {
+  color: #dc2626;
+}
+
+/* 動畫效果 */
+.order-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 確保圖表在卡片內正確顯示 */
+.order-card__chart svg {
+  max-width: 100%;
+  height: auto;
+}

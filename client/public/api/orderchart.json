@@ -1,6 +1,7 @@
 {
-  "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-  "values": [45, 52, 38, 65, 72, 58],
+  "labels": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  "values": [1250, 1890, 1650, 2100, 2680, 2250, 276000],
   "currency": "USD",
-  "total": 330
+  "total": 290270,
+  "count": 7
 }

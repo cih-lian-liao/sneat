@@ -1,13 +1,10 @@
 // client/src/pages/Analytics.jsx
 import React from "react";
 import "./Analytics.css";
-import TestCard from "../components/TestCard";
+import OrderCard from "../components/cards/OrderCard";
 import SalesStatCard from "../components/cards/SalesStatCard";
 import PaymentsCard from "../components/cards/PaymentsCard";
-import OrderChartCard from "../components/cards/OrderChartCard";
 import TotalRevenueCard from "../components/cards/TotalRevenueCard";
-// import OrderMiniCard from "../components/cards/OrderMiniCard";
-
 export default function Analytics() {
   return (
     <div className="analytics-grid">
@@ -30,7 +27,7 @@ export default function Analytics() {
         </div>
       </section>
 
-      <TestCard />
+      <OrderCard />
 
       <SalesStatCard />
 
