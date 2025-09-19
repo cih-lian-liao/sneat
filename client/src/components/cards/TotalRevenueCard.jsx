@@ -5,6 +5,7 @@ import "./TotalRevenueCard.css";
 export default function TotalRevenueCard() {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
+  const [selectedYear, setSelectedYear] = useState('2025');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,56 +31,90 @@ export default function TotalRevenueCard() {
     );
   }
 
-  const year1 = data.year1 || {};
-  const year2 = data.year2 || {};
-  const growthPercentage = data.growthPercentage || 0;
+  const growthPercentage = data.growthPercentage || 78;
+  const companyGrowth = data.companyGrowth || 62;
+
+  // 格式化金額顯示
+  const formatAmount = (amount) => {
+    if (amount >= 1000) {
+      return `$${(amount / 1000).toFixed(1)}k`;
+    }
+    return `$${amount}`;
+  };
 
   return (
     <section className="card card--total-revenue total-revenue">
       <div className="total-revenue__header">
         <h3 className="card__title">Total Revenue</h3>
+        <div className="year-selector">
+          <select 
+            className="year-selector__dropdown" 
+            value={selectedYear}
+            onChange={(e) => setSelectedYear(e.target.value)}
+          >
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
       </div>
 
       <div className="total-revenue__content">
+        {/* 左側：圖表區域 */}
         <div className="total-revenue__chart-section">
-          <div className="simple-chart">
-            <div className="chart-bar" style={{ height: '200px', backgroundColor: '#7367F0', borderRadius: '4px' }}></div>
+          <div className="chart-legend">
+            <div className="legend-item">
+              <div className="legend-dot legend-dot--purple"></div>
+              <span>2024</span>
+            </div>
+            <div className="legend-item">
+              <div className="legend-dot legend-dot--blue"></div>
+              <span>2023</span>
+            </div>
+          </div>
+          
+          <div className="chart-container">
+            <div className="simple-chart">
+              <div className="chart-bar chart-bar--purple" style={{ height: '60%' }}></div>
+              <div className="chart-bar chart-bar--blue" style={{ height: '40%' }}></div>
+            </div>
           </div>
         </div>
 
+        {/* 右側：統計區域 */}
         <div className="total-revenue__stats-section">
+          {/* 增長儀表 */}
           <div className="growth-section">
             <div className="growth-gauge">
-              <div className="growth-gauge__text">
-                <div className="growth-gauge__percentage">{growthPercentage}%</div>
-                <div className="growth-gauge__label">Growth</div>
+              <div className="growth-gauge__circle">
+                <div className="growth-gauge__text">
+                  <div className="growth-gauge__percentage">{growthPercentage}%</div>
+                  <div className="growth-gauge__label">Growth</div>
+                </div>
               </div>
+            </div>
+            <div className="company-growth">
+              <span className="company-growth__percentage">{companyGrowth}%</span>
+              <span className="company-growth__text">Company Growth</span>
             </div>
           </div>
 
+          {/* 收入卡片 */}
           <div className="revenue-cards">
-            {year1.year && (
-              <div className="revenue-card">
-                <div className="revenue-card__icon" style={{ backgroundColor: '#7367F0' }}>
-                  $
-                </div>
-                <div className="revenue-card__content">
-                  <div className="revenue-card__year">{year1.year}</div>
-                  <div className="revenue-card__amount">${(year1.total || 0).toLocaleString()}</div>
-                </div>
+            <div className="revenue-card is-active">
+              <div className="revenue-card__icon revenue-card__icon--purple">$</div>
+              <div className="revenue-card__content">
+                <div className="revenue-card__year">2025</div>
+                <div className="revenue-card__amount">{formatAmount(32500)}</div>
               </div>
-            )}
-            {year2.year && (
-              <div className="revenue-card">
-                <div className="revenue-card__icon" style={{ backgroundColor: '#E3DDFD' }}>
-                  📊
-                </div>
-                <div className="revenue-card__content">
-                  <div className="revenue-card__year">{year2.year}</div>
-                  <div className="revenue-card__amount">${(year2.total || 0).toLocaleString()}</div>
-                </div>
+            </div>
+            <div className="revenue-card">
+              <div className="revenue-card__icon revenue-card__icon--blue">📊</div>
+              <div className="revenue-card__content">
+                <div className="revenue-card__year">2024</div>
+                <div className="revenue-card__amount">{formatAmount(41200)}</div>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
