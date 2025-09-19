@@ -1,12 +1,21 @@
+/* 版面：卡片右側為曲線圖、左側為文字 */
+.card.card--profit-report {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 18px;
+}
+
 .profit-report__badge {
   display: inline-block;
-  margin: 8px 0 12px;
+  margin: 8px 0 10px;
   padding: 6px 12px;
-  border-radius: 10px;
-  background: #FFE7B3;
-  color: #a16207;
+  border-radius: 12px;
+  background: #FFE9B5;
+  color: #b45309;
   font-weight: 700;
   font-size: 12px;
+  box-shadow: 0 1px 0 rgba(250, 204, 21, 0.35) inset;
+  margin-right: auto;
 }
 
 .profit-report__row {
@@ -19,19 +28,40 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.2px;
 }
 .profit-report__delta.is-up { color: #16a34a; }
 .profit-report__delta.is-down { color: #dc2626; }
 .profit-report__delta .arrow { font-size: 16px; }
 
 .profit-report__value {
-  font-size: 28px;
+  font-size: 34px;
+  line-height: 1.1;
   font-weight: 800;
-  color: #334155;
+  color: #1f2937;
+  letter-spacing: 0.3px;
 }
 
-.profit-report__chart { margin-top: 12px; }
-.profit-chart { width: 100%; height: 120px; }
+/* 曲線圖靠右，帶柔光 */
+.profit-report__chart {
+  position: absolute;
+  right: 10px;
+  top: 38px;
+  width: 54%;
+  height: 72%;
+  pointer-events: none;
+}
+.profit-chart { width: 100%; height: 100%; }
+
+/* 響應式：小螢幕時改為下方排列 */
+@media (max-width: 768px) {
+  .profit-report__chart {
+    position: static;
+    width: 100%;
+    height: 110px;
+    margin-top: 12px;
+  }
+}
 
 
