@@ -16,7 +16,7 @@ export default function OrderCard() {
     (async () => {
       try {
         setLoading(true);
-        const API_BASE = 'http://localhost:54112';
+        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
         const res = await axios.get(`${API_BASE}/api/orderchart`, {
           timeout: 10000,
           signal: controller.signal
