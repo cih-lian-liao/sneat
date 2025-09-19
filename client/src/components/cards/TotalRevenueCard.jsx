@@ -15,13 +15,17 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 function formatCurrency(amount, currency = "USD") {
   try {
+    const num = Number(amount) || 0;
+    if (num === 0) return "$0";
+    
     return new Intl.NumberFormat("en-US", { 
       style: "currency", 
       currency, 
       maximumFractionDigits: 1,
       notation: "compact"
-    }).format(amount);
-  } catch {
+    }).format(num);
+  } catch (error) {
+    console.error('formatCurrency error:', error);
     const num = Number(amount) || 0;
     return `$${(num / 1000).toFixed(1)}k`;
   }
@@ -29,68 +33,78 @@ function formatCurrency(amount, currency = "USD") {
 
 // 增長儀表組件
 function GrowthGauge({ percentage = 0 }) {
-  // 安全的百分比值
-  const safePercentage = Number(percentage) || 0;
-  const circumference = 2 * Math.PI * 45; // 半圓周長
-  const strokeDasharray = circumference;
-  const strokeDashoffset = circumference - (safePercentage / 100) * circumference;
+  try {
+    // 安全的百分比值
+    const safePercentage = Number(percentage) || 0;
+    const circumference = 2 * Math.PI * 45; // 半圓周長
+    const strokeDasharray = circumference;
+    const strokeDashoffset = circumference - (safePercentage / 100) * circumference;
 
-  return (
-    <div className="growth-gauge">
-      <svg width="120" height="60" viewBox="0 0 120 60">
-        {/* 背景圓弧 */}
-        <path
-          d="M 10 50 A 45 45 0 0 1 110 50"
-          fill="none"
-          stroke="#E3DDFD"
-          strokeWidth="8"
-          strokeLinecap="round"
-        />
-        {/* 進度圓弧 */}
-        <path
-          d="M 10 50 A 45 45 0 0 1 110 50"
-          fill="none"
-          stroke="url(#gradient)"
-          strokeWidth="8"
-          strokeLinecap="round"
-          strokeDasharray={strokeDasharray}
-          strokeDashoffset={strokeDashoffset}
-          style={{ transition: 'stroke-dashoffset 0.5s ease' }}
-        />
-        {/* 漸變定義 */}
-        <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#7367F0" />
-            <stop offset="100%" stopColor="#9C88FF" />
-          </linearGradient>
-        </defs>
-      </svg>
-      <div className="growth-gauge__text">
-        <div className="growth-gauge__percentage">{safePercentage}%</div>
-        <div className="growth-gauge__label">Growth</div>
+    return (
+      <div className="growth-gauge">
+        <svg width="120" height="60" viewBox="0 0 120 60">
+          {/* 背景圓弧 */}
+          <path
+            d="M 10 50 A 45 45 0 0 1 110 50"
+            fill="none"
+            stroke="#E3DDFD"
+            strokeWidth="8"
+            strokeLinecap="round"
+          />
+          {/* 進度圓弧 */}
+          <path
+            d="M 10 50 A 45 45 0 0 1 110 50"
+            fill="none"
+            stroke="url(#gradient)"
+            strokeWidth="8"
+            strokeLinecap="round"
+            strokeDasharray={strokeDasharray}
+            strokeDashoffset={strokeDashoffset}
+            style={{ transition: 'stroke-dashoffset 0.5s ease' }}
+          />
+          {/* 漸變定義 */}
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#7367F0" />
+              <stop offset="100%" stopColor="#9C88FF" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div className="growth-gauge__text">
+          <div className="growth-gauge__percentage">{safePercentage}%</div>
+          <div className="growth-gauge__label">Growth</div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error('GrowthGauge error:', error);
+    return <div className="growth-gauge">Error loading gauge</div>;
+  }
 }
 
 // 收入卡片組件
 function RevenueCard({ year, amount, icon, isActive = false }) {
-  // 安全的默認值
-  const safeIcon = icon || { type: 'dollar', color: '#7367F0' };
-  const safeYear = year || 2024;
-  const safeAmount = amount || 0;
-  
-  return (
-    <div className={`revenue-card ${isActive ? 'is-active' : ''}`}>
-      <div className="revenue-card__icon" style={{ backgroundColor: safeIcon.color }}>
-        {safeIcon.type === 'dollar' ? '$' : '📊'}
+  try {
+    // 安全的默認值
+    const safeIcon = icon || { type: 'dollar', color: '#7367F0' };
+    const safeYear = year || 2024;
+    const safeAmount = amount || 0;
+    
+    return (
+      <div className={`revenue-card ${isActive ? 'is-active' : ''}`}>
+        <div className="revenue-card__icon" style={{ backgroundColor: safeIcon.color }}>
+          {safeIcon.type === 'dollar' ? '$' : '📊'}
+        </div>
+        <div className="revenue-card__content">
+          <div className="revenue-card__year">{String(safeYear)}</div>
+          <div className="revenue-card__amount">{formatCurrency(safeAmount)}</div>
+        </div>
       </div>
-      <div className="revenue-card__content">
-        <div className="revenue-card__year">{safeYear}</div>
-        <div className="revenue-card__amount">{formatCurrency(safeAmount)}</div>
-      </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error('RevenueCard error:', error);
+    return <div className="revenue-card">Error loading card</div>;
+  }
 }
 
 export default function TotalRevenueCard() {
@@ -153,19 +167,24 @@ export default function TotalRevenueCard() {
     try {
       if (!data || !data.year1 || !data.year2) return null;
 
+      // 確保 labels 和 data 都是有效的數組
+      const labels = Array.isArray(data.year1.labels) ? data.year1.labels : [];
+      const year1Data = Array.isArray(data.year1.netRevenue) ? data.year1.netRevenue : [];
+      const year2Data = Array.isArray(data.year2.netRevenue) ? data.year2.netRevenue : [];
+
       return {
-        labels: data.year1.labels || [],
+        labels: labels,
         datasets: [
           {
-            label: `${data.year1.year}`,
-            data: data.year1.netRevenue || [],
+            label: String(data.year1.year || 'Year 1'),
+            data: year1Data,
             backgroundColor: "#7367F0",
             borderRadius: 6,
             maxBarThickness: 20,
           },
           {
-            label: `${data.year2.year}`,
-            data: data.year2.netRevenue || [],
+            label: String(data.year2.year || 'Year 2'),
+            data: year2Data,
             backgroundColor: "#E3DDFD",
             borderRadius: 6,
             maxBarThickness: 20,
@@ -195,8 +214,14 @@ export default function TotalRevenueCard() {
         displayColors: false,
         callbacks: {
           label: (ctx) => {
-            const value = ctx.parsed.y;
-            return `${ctx.dataset.label}: ${formatCurrency(value)}`;
+            try {
+              const value = ctx.parsed?.y || 0;
+              const label = ctx.dataset?.label || 'Unknown';
+              return `${label}: ${formatCurrency(value)}`;
+            } catch (error) {
+              console.error('Tooltip callback error:', error);
+              return 'Error';
+            }
           }
         }
       }
@@ -213,7 +238,14 @@ export default function TotalRevenueCard() {
         grid: { color: "rgba(0,0,0,0.06)", drawBorder: false },
         ticks: {
           color: "#666",
-          callback: (v) => formatCurrency(v)
+          callback: (v) => {
+            try {
+              return formatCurrency(v);
+            } catch (error) {
+              console.error('Y-axis callback error:', error);
+              return String(v || 0);
+            }
+          }
         }
       },
     },
@@ -266,7 +298,7 @@ export default function TotalRevenueCard() {
         {/* 左側：圖表區域 */}
         <div className="total-revenue__chart-section">
           <div className="chart-container">
-            {chartData && <Bar data={chartData} options={chartOptions} />}
+            {chartData ? <Bar data={chartData} options={chartOptions} /> : <div>載入圖表中...</div>}
           </div>
         </div>
 
