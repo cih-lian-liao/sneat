@@ -58,18 +58,51 @@
 
 .order-chart__area {
   transition: opacity 0.3s ease;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 .order-chart__line {
   transition: stroke-dasharray 0.3s ease;
+  animation: drawLine 1.2s ease-in-out;
 }
 
 .order-chart__point {
   transition: r 0.2s ease;
+  animation: pulsePoint 1.5s ease-in-out;
 }
 
 .order-chart__point:hover {
   r: 6;
+}
+
+/* 動畫效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drawLine {
+  from {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulsePoint {
+  0%, 100% {
+    r: 4;
+  }
+  50% {
+    r: 6;
+  }
 }
 
 /* 變化百分比 */
