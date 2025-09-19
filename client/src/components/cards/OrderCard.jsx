@@ -154,7 +154,7 @@ export default function OrderCard() {
           {loading || err ? "—" : (
             <>
               <span className="order-card__arrow">{isUp ? "↑" : "↓"}</span>
-              <span>{Math.abs(changePct).toFixed(1)}%</span>
+              <span>{Math.abs(changePct || 0).toFixed(1)}%</span>
             </>
           )}
         </div>

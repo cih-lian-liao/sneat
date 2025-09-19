@@ -72,7 +72,7 @@ export default function SalesStatCard() {
         {loading || err ? "—" : (
           <>
             <span className="sales-stat__arrow">{isUp ? "↑" : "↓"}</span>
-            <span>{Math.abs(changePct).toFixed(2)}%</span>
+            <span>{Math.abs(changePct || 0).toFixed(2)}%</span>
           </>
         )}
       </div>

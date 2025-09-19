@@ -20,7 +20,7 @@ function PayPalIcon() {
 }
 
 // 變化指示器組件
-function ChangeIndicator({ changePct, changeType }) {
+function ChangeIndicator({ changePct = 0, changeType = 'increase' }) {
   const isIncrease = changeType === 'increase';
   
   return (
@@ -34,7 +34,7 @@ function ChangeIndicator({ changePct, changeType }) {
       >
         <path d="M6 2L10 8H2L6 2Z" fill="currentColor" />
       </svg>
-      <span className="change-indicator__text">{changePct}%</span>
+      <span className="change-indicator__text">{Math.abs(changePct).toFixed(1)}%</span>
     </div>
   );
 }
@@ -122,11 +122,11 @@ export default function PaymentsCard() {
       <div className="payments-card__content">
         <h3 className="payments-card__title">Payments</h3>
         <div className="payments-card__amount">
-          {formatCurrency(cardData.totalAmount, cardData.currency)}
+          {formatCurrency(cardData.totalAmount || 0, cardData.currency || 'USD')}
         </div>
         <ChangeIndicator 
-          changePct={cardData.changePct} 
-          changeType={cardData.changeType} 
+          changePct={cardData.changePct || 0} 
+          changeType={cardData.changeType || 'increase'} 
         />
       </div>
     </section>
