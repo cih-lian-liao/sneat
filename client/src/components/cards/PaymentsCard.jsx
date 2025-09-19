@@ -5,15 +5,19 @@ import "./PaymentsCard.css";
 export default function PaymentsCard() {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
-        const res = await axios.get(`${API_BASE}/api/payments/card`);
+        // 直接使用 localhost:54112，不依賴環境變量
+        const res = await axios.get('http://localhost:54112/api/payments/card');
+        console.log('PaymentsCard API response:', res.data);
         setData(res.data || {});
+        setError('');
       } catch (error) {
         console.error('Error fetching payments data:', error);
+        setError(error.message);
         setData({});
       } finally {
         setLoading(false);
@@ -30,9 +34,22 @@ export default function PaymentsCard() {
     );
   }
 
+  if (error) {
+    return (
+      <section className="card card--payments payments-card">
+        <div style={{ color: 'red' }}>錯誤: {error}</div>
+      </section>
+    );
+  }
+
   const amount = data.totalAmount || 0;
   const changePct = data.changePct || 0;
   const changeType = data.changeType || 'increase';
+
+  console.log('PaymentsCard data:', data);
+  console.log('PaymentsCard amount:', amount);
+  console.log('PaymentsCard changePct:', changePct);
+  console.log('PaymentsCard changeType:', changeType);
 
   return (
     <section className="card card--payments payments-card">
