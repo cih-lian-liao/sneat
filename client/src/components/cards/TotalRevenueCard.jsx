@@ -28,10 +28,12 @@ function formatCurrency(amount, currency = "USD") {
 }
 
 // 增長儀表組件
-function GrowthGauge({ percentage = 78 }) {
+function GrowthGauge({ percentage = 0 }) {
+  // 安全的百分比值
+  const safePercentage = Number(percentage) || 0;
   const circumference = 2 * Math.PI * 45; // 半圓周長
   const strokeDasharray = circumference;
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
+  const strokeDashoffset = circumference - (safePercentage / 100) * circumference;
 
   return (
     <div className="growth-gauge">
@@ -64,7 +66,7 @@ function GrowthGauge({ percentage = 78 }) {
         </defs>
       </svg>
       <div className="growth-gauge__text">
-        <div className="growth-gauge__percentage">{percentage}%</div>
+        <div className="growth-gauge__percentage">{safePercentage}%</div>
         <div className="growth-gauge__label">Growth</div>
       </div>
     </div>
@@ -73,14 +75,19 @@ function GrowthGauge({ percentage = 78 }) {
 
 // 收入卡片組件
 function RevenueCard({ year, amount, icon, isActive = false }) {
+  // 安全的默認值
+  const safeIcon = icon || { type: 'dollar', color: '#7367F0' };
+  const safeYear = year || 2024;
+  const safeAmount = amount || 0;
+  
   return (
     <div className={`revenue-card ${isActive ? 'is-active' : ''}`}>
-      <div className="revenue-card__icon" style={{ backgroundColor: icon.color }}>
-        {icon.type === 'dollar' ? '$' : '📊'}
+      <div className="revenue-card__icon" style={{ backgroundColor: safeIcon.color }}>
+        {safeIcon.type === 'dollar' ? '$' : '📊'}
       </div>
       <div className="revenue-card__content">
-        <div className="revenue-card__year">{year}</div>
-        <div className="revenue-card__amount">{formatCurrency(amount)}</div>
+        <div className="revenue-card__year">{safeYear}</div>
+        <div className="revenue-card__amount">{formatCurrency(safeAmount)}</div>
       </div>
     </div>
   );
