@@ -98,7 +98,8 @@ router.get('/', async (req, res) => {
       },
       growthPercentage: Math.round(growthPercentage * 10) / 10, // 保留一位小數
       currency: 'USD',
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date().toISOString(),
+      debug: "Data fetched from MongoDB successfully with new schema v2"
     });
   } catch (err) {
     console.error('GET /api/totalrevenue error', err);

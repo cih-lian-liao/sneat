@@ -71,7 +71,8 @@ router.get('/', async (req, res) => {
       totalRevenue: data.totalRevenue,
       weeklyData: data.weeklyData,
       currency: data.currency,
-      lastUpdated: data.lastUpdated
+      lastUpdated: data.lastUpdated,
+      debug: "Data fetched from MongoDB successfully"
     });
   } catch (err) {
     console.error('GET /api/revenue error', err);

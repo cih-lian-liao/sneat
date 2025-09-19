@@ -14,7 +14,14 @@ router.get('/', async (req, res) => {
     );
     const values = rows.map(r => r.value ?? 0);
 
-    res.json({ labels, values, count: rows.length });
+    res.json({ 
+      labels, 
+      values, 
+      count: rows.length,
+      currency: "USD",
+      total: values.reduce((sum, val) => sum + val, 0),
+      debug: "Data fetched from MongoDB successfully"
+    });
   } catch (err) {
     console.error('GET /api/orderchart error', err);
     res.status(500).json({ error: '取得 OrderChart 失敗' });

@@ -13,7 +13,9 @@ router.get('/', async (req, res) => {
       changePct: doc.changePct,
       currency: doc.currency || 'USD',
       iconUrl: doc.iconUrl || '',
-      asOf: doc.asOf
+      asOf: doc.asOf,
+      debug: "Data fetched from MongoDB successfully",
+      dataCount: 1
     });
   } catch (err) {
     console.error('GET /api/salesstat error', err);

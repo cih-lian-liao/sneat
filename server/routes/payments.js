@@ -25,7 +25,9 @@ router.get('/', async (_req, res) => {
       changePct: cardData.changePct || 0,
       changeType: cardData.changeType || 'increase',
       currency: cardData.currency || 'USD',
-      iconUrl: 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png'
+      iconUrl: 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png',
+      debug: "Data fetched from MongoDB successfully",
+      dataCount: rows.length
     });
   } catch (err) {
     console.error('GET /api/payments error', err);
@@ -56,7 +58,9 @@ router.get('/card', async (_req, res) => {
       changePct: cardData.changePct || 0,
       changeType: cardData.changeType || 'increase',
       currency: cardData.currency || 'USD',
-      iconUrl: 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png'
+      iconUrl: 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png',
+      debug: "Data fetched from MongoDB successfully",
+      dataCount: rows.length
     });
   } catch (err) {
     console.error('GET /api/payments/card error', err);
