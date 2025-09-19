@@ -1,3 +1,4 @@
+import React from "react";
 import "./Ecommerce.css";
 
 export default function Ecommerce() {

@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import DashboardLayout from './layout/DashboardLayout';
 import ErrorBoundary from './components/ErrorBoundary';

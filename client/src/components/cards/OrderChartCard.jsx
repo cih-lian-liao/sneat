@@ -1,5 +1,5 @@
 // client/src/components/cards/OrderChartCard.jsx
-import { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import OrderChart from "../charts/OrderChart";
 import "./OrderChartCard.css";

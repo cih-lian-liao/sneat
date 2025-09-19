@@ -1,3 +1,4 @@
+import React from "react";
 import "./CRM.css";
 
 export default function CRM() {

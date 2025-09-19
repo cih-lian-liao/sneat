@@ -1,4 +1,5 @@
 // client/src/pages/Analytics.jsx
+import React from "react";
 import "./Analytics.css";
 import TestCard from "../components/TestCard";
 import SalesStatCard from "../components/cards/SalesStatCard";
