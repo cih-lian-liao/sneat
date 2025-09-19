@@ -5,15 +5,19 @@ import "./OrderCard.css";
 export default function OrderCard() {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
-        const res = await axios.get(`${API_BASE}/api/orderchart`);
+        // 直接使用 localhost:54112，不依賴環境變量
+        const res = await axios.get('http://localhost:54112/api/orderchart');
+        console.log('OrderCard API response:', res.data);
         setData(res.data || {});
+        setError('');
       } catch (error) {
         console.error('Error fetching order data:', error);
+        setError(error.message);
         setData({});
       } finally {
         setLoading(false);
@@ -30,11 +34,24 @@ export default function OrderCard() {
     );
   }
 
+  if (error) {
+    return (
+      <section className="card card--order-analysis order-card">
+        <div style={{ color: 'red' }}>錯誤: {error}</div>
+      </section>
+    );
+  }
+
   const values = data.values || [];
   const currentValue = values[values.length - 1] || 0;
   const previousValue = values[values.length - 2] || 0;
   const changePct = previousValue > 0 ? ((currentValue - previousValue) / previousValue) * 100 : 0;
   const isUp = changePct >= 0;
+
+  console.log('OrderCard data:', data);
+  console.log('OrderCard values:', values);
+  console.log('OrderCard currentValue:', currentValue);
+  console.log('OrderCard changePct:', changePct);
 
   // 簡單的格式化
   const formatValue = (value) => {
