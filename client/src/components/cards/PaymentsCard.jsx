@@ -12,7 +12,8 @@ export default function PaymentsCard() {
       try {
         // 直接使用 localhost:54112，不依賴環境變量
         const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
-        const res = await axios.get(`${API_BASE}/api/payments/card`);
+        const API_ENDPOINT = process.env.NODE_ENV === 'production' ? '/api/payments' : '/api/payments/card';
+        const res = await axios.get(`${API_BASE}${API_ENDPOINT}`);
         setData(res.data || {});
         setError('');
       } catch (error) {
