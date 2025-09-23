@@ -57,7 +57,7 @@ export default function TotalRevenueCard() {
   if (loading) {
     return (
       <section className="card card--total-revenue">
-        <div>載入中...</div>
+        <div className="loading">載入中...</div>
       </section>
     );
   }
@@ -65,7 +65,7 @@ export default function TotalRevenueCard() {
   if (error) {
     return (
       <section className="card card--total-revenue">
-        <div style={{ color: 'red' }}>錯誤: {error}</div>
+        <div className="error">錯誤: {error}</div>
       </section>
     );
   }
@@ -92,25 +92,30 @@ export default function TotalRevenueCard() {
 
   return (
     <section className="card card--total-revenue">
-      <div className="total-revenue__content">
+      {/* 標題區域 */}
+      <div className="card-header">
+        <h2 className="card-title">{data.title || 'Total Revenue'}</h2>
+      </div>
+
+      {/* 主要內容區域 */}
+      <div className="tr-content">
         {/* 左側：柱狀圖區域 */}
-        <div className="total-revenue__chart-section">
-          <div className="chart-header">
-            <h3 className="chart-title">{data.title || 'Total Revenue'}</h3>
-            <div className="chart-legend">
-              <div className="legend-item">
-                <div className="legend-dot legend-dot--blue"></div>
+        <div className="tr-chart-section">
+          <div className="tr-chart-header">
+            <div className="tr-chart-legend">
+              <div className="tr-legend-item">
+                <div className="tr-legend-dot tr-legend-dot--blue"></div>
                 <span>2024</span>
               </div>
-              <div className="legend-item">
-                <div className="legend-dot legend-dot--light-blue"></div>
+              <div className="tr-legend-item">
+                <div className="tr-legend-dot tr-legend-dot--light-blue"></div>
                 <span>2023</span>
               </div>
             </div>
           </div>
           
-          <div className="chart-container">
-            <div className="chart-y-axis">
+          <div className="tr-chart-container">
+            <div className="tr-chart-y-axis">
               <div className="y-label">30</div>
               <div className="y-label">20</div>
               <div className="y-label">10</div>
@@ -119,36 +124,36 @@ export default function TotalRevenueCard() {
               <div className="y-label">-20</div>
             </div>
             
-            <div className="chart-bars">
+            <div className="tr-chart-bars">
               {(chartData.months || []).map((month, index) => {
                 const value2024 = chartData.data2024?.[index] || 0;
                 const value2023 = chartData.data2023?.[index] || 0;
                 
                 // 計算柱狀圖高度（基於最大值的比例）
-                const height2024 = Math.abs(value2024) / maxValue * 80; // 80% 最大高度
-                const height2023 = Math.abs(value2023) / maxValue * 80;
+                const height2024 = Math.abs(value2024) / maxValue * 100; // 100% 最大高度
+                const height2023 = Math.abs(value2023) / maxValue * 100;
                 
                 return (
-                  <div key={month} className="chart-month">
-                    <div className="month-bars">
+                  <div key={month} className="tr-chart-month">
+                    <div className="tr-month-bars">
                       <div 
-                        className="chart-bar chart-bar--2024" 
+                        className="tr-chart-bar tr-chart-bar--2024" 
                         style={{ 
-                          height: `${height2024}px`,
+                          height: `${height2024}%`,
                           transform: value2024 >= 0 ? 'translateY(0)' : 'translateY(100%)'
                         }}
                         title={`2024: ${value2024}`}
                       ></div>
                       <div 
-                        className="chart-bar chart-bar--2023" 
+                        className="tr-chart-bar tr-chart-bar--2023" 
                         style={{ 
-                          height: `${height2023}px`,
+                          height: `${height2023}%`,
                           transform: value2023 >= 0 ? 'translateY(0)' : 'translateY(100%)'
                         }}
                         title={`2023: ${value2023}`}
                       ></div>
                     </div>
-                    <div className="month-label">{month}</div>
+                    <div className="tr-month-label">{month}</div>
                   </div>
                 );
               })}
@@ -157,11 +162,11 @@ export default function TotalRevenueCard() {
         </div>
 
         {/* 右側：統計區域 */}
-        <div className="total-revenue__stats-section">
+        <div className="tr-stats-section">
           {/* 年份選擇器 */}
-          <div className="year-selector">
+          <div className="tr-year-selector">
             <select 
-              className="year-selector__dropdown" 
+              className="tr-year-select" 
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
             >
@@ -172,9 +177,9 @@ export default function TotalRevenueCard() {
           </div>
 
           {/* 增長儀表 */}
-          <div className="growth-section">
-            <div className="growth-gauge">
-              <svg className="growth-gauge__svg" viewBox="0 0 120 60">
+          <div className="tr-growth-section">
+            <div className="tr-gauge">
+              <svg className="tr-gauge-svg" viewBox="0 0 100 50">
                 <defs>
                   <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#8b5cf6" />
@@ -182,45 +187,45 @@ export default function TotalRevenueCard() {
                   </linearGradient>
                 </defs>
                 <path
-                  d="M 20 50 A 40 40 0 0 1 100 50"
+                  d="M 15 40 A 35 35 0 0 1 85 40"
                   fill="none"
                   stroke="#e5e7eb"
-                  strokeWidth="8"
+                  strokeWidth="6"
                 />
                 <path
-                  d="M 20 50 A 40 40 0 0 1 100 50"
+                  d="M 15 40 A 35 35 0 0 1 85 40"
                   fill="none"
                   stroke="url(#gaugeGradient)"
-                  strokeWidth="8"
-                  strokeDasharray={`${(growthMetrics.growthPercentage || 0) * 1.26} 126`}
+                  strokeWidth="6"
+                  strokeDasharray={`${(growthMetrics.growthPercentage || 0) * 1.1} 110`}
                   strokeLinecap="round"
                 />
               </svg>
-              <div className="growth-gauge__text">
-                <div className="growth-gauge__percentage">{growthMetrics.growthPercentage || 0}%</div>
-                <div className="growth-gauge__label">Growth</div>
+              <div className="tr-gauge-text">
+                <div className="tr-gauge-percentage">{growthMetrics.growthPercentage || 0}%</div>
+                <div className="tr-gauge-label">Growth</div>
               </div>
             </div>
             
-            <div className="company-growth">
-              <span className="company-growth__percentage">{growthMetrics.companyGrowth || 0}%</span>
-              <span className="company-growth__text">Company Growth</span>
+            <div className="tr-company-growth">
+              <span className="tr-company-growth__percentage">{growthMetrics.companyGrowth || 0}%</span>
+              <span className="tr-company-growth__text">Company Growth</span>
             </div>
           </div>
 
           {/* 收入卡片 */}
-          <div className="revenue-cards">
+          <div className="tr-kpi-cards">
             {revenueCards.map((card, index) => (
-              <div key={card.year} className={`revenue-card ${index === 0 ? 'is-active' : ''}`}>
+              <div key={card.year} className={`tr-kpi-card ${index === 0 ? 'is-active' : ''}`}>
                 <div 
-                  className="revenue-card__icon" 
+                  className="tr-kpi-card__icon" 
                   style={{ backgroundColor: card.color }}
                 >
                   {card.icon}
                 </div>
-                <div className="revenue-card__content">
-                  <div className="revenue-card__year">{card.year}</div>
-                  <div className="revenue-card__amount">{formatAmount(card.amount)}</div>
+                <div className="tr-kpi-card__content">
+                  <div className="tr-kpi-card__year">{card.year}</div>
+                  <div className="tr-kpi-card__amount">{formatAmount(card.amount)}</div>
                 </div>
               </div>
             ))}
