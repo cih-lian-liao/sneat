@@ -133,6 +133,13 @@ const DashboardDataSchema = new mongoose.Schema({
       date: { type: Date, default: Date.now }
     }]
   },
+  overviewActivity: {
+    title: { type: String, default: 'Overview & Sales Activity' },
+    subtitle: { type: String, default: 'Check out each column for more details' },
+    months: [{ type: String, required: true }],
+    primary: [{ type: Number, required: true }],
+    secondary: [{ type: Number, required: true }]
+  },
   activityTimeline: {
     title: { type: String, default: 'Activity Timeline' },
     activities: [{
@@ -441,6 +448,13 @@ async function migrateData() {
             date: new Date('2024-01-10')
           }
         ]
+      },
+      overviewActivity: {
+        title: 'Overview & Sales Activity',
+        subtitle: 'Check out each column for more details',
+        months: ['Jan','Feb','Mar','Apr','May','Jun','Jul'],
+        primary: [92, 78, 85, 88, 72, 98, 83],
+        secondary: [35, 28, 42, 48, 33, 52, 41]
       },
       activityTimeline: {
         title: 'Activity Timeline',

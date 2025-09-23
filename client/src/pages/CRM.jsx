@@ -1,6 +1,7 @@
 import React from "react";
 import "./CRM.css";
 import CustomerRatingsCard from "../components/cards/CustomerRatingsCard";
+import OverviewSalesActivityCard from "../components/cards/OverviewSalesActivityCard";
 
 export default function CRM() {
   return (
@@ -8,10 +9,7 @@ export default function CRM() {
       {/* row-1 */}
       <CustomerRatingsCard />
 
-      <section className="card card--overview">
-        <header className="card__header">Overview & Sales Activity</header>
-        <div className="chart-box">{/* <OverviewActivity /> */}</div>
-      </section>
+      <OverviewSalesActivityCard />
 
       {/* 右上兩張小卡 */}
       <section className="card card--sessions">
