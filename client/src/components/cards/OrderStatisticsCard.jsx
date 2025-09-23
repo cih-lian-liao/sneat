@@ -10,18 +10,9 @@ export default function OrderStatisticsCard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // 先測試健康檢查
-        const healthRes = await axios.get('/api/health');
-        console.log('Health check:', healthRes.data);
-        
-        // 然後獲取數據
-        const res = await axios.get('/api/test-orderstats');
-        console.log('Test API Response:', res.data);
-        if (res.data && res.data.data) {
-          setData(res.data.data);
-        } else {
-          setData(res.data || {});
-        }
+        const res = await axios.get('/api/orderstatistics');
+        console.log('API Response:', res.data);
+        setData(res.data || {});
         setError('');
       } catch (error) {
         console.error('Error fetching order statistics:', error);
