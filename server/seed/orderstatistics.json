@@ -7,22 +7,26 @@
       {
         "name": "Electronic",
         "description": "Mobile, Earbuds, TV",
-        "value": 82500
+        "value": 82500,
+        "icon": "📱"
       },
       {
         "name": "Fashion",
         "description": "Tshirt, Jeans, Shoes",
-        "value": 23800
+        "value": 23800,
+        "icon": "👕"
       },
       {
         "name": "Decor",
         "description": "Fine Art, Dining",
-        "value": 849
+        "value": 849,
+        "icon": "🏠"
       },
       {
         "name": "Sports",
         "description": "Football, Cricket Kit",
-        "value": 99
+        "value": 99,
+        "icon": "⚽"
       }
     ]
   }

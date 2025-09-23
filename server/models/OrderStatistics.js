@@ -19,7 +19,8 @@ const OrderStatisticsSchema = new mongoose.Schema({
   categories: [{
     name: { type: String, required: true },
     description: { type: String, required: true },
-    value: { type: Number, required: true }
+    value: { type: Number, required: true },
+    icon: { type: String, required: true }
   }]
 }, { 
   timestamps: true, 
