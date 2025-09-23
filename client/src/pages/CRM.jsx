@@ -2,6 +2,7 @@ import React from "react";
 import "./CRM.css";
 import CustomerRatingsCard from "../components/cards/CustomerRatingsCard";
 import OverviewSalesActivityCard from "../components/cards/OverviewSalesActivityCard";
+import SessionsCard from "../components/cards/SessionsCard";
 
 export default function CRM() {
   return (
@@ -12,10 +13,7 @@ export default function CRM() {
       <OverviewSalesActivityCard />
 
       {/* 右上兩張小卡 */}
-      <section className="card card--sessions">
-        <header className="card__header">Sessions</header>
-        <div className="chart-box">{/* <Sessions /> */}</div>
-      </section>
+      <SessionsCard />
       <section className="card card--orders">
         <header className="card__header">Orders</header>
         <div className="chart-box">{/* <Orders /> */}</div>

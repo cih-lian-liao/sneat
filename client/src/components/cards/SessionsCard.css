@@ -1,0 +1,14 @@
+.card--sessions{ background:#fff; border-radius:12px; padding:20px; box-shadow:0 1px 3px rgba(0,0,0,.1); border:1px solid #f3f4f6; min-height:200px; position:relative; overflow:hidden; }
+.card--sessions.error{ background:#fef2f2; border-color:#ef4444; }
+.sessions__title{ color:#6b7280; font-weight:800; letter-spacing:.3px; font-size:18px; }
+.sessions__value{ color:#374151; font-weight:800; font-size:44px; line-height:1; margin-top:4px; }
+.sessions__chart{ position:absolute; left:0; right:0; bottom:0; top:70px; padding:0 8px 8px; }
+.sessions__chart svg{ width:100%; height:100%; }
+
+@media (prefers-color-scheme: dark){
+  .card--sessions{ background:#1f2937; border-color:#374151; color:#f9fafb; }
+  .sessions__title{ color:#9ca3af; }
+  .sessions__value{ color:#f9fafb; }
+}
+
+

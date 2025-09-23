@@ -140,6 +140,11 @@ const DashboardDataSchema = new mongoose.Schema({
     primary: [{ type: Number, required: true }],
     secondary: [{ type: Number, required: true }]
   },
+  sessions: {
+    title: { type: String, default: 'Sessions' },
+    total: { type: Number, default: 2845 },
+    chartData: [{ value: { type: Number, required: true } }]
+  },
   activityTimeline: {
     title: { type: String, default: 'Activity Timeline' },
     activities: [{
@@ -455,6 +460,15 @@ async function migrateData() {
         months: ['Jan','Feb','Mar','Apr','May','Jun','Jul'],
         primary: [92, 78, 85, 88, 72, 98, 83],
         secondary: [35, 28, 42, 48, 33, 52, 41]
+      },
+      sessions: {
+        title: 'Sessions',
+        total: 2845,
+        chartData: [
+          { value: 40 },{ value: 36 },{ value: 30 },{ value: 30 },{ value: 24 },
+          { value: 28 },{ value: 42 },{ value: 60 },{ value: 58 },{ value: 62 },
+          { value: 55 },{ value: 85 }
+        ]
       },
       activityTimeline: {
         title: 'Activity Timeline',
