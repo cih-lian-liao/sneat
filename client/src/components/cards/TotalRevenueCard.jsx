@@ -141,11 +141,13 @@ export default function TotalRevenueCard() {
                 const height = simpleMax > 0 ? (value / simpleMax) * 100 : 0;
                 return (
                   <div key={month} className="tr-simple-col">
-                    <div
-                      className="tr-simple-bar"
-                      style={{ height: value > 0 ? `${height}%` : '2px', backgroundColor: '#8b5cf6' }}
-                      title={`${month}: ${value}`}
-                    ></div>
+                    <div className="tr-simple-barbox">
+                      <div
+                        className="tr-simple-bar"
+                        style={{ height: value > 0 ? `${height}%` : '2px', backgroundColor: '#8b5cf6' }}
+                        title={`${month}: ${value}`}
+                      ></div>
+                    </div>
                     <div className="tr-simple-label">{month}</div>
                   </div>
                 );
