@@ -10,7 +10,7 @@ export default function OrderStatisticsCard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('/api/orderstatistics');
+        const res = await axios.get('/api/dashboard?card=orderStatistics');
         console.log('API Response:', res.data);
         setData(res.data || {});
         setError('');
