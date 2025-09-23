@@ -122,6 +122,22 @@ const DashboardDataSchema = new mongoose.Schema({
         value: { type: Number, required: true }
       }]
     }
+  },
+  
+  // Transactions
+  transactions: {
+    title: { type: String, default: 'Transactions' },
+    items: [{
+      id: { type: String, required: true },
+      type: { type: String, required: true },
+      description: { type: String, required: true },
+      amount: { type: Number, required: true },
+      currency: { type: String, default: 'USD' },
+      icon: { type: String, required: true },
+      iconColor: { type: String, required: true },
+      isPositive: { type: Boolean, required: true },
+      date: { type: Date, default: Date.now }
+    }]
   }
   
 }, { 
@@ -311,6 +327,77 @@ function getDefaultData(card = null) {
           { month: 'Jul', value: 174100 }
         ]
       }
+    },
+    transactions: {
+      title: 'Transactions',
+      items: [
+        {
+          id: '1',
+          type: 'Paypal',
+          description: 'Send money',
+          amount: 82.6,
+          currency: 'USD',
+          icon: 'P',
+          iconColor: '#ff6b35',
+          isPositive: true,
+          date: new Date('2024-01-15')
+        },
+        {
+          id: '2',
+          type: 'Wallet',
+          description: 'Mac\'D',
+          amount: 270.69,
+          currency: 'USD',
+          icon: '💳',
+          iconColor: '#8b5cf6',
+          isPositive: true,
+          date: new Date('2024-01-14')
+        },
+        {
+          id: '3',
+          type: 'Transfer',
+          description: 'Refund',
+          amount: 637.91,
+          currency: 'USD',
+          icon: '↻',
+          iconColor: '#06b6d4',
+          isPositive: true,
+          date: new Date('2024-01-13')
+        },
+        {
+          id: '4',
+          type: 'Credit Card',
+          description: 'Ordered Food',
+          amount: 838.71,
+          currency: 'USD',
+          icon: '💳',
+          iconColor: '#10b981',
+          isPositive: false,
+          date: new Date('2024-01-12')
+        },
+        {
+          id: '5',
+          type: 'Wallet',
+          description: 'Starbucks',
+          amount: 203.33,
+          currency: 'USD',
+          icon: '💳',
+          iconColor: '#8b5cf6',
+          isPositive: true,
+          date: new Date('2024-01-11')
+        },
+        {
+          id: '6',
+          type: 'Mastercard',
+          description: 'Ordered Food',
+          amount: 92.45,
+          currency: 'USD',
+          icon: '💳',
+          iconColor: '#f59e0b',
+          isPositive: false,
+          date: new Date('2024-01-10')
+        }
+      ]
     }
   };
   

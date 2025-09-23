@@ -1,0 +1,326 @@
+/* Transactions Card - 現代化設計 */
+.transactions {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border: 1px solid #f3f4f6;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.transactions.error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+/* 標題區域 */
+.transactions__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.transactions__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.transactions__options {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.transactions__options:hover {
+  background-color: #f3f4f6;
+}
+
+.options-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.options-dots span {
+  width: 4px;
+  height: 4px;
+  background-color: #6b7280;
+  border-radius: 50%;
+}
+
+/* 交易列表 */
+.transactions__list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.transaction__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.transaction__item:last-child {
+  border-bottom: none;
+}
+
+/* 左側內容 */
+.transaction__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.transaction__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-symbol {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.transaction__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.transaction__type {
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.transaction__description {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* 右側金額 */
+.transaction__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.transaction__amount {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.transaction__amount.positive {
+  color: #10b981;
+}
+
+.transaction__amount.negative {
+  color: #ef4444;
+}
+
+.transaction__currency {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* 浮動設定按鈕 */
+.transactions__settings {
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: #8b5cf6;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.transactions__settings:hover {
+  background: #7c3aed;
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4);
+}
+
+.transactions__settings svg {
+  color: #fff;
+  width: 20px;
+  height: 20px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .transactions {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .transactions__title {
+    font-size: 16px;
+  }
+  
+  .transaction__item {
+    padding: 10px 0;
+  }
+  
+  .transaction__left {
+    gap: 8px;
+  }
+  
+  .transaction__icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .icon-symbol {
+    font-size: 14px;
+  }
+  
+  .transaction__type {
+    font-size: 11px;
+  }
+  
+  .transaction__description {
+    font-size: 13px;
+  }
+  
+  .transaction__amount {
+    font-size: 13px;
+  }
+  
+  .transaction__currency {
+    font-size: 10px;
+  }
+  
+  .transactions__settings {
+    width: 36px;
+    height: 36px;
+    right: -8px;
+  }
+  
+  .transactions__settings svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* 動畫效果 */
+.transaction__item {
+  transition: all 0.2s ease;
+}
+
+.transaction__item:hover {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 12px 8px;
+  margin: 0 -8px;
+}
+
+.transactions__settings {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(-60%);
+  }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .transactions {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .transactions__title {
+    color: #f9fafb;
+  }
+  
+  .transactions__options:hover {
+    background-color: #374151;
+  }
+  
+  .options-dots span {
+    background-color: #9ca3af;
+  }
+  
+  .transaction__item {
+    border-bottom-color: #374151;
+  }
+  
+  .transaction__item:hover {
+    background-color: #374151;
+  }
+  
+  .transaction__type {
+    color: #9ca3af;
+  }
+  
+  .transaction__description {
+    color: #d1d5db;
+  }
+  
+  .transaction__currency {
+    color: #9ca3af;
+  }
+}
+
+/* 滾動條樣式 */
+.transactions__list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.transactions__list::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 2px;
+}
+
+.transactions__list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+.transactions__list::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

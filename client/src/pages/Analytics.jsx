@@ -9,6 +9,7 @@ import RevenueCard from "../components/cards/RevenueCard";
 import ProfitReportCard from "../components/cards/ProfitReportCard";
 import OrderStatisticsCard from "../components/cards/OrderStatisticsCard";
 import IncomeExpenseCard from "../components/cards/IncomeExpenseCard";
+import TransactionsCard from "../components/cards/TransactionsCard";
 export default function Analytics() {
   return (
     <div className="analytics-grid">
@@ -70,6 +71,9 @@ export default function Analytics() {
 
       {/* row-5 - Income Expense 卡片 */}
       <IncomeExpenseCard />
+
+      {/* row-6 - Transactions 卡片 */}
+      <TransactionsCard />
     </div>
   );
 }
