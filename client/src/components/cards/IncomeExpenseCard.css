@@ -1,5 +1,5 @@
 /* Income Expense Card - 現代化設計 */
-.income-expense {
+.card--income-expense {
   background: #fff;
   border-radius: 12px;
   padding: 20px;
@@ -8,11 +8,11 @@
   min-height: 400px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   overflow: hidden;
 }
 
-.income-expense.error {
+.card--income-expense.error {
   border-color: #ef4444;
   background-color: #fef2f2;
 }
@@ -20,19 +20,18 @@
 /* 標籤頁樣式 */
 .income-expense__tabs {
   display: flex;
-  gap: 0;
+  gap: 4px;
   background: #f8fafc;
   border-radius: 8px;
   padding: 4px;
-  margin-bottom: 8px;
 }
 
 .income-expense__tabs .tab {
   flex: 1;
-  padding: 8px 12px;
+  padding: 10px 16px;
   border: none;
   background: transparent;
-  color: #64748b;
+  color: #6b7280;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -40,11 +39,12 @@
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-align: center;
 }
 
 .income-expense__tabs .tab:hover {
-  background: #e2e8f0;
-  color: #475569;
+  background: #e5e7eb;
+  color: #374151;
 }
 
 .income-expense__tabs .tab.active {
@@ -57,15 +57,18 @@
 .income-expense__content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   flex: 1;
 }
 
 /* 標題區域 */
 .income-expense__header {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
 }
 
 .income-expense__icon {
@@ -73,39 +76,46 @@
 }
 
 .icon-background {
-  width: 40px;
-  height: 40px;
-  background: #f3f4f6;
-  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
 .icon-symbol {
-  font-size: 20px;
+  font-size: 24px;
+  color: #fff;
+}
+
+.income-expense__title {
+  flex: 1;
 }
 
 .income-expense__title h3 {
   font-size: 14px;
-  font-weight: 500;
-  color: #64748b;
-  margin: 0 0 4px 0;
-  text-transform: capitalize;
+  font-weight: 600;
+  color: #6b7280;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .income-expense__value {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   color: #1f2937;
-  margin-bottom: 4px;
-  line-height: 1.2;
+  margin-bottom: 8px;
+  line-height: 1.1;
 }
 
 .income-expense__change {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   font-size: 14px;
   font-weight: 600;
 }
@@ -119,7 +129,8 @@
 }
 
 .income-expense__change .arrow {
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 /* 圖表區域 */
@@ -128,27 +139,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  min-height: 120px;
+  gap: 12px;
+  min-height: 160px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
 }
 
 .income-expense__chart svg {
   width: 100%;
-  max-width: 220px;
-  height: 100px;
+  max-width: 280px;
+  height: 140px;
 }
 
 .chart-labels {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 220px;
+  max-width: 280px;
   padding: 0 20px;
 }
 
 .chart-label {
-  font-size: 10px;
-  color: #9ca3af;
+  font-size: 11px;
+  color: #6b7280;
   font-weight: 500;
   text-align: center;
   flex: 1;
@@ -162,8 +176,8 @@
 .weekly-progress {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px;
+  gap: 16px;
+  padding: 16px;
   background: #f8fafc;
   border-radius: 8px;
 }
@@ -174,8 +188,8 @@
 }
 
 .progress-circle svg {
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
 }
 
 .progress-text {
@@ -183,8 +197,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   color: #1f2937;
 }
 
@@ -193,60 +207,129 @@
 }
 
 .weekly-title {
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   color: #374151;
-  margin-bottom: 2px;
-  text-transform: capitalize;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .weekly-comparison {
-  font-size: 11px;
-  color: #9ca3af;
-  line-height: 1.3;
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.4;
+  font-weight: 500;
 }
 
 /* 響應式設計 */
 @media (max-width: 768px) {
-  .income-expense {
+  .card--income-expense {
     padding: 16px;
+    gap: 16px;
+  }
+  
+  .income-expense__tabs .tab {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+  
+  .income-expense__header {
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  .icon-background {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .icon-symbol {
+    font-size: 20px;
+  }
+  
+  .income-expense__value {
+    font-size: 24px;
+  }
+  
+  .income-expense__chart {
+    min-height: 140px;
+    padding: 12px;
+  }
+  
+  .income-expense__chart svg {
+    max-width: 240px;
+    height: 120px;
+  }
+  
+  .weekly-progress {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .progress-circle svg {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .progress-text {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card--income-expense {
+    padding: 12px;
     gap: 12px;
   }
   
   .income-expense__tabs .tab {
     padding: 6px 8px;
-    font-size: 11px;
+    font-size: 10px;
+  }
+  
+  .income-expense__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px;
+  }
+  
+  .icon-background {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .icon-symbol {
+    font-size: 18px;
   }
   
   .income-expense__value {
     font-size: 20px;
   }
   
-  .income-expense__header {
-    gap: 8px;
+  .income-expense__chart {
+    min-height: 120px;
+    padding: 10px;
   }
   
-  .icon-background {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .icon-symbol {
-    font-size: 16px;
+  .income-expense__chart svg {
+    max-width: 200px;
+    height: 100px;
   }
   
   .weekly-progress {
-    padding: 8px;
-    gap: 8px;
+    padding: 10px;
+    gap: 10px;
   }
   
   .progress-circle svg {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
   }
   
   .progress-text {
-    font-size: 9px;
+    font-size: 10px;
   }
 }
 
@@ -271,7 +354,7 @@
 
 /* 深色模式支持 */
 @media (prefers-color-scheme: dark) {
-  .income-expense {
+  .card--income-expense {
     background: #1f2937;
     border-color: #374151;
     color: #f9fafb;
@@ -290,6 +373,10 @@
     color: #d1d5db;
   }
   
+  .income-expense__header {
+    background: #374151;
+  }
+  
   .income-expense__title h3 {
     color: #9ca3af;
   }
@@ -298,8 +385,12 @@
     color: #f9fafb;
   }
   
-  .icon-background {
+  .income-expense__chart {
     background: #374151;
+  }
+  
+  .chart-label {
+    color: #9ca3af;
   }
   
   .weekly-progress {
@@ -312,5 +403,9 @@
   
   .weekly-comparison {
     color: #9ca3af;
+  }
+  
+  .progress-text {
+    color: #f9fafb;
   }
 }

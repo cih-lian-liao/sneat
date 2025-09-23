@@ -107,9 +107,9 @@ export default function IncomeExpenseCard() {
   const generatePath = () => {
     if (chartData.length === 0) return '';
     
-    const width = 220;
-    const height = 100;
-    const padding = 20;
+    const width = 280;
+    const height = 140;
+    const padding = 30;
     
     const points = chartData.map((point, index) => {
       const x = padding + (index * (width - 2 * padding)) / (chartData.length - 1);
@@ -124,9 +124,9 @@ export default function IncomeExpenseCard() {
   const generateAreaPath = () => {
     if (chartData.length === 0) return '';
     
-    const width = 220;
-    const height = 100;
-    const padding = 20;
+    const width = 280;
+    const height = 140;
+    const padding = 30;
     
     const points = chartData.map((point, index) => {
       const x = padding + (index * (width - 2 * padding)) / (chartData.length - 1);
@@ -190,14 +190,14 @@ export default function IncomeExpenseCard() {
 
         {/* 圖表 */}
         <div className="income-expense__chart">
-          <svg width="220" height="100" viewBox="0 0 220 100">
+          <svg width="280" height="140" viewBox="0 0 280 140">
             {/* 網格線 */}
             <defs>
               <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
                 <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f0f0f0" strokeWidth="1" strokeDasharray="2,2"/>
               </pattern>
             </defs>
-            <rect width="220" height="100" fill="url(#grid)" />
+            <rect width="280" height="140" fill="url(#grid)" />
             
             {/* 區域填充 */}
             <path 
@@ -211,14 +211,14 @@ export default function IncomeExpenseCard() {
               d={generatePath()} 
               fill="none" 
               stroke="#8b5cf6" 
-              strokeWidth="2"
+              strokeWidth="3"
             />
             
             {/* 數據點 */}
             {chartData.map((point, index) => {
-              const width = 220;
-              const height = 100;
-              const padding = 20;
+              const width = 280;
+              const height = 140;
+              const padding = 30;
               const x = padding + (index * (width - 2 * padding)) / (chartData.length - 1);
               const y = height - padding - ((point.value - minValue) / range) * (height - 2 * padding);
               
@@ -227,9 +227,11 @@ export default function IncomeExpenseCard() {
                   key={index}
                   cx={x} 
                   cy={y} 
-                  r={index === chartData.length - 1 ? "4" : "2"} 
+                  r={index === chartData.length - 1 ? "6" : "4"} 
                   fill={index === chartData.length - 1 ? "#8b5cf6" : "#8b5cf6"}
                   opacity={index === chartData.length - 1 ? "1" : "0.6"}
+                  stroke="#fff"
+                  strokeWidth="2"
                 />
               );
             })}
