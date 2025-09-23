@@ -11,7 +11,7 @@ export default function ProfitReportCard() {
     const fetchData = async () => {
       try {
         const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
-        const res = await axios.get(`${API_BASE}/api/profitreport`);
+        const res = await axios.get('/api/dashboard?card=profitReport');
         setData(res.data || {});
         setError('');
       } catch (e) {

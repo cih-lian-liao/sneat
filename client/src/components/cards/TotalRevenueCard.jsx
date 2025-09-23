@@ -12,7 +12,7 @@ export default function TotalRevenueCard() {
     const fetchData = async () => {
       try {
         const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
-        const res = await axios.get(`${API_BASE}/api/totalrevenue`);
+        const res = await axios.get('/api/dashboard?card=totalRevenue');
         
         // 檢查是否為 Vercel 環境且數據為空
         if (process.env.NODE_ENV === 'production' && (!res.data?.year1?.totalRevenue || res.data.year1.totalRevenue === 0)) {
