@@ -10,118 +10,83 @@ export default function OrderStatisticsCard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
-        const res = await axios.get(`${API_BASE}/api/orderstatistics`);
+        const res = await axios.get('/api/orderstatistics');
+        console.log('API Response:', res.data);
         setData(res.data || {});
         setError('');
-      } catch (e) {
-        console.error('Error fetching order statistics:', e);
-        setError(e.message);
-        // 生產環境備援
-        if (process.env.NODE_ENV === 'production') {
-          setData({
-            title: 'Order Statistics',
-            totalSales: 42820,
-            totalOrders: 8258,
-            weeklyPercentage: 38,
-            categories: [
-              { name: 'Electronic', icon: '📱', items: 'Mobile, Earbuds, TV', sales: 82500 },
-              { name: 'Fashion', icon: '👕', items: 'Tshirt, Jeans, Shoes', sales: 23800 },
-              { name: 'Decor', icon: '🏠', items: 'Fine Art, Dining', sales: 849 },
-              { name: 'Sports', icon: '⚽', items: 'Football, Cricket Kit', sales: 99 }
-            ],
-            currency: 'USD'
-          });
-          setError('');
-        }
-      } finally { 
-        setLoading(false); 
+      } catch (error) {
+        console.error('Error fetching order statistics:', error);
+        setError(error.message);
+        // 備援數據
+        const fallbackData = {
+          totalSales: 42820,
+          totalOrders: 8258,
+          weeklyPercent: 38,
+          categories: [
+            { name: 'Electronic', description: 'Mobile, Earbuds, TV', value: 82500 },
+            { name: 'Fashion', description: 'Tshirt, Jeans, Shoes', value: 23800 },
+            { name: 'Decor', description: 'Fine Art, Dining', value: 849 },
+            { name: 'Sports', description: 'Football, Cricket Kit', value: 99 }
+          ]
+        };
+        console.log('Using fallback data:', fallbackData);
+        setData(fallbackData);
+        setError('');
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
 
-  if (loading) return <section className="card card--order-statistics"><div>載入中...</div></section>;
-  if (error) return <section className="card card--order-statistics"><div style={{color:'red'}}>錯誤: {error}</div></section>;
+  if (loading) return <section className="card card--order-statistics">載入中...</section>;
+  if (error) return <section className="card card--order-statistics error">錯誤: {error}</section>;
 
-  const title = data.title || 'Order Statistics';
-  const totalSales = data.totalSales || 0;
-  const totalOrders = data.totalOrders || 0;
-  const weeklyPct = data.weeklyPercentage || 0;
-  const categories = Array.isArray(data.categories) ? data.categories : [];
-
-  const formatValue = (v) => v >= 1000 ? `${(v/1000).toFixed(1)}k` : v.toString();
-
-  // 簡單圓形進度圖
-  const radius = 35;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDasharray = circumference;
-  const strokeDashoffset = circumference - (weeklyPct / 100) * circumference;
+  const formatValue = (value) => {
+    if (value >= 1000000) return `$${(value / 1000000).toFixed(1)}M`;
+    if (value >= 1000) return `$${(value / 1000).toFixed(1)}k`;
+    return `$${value}`;
+  };
 
   return (
     <section className="card card--order-statistics">
-      <div className="order-stats__header">
-        <div>
-          <h3 className="order-stats__title">{title}</h3>
-          <p className="order-stats__subtitle">{formatValue(totalSales)} Total Sales</p>
+      <h3 className="order-card__title">Order Statistics</h3>
+      <p className="order-card__subtitle">
+        {formatValue(data.totalSales || 0)} Total Sales
+      </p>
+
+      <div className="order-card__main">
+        <div className="order-card__orders">
+          <h2>{(data.totalOrders || 0).toLocaleString()}</h2>
+          <p>Total Orders</p>
         </div>
-        <div className="order-stats__menu">⋮</div>
+        <div className="order-card__weekly">
+          <div className="circle">{data.weeklyPercent || 0}%</div>
+          <p>Weekly</p>
+        </div>
       </div>
 
-      <div className="order-stats__main">
-        <div className="order-stats__metrics">
-          <div className="order-stats__total">
-            <div className="order-stats__number">{totalOrders.toLocaleString()}</div>
-            <div className="order-stats__label">Total Orders</div>
-          </div>
-          
-          <div className="order-stats__chart">
-            <svg className="circular-chart" viewBox="0 0 100 100">
-              <circle
-                className="circular-chart__background"
-                cx="50"
-                cy="50"
-                r={radius}
-                fill="none"
-                stroke="#e5e7eb"
-                strokeWidth="8"
-              />
-              <circle
-                className="circular-chart__progress"
-                cx="50"
-                cy="50"
-                r={radius}
-                fill="none"
-                stroke="#3b82f6"
-                strokeWidth="8"
-                strokeDasharray={strokeDasharray}
-                strokeDashoffset={strokeDashoffset}
-                strokeLinecap="round"
-                transform="rotate(-90 50 50)"
-              />
-              <text className="circular-chart__text" x="50" y="50" textAnchor="middle" dy="0.3em">
-                {weeklyPct}%
-              </text>
-              <text className="circular-chart__label" x="50" y="65" textAnchor="middle">
-                Weekly
-              </text>
-            </svg>
-          </div>
-        </div>
-
-        <div className="order-stats__categories">
-          {categories.map((category, index) => (
-            <div key={index} className="category-item">
-              <div className="category-item__icon">{category.icon}</div>
-              <div className="category-item__content">
-                <div className="category-item__name">{category.name}</div>
-                <div className="category-item__items">{category.items}</div>
+      <ul className="order-card__categories">
+        {Array.isArray(data.categories) && data.categories.length > 0 ? (
+          data.categories.map((category, idx) => (
+            <li key={`${category.name}-${idx}`} className="order-card__item">
+              <div>
+                <strong>{category.name}</strong>
+                <p className="desc">{category.description}</p>
               </div>
-              <div className="category-item__sales">{formatValue(category.sales)}</div>
+              <span className="value">{formatValue(category.value)}</span>
+            </li>
+          ))
+        ) : (
+          <li className="order-card__item">
+            <div>
+              <strong>No categories available</strong>
+              <p className="desc">Categories data is missing</p>
             </div>
-          ))}
-        </div>
-      </div>
+            <span className="value">--</span>
+          </li>
+        )}
+      </ul>
     </section>
   );
 }

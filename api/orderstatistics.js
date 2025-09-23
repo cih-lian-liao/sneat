@@ -3,18 +3,14 @@ export const config = { runtime: 'nodejs' };
 const mongoose = require('mongoose');
 
 const OrderStatisticsSchema = new mongoose.Schema({
-  title: { type: String, default: 'Order Statistics' },
-  totalSales: { type: Number, required: true },
-  totalOrders: { type: Number, required: true },
-  weeklyPercentage: { type: Number, required: true },
+  totalSales: { type: Number, required: true, default: 42820 },
+  totalOrders: { type: Number, required: true, default: 8258 },
+  weeklyPercent: { type: Number, required: true, default: 38 },
   categories: [{
     name: { type: String, required: true },
-    icon: { type: String, required: true },
-    items: { type: String, required: true },
-    sales: { type: Number, required: true }
-  }],
-  currency: { type: String, default: 'USD' },
-  lastUpdated: { type: Date, default: Date.now }
+    description: { type: String, required: true },
+    value: { type: Number, required: true }
+  }]
 }, { timestamps: true, collection: 'orderstatistics' });
 
 let OrderStatistics;
@@ -25,7 +21,7 @@ try {
 }
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGIN || '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
@@ -41,22 +37,19 @@ export default async function handler(req, res) {
     const doc = await OrderStatistics.findOne({}).lean();
     if (!doc) {
       return res.json({
-        title: 'Order Statistics',
         totalSales: 42820,
         totalOrders: 8258,
-        weeklyPercentage: 38,
+        weeklyPercent: 38,
         categories: [
-          { name: 'Electronic', icon: '📱', items: 'Mobile, Earbuds, TV', sales: 82500 },
-          { name: 'Fashion', icon: '👕', items: 'Tshirt, Jeans, Shoes', sales: 23800 },
-          { name: 'Decor', icon: '🏠', items: 'Fine Art, Dining', sales: 849 },
-          { name: 'Sports', icon: '⚽', items: 'Football, Cricket Kit', sales: 99 }
-        ],
-        currency: 'USD',
-        debug: 'No data found, using default'
+          { name: 'Electronic', description: 'Mobile, Earbuds, TV', value: 82500 },
+          { name: 'Fashion', description: 'Tshirt, Jeans, Shoes', value: 23800 },
+          { name: 'Decor', description: 'Fine Art, Dining', value: 849 },
+          { name: 'Sports', description: 'Football, Cricket Kit', value: 99 }
+        ]
       });
     }
     
-    res.json({ ...doc, debug: 'Data fetched from MongoDB successfully' });
+    res.json(doc);
   } catch (err) {
     res.status(500).json({ error: '取得 OrderStatistics 失敗: ' + err.message });
   }
