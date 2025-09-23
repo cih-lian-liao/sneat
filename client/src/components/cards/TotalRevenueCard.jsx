@@ -97,6 +97,7 @@ export default function TotalRevenueCard() {
   const chartData = data.chartData || {};
   const growthMetrics = data.growthMetrics || {};
   const revenueCards = data.revenueCards || [];
+  const useSimpleChart = true; // 使用更簡單的條狀圖呈現
 
   // 調試日誌
   console.log('Total Revenue Data:', data);
@@ -132,67 +133,63 @@ export default function TotalRevenueCard() {
       <div className="tr-content">
         {/* 左側：柱狀圖區域 */}
         <div className="tr-chart-section">
-          <div className="tr-chart-header">
-            <div className="tr-chart-legend">
-              <div className="tr-legend-item">
-                <div className="tr-legend-dot tr-legend-dot--blue"></div>
-                <span>2024</span>
-              </div>
-              <div className="tr-legend-item">
-                <div className="tr-legend-dot tr-legend-dot--light-blue"></div>
-                <span>2023</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="tr-chart-container">
-            <div className="tr-chart-y-axis">
-              <div className="y-label">30</div>
-              <div className="y-label">20</div>
-              <div className="y-label">10</div>
-              <div className="y-label">0</div>
-              <div className="y-label">-10</div>
-              <div className="y-label">-20</div>
-            </div>
-            
-            <div className="tr-chart-bars">
+          {useSimpleChart ? (
+            <div className="tr-simple-chart">
               {(chartData.months || []).map((month, index) => {
-                const value2024 = chartData.data2024?.[index] || 0;
-                const value2023 = chartData.data2023?.[index] || 0;
-                
-                // 計算柱狀圖高度（基於最大值的比例）
-                const height2024 = Math.abs(value2024) / maxValue * 80; // 80% 最大高度
-                const height2023 = Math.abs(value2023) / maxValue * 80;
-                
-                // 調試日誌
-                console.log(`Month ${month}: 2024=${value2024} (height=${height2024}px), 2023=${value2023} (height=${height2023}px)`);
-                
+                const value = chartData.data2024?.[index] ?? 0; // 單一序列：使用 2024
+                const simpleMax = Math.max(...(chartData.data2024 || [0]));
+                const height = simpleMax > 0 ? (value / simpleMax) * 100 : 0;
                 return (
-                  <div key={month} className="tr-chart-month">
-                    <div className="tr-month-bars">
-                      <div 
-                        className="tr-chart-bar tr-chart-bar--2024" 
-                        style={{ 
-                          height: `${height2024}px`,
-                          transform: value2024 >= 0 ? 'translateY(0)' : 'translateY(100%)'
-                        }}
-                        title={`2024: ${value2024}`}
-                      ></div>
-                      <div 
-                        className="tr-chart-bar tr-chart-bar--2023" 
-                        style={{ 
-                          height: `${height2023}px`,
-                          transform: value2023 >= 0 ? 'translateY(0)' : 'translateY(100%)'
-                        }}
-                        title={`2023: ${value2023}`}
-                      ></div>
-                    </div>
-                    <div className="tr-month-label">{month}</div>
+                  <div key={month} className="tr-simple-col">
+                    <div className="tr-simple-bar" style={{ height: `${height}%` }} title={`${month}: ${value}`}></div>
+                    <div className="tr-simple-label">{month}</div>
                   </div>
                 );
               })}
             </div>
-          </div>
+          ) : (
+            <>
+              <div className="tr-chart-header">
+                <div className="tr-chart-legend">
+                  <div className="tr-legend-item">
+                    <div className="tr-legend-dot tr-legend-dot--blue"></div>
+                    <span>2024</span>
+                  </div>
+                  <div className="tr-legend-item">
+                    <div className="tr-legend-dot tr-legend-dot--light-blue"></div>
+                    <span>2023</span>
+                  </div>
+                </div>
+              </div>
+              <div className="tr-chart-container">
+                <div className="tr-chart-y-axis">
+                  <div className="y-label">30</div>
+                  <div className="y-label">20</div>
+                  <div className="y-label">10</div>
+                  <div className="y-label">0</div>
+                  <div className="y-label">-10</div>
+                  <div className="y-label">-20</div>
+                </div>
+                <div className="tr-chart-bars">
+                  {(chartData.months || []).map((month, index) => {
+                    const value2024 = chartData.data2024?.[index] || 0;
+                    const value2023 = chartData.data2023?.[index] || 0;
+                    const height2024 = Math.abs(value2024) / maxValue * 80;
+                    const height2023 = Math.abs(value2023) / maxValue * 80;
+                    return (
+                      <div key={month} className="tr-chart-month">
+                        <div className="tr-month-bars">
+                          <div className="tr-chart-bar tr-chart-bar--2024" style={{ height: `${height2024}px`, transform: value2024 >= 0 ? 'translateY(0)' : 'translateY(100%)' }} title={`2024: ${value2024}`}></div>
+                          <div className="tr-chart-bar tr-chart-bar--2023" style={{ height: `${height2023}px`, transform: value2023 >= 0 ? 'translateY(0)' : 'translateY(100%)' }} title={`2023: ${value2023}`}></div>
+                        </div>
+                        <div className="tr-month-label">{month}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         {/* 右側：統計區域 */}
