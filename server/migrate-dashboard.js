@@ -59,6 +59,7 @@ const DashboardDataSchema = new mongoose.Schema({
     selectedYear: { type: String, default: '2025' },
     chartData: {
       months: [{ type: String, required: true }],
+      data2025: [{ type: Number }],
       data2024: [{ type: Number, required: true }],
       data2023: [{ type: Number, required: true }]
     },
@@ -274,6 +275,7 @@ async function migrateData() {
         selectedYear: '2025',
         chartData: {
           months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+          data2025: [20, 12, 22, 30, 19, 14, 18],
           data2024: [17, 5, 14, 28, 17, 10, 8],
           data2023: [12, 18, 10, 14, 3, 17, 15]
         },

@@ -136,8 +136,10 @@ export default function TotalRevenueCard() {
           {useSimpleChart ? (
             <div className="tr-simple-chart">
               {(chartData.months || []).map((month, index) => {
-                const value = chartData.data2024?.[index] ?? 0; // 單一序列：使用 2024
-                const simpleMax = Math.max(1, ...((chartData.data2024 || []).map(v => Math.abs(v))));
+                const seriesKey = selectedYear === '2025' ? 'data2025' : (selectedYear === '2024' ? 'data2024' : 'data2023');
+                const series = chartData[seriesKey] || [];
+                const value = series[index] ?? 0;
+                const simpleMax = Math.max(1, ...((series).map(v => Math.abs(v))));
                 const height = simpleMax > 0 ? (value / simpleMax) * 100 : 0;
                 return (
                   <div key={month} className="tr-simple-col">
