@@ -18,14 +18,19 @@ export default function SalesStatCard() {
         console.error('Error fetching sales data:', error);
         setError(error.message);
         
-        // 使用 MongoDB Atlas 的實際數據作為備用
+        // 使用備援數據
         setData({
-          title: "Sales",
-          amount: 4679,
-          changePct: 28.14,
-          currency: "USD",
-          iconUrl: "https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png",
-          asOf: "2025-08-24T00:00:00.000Z"
+          totalSales: 125000,
+          changePct: 8.2,
+          changeType: 'increase',
+          chartData: [
+            { month: 'Jan', sales: 120000 },
+            { month: 'Feb', sales: 135000 },
+            { month: 'Mar', sales: 125000 },
+            { month: 'Apr', sales: 140000 },
+            { month: 'May', sales: 130000 },
+            { month: 'Jun', sales: 145000 }
+          ]
         });
         setError('');
       } finally {
@@ -51,10 +56,10 @@ export default function SalesStatCard() {
     );
   }
 
-  const title = data.title || "Sales";
-  const amount = data.amount || 0;
+  const title = "Sales";
+  const amount = data.totalSales || 0;
   const changePct = data.changePct || 0;
-  const isUp = changePct >= 0;
+  const isUp = data.changeType === 'increase';
 
   return (
     <section className="card card--sales-analysis sales-stat">

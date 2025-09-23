@@ -30,12 +30,13 @@ export default function ProfitReportCard() {
   if (loading) return <section className="card card--profit-report"><div>載入中...</div></section>;
   if (error) return <section className="card card--profit-report"><div style={{color:'red'}}>錯誤: {error}</div></section>;
 
-  const title = data.title || 'Profit Report';
-  const year = data.year || 2025;
-  const value = data.value || 0;
+  const title = 'Profit Report';
+  const year = 2025;
+  const value = data.totalProfit || 0;
   const pct = data.changePct ?? 0;
   const up = (data.changeType || 'increase') === 'increase';
-  const chart = Array.isArray(data.chart) && data.chart.length ? data.chart : [10,60,20,55,50,90];
+  const chart = Array.isArray(data.breakdown) && data.breakdown.length ? 
+    data.breakdown.map(item => item.percentage) : [10,60,20,55,50,90];
 
   const formatMoney = (v) => v >= 1000 ? `$${Math.round(v/1000)}k` : `$${v}`;
 
