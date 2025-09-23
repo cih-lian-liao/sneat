@@ -130,8 +130,8 @@ export default function TotalRevenueCard() {
                 const value2023 = chartData.data2023?.[index] || 0;
                 
                 // 計算柱狀圖高度（基於最大值的比例）
-                const height2024 = Math.abs(value2024) / maxValue * 100; // 100% 最大高度
-                const height2023 = Math.abs(value2023) / maxValue * 100;
+                const height2024 = Math.abs(value2024) / maxValue * 80; // 80% 最大高度
+                const height2023 = Math.abs(value2023) / maxValue * 80;
                 
                 return (
                   <div key={month} className="tr-chart-month">
@@ -139,7 +139,7 @@ export default function TotalRevenueCard() {
                       <div 
                         className="tr-chart-bar tr-chart-bar--2024" 
                         style={{ 
-                          height: `${height2024}%`,
+                          height: `${height2024}px`,
                           transform: value2024 >= 0 ? 'translateY(0)' : 'translateY(100%)'
                         }}
                         title={`2024: ${value2024}`}
@@ -147,7 +147,7 @@ export default function TotalRevenueCard() {
                       <div 
                         className="tr-chart-bar tr-chart-bar--2023" 
                         style={{ 
-                          height: `${height2023}%`,
+                          height: `${height2023}px`,
                           transform: value2023 >= 0 ? 'translateY(0)' : 'translateY(100%)'
                         }}
                         title={`2023: ${value2023}`}

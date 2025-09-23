@@ -165,6 +165,7 @@
   position: absolute;
   bottom: 50%; /* Align to 0 line */
   transform-origin: bottom;
+  min-height: 2px; /* 確保最小高度可見 */
 }
 
 .tr-chart-bar--2024 {
