@@ -64,7 +64,7 @@
   grid-template-columns: repeat(7, 1fr);
   align-items: end;
   gap: 10px;
-  height: 220px; /* 提高高度以提升可見性 */
+  height: 320px; /* 提高高度以提升可見性 */
   background: #f8fafc;
   border-radius: 8px;
   padding: 16px;
