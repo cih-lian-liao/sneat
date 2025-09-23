@@ -1,0 +1,25 @@
+.crm-top-sales-card{ background:#fff; border:1px solid #eee; border-radius:12px; padding:16px; display:flex; flex-direction:column; gap:12px; }
+.crm-top-sales-card.error{ background:#fef2f2; border-color:#ef4444; }
+
+.crm-top-sales-card__header{ display:flex; align-items:center; justify-content:space-between; }
+.crm-top-sales-card__title{ font-weight:800; font-size:18px; color:#111827; }
+.crm-top-sales-card__options{ border:none; background:transparent; font-size:22px; color:#9ca3af; cursor:pointer; }
+
+.crm-top-sales-card__list{ display:flex; flex-direction:column; gap:18px; margin-top:6px; }
+.crm-top-sales-card__row{ display:flex; align-items:center; justify-content:space-between; }
+.crm-top-sales-card__left{ display:flex; align-items:center; gap:14px; }
+.crm-top-sales-card__avatar{ width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; }
+.crm-top-sales-card__avatar-icon{ font-size:22px; opacity:.9; }
+.crm-top-sales-card__text{ display:flex; flex-direction:column; gap:2px; }
+.crm-top-sales-card__name{ font-size:20px; font-weight:800; color:#374151; }
+.crm-top-sales-card__brand{ color:#9ca3af; font-weight:700; }
+.crm-top-sales-card__amount{ font-weight:800; color:#6b7280; font-size:22px; }
+
+@media (prefers-color-scheme: dark){
+  .crm-top-sales-card{ background:#111827; border-color:#1f2937; }
+  .crm-top-sales-card__title{ color:#e5e7eb; }
+  .crm-top-sales-card__name{ color:#e5e7eb; }
+  .crm-top-sales-card__amount{ color:#9ca3af; }
+}
+
+
