@@ -20,9 +20,10 @@
 /* 主要內容區域 */
 .total-revenue__content {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 32px;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
   flex: 1;
+  align-items: start;
 }
 
 /* 左側：柱狀圖區域 */
@@ -75,11 +76,11 @@
 /* 圖表容器 */
 .chart-container {
   display: flex;
-  gap: 16px;
-  height: 240px;
+  gap: 12px;
+  height: 200px;
   background: #f8fafc;
   border-radius: 8px;
-  padding: 16px;
+  padding: 12px;
 }
 
 .chart-y-axis {
@@ -119,8 +120,8 @@
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  height: 200px;
-  justify-content: center;
+  height: 160px;
+  justify-content: flex-end;
   position: relative;
 }
 
@@ -150,7 +151,8 @@
 .total-revenue__stats-section {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
+  min-height: 200px;
 }
 
 /* 年份選擇器 */
@@ -187,13 +189,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .growth-gauge {
   position: relative;
-  width: 120px;
-  height: 60px;
+  width: 100px;
+  height: 50px;
 }
 
 .growth-gauge__svg {
@@ -211,7 +213,7 @@
 }
 
 .growth-gauge__percentage {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   color: #1f2937;
   line-height: 1;
@@ -243,15 +245,15 @@
 .revenue-cards {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .revenue-card {
   display: flex;
   align-items: center;
-  padding: 12px;
+  padding: 8px;
   background: #f8fafc;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid #e5e7eb;
   transition: all 0.2s ease;
 }
@@ -262,16 +264,16 @@
 }
 
 .revenue-card__icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   color: white;
-  margin-right: 12px;
+  margin-right: 8px;
 }
 
 .revenue-card__content {
@@ -279,13 +281,13 @@
 }
 
 .revenue-card__year {
-  font-size: 12px;
+  font-size: 11px;
   color: #6b7280;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 
 .revenue-card__amount {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   color: #1f2937;
 }
@@ -309,59 +311,6 @@
   }
   
   .chart-container {
-    height: 200px;
-    padding: 12px;
-  }
-  
-  .chart-bars {
-    gap: 6px;
-  }
-  
-  .chart-bar {
-    width: 16px;
-  }
-  
-  .month-bars {
-    height: 160px;
-  }
-  
-  .total-revenue__stats-section {
-    gap: 20px;
-  }
-  
-  .growth-gauge {
-    width: 100px;
-    height: 50px;
-  }
-  
-  .growth-gauge__percentage {
-    font-size: 18px;
-  }
-  
-  .revenue-cards {
-    flex-direction: row;
-    gap: 8px;
-  }
-  
-  .revenue-card {
-    flex: 1;
-    flex-direction: column;
-    text-align: center;
-    padding: 8px;
-  }
-  
-  .revenue-card__icon {
-    margin-right: 0;
-    margin-bottom: 8px;
-  }
-}
-
-@media (max-width: 480px) {
-  .card--total-revenue {
-    padding: 12px;
-  }
-  
-  .chart-container {
     height: 180px;
     padding: 10px;
   }
@@ -378,13 +327,66 @@
     height: 140px;
   }
   
+  .total-revenue__stats-section {
+    gap: 20px;
+  }
+  
   .growth-gauge {
     width: 80px;
     height: 40px;
   }
   
   .growth-gauge__percentage {
-    font-size: 16px;
+    font-size: 14px;
+  }
+  
+  .revenue-cards {
+    flex-direction: row;
+    gap: 8px;
+  }
+  
+  .revenue-card {
+    flex: 1;
+    flex-direction: column;
+    text-align: center;
+    padding: 6px;
+  }
+  
+  .revenue-card__icon {
+    margin-right: 0;
+    margin-bottom: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card--total-revenue {
+    padding: 12px;
+  }
+  
+  .chart-container {
+    height: 160px;
+    padding: 8px;
+  }
+  
+  .chart-bars {
+    gap: 3px;
+  }
+  
+  .chart-bar {
+    width: 12px;
+  }
+  
+  .month-bars {
+    height: 120px;
+  }
+  
+  .growth-gauge {
+    width: 70px;
+    height: 35px;
+  }
+  
+  .growth-gauge__percentage {
+    font-size: 12px;
   }
   
   .revenue-cards {
@@ -394,11 +396,11 @@
   .revenue-card {
     flex-direction: row;
     text-align: left;
-    padding: 10px;
+    padding: 8px;
   }
   
   .revenue-card__icon {
-    margin-right: 10px;
+    margin-right: 8px;
     margin-bottom: 0;
   }
 }
