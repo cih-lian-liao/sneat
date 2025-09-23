@@ -36,19 +36,40 @@ export default function CustomerRatingsCard() {
   if (error) return <section className="card card--ratings error">錯誤: {error}</section>;
 
   const { title = "Customer Ratings", rating = 4.0, changePoints = 5.0 } = data;
-  const { months = [], current = [], previous = [] } = data.chartData || {};
+  const { months = [], current = [] } = data.chartData || {};
 
   const fullStars = Math.floor(rating);
   const hasHalf = rating - fullStars >= 0.5;
   const empty = 5 - fullStars - (hasHalf ? 1 : 0);
 
-  const maxVal = Math.max(1, ...current, ...previous);
-  const points = (series) =>
+  const maxVal = Math.max(1, ...current);
+  const getPoints = (series) =>
     series.map((v, i) => {
-      const x = (i / (series.length - 1)) * 100;
+      const x = (i / (series.length - 1 || 1)) * 100;
       const y = 100 - (v / maxVal) * 100;
-      return `${x},${y}`;
+      return { x, y };
     });
+
+  // 以 Catmull-Rom 轉貝茲曲線，製作平滑單條曲線
+  const buildSmoothPath = (series) => {
+    const pts = getPoints(series);
+    if (pts.length === 0) return '';
+    if (pts.length === 1) return `M ${pts[0].x},${pts[0].y}`;
+    let d = `M ${pts[0].x},${pts[0].y}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = i > 0 ? pts[i - 1] : pts[0];
+      const p1 = pts[i];
+      const p2 = pts[i + 1];
+      const p3 = i + 2 < pts.length ? pts[i + 2] : p2;
+      // Catmull-Rom to Bezier
+      const cp1x = p1.x + (p2.x - p0.x) / 6;
+      const cp1y = p1.y + (p2.y - p0.y) / 6;
+      const cp2x = p2.x - (p3.x - p1.x) / 6;
+      const cp2y = p2.y - (p3.y - p1.y) / 6;
+      d += ` C ${cp1x},${cp1y} ${cp2x},${cp2y} ${p2.x},${p2.y}`;
+    }
+    return d;
+  };
 
   return (
     <section className="card card--ratings">
@@ -81,35 +102,32 @@ export default function CustomerRatingsCard() {
             <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
               <feDropShadow dx="0" dy="6" stdDeviation="4" floodColor="#8b5cf6" floodOpacity="0.15" />
             </filter>
+            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#6366f1" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+            </linearGradient>
           </defs>
-          {/* previous dashed */}
-          <polyline
-            points={points(previous).join(" ")}
-            fill="none"
-            stroke="#d1d5db"
-            strokeWidth="2"
-            strokeDasharray="4 4"
+          {/* 填充區域 */}
+          <path
+            d={`${buildSmoothPath(current)} L 100,100 L 0,100 Z`}
+            fill="url(#lineGrad)"
+            stroke="none"
           />
-          {/* current solid with shadow */}
-          <polyline
-            points={points(current).join(" ")}
+          {/* 單條平滑曲線 */}
+          <path
+            d={buildSmoothPath(current)}
             fill="none"
             stroke="#6366f1"
             strokeWidth="3"
             filter="url(#softShadow)"
           />
-          {/* highlight dots */}
-          {current.map((v, i) => (
-            <circle
-              key={i}
-              cx={(i / (current.length - 1)) * 100}
-              cy={100 - (v / maxVal) * 100}
-              r={i === 2 || i === current.length - 1 ? 3.5 : 0}
-              fill="#fff"
-              stroke="#111827"
-              strokeWidth={i === 2 ? 1 : 0}
-            />
-          ))}
+          {/* 兩個重點節點：三月黑環、最後一個紫點 */}
+          {current.length > 0 && (
+            <>
+              <circle cx={(2 / (current.length - 1)) * 100} cy={100 - (current[2] / maxVal) * 100} r="4" fill="#fff" stroke="#000" strokeWidth="1" />
+              <circle cx={100} cy={100 - (current[current.length - 1] / maxVal) * 100} r="4" fill="#6366f1" stroke="#fff" strokeWidth="2" />
+            </>
+          )}
         </svg>
         <div className="ratings__labels">
           {months.map((m) => (
