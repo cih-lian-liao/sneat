@@ -8,6 +8,7 @@ import TotalRevenueCard from "../components/cards/TotalRevenueCard";
 import RevenueCard from "../components/cards/RevenueCard";
 import ProfitReportCard from "../components/cards/ProfitReportCard";
 import OrderStatisticsCard from "../components/cards/OrderStatisticsCard";
+import UserStatisticsCard from "../components/cards/UserStatisticsCard";
 export default function Analytics() {
   return (
     <div className="analytics-grid">
@@ -66,6 +67,9 @@ export default function Analytics() {
         <header className="card__header">Visit & Sources</header>
         <div className="chart-box"></div>
       </section>
+
+      {/* row-5 - 新卡片範例 */}
+      <UserStatisticsCard />
     </div>
   );
 }

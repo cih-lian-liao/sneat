@@ -84,6 +84,21 @@ const DashboardDataSchema = new mongoose.Schema({
       period: { type: String, required: true },
       orders: { type: Number, required: true }
     }]
+  },
+  
+  // User Statistics (新卡片範例)
+  userStatistics: {
+    totalUsers: { type: Number, default: 0 },
+    activeUsers: { type: Number, default: 0 },
+    newUsers: { type: Number, default: 0 },
+    changePct: { type: Number, default: 0 },
+    changeType: { type: String, enum: ['increase', 'decrease'], default: 'increase' },
+    userTypes: [{
+      type: { type: String, required: true },
+      count: { type: Number, required: true },
+      percentage: { type: Number, required: true },
+      icon: { type: String, required: true }
+    }]
   }
 }, { 
   timestamps: true, 
@@ -220,6 +235,18 @@ function getDefaultData(card = null) {
         { period: 'Week 2', orders: 350 },
         { period: 'Week 3', orders: 400 },
         { period: 'Week 4', orders: 200 }
+      ]
+    },
+    userStatistics: {
+      totalUsers: 15420,
+      activeUsers: 12350,
+      newUsers: 850,
+      changePct: 15.2,
+      changeType: 'increase',
+      userTypes: [
+        { type: 'Premium', count: 3200, percentage: 20.8, icon: '👑' },
+        { type: 'Standard', count: 8900, percentage: 57.7, icon: '👤' },
+        { type: 'Basic', count: 3320, percentage: 21.5, icon: '🔰' }
       ]
     }
   };
