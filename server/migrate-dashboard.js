@@ -275,7 +275,7 @@ async function migrateData() {
         chartData: {
           months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
           data2024: [17, 5, 14, 28, 17, 10, 8],
-          data2023: [-12, -18, -10, -14, -3, -17, -15]
+          data2023: [12, 18, 10, 14, 3, 17, 15]
         },
         growthMetrics: {
           growthPercentage: 78,
