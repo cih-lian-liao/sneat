@@ -144,6 +144,40 @@ const DashboardDataSchema = new mongoose.Schema({
         avatar: { type: String, required: true }
       }]
     }]
+  },
+
+  // Visit & Sources
+  visitResources: {
+    title: { type: String, default: 'Visit & Sources' },
+    activeTab: { type: String, enum: ['browser', 'operatingSystem', 'country'], default: 'browser' },
+    tabs: [{
+      id: { type: String, required: true },
+      name: { type: String, required: true }
+    }],
+    browserData: [{
+      no: { type: Number, required: true },
+      name: { type: String, required: true },
+      icon: { type: String, required: true },
+      visits: { type: Number, required: true },
+      percentage: { type: Number, required: true },
+      progressBarColor: { type: String, required: true }
+    }],
+    operatingSystemData: [{
+      no: { type: Number, required: true },
+      name: { type: String, required: true },
+      icon: { type: String, required: true },
+      visits: { type: Number, required: true },
+      percentage: { type: Number, required: true },
+      progressBarColor: { type: String, required: true }
+    }],
+    countryData: [{
+      no: { type: Number, required: true },
+      name: { type: String, required: true },
+      flagUrl: { type: String, required: true },
+      visits: { type: Number, required: true },
+      percentage: { type: Number, required: true },
+      progressBarColor: { type: String, required: true }
+    }]
   }
 }, { 
   timestamps: true, 
@@ -432,6 +466,165 @@ async function migrateData() {
                 avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face'
               }
             ]
+          }
+        ]
+      },
+      visitResources: {
+        title: 'Visit & Sources',
+        activeTab: 'browser',
+        tabs: [
+          { id: 'browser', name: 'BROWSER' },
+          { id: 'operatingSystem', name: 'OPERATING SYSTEM' },
+          { id: 'country', name: 'COUNTRY' }
+        ],
+        browserData: [
+          {
+            no: 1,
+            name: 'Chrome',
+            icon: '🌐',
+            visits: 8920,
+            percentage: 64.91,
+            progressBarColor: '#4CAF50'
+          },
+          {
+            no: 2,
+            name: 'Safari',
+            icon: '🧭',
+            visits: 1290,
+            percentage: 19.03,
+            progressBarColor: '#2196F3'
+          },
+          {
+            no: 3,
+            name: 'Firefox',
+            icon: '🦊',
+            visits: 328,
+            percentage: 3.26,
+            progressBarColor: '#03A9F4'
+          },
+          {
+            no: 4,
+            name: 'Edge',
+            icon: '🌊',
+            visits: 142,
+            percentage: 3.99,
+            progressBarColor: '#FF9800'
+          },
+          {
+            no: 5,
+            name: 'Opera',
+            icon: '🎭',
+            visits: 85,
+            percentage: 2.12,
+            progressBarColor: '#F44336'
+          },
+          {
+            no: 6,
+            name: 'Brave',
+            icon: '🦁',
+            visits: 36,
+            percentage: 1.06,
+            progressBarColor: '#0EA5E9'
+          }
+        ],
+        operatingSystemData: [
+          {
+            no: 1,
+            name: 'Windows',
+            icon: '🪟',
+            visits: 475260,
+            percentage: 61.5,
+            progressBarColor: '#4CAF50'
+          },
+          {
+            no: 2,
+            name: 'Mac',
+            icon: '🍎',
+            visits: 89120,
+            percentage: 15.67,
+            progressBarColor: '#8B5CF6'
+          },
+          {
+            no: 3,
+            name: 'Ubuntu',
+            icon: '🐧',
+            visits: 38680,
+            percentage: 5.82,
+            progressBarColor: '#06B6D4'
+          },
+          {
+            no: 4,
+            name: 'Linux',
+            icon: '🐧',
+            visits: 30270,
+            percentage: 5.03,
+            progressBarColor: '#F59E0B'
+          },
+          {
+            no: 5,
+            name: 'Chrome',
+            icon: '🌐',
+            visits: 8340,
+            percentage: 3.25,
+            progressBarColor: '#EF4444'
+          },
+          {
+            no: 6,
+            name: 'Cent',
+            icon: '🌸',
+            visits: 2250,
+            percentage: 1.76,
+            progressBarColor: '#0EA5E9'
+          }
+        ],
+        countryData: [
+          {
+            no: 1,
+            name: 'USA',
+            flagUrl: 'https://flagcdn.com/w40/us.png',
+            visits: 87240,
+            percentage: 38.12,
+            progressBarColor: '#4CAF50'
+          },
+          {
+            no: 2,
+            name: 'Brazil',
+            flagUrl: 'https://flagcdn.com/w40/br.png',
+            visits: 42690,
+            percentage: 28.23,
+            progressBarColor: '#8B5CF6'
+          },
+          {
+            no: 3,
+            name: 'India',
+            flagUrl: 'https://flagcdn.com/w40/in.png',
+            visits: 12580,
+            percentage: 13.82,
+            progressBarColor: '#06B6D4'
+          },
+          {
+            no: 4,
+            name: 'Australia',
+            flagUrl: 'https://flagcdn.com/w40/au.png',
+            visits: 4130,
+            percentage: 12.72,
+            progressBarColor: '#F59E0B'
+          },
+          {
+            no: 5,
+            name: 'China',
+            flagUrl: 'https://flagcdn.com/w40/cn.png',
+            visits: 2210,
+            percentage: 7.11,
+            progressBarColor: '#EF4444'
+          },
+          {
+            no: 6,
+            name: 'France',
+            flagUrl: 'https://flagcdn.com/w40/fr.png',
+            visits: 1560,
+            percentage: 6.59,
+            progressBarColor: '#0EA5E9'
           }
         ]
       }

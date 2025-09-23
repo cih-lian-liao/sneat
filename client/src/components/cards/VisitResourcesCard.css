@@ -1,0 +1,436 @@
+/* Visit & Sources Card - 現代化設計 */
+.card--visit-resources {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border: 1px solid #f3f4f6;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.card--visit-resources.error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+/* 標題區域 */
+.visit-resources__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.visit-resources__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+/* 標籤頁導航 */
+.visit-resources__tabs {
+  display: flex;
+  gap: 4px;
+  background: #f8fafc;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.tab-button {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tab-button:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.tab-button.active {
+  background: #8b5cf6;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+}
+
+/* 內容區域 */
+.visit-resources__content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.visit-resources__table {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* 表格標題 */
+.table-header {
+  display: grid;
+  grid-template-columns: 40px 1fr 80px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 8px;
+}
+
+.header-cell {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.header-cell:last-child {
+  text-align: left;
+}
+
+/* 表格內容 */
+.table-body {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+  /* Custom Scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.table-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.table-body::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.table-body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.table-body::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* 表格行 */
+.table-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 80px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s ease;
+}
+
+.table-row:hover {
+  background-color: #f9fafb;
+  border-radius: 6px;
+  padding: 12px 8px;
+  margin: 0 -8px;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+/* 表格單元格 */
+.table-cell {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.cell-no {
+  font-weight: 600;
+  color: #6b7280;
+  justify-content: center;
+}
+
+.cell-name {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.cell-visits {
+  font-weight: 600;
+  color: #1f2937;
+  justify-content: flex-end;
+}
+
+.cell-percentage {
+  justify-content: flex-start;
+}
+
+/* 名稱和圖標 */
+.name-with-icon,
+.name-with-flag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item-icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+.flag-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #e5e7eb;
+}
+
+.name-text {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+/* 百分比容器 */
+.percentage-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: #f1f5f9;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.percentage-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* 無數據狀態 */
+.no-data {
+  text-align: center;
+  color: #6b7280;
+  padding: 40px 20px;
+  font-style: italic;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .card--visit-resources {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .visit-resources__title {
+    font-size: 16px;
+  }
+  
+  .visit-resources__tabs {
+    gap: 2px;
+    padding: 2px;
+  }
+  
+  .tab-button {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  
+  .table-header,
+  .table-row {
+    grid-template-columns: 30px 1fr 60px 1fr;
+    gap: 12px;
+  }
+  
+  .header-cell,
+  .table-cell {
+    font-size: 12px;
+  }
+  
+  .item-icon {
+    font-size: 14px;
+    width: 16px;
+  }
+  
+  .flag-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .percentage-container {
+    gap: 8px;
+  }
+  
+  .progress-bar {
+    height: 6px;
+  }
+  
+  .percentage-text {
+    font-size: 11px;
+    min-width: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .visit-resources__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .visit-resources__tabs {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .tab-button {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .table-header,
+  .table-row {
+    grid-template-columns: 25px 1fr 50px 1fr;
+    gap: 8px;
+  }
+  
+  .header-cell:last-child {
+    display: none;
+  }
+  
+  .cell-percentage {
+    display: none;
+  }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .card--visit-resources {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .visit-resources__title {
+    color: #f9fafb;
+  }
+  
+  .visit-resources__tabs {
+    background: #374151;
+  }
+  
+  .tab-button {
+    color: #9ca3af;
+  }
+  
+  .tab-button:hover {
+    background: #4b5563;
+    color: #d1d5db;
+  }
+  
+  .tab-button.active {
+    background: #8b5cf6;
+    color: #fff;
+  }
+  
+  .table-header {
+    border-bottom-color: #4b5563;
+  }
+  
+  .header-cell {
+    color: #9ca3af;
+  }
+  
+  .table-row {
+    border-bottom-color: #374151;
+  }
+  
+  .table-row:hover {
+    background-color: #374151;
+  }
+  
+  .cell-no {
+    color: #9ca3af;
+  }
+  
+  .cell-name {
+    color: #f9fafb;
+  }
+  
+  .cell-visits {
+    color: #f9fafb;
+  }
+  
+  .name-text {
+    color: #f9fafb;
+  }
+  
+  .progress-bar {
+    background: #374151;
+  }
+  
+  .percentage-text {
+    color: #9ca3af;
+  }
+  
+  .no-data {
+    color: #9ca3af;
+  }
+  
+  .table-body::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  
+  .table-body::-webkit-scrollbar-thumb {
+    background: #4b5563;
+  }
+  
+  .table-body::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+}
