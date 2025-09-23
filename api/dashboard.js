@@ -305,7 +305,8 @@ export default async function handler(req, res) {
       
       const cardData = doc[card];
       if (!cardData) {
-        return res.status(404).json({ error: `Card '${card}' not found` });
+        // 若雲端文件尚未建立該卡片欄位，返回預設資料避免 404
+        return res.json(getDefaultData(card));
       }
       
       return res.json(cardData);
