@@ -470,18 +470,18 @@ function getDefaultData(card = null) {
               name: 'John Doe',
               avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face'
             },
-            {
-              name: 'Jane Smith',
-              avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face'
-            },
+              {
+                name: 'Jane Smith',
+                avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face'
+              },
             {
               name: 'Mike Johnson',
               avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face'
             },
-            {
-              name: 'Sarah Wilson',
-              avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face'
-            },
+              {
+                name: 'Sarah Wilson',
+                avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=40&h=40&fit=crop&crop=face'
+              },
             {
               name: 'David Brown',
               avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face'
