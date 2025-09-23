@@ -184,6 +184,19 @@ const DashboardDataSchema = new mongoose.Schema({
     gaugePct: { type: Number, default: 25 } // 25% Average
   },
 
+  // CRM - Top Products by Sales
+  crmTopSales: {
+    title: { type: String, default: 'Top Products by Sales' },
+    items: [{
+      id: { type: String, required: true },
+      name: { type: String, required: true },
+      brand: { type: String, required: true },
+      amount: { type: Number, required: true },
+      icon: { type: String, default: '🛒' },
+      bg: { type: String, default: '#e5e7eb' }
+    }]
+  },
+
     // Activity Timeline
     activityTimeline: {
       title: { type: String, default: 'Activity Timeline' },
@@ -559,6 +572,16 @@ function getDefaultData(card = null) {
       total: 4234,
       changePct: 12.8,
       gaugePct: 25
+    },
+    crmTopSales: {
+      title: 'Top Products by Sales',
+      items: [
+        { id: '1', name: 'Oneplus Nord', brand: 'Oneplus', amount: 98348, icon: '📱', bg: '#fee2e2' },
+        { id: '2', name: 'Smart Band 4', brand: 'Xiaomi', amount: 15459, icon: '⌚️', bg: '#e9d5ff' },
+        { id: '3', name: 'Surface Pro X', brand: 'Microsoft', amount: 4589, icon: '💻', bg: '#cffafe' },
+        { id: '4', name: 'iPhone 13', brand: 'Apple', amount: 84345, icon: '📱', bg: '#dcfce7' },
+        { id: '5', name: 'Bluetooth Earphone', brand: 'Beats', amount: 103748, icon: '🎧', bg: '#e5e7eb' }
+      ]
     },
     activityTimeline: {
       title: 'Activity Timeline',
