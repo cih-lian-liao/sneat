@@ -1,14 +1,12 @@
 import React from "react";
 import "./CRM.css";
+import CustomerRatingsCard from "../components/cards/CustomerRatingsCard";
 
 export default function CRM() {
   return (
     <div className="crm-grid">
       {/* row-1 */}
-      <section className="card card--ratings">
-        <header className="card__header">Customer Ratings</header>
-        <div className="chart-box">{/* <RatingsChart /> */}</div>
-      </section>
+      <CustomerRatingsCard />
 
       <section className="card card--overview">
         <header className="card__header">Overview & Sales Activity</header>

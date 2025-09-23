@@ -208,6 +208,18 @@ const DashboardDataSchema = new mongoose.Schema({
         percentage: { type: Number, required: true },
         progressBarColor: { type: String, required: true }
       }]
+    },
+
+    // Customer Ratings (CRM)
+    customerRatings: {
+      title: { type: String, default: 'Customer Ratings' },
+      rating: { type: Number, default: 4.0 },
+      changePoints: { type: Number, default: 5.0 }, // +5.0 Points from last month
+      chartData: {
+        months: [{ type: String, required: true }],
+        current: [{ type: Number, required: true }],
+        previous: [{ type: Number, required: true }]
+      }
     }
   
 }, { 
@@ -711,6 +723,16 @@ function getDefaultData(card = null) {
           progressBarColor: '#0EA5E9'
         }
       ]
+    },
+    customerRatings: {
+      title: 'Customer Ratings',
+      rating: 4.0,
+      changePoints: 5.0,
+      chartData: {
+        months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        current: [2.2, 1.8, 4.1, 3.2, 3.4, 2.1, 4.5],
+        previous: [1.6, 2.4, 2.2, 1.9, 1.7, 1.5, 2.0]
+      }
     }
   };
   
