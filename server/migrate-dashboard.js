@@ -121,6 +121,29 @@ const DashboardDataSchema = new mongoose.Schema({
       isPositive: { type: Boolean, required: true },
       date: { type: Date, default: Date.now }
     }]
+  },
+  activityTimeline: {
+    title: { type: String, default: 'Activity Timeline' },
+    activities: [{
+      id: { type: String, required: true },
+      title: { type: String, required: true },
+      description: { type: String, required: true },
+      timestamp: { type: String, required: true },
+      dotColor: { type: String, required: true },
+      type: { type: String, enum: ['invoice', 'meeting', 'project'], required: true },
+      attachments: [{
+        type: { type: String, enum: ['file', 'avatar'], required: true },
+        name: { type: String, required: true },
+        icon: { type: String },
+        avatar: { type: String },
+        role: { type: String },
+        company: { type: String }
+      }],
+      teamMembers: [{
+        name: { type: String, required: true },
+        avatar: { type: String, required: true }
+      }]
+    }]
   }
 }, { 
   timestamps: true, 
@@ -343,6 +366,72 @@ async function migrateData() {
             iconColor: '#f59e0b',
             isPositive: false,
             date: new Date('2024-01-10')
+          }
+        ]
+      },
+      activityTimeline: {
+        title: 'Activity Timeline',
+        activities: [
+          {
+            id: '1',
+            title: '12 Invoices have been paid',
+            description: 'Invoices have been paid to the company',
+            timestamp: '12 min ago',
+            dotColor: '#8b5cf6',
+            type: 'invoice',
+            attachments: [
+              {
+                type: 'file',
+                name: 'Invoices.pdf',
+                icon: '📄'
+              }
+            ]
+          },
+          {
+            id: '2',
+            title: 'Client Meeting',
+            description: 'Project meeting with john @10:15am',
+            timestamp: '45 min ago',
+            dotColor: '#f59e0b',
+            type: 'meeting',
+            attachments: [
+              {
+                type: 'avatar',
+                name: 'Steven Nash (Client)',
+                avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face',
+                role: 'CEO of ThemeSelection'
+              }
+            ]
+          },
+          {
+            id: '3',
+            title: 'Create a new project for client',
+            description: '5 team members in a project',
+            timestamp: '2 days ago',
+            dotColor: '#06b6d4',
+            type: 'project',
+            teamMembers: [
+              {
+                name: 'John Doe',
+                avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face'
+              },
+              {
+                name: 'Jane Smith',
+                avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face'
+              },
+              {
+                name: 'Mike Johnson',
+                avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face'
+              },
+              {
+                name: 'Sarah Wilson',
+                avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face'
+              },
+              {
+                name: 'David Brown',
+                avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face'
+              }
+            ]
           }
         ]
       }

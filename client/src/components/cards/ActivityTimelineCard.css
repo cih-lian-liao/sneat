@@ -1,0 +1,389 @@
+/* Activity Timeline Card - 現代化設計 */
+.timeline {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border: 1px solid #f3f4f6;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.timeline.error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+/* 標題區域 */
+.timeline__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.timeline__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.timeline__options {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.timeline__options:hover {
+  background-color: #f3f4f6;
+}
+
+.options-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.options-dots span {
+  width: 4px;
+  height: 4px;
+  background-color: #6b7280;
+  border-radius: 50%;
+}
+
+/* 時間軸內容 */
+.timeline__content {
+  flex: 1;
+  overflow-y: auto;
+  padding-left: 20px;
+}
+
+.timeline__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.timeline__item:last-child {
+  margin-bottom: 0;
+}
+
+/* 時間軸標記 */
+.timeline__marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.timeline__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #e5e7eb;
+  z-index: 2;
+  position: relative;
+}
+
+.timeline__line {
+  width: 2px;
+  height: 60px;
+  background-color: #e5e7eb;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+/* 活動內容 */
+.timeline__content-item {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+}
+
+.timeline__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.timeline__activity-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+  line-height: 1.4;
+}
+
+.timeline__activity-description {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.timeline__timestamp {
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* 附件區域 */
+.timeline__attachments {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeline__attachment {
+  display: flex;
+  align-items: center;
+}
+
+/* 文件附件 */
+.file-attachment {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.file-icon {
+  font-size: 16px;
+}
+
+.file-name {
+  font-size: 12px;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* 頭像附件 */
+.avatar-attachment {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.avatar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.avatar-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.avatar-role {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* 團隊成員 */
+.team-members {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.team-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.team-avatar:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .timeline {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .timeline__title {
+    font-size: 16px;
+  }
+  
+  .timeline__content {
+    padding-left: 16px;
+  }
+  
+  .timeline__item {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .timeline__dot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .timeline__line {
+    height: 50px;
+  }
+  
+  .timeline__activity-title {
+    font-size: 13px;
+  }
+  
+  .timeline__activity-description {
+    font-size: 12px;
+  }
+  
+  .timeline__timestamp {
+    font-size: 11px;
+  }
+  
+  .avatar-image {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .team-avatar {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .timeline__content-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .timeline__timestamp {
+    align-self: flex-end;
+  }
+}
+
+/* 動畫效果 */
+.timeline__item {
+  transition: all 0.2s ease;
+}
+
+.timeline__item:hover {
+  transform: translateX(4px);
+}
+
+.timeline__dot {
+  transition: all 0.2s ease;
+}
+
+.timeline__item:hover .timeline__dot {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .timeline {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .timeline__title {
+    color: #f9fafb;
+  }
+  
+  .timeline__options:hover {
+    background-color: #374151;
+  }
+  
+  .options-dots span {
+    background-color: #9ca3af;
+  }
+  
+  .timeline__dot {
+    border-color: #1f2937;
+    box-shadow: 0 0 0 2px #4b5563;
+  }
+  
+  .timeline__line {
+    background-color: #4b5563;
+  }
+  
+  .timeline__activity-title {
+    color: #f9fafb;
+  }
+  
+  .timeline__activity-description {
+    color: #9ca3af;
+  }
+  
+  .timeline__timestamp {
+    color: #9ca3af;
+  }
+  
+  .file-attachment {
+    background: #374151;
+    border-color: #4b5563;
+  }
+  
+  .file-name {
+    color: #d1d5db;
+  }
+  
+  .avatar-name {
+    color: #f9fafb;
+  }
+  
+  .avatar-role {
+    color: #9ca3af;
+  }
+}
+
+/* 滾動條樣式 */
+.timeline__content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.timeline__content::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 2px;
+}
+
+.timeline__content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+.timeline__content::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
