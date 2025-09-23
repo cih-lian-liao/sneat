@@ -49,6 +49,8 @@ export default function OrderStatisticsCard() {
     return `$${value}`;
   };
 
+  const weeklyPct = Number.isFinite(data?.weeklyPercent) ? data.weeklyPercent : null;
+
   return (
     <section className="card card--order-statistics">
       <h3 className="order-card__title">Order Statistics</h3>
@@ -62,7 +64,7 @@ export default function OrderStatisticsCard() {
           <p>Total Orders</p>
         </div>
         <div className="order-card__weekly">
-          <div className="circle">{data.weeklyPercent || 0}%</div>
+          <div className="circle">{weeklyPct !== null ? `${weeklyPct}%` : '--'}</div>
           <p>Weekly</p>
         </div>
       </div>
