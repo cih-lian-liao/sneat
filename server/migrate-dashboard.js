@@ -174,18 +174,6 @@ async function migrateData() {
           { period: 'Week 4', orders: 200 }
         ]
       },
-      userStatistics: {
-        totalUsers: 15420,
-        activeUsers: 12350,
-        newUsers: 850,
-        changePct: 15.2,
-        changeType: 'increase',
-        userTypes: [
-          { type: 'Premium', count: 3200, percentage: 20.8, icon: '👑' },
-          { type: 'Standard', count: 8900, percentage: 57.7, icon: '👤' },
-          { type: 'Basic', count: 3320, percentage: 21.5, icon: '🔰' }
-        ]
-      }
     };
     
     // 插入新數據
