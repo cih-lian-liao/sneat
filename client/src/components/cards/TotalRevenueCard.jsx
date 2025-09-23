@@ -137,11 +137,15 @@ export default function TotalRevenueCard() {
             <div className="tr-simple-chart">
               {(chartData.months || []).map((month, index) => {
                 const value = chartData.data2024?.[index] ?? 0; // 單一序列：使用 2024
-                const simpleMax = Math.max(...(chartData.data2024 || [0]));
+                const simpleMax = Math.max(1, ...(chartData.data2024 || [0]));
                 const height = simpleMax > 0 ? (value / simpleMax) * 100 : 0;
                 return (
                   <div key={month} className="tr-simple-col">
-                    <div className="tr-simple-bar" style={{ height: `${height}%` }} title={`${month}: ${value}`}></div>
+                    <div
+                      className="tr-simple-bar"
+                      style={{ height: value > 0 ? `${height}%` : '2px', backgroundColor: '#8b5cf6' }}
+                      title={`${month}: ${value}`}
+                    ></div>
                     <div className="tr-simple-label">{month}</div>
                   </div>
                 );
