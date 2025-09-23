@@ -43,6 +43,7 @@ export default function OrderStatisticsCard() {
   if (error) return <section className="card card--order-statistics error">錯誤: {error}</section>;
 
   const formatValue = (value) => {
+    if (value === undefined || value === null) return '$0';
     if (value >= 1000000) return `$${(value / 1000000).toFixed(1)}M`;
     if (value >= 1000) return `$${(value / 1000).toFixed(1)}k`;
     return `$${value}`;
@@ -68,15 +69,18 @@ export default function OrderStatisticsCard() {
 
       <ul className="order-card__categories">
         {Array.isArray(data.categories) && data.categories.length > 0 ? (
-          data.categories.map((category, idx) => (
-            <li key={`${category.name}-${idx}`} className="order-card__item">
-              <div>
-                <strong>{category.name}</strong>
-                <p className="desc">{category.description}</p>
-              </div>
-              <span className="value">{formatValue(category.value)}</span>
-            </li>
-          ))
+          data.categories.map((category, idx) => {
+            console.log('Category data:', category);
+            return (
+              <li key={`${category.name}-${idx}`} className="order-card__item">
+                <div>
+                  <strong>{category.name}</strong>
+                  <p className="desc">{category.description}</p>
+                </div>
+                <span className="value">{formatValue(category.value)}</span>
+              </li>
+            );
+          })
         ) : (
           <li className="order-card__item">
             <div>

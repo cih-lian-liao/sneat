@@ -35,8 +35,10 @@ export default async function handler(req, res) {
     }
     
     const doc = await OrderStatistics.findOne({}).lean();
+    console.log('MongoDB doc:', doc);
+    
     if (!doc) {
-      return res.json({
+      const fallbackData = {
         totalSales: 42820,
         totalOrders: 8258,
         weeklyPercent: 38,
@@ -46,9 +48,12 @@ export default async function handler(req, res) {
           { name: 'Decor', description: 'Fine Art, Dining', value: 849 },
           { name: 'Sports', description: 'Football, Cricket Kit', value: 99 }
         ]
-      });
+      };
+      console.log('Using fallback data:', fallbackData);
+      return res.json(fallbackData);
     }
     
+    console.log('Returning MongoDB data:', doc);
     res.json(doc);
   } catch (err) {
     res.status(500).json({ error: '取得 OrderStatistics 失敗: ' + err.message });
