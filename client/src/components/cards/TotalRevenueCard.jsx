@@ -24,7 +24,7 @@ export default function TotalRevenueCard() {
           chartData: {
             months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
             data2024: [17, 5, 14, 28, 17, 10, 8], // 2024年數據（正值）
-            data2023: [-12, -18, -10, -14, -3, -17, -15] // 2023年數據（負值）
+            data2023: [12, 18, 10, 14, 3, 17, 15] // 2023年數據（正值）
           },
           growthMetrics: {
             growthPercentage: 78,
@@ -73,6 +73,13 @@ export default function TotalRevenueCard() {
   const chartData = data.chartData || {};
   const growthMetrics = data.growthMetrics || {};
   const revenueCards = data.revenueCards || [];
+
+  // 調試日誌
+  console.log('Total Revenue Data:', data);
+  console.log('Chart Data:', chartData);
+  console.log('Months:', chartData.months);
+  console.log('Data2024:', chartData.data2024);
+  console.log('Data2023:', chartData.data2023);
 
   // 格式化金額顯示
   const formatAmount = (amount) => {
@@ -132,6 +139,9 @@ export default function TotalRevenueCard() {
                 // 計算柱狀圖高度（基於最大值的比例）
                 const height2024 = Math.abs(value2024) / maxValue * 80; // 80% 最大高度
                 const height2023 = Math.abs(value2023) / maxValue * 80;
+                
+                // 調試日誌
+                console.log(`Month ${month}: 2024=${value2024} (height=${height2024}px), 2023=${value2023} (height=${height2023}px)`);
                 
                 return (
                   <div key={month} className="tr-chart-month">
