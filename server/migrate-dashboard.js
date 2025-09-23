@@ -55,12 +55,22 @@ const DashboardDataSchema = new mongoose.Schema({
     }]
   },
   totalRevenue: {
-    total: { type: Number, default: 0 },
-    changePct: { type: Number, default: 0 },
-    changeType: { type: String, enum: ['increase', 'decrease'], default: 'increase' },
-    chartData: [{
-      period: { type: String, required: true },
-      revenue: { type: Number, required: true }
+    title: { type: String, default: 'Total Revenue' },
+    selectedYear: { type: String, default: '2025' },
+    chartData: {
+      months: [{ type: String, required: true }],
+      data2024: [{ type: Number, required: true }],
+      data2023: [{ type: Number, required: true }]
+    },
+    growthMetrics: {
+      growthPercentage: { type: Number, required: true },
+      companyGrowth: { type: Number, required: true }
+    },
+    revenueCards: [{
+      year: { type: String, required: true },
+      amount: { type: Number, required: true },
+      icon: { type: String, required: true },
+      color: { type: String, required: true }
     }]
   },
   orderChart: {
@@ -260,14 +270,30 @@ async function migrateData() {
         ]
       },
       totalRevenue: {
-        total: 125000,
-        changePct: 8.2,
-        changeType: 'increase',
-        chartData: [
-          { period: 'Q1', revenue: 380000 },
-          { period: 'Q2', revenue: 420000 },
-          { period: 'Q3', revenue: 450000 },
-          { period: 'Q4', revenue: 480000 }
+        title: 'Total Revenue',
+        selectedYear: '2025',
+        chartData: {
+          months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+          data2024: [17, 5, 14, 28, 17, 10, 8],
+          data2023: [-12, -18, -10, -14, -3, -17, -15]
+        },
+        growthMetrics: {
+          growthPercentage: 78,
+          companyGrowth: 62
+        },
+        revenueCards: [
+          {
+            year: '2025',
+            amount: 32500,
+            icon: '$',
+            color: '#8b5cf6'
+          },
+          {
+            year: '2024',
+            amount: 41200,
+            icon: '📊',
+            color: '#06b6d4'
+          }
         ]
       },
       orderChart: {

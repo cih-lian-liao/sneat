@@ -11,109 +11,41 @@ export default function TotalRevenueCard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
         const res = await axios.get('/api/dashboard?card=totalRevenue');
-        
-        // 檢查是否為 Vercel 環境且數據為空
-        if (process.env.NODE_ENV === 'production' && (!res.data?.year1?.totalRevenue || res.data.year1.totalRevenue === 0)) {
-          // 使用硬編碼的數據作為備用
-          setData({
-            year1: {
-              year: 2025,
-              totalRevenue: 1450000,
-              monthlyRevenue: [
-                { month: "Jan", revenue: 120000 },
-                { month: "Feb", revenue: 125000 },
-                { month: "Mar", revenue: 130000 },
-                { month: "Apr", revenue: 135000 },
-                { month: "May", revenue: 140000 },
-                { month: "Jun", revenue: 145000 },
-                { month: "Jul", revenue: 150000 },
-                { month: "Aug", revenue: 155000 },
-                { month: "Sep", revenue: 160000 },
-                { month: "Oct", revenue: 165000 },
-                { month: "Nov", revenue: 170000 },
-                { month: "Dec", revenue: 175000 }
-              ],
-              growthRate: 16.0,
-              isProjection: true
-            },
-            year2: {
-              year: 2024,
-              totalRevenue: 1250000,
-              monthlyRevenue: [
-                { month: "Jan", revenue: 95000 },
-                { month: "Feb", revenue: 110000 },
-                { month: "Mar", revenue: 105000 },
-                { month: "Apr", revenue: 120000 },
-                { month: "May", revenue: 115000 },
-                { month: "Jun", revenue: 130000 },
-                { month: "Jul", revenue: 125000 },
-                { month: "Aug", revenue: 140000 },
-                { month: "Sep", revenue: 135000 },
-                { month: "Oct", revenue: 150000 },
-                { month: "Nov", revenue: 145000 },
-                { month: "Dec", revenue: 160000 }
-              ],
-              growthRate: 15.2,
-              isProjection: false
-            },
-            growthPercentage: 16.0,
-            currency: 'USD'
-          });
-        } else {
-          setData(res.data || {});
-        }
+        setData(res.data || {});
         setError('');
       } catch (error) {
         console.error('Error fetching revenue data:', error);
         setError(error.message);
-        
-        // 在本地環境中，如果 API 失敗，也使用備用數據
-        setData({
-          year1: {
-            year: 2025,
-            totalRevenue: 1450000,
-            monthlyRevenue: [
-              { month: "Jan", revenue: 120000 },
-              { month: "Feb", revenue: 125000 },
-              { month: "Mar", revenue: 130000 },
-              { month: "Apr", revenue: 135000 },
-              { month: "May", revenue: 140000 },
-              { month: "Jun", revenue: 145000 },
-              { month: "Jul", revenue: 150000 },
-              { month: "Aug", revenue: 155000 },
-              { month: "Sep", revenue: 160000 },
-              { month: "Oct", revenue: 165000 },
-              { month: "Nov", revenue: 170000 },
-              { month: "Dec", revenue: 175000 }
-            ],
-            growthRate: 16.0,
-            isProjection: true
+        // 根據附圖的數據結構
+        const fallbackData = {
+          title: 'Total Revenue',
+          selectedYear: '2025',
+          chartData: {
+            months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+            data2024: [17, 5, 14, 28, 17, 10, 8], // 2024年數據（正值）
+            data2023: [-12, -18, -10, -14, -3, -17, -15] // 2023年數據（負值）
           },
-          year2: {
-            year: 2024,
-            totalRevenue: 1250000,
-            monthlyRevenue: [
-              { month: "Jan", revenue: 95000 },
-              { month: "Feb", revenue: 110000 },
-              { month: "Mar", revenue: 105000 },
-              { month: "Apr", revenue: 120000 },
-              { month: "May", revenue: 115000 },
-              { month: "Jun", revenue: 130000 },
-              { month: "Jul", revenue: 125000 },
-              { month: "Aug", revenue: 140000 },
-              { month: "Sep", revenue: 135000 },
-              { month: "Oct", revenue: 150000 },
-              { month: "Nov", revenue: 145000 },
-              { month: "Dec", revenue: 160000 }
-            ],
-            growthRate: 15.2,
-            isProjection: false
+          growthMetrics: {
+            growthPercentage: 78,
+            companyGrowth: 62
           },
-          growthPercentage: 16.0,
-          currency: 'USD'
-        });
+          revenueCards: [
+            {
+              year: '2025',
+              amount: 32500,
+              icon: '$',
+              color: '#8b5cf6'
+            },
+            {
+              year: '2024',
+              amount: 41200,
+              icon: '📊',
+              color: '#06b6d4'
+            }
+          ]
+        };
+        setData(fallbackData);
         setError('');
       } finally {
         setLoading(false);
@@ -138,99 +70,158 @@ export default function TotalRevenueCard() {
     );
   }
 
-  const year1 = data.year1 || {};
-  const year2 = data.year2 || {};
-  const growthPercentage = data.growthPercentage || 0;
-  const companyGrowth = Math.abs(growthPercentage) || 0;
+  const chartData = data.chartData || {};
+  const growthMetrics = data.growthMetrics || {};
+  const revenueCards = data.revenueCards || [];
 
   // 格式化金額顯示
   const formatAmount = (amount) => {
     if (amount >= 1000000) {
       return `$${(amount / 1000000).toFixed(1)}M`;
     } else if (amount >= 1000) {
-      return `$${(amount / 1000).toFixed(0)}k`;
+      return `$${(amount / 1000).toFixed(1)}k`;
     }
     return `$${amount}`;
   };
 
-  return (
-    <section className="card card--total-revenue total-revenue">
-      <div className="total-revenue__header">
-        <h3 className="card__title">Total Revenue</h3>
-        <div className="year-selector">
-          <select 
-            className="year-selector__dropdown" 
-            value={selectedYear}
-            onChange={(e) => setSelectedYear(e.target.value)}
-          >
-            <option value="2025">2025</option>
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-          </select>
-        </div>
-      </div>
+  // 計算柱狀圖的最大值用於比例計算
+  const maxValue = Math.max(
+    ...(chartData.data2024 || []).map(Math.abs),
+    ...(chartData.data2023 || []).map(Math.abs)
+  );
 
+  return (
+    <section className="card card--total-revenue">
       <div className="total-revenue__content">
-        {/* 左側：圖表區域 */}
+        {/* 左側：柱狀圖區域 */}
         <div className="total-revenue__chart-section">
-          <div className="chart-legend">
-            <div className="legend-item">
-              <div className="legend-dot legend-dot--purple"></div>
-              <span>2024</span>
-            </div>
-            <div className="legend-item">
-              <div className="legend-dot legend-dot--blue"></div>
-              <span>2023</span>
+          <div className="chart-header">
+            <h3 className="chart-title">{data.title || 'Total Revenue'}</h3>
+            <div className="chart-legend">
+              <div className="legend-item">
+                <div className="legend-dot legend-dot--blue"></div>
+                <span>2024</span>
+              </div>
+              <div className="legend-item">
+                <div className="legend-dot legend-dot--light-blue"></div>
+                <span>2023</span>
+              </div>
             </div>
           </div>
           
           <div className="chart-container">
-            <div className="simple-chart">
-              <div className="chart-bar chart-bar--purple" style={{ height: '60%' }}></div>
-              <div className="chart-bar chart-bar--blue" style={{ height: '40%' }}></div>
+            <div className="chart-y-axis">
+              <div className="y-label">30</div>
+              <div className="y-label">20</div>
+              <div className="y-label">10</div>
+              <div className="y-label">0</div>
+              <div className="y-label">-10</div>
+              <div className="y-label">-20</div>
+            </div>
+            
+            <div className="chart-bars">
+              {(chartData.months || []).map((month, index) => {
+                const value2024 = chartData.data2024?.[index] || 0;
+                const value2023 = chartData.data2023?.[index] || 0;
+                
+                const height2024 = Math.abs(value2024) / maxValue * 100;
+                const height2023 = Math.abs(value2023) / maxValue * 100;
+                
+                return (
+                  <div key={month} className="chart-month">
+                    <div className="month-bars">
+                      <div 
+                        className="chart-bar chart-bar--2024" 
+                        style={{ 
+                          height: `${height2024}%`,
+                          transform: value2024 >= 0 ? 'translateY(0)' : 'translateY(100%)'
+                        }}
+                      ></div>
+                      <div 
+                        className="chart-bar chart-bar--2023" 
+                        style={{ 
+                          height: `${height2023}%`,
+                          transform: value2023 >= 0 ? 'translateY(0)' : 'translateY(100%)'
+                        }}
+                      ></div>
+                    </div>
+                    <div className="month-label">{month}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
 
         {/* 右側：統計區域 */}
         <div className="total-revenue__stats-section">
+          {/* 年份選擇器 */}
+          <div className="year-selector">
+            <select 
+              className="year-selector__dropdown" 
+              value={selectedYear}
+              onChange={(e) => setSelectedYear(e.target.value)}
+            >
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
+
           {/* 增長儀表 */}
           <div className="growth-section">
             <div className="growth-gauge">
-              <div className="growth-gauge__circle">
-                <div className="growth-gauge__text">
-                  <div className="growth-gauge__percentage">{growthPercentage}%</div>
-                  <div className="growth-gauge__label">Growth</div>
-                </div>
+              <svg className="growth-gauge__svg" viewBox="0 0 120 60">
+                <defs>
+                  <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#8b5cf6" />
+                    <stop offset="100%" stopColor="#06b6d4" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M 20 50 A 40 40 0 0 1 100 50"
+                  fill="none"
+                  stroke="#e5e7eb"
+                  strokeWidth="8"
+                />
+                <path
+                  d="M 20 50 A 40 40 0 0 1 100 50"
+                  fill="none"
+                  stroke="url(#gaugeGradient)"
+                  strokeWidth="8"
+                  strokeDasharray={`${(growthMetrics.growthPercentage || 0) * 1.26} 126`}
+                  strokeLinecap="round"
+                />
+              </svg>
+              <div className="growth-gauge__text">
+                <div className="growth-gauge__percentage">{growthMetrics.growthPercentage || 0}%</div>
+                <div className="growth-gauge__label">Growth</div>
               </div>
             </div>
+            
             <div className="company-growth">
-              <span className="company-growth__percentage">{companyGrowth}%</span>
+              <span className="company-growth__percentage">{growthMetrics.companyGrowth || 0}%</span>
               <span className="company-growth__text">Company Growth</span>
             </div>
           </div>
 
-                 {/* 收入卡片 */}
-                 <div className="revenue-cards">
-                   {year1.year && (
-                     <div className="total-revenue-card is-active">
-                       <div className="total-revenue-card__icon total-revenue-card__icon--purple">$</div>
-                       <div className="total-revenue-card__content">
-                         <div className="total-revenue-card__year">{year1.year} {year1.isProjection && '(預測)'}</div>
-                         <div className="total-revenue-card__amount">{formatAmount(year1.totalRevenue || 0)}</div>
-                       </div>
-                     </div>
-                   )}
-                   {year2.year && (
-                     <div className="total-revenue-card">
-                       <div className="total-revenue-card__icon total-revenue-card__icon--blue">📊</div>
-                       <div className="total-revenue-card__content">
-                         <div className="total-revenue-card__year">{year2.year} {year2.isProjection && '(預測)'}</div>
-                         <div className="total-revenue-card__amount">{formatAmount(year2.totalRevenue || 0)}</div>
-                       </div>
-                     </div>
-                   )}
-                 </div>
+          {/* 收入卡片 */}
+          <div className="revenue-cards">
+            {revenueCards.map((card, index) => (
+              <div key={card.year} className={`revenue-card ${index === 0 ? 'is-active' : ''}`}>
+                <div 
+                  className="revenue-card__icon" 
+                  style={{ backgroundColor: card.color }}
+                >
+                  {card.icon}
+                </div>
+                <div className="revenue-card__content">
+                  <div className="revenue-card__year">{card.year}</div>
+                  <div className="revenue-card__amount">{formatAmount(card.amount)}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
