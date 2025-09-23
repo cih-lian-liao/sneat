@@ -251,12 +251,12 @@
 .revenue-card {
   display: flex;
   align-items: center;
-  padding: 6px;
+  padding: 4px 6px;
   background: #f8fafc;
   border-radius: 6px;
   border: 1px solid #e5e7eb;
   transition: all 0.2s ease;
-  min-height: 40px;
+  min-height: 32px;
 }
 
 .revenue-card.is-active {
@@ -265,16 +265,16 @@
 }
 
 .revenue-card__icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
   color: white;
-  margin-right: 6px;
+  margin-right: 4px;
 }
 
 .revenue-card__content {
@@ -282,17 +282,17 @@
 }
 
 .revenue-card__year {
-  font-size: 10px;
+  font-size: 9px;
   color: #6b7280;
-  margin-bottom: 1px;
-  line-height: 1.2;
+  margin-bottom: 0;
+  line-height: 1.1;
 }
 
 .revenue-card__amount {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   color: #1f2937;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 /* 響應式設計 */
@@ -352,13 +352,13 @@
     flex: 1;
     flex-direction: column;
     text-align: center;
-    padding: 4px;
-    min-height: 35px;
+    padding: 3px 4px;
+    min-height: 28px;
   }
   
   .revenue-card__icon {
     margin-right: 0;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
   }
 }
 
@@ -400,12 +400,12 @@
   .revenue-card {
     flex-direction: row;
     text-align: left;
-    padding: 6px;
-    min-height: 32px;
+    padding: 4px 6px;
+    min-height: 28px;
   }
   
   .revenue-card__icon {
-    margin-right: 6px;
+    margin-right: 4px;
     margin-bottom: 0;
   }
 }
