@@ -145,6 +145,12 @@ const DashboardDataSchema = new mongoose.Schema({
     total: { type: Number, default: 2845 },
     chartData: [{ value: { type: Number, required: true } }]
   },
+  crmOrders: {
+    title: { type: String, default: 'Order' },
+    amount: { type: Number, default: 1286 },
+    changePct: { type: Number, default: -13.24 },
+    icon: { type: String, default: '🧊' }
+  },
   activityTimeline: {
     title: { type: String, default: 'Activity Timeline' },
     activities: [{
@@ -469,6 +475,9 @@ async function migrateData() {
           { value: 28 },{ value: 42 },{ value: 60 },{ value: 58 },{ value: 62 },
           { value: 55 },{ value: 85 }
         ]
+      },
+      crmOrders: {
+        title: 'Order', amount: 1286, changePct: -13.24, icon: '🧊'
       },
       activityTimeline: {
         title: 'Activity Timeline',

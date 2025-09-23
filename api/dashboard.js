@@ -167,6 +167,14 @@ const DashboardDataSchema = new mongoose.Schema({
     chartData: [{ value: { type: Number, required: true } }]
   },
 
+  // CRM - Orders mini card (avoid naming conflict with Analytics Order)
+  crmOrders: {
+    title: { type: String, default: 'Order' },
+    amount: { type: Number, default: 1286 },
+    changePct: { type: Number, default: -13.24 }, // negative for decrease
+    icon: { type: String, default: '🧊' }
+  },
+
     // Activity Timeline
     activityTimeline: {
       title: { type: String, default: 'Activity Timeline' },
@@ -529,6 +537,12 @@ function getDefaultData(card = null) {
         { value: 28 }, { value: 42 }, { value: 60 }, { value: 58 }, { value: 62 },
         { value: 55 }, { value: 85 }
       ]
+    },
+    crmOrders: {
+      title: 'Order',
+      amount: 1286,
+      changePct: -13.24,
+      icon: '🧊'
     },
     activityTimeline: {
       title: 'Activity Timeline',

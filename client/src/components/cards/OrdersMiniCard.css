@@ -1,0 +1,20 @@
+.orders-mini{ background:#fff; border-radius:12px; padding:20px; box-shadow:0 1px 3px rgba(0,0,0,.1); border:1px solid #f3f4f6; min-height:180px; display:flex; flex-direction:column; gap:10px; }
+.orders-mini.error{ background:#fef2f2; border-color:#ef4444; }
+.orders-mini__icon{ display:flex; justify-content:space-between; align-items:center; }
+.icon-box{ width:52px; height:52px; background:#eef2f7; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; color:#6b7280; }
+.dot-btn{ border:none; background:transparent; color:#9ca3af; font-size:22px; cursor:pointer; }
+.orders-mini__title{ color:#6b7280; font-weight:800; font-size:18px; margin-top:4px; }
+.orders-mini__amount{ color:#374151; font-weight:800; font-size:36px; line-height:1; }
+.orders-mini__change{ display:flex; align-items:center; gap:8px; font-weight:800; }
+.orders-mini__change.up{ color:#16a34a; }
+.orders-mini__change.down{ color:#ef4444; }
+.arrow{ font-size:18px; }
+
+@media (prefers-color-scheme: dark){
+  .orders-mini{ background:#1f2937; border-color:#374151; color:#f9fafb; }
+  .icon-box{ background:#2b3441; color:#9ca3af; }
+  .orders-mini__title{ color:#9ca3af; }
+  .orders-mini__amount{ color:#f9fafb; }
+}
+
+
