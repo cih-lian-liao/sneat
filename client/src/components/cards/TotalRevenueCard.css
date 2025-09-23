@@ -292,8 +292,8 @@
 
 .tr-gauge {
   position: relative;
-  width: 100px;
-  height: 50px;
+  width: 160px; /* 放大尺寸 */
+  height: 80px; /* 放大尺寸 */
   overflow: hidden; /* 裁剪半圓儀表下半部，避免溢出 */
 }
 
@@ -303,9 +303,14 @@
   transform: rotate(-90deg); /* Start from left */
 }
 
+/* 漸層描邊更柔順 */
+.tr-gauge-svg path[stroke="url(#gaugeGradient)"] {
+  filter: drop-shadow(0 2px 4px rgba(139, 92, 246, 0.25));
+}
+
 .tr-gauge-text {
   position: absolute;
-  top: 60%; /* Adjust to center in the visible half */
+  top: 58%; /* 針對較大尺寸微調置中 */
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -313,14 +318,14 @@
 }
 
 .tr-gauge-percentage {
-  font-size: 16px;
+  font-size: 22px; /* 放大數字 */
   font-weight: 700;
   color: #1f2937;
   line-height: 1;
 }
 
 .tr-gauge-label {
-  font-size: 10px;
+  font-size: 12px; /* 放大標籤 */
   color: #6b7280;
   margin-top: 2px;
   font-weight: 500;
