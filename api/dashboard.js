@@ -86,6 +86,44 @@ const DashboardDataSchema = new mongoose.Schema({
     }]
   },
   
+  // Income Expense
+  incomeExpense: {
+    activeTab: { type: String, enum: ['income', 'expenses', 'profit'], default: 'income' },
+    income: {
+      total: { type: Number, default: 459100 },
+      changePct: { type: Number, default: 42.9 },
+      changeType: { type: String, enum: ['increase', 'decrease'], default: 'increase' },
+      thisWeek: { type: Number, default: 6500 },
+      lastWeekComparison: { type: String, default: '$39k less than last week' },
+      chartData: [{
+        month: { type: String, required: true },
+        value: { type: Number, required: true }
+      }]
+    },
+    expenses: {
+      total: { type: Number, default: 285000 },
+      changePct: { type: Number, default: 15.2 },
+      changeType: { type: String, enum: ['increase', 'decrease'], default: 'increase' },
+      thisWeek: { type: Number, default: 4200 },
+      lastWeekComparison: { type: String, default: '$12k more than last week' },
+      chartData: [{
+        month: { type: String, required: true },
+        value: { type: Number, required: true }
+      }]
+    },
+    profit: {
+      total: { type: Number, default: 174100 },
+      changePct: { type: Number, default: 28.5 },
+      changeType: { type: String, enum: ['increase', 'decrease'], default: 'increase' },
+      thisWeek: { type: Number, default: 2300 },
+      lastWeekComparison: { type: String, default: '$27k less than last week' },
+      chartData: [{
+        month: { type: String, required: true },
+        value: { type: Number, required: true }
+      }]
+    }
+  }
+  
 }, { 
   timestamps: true, 
   collection: 'dashboard' 
@@ -223,6 +261,57 @@ function getDefaultData(card = null) {
         { period: 'Week 4', orders: 200 }
       ]
     },
+    incomeExpense: {
+      activeTab: 'income',
+      income: {
+        total: 459100,
+        changePct: 42.9,
+        changeType: 'increase',
+        thisWeek: 6500,
+        lastWeekComparison: '$39k less than last week',
+        chartData: [
+          { month: 'Jan', value: 320000 },
+          { month: 'Feb', value: 380000 },
+          { month: 'Mar', value: 350000 },
+          { month: 'Apr', value: 420000 },
+          { month: 'May', value: 390000 },
+          { month: 'Jun', value: 450000 },
+          { month: 'Jul', value: 459100 }
+        ]
+      },
+      expenses: {
+        total: 285000,
+        changePct: 15.2,
+        changeType: 'increase',
+        thisWeek: 4200,
+        lastWeekComparison: '$12k more than last week',
+        chartData: [
+          { month: 'Jan', value: 250000 },
+          { month: 'Feb', value: 270000 },
+          { month: 'Mar', value: 260000 },
+          { month: 'Apr', value: 280000 },
+          { month: 'May', value: 275000 },
+          { month: 'Jun', value: 290000 },
+          { month: 'Jul', value: 285000 }
+        ]
+      },
+      profit: {
+        total: 174100,
+        changePct: 28.5,
+        changeType: 'increase',
+        thisWeek: 2300,
+        lastWeekComparison: '$27k less than last week',
+        chartData: [
+          { month: 'Jan', value: 70000 },
+          { month: 'Feb', value: 110000 },
+          { month: 'Mar', value: 90000 },
+          { month: 'Apr', value: 140000 },
+          { month: 'May', value: 115000 },
+          { month: 'Jun', value: 160000 },
+          { month: 'Jul', value: 174100 }
+        ]
+      }
+    }
   };
   
   if (card) {
