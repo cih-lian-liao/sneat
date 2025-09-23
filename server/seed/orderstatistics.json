@@ -1,36 +1,29 @@
 [
   {
-    "title": "Order Statistics",
     "totalSales": 42820,
     "totalOrders": 8258,
-    "weeklyPercentage": 38,
+    "weeklyPercent": 38,
     "categories": [
       {
         "name": "Electronic",
-        "icon": "📱",
-        "items": "Mobile, Earbuds, TV",
-        "sales": 82500
+        "description": "Mobile, Earbuds, TV",
+        "value": 82500
       },
       {
         "name": "Fashion",
-        "icon": "👕",
-        "items": "Tshirt, Jeans, Shoes",
-        "sales": 23800
+        "description": "Tshirt, Jeans, Shoes",
+        "value": 23800
       },
       {
         "name": "Decor",
-        "icon": "🏠",
-        "items": "Fine Art, Dining",
-        "sales": 849
+        "description": "Fine Art, Dining",
+        "value": 849
       },
       {
         "name": "Sports",
-        "icon": "⚽",
-        "items": "Football, Cricket Kit",
-        "sales": 99
+        "description": "Football, Cricket Kit",
+        "value": 99
       }
-    ],
-    "currency": "USD",
-    "lastUpdated": "2025-09-19T04:00:00.000Z"
+    ]
   }
 ]
