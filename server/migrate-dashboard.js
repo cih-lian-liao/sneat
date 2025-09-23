@@ -71,6 +71,42 @@ const DashboardDataSchema = new mongoose.Schema({
       period: { type: String, required: true },
       orders: { type: Number, required: true }
     }]
+  },
+  incomeExpense: {
+    activeTab: { type: String, enum: ['income', 'expenses', 'profit'], default: 'income' },
+    income: {
+      total: { type: Number, default: 459100 },
+      changePct: { type: Number, default: 42.9 },
+      changeType: { type: String, enum: ['increase', 'decrease'], default: 'increase' },
+      thisWeek: { type: Number, default: 6500 },
+      lastWeekComparison: { type: String, default: '$39k less than last week' },
+      chartData: [{
+        month: { type: String, required: true },
+        value: { type: Number, required: true }
+      }]
+    },
+    expenses: {
+      total: { type: Number, default: 285000 },
+      changePct: { type: Number, default: 15.2 },
+      changeType: { type: String, enum: ['increase', 'decrease'], default: 'increase' },
+      thisWeek: { type: Number, default: 4200 },
+      lastWeekComparison: { type: String, default: '$12k more than last week' },
+      chartData: [{
+        month: { type: String, required: true },
+        value: { type: Number, required: true }
+      }]
+    },
+    profit: {
+      total: { type: Number, default: 174100 },
+      changePct: { type: Number, default: 28.5 },
+      changeType: { type: String, enum: ['increase', 'decrease'], default: 'increase' },
+      thisWeek: { type: Number, default: 2300 },
+      lastWeekComparison: { type: String, default: '$27k less than last week' },
+      chartData: [{
+        month: { type: String, required: true },
+        value: { type: Number, required: true }
+      }]
+    }
   }
 }, { 
   timestamps: true, 
