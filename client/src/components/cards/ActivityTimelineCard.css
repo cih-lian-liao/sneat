@@ -298,7 +298,7 @@
 }
 
 .timeline__item:hover {
-  transform: translateX(4px);
+  /* 移除 transform 效果，避免灰色條狀物 */
 }
 
 .timeline__dot {
