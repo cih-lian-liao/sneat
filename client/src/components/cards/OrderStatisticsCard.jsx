@@ -10,9 +10,14 @@ export default function OrderStatisticsCard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('/api/orderstatistics');
-        console.log('API Response:', res.data);
-        setData(res.data || {});
+        // 先嘗試測試 API
+        const res = await axios.get('/api/test-orderstats');
+        console.log('Test API Response:', res.data);
+        if (res.data && res.data.data) {
+          setData(res.data.data);
+        } else {
+          setData(res.data || {});
+        }
         setError('');
       } catch (error) {
         console.error('Error fetching order statistics:', error);
@@ -23,10 +28,10 @@ export default function OrderStatisticsCard() {
           totalOrders: 8258,
           weeklyPercent: 38,
           categories: [
-            { name: 'Electronic', description: 'Mobile, Earbuds, TV', value: 82500 },
-            { name: 'Fashion', description: 'Tshirt, Jeans, Shoes', value: 23800 },
-            { name: 'Decor', description: 'Fine Art, Dining', value: 849 },
-            { name: 'Sports', description: 'Football, Cricket Kit', value: 99 }
+            { name: 'Electronic', description: 'Mobile, Earbuds, TV', value: 82500, icon: '📱' },
+            { name: 'Fashion', description: 'Tshirt, Jeans, Shoes', value: 23800, icon: '👕' },
+            { name: 'Decor', description: 'Fine Art, Dining', value: 849, icon: '🏠' },
+            { name: 'Sports', description: 'Football, Cricket Kit', value: 99, icon: '⚽' }
           ]
         };
         console.log('Using fallback data:', fallbackData);
@@ -74,7 +79,7 @@ export default function OrderStatisticsCard() {
             return (
               <li key={`${category.name}-${idx}`} className="order-card__item">
                 <div>
-                  <strong>{category.name}</strong>
+                  <strong>{category.icon} {category.name}</strong>
                   <p className="desc">{category.description}</p>
                 </div>
                 <span className="value">{formatValue(category.value)}</span>

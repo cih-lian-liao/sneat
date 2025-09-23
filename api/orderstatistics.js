@@ -9,7 +9,8 @@ const OrderStatisticsSchema = new mongoose.Schema({
   categories: [{
     name: { type: String, required: true },
     description: { type: String, required: true },
-    value: { type: Number, required: true }
+    value: { type: Number, required: true },
+    icon: { type: String, required: true }
   }]
 }, { timestamps: true, collection: 'orderstatistics' });
 
@@ -43,10 +44,10 @@ export default async function handler(req, res) {
         totalOrders: 8258,
         weeklyPercent: 38,
         categories: [
-          { name: 'Electronic', description: 'Mobile, Earbuds, TV', value: 82500 },
-          { name: 'Fashion', description: 'Tshirt, Jeans, Shoes', value: 23800 },
-          { name: 'Decor', description: 'Fine Art, Dining', value: 849 },
-          { name: 'Sports', description: 'Football, Cricket Kit', value: 99 }
+          { name: 'Electronic', description: 'Mobile, Earbuds, TV', value: 82500, icon: '📱' },
+          { name: 'Fashion', description: 'Tshirt, Jeans, Shoes', value: 23800, icon: '👕' },
+          { name: 'Decor', description: 'Fine Art, Dining', value: 849, icon: '🏠' },
+          { name: 'Sports', description: 'Football, Cricket Kit', value: 99, icon: '⚽' }
         ]
       };
       console.log('Using fallback data:', fallbackData);
