@@ -4,6 +4,7 @@ import CustomerRatingsCard from "../components/cards/CustomerRatingsCard";
 import OverviewSalesActivityCard from "../components/cards/OverviewSalesActivityCard";
 import SessionsCard from "../components/cards/SessionsCard";
 import OrdersMiniCard from "../components/cards/OrdersMiniCard";
+import LeadsCard from "../components/cards/LeadsCard";
 
 export default function CRM() {
   return (
@@ -18,10 +19,7 @@ export default function CRM() {
       <OrdersMiniCard />
 
       {/* 右下單張 */}
-      <section className="card card--leads">
-        <header className="card__header">Generated Leads</header>
-        <div className="chart-box">{/* <Leads /> */}</div>
-      </section>
+      <LeadsCard />
 
       {/* row-2 */}
       <section className="card card--top-sales">

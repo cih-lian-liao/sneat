@@ -151,6 +151,13 @@ const DashboardDataSchema = new mongoose.Schema({
     changePct: { type: Number, default: -13.24 },
     icon: { type: String, default: '🧊' }
   },
+  crmLeads: {
+    title: { type: String, default: 'Generated Leads' },
+    subtitle: { type: String, default: 'Monthly Report' },
+    total: { type: Number, default: 4234 },
+    changePct: { type: Number, default: 12.8 },
+    gaugePct: { type: Number, default: 25 }
+  },
   activityTimeline: {
     title: { type: String, default: 'Activity Timeline' },
     activities: [{
@@ -478,6 +485,9 @@ async function migrateData() {
       },
       crmOrders: {
         title: 'Order', amount: 1286, changePct: -13.24, icon: '🧊'
+      },
+      crmLeads: {
+        title: 'Generated Leads', subtitle: 'Monthly Report', total: 4234, changePct: 12.8, gaugePct: 25
       },
       activityTimeline: {
         title: 'Activity Timeline',

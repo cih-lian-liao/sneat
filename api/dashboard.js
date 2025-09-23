@@ -175,6 +175,15 @@ const DashboardDataSchema = new mongoose.Schema({
     icon: { type: String, default: '🧊' }
   },
 
+  // CRM - Generated Leads card
+  crmLeads: {
+    title: { type: String, default: 'Generated Leads' },
+    subtitle: { type: String, default: 'Monthly Report' },
+    total: { type: Number, default: 4234 },
+    changePct: { type: Number, default: 12.8 },
+    gaugePct: { type: Number, default: 25 } // 25% Average
+  },
+
     // Activity Timeline
     activityTimeline: {
       title: { type: String, default: 'Activity Timeline' },
@@ -543,6 +552,13 @@ function getDefaultData(card = null) {
       amount: 1286,
       changePct: -13.24,
       icon: '🧊'
+    },
+    crmLeads: {
+      title: 'Generated Leads',
+      subtitle: 'Monthly Report',
+      total: 4234,
+      changePct: 12.8,
+      gaugePct: 25
     },
     activityTimeline: {
       title: 'Activity Timeline',
