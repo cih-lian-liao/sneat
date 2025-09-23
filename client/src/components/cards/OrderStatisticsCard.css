@@ -1,0 +1,161 @@
+/* Order Statistics Card Styles */
+.card--order-statistics {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
+}
+
+.order-stats__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.order-stats__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+}
+
+.order-stats__subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.order-stats__menu {
+  color: #9ca3af;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.order-stats__main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-stats__metrics {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-stats__total {
+  flex: 1;
+}
+
+.order-stats__number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.order-stats__label {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.order-stats__chart {
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+
+.circular-chart {
+  width: 80px;
+  height: 80px;
+}
+
+.circular-chart__background {
+  opacity: 0.3;
+}
+
+.circular-chart__progress {
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.circular-chart__text {
+  font-size: 16px;
+  font-weight: 600;
+  fill: #1f2937;
+}
+
+.circular-chart__label {
+  font-size: 10px;
+  fill: #6b7280;
+}
+
+.order-stats__categories {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #f3f4f6;
+}
+
+.category-item__icon {
+  width: 32px;
+  height: 32px;
+  background: #e5e7eb;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.category-item__content {
+  flex: 1;
+}
+
+.category-item__name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 2px;
+}
+
+.category-item__items {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.category-item__sales {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: right;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .order-stats__metrics {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .order-stats__chart {
+    margin-left: 0;
+    align-self: center;
+  }
+  
+  .order-stats__number {
+    font-size: 28px;
+  }
+}
