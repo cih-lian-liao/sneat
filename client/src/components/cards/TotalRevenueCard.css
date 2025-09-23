@@ -64,7 +64,7 @@
   grid-template-columns: repeat(7, 1fr);
   align-items: end;
   gap: 10px;
-  height: 200px;
+  height: 220px; /* 提高高度以提升可見性 */
   background: #f8fafc;
   border-radius: 8px;
   padding: 16px;
@@ -75,6 +75,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  height: 100%; /* 讓每個欄位填滿容器高度，百分比柱狀圖才有基準 */
 }
 
 .tr-simple-barbox {
@@ -83,6 +84,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+  min-height: 120px; /* 確保在某些環境下仍有高度可供百分比計算 */
 }
 
 .tr-simple-bar {
