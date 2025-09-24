@@ -178,8 +178,6 @@ const EcomProductTableCard = () => {
   return (
     <section className="card card--ecom-product-table ecom-product-table-card">
       <div className="ecom-product-table-card__content">
-        <h3 className="ecom-product-table-card__title">{data.title}</h3>
-        
         <div className="ecom-product-table-card__table">
           <div className="ecom-product-table-card__header">
             <div className="ecom-product-table-card__header-cell ecom-product-table-card__header-cell--product">PRODUCT</div>
