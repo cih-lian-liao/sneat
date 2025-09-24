@@ -1,0 +1,359 @@
+/* SalesAnalyticsCard 樣式 - 符合專案整體風格 */
+.sales-analytics-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sales-analytics-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sales-analytics-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+/* 標題區域 */
+.sales-analytics-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.sales-analytics-card__title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sales-analytics-card__title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #374151;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+}
+
+.sales-analytics-card__performance {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sales-analytics-card__performance-badge {
+  background-color: #d1fae5;
+  color: #10b981;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sales-analytics-card__performance-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+/* 年份選擇器 */
+.sales-analytics-card__year-selector {
+  display: flex;
+  align-items: center;
+}
+
+.sales-analytics-card__year-select {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sales-analytics-card__year-select:hover {
+  border-color: #9ca3af;
+}
+
+.sales-analytics-card__year-select:focus {
+  outline: none;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+/* 圖表區域 */
+.sales-analytics-card__chart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sales-analytics-card__heatmap-container {
+  display: flex;
+  gap: 12px;
+}
+
+/* Y 軸標籤 */
+.sales-analytics-card__y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 30px;
+  padding-top: 8px;
+}
+
+.sales-analytics-card__y-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #9ca3af;
+  text-align: right;
+  line-height: 1;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* 熱力圖 */
+.sales-analytics-card__heatmap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.sales-analytics-card__heatmap-row {
+  display: flex;
+  gap: 2px;
+}
+
+.sales-analytics-card__heatmap-cell {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: #f3f4f6;
+  transition: all 0.2s ease;
+}
+
+.sales-analytics-card__heatmap-cell--active {
+  background-color: #7c3aed;
+}
+
+.sales-analytics-card__heatmap-cell:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* X 軸標籤 */
+.sales-analytics-card__x-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 42px; /* 對齊 Y 軸標籤的寬度 */
+  padding-top: 8px;
+}
+
+.sales-analytics-card__x-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #9ca3af;
+  text-align: center;
+  width: 20px;
+  line-height: 1;
+}
+
+/* 載入和錯誤狀態 */
+.sales-analytics-card.error {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+.sales-analytics-card__loading,
+.sales-analytics-card__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.sales-analytics-card__error {
+  color: #dc2626;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .sales-analytics-card {
+    padding: 16px;
+    min-height: 280px;
+  }
+  
+  .sales-analytics-card__title {
+    font-size: 20px;
+  }
+  
+  .sales-analytics-card__performance-badge {
+    font-size: 13px;
+    padding: 3px 6px;
+  }
+  
+  .sales-analytics-card__performance-label {
+    font-size: 13px;
+  }
+  
+  .sales-analytics-card__year-select {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  
+  .sales-analytics-card__heatmap-cell {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .sales-analytics-card__y-label,
+  .sales-analytics-card__x-label {
+    font-size: 11px;
+  }
+  
+  .sales-analytics-card__x-axis {
+    margin-left: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sales-analytics-card {
+    padding: 12px;
+    min-height: 260px;
+  }
+  
+  .sales-analytics-card__content {
+    gap: 12px;
+  }
+  
+  .sales-analytics-card__title {
+    font-size: 18px;
+  }
+  
+  .sales-analytics-card__header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .sales-analytics-card__heatmap-cell {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .sales-analytics-card__y-label,
+  .sales-analytics-card__x-label {
+    font-size: 10px;
+  }
+  
+  .sales-analytics-card__x-axis {
+    margin-left: 34px;
+  }
+}
+
+/* 暗色模式 */
+@media (prefers-color-scheme: dark) {
+  .sales-analytics-card {
+    background: #1f2937;
+    border-color: #374151;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .sales-analytics-card__title {
+    color: #f9fafb;
+  }
+  
+  .sales-analytics-card__performance-label {
+    color: #9ca3af;
+  }
+  
+  .sales-analytics-card__year-select {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+  
+  .sales-analytics-card__year-select:hover {
+    border-color: #6b7280;
+  }
+  
+  .sales-analytics-card__year-select:focus {
+    border-color: #7c3aed;
+  }
+  
+  .sales-analytics-card__y-label,
+  .sales-analytics-card__x-label {
+    color: #9ca3af;
+  }
+  
+  .sales-analytics-card__heatmap-cell {
+    background-color: #374151;
+  }
+  
+  .sales-analytics-card__heatmap-cell--active {
+    background-color: #7c3aed;
+  }
+  
+  .sales-analytics-card__loading,
+  .sales-analytics-card__error {
+    color: #9ca3af;
+  }
+  
+  .sales-analytics-card__error {
+    color: #f87171;
+  }
+  
+  .sales-analytics-card.error {
+    background: #7f1d1d;
+    border-color: #dc2626;
+  }
+}
+
+/* 動畫效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sales-analytics-card__heatmap-cell--active {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 確保選擇器樣式正確 */
+.sales-analytics-card__year-select option {
+  background: #fff;
+  color: #374151;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sales-analytics-card__year-select option {
+    background: #374151;
+    color: #f9fafb;
+  }
+}
