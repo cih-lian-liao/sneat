@@ -86,6 +86,12 @@ const DashboardDataSchema = new mongoose.Schema({
       bars: [{ type: Number, required: true }]
     }]
   },
+  // Ecommerce Expenses semi-gauge
+  ecomExpenses: {
+    title: { type: String, default: 'Expenses' },
+    percent: { type: Number, default: 0 },
+    note: { type: String, default: '' }
+  },
   
   // Profit Report
   profitReport: {
@@ -592,6 +598,11 @@ function getDefaultData(card = null) {
         { label: 'Jul', bars: [46, 60] },
         { label: 'Oct', bars: [100, 90] }
       ]
+    },
+    ecomExpenses: {
+      title: 'Expenses',
+      percent: 72,
+      note: '$2k Expenses more than last month'
     },
     profitReport: {
       totalProfit: 45000,
