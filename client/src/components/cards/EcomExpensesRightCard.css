@@ -1,0 +1,184 @@
+.ecom-expenses-right-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ecom-expenses-right-card__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100%;
+  gap: 20px;
+}
+
+.ecom-expenses-right-card__left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.ecom-expenses-right-card__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.ecom-expenses-right-card__amount {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+.ecom-expenses-right-card__change {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ecom-expenses-right-card__change-icon {
+  font-size: 12px;
+}
+
+.ecom-expenses-right-card__period {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  width: fit-content;
+  margin-top: auto;
+}
+
+.ecom-expenses-right-card__chart-section {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+}
+
+.ecom-expenses-right-card__chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 120px;
+  width: 100%;
+}
+
+.ecom-expenses-right-card__bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  flex: 1;
+}
+
+.ecom-expenses-right-card__bar {
+  width: 100%;
+  border-radius: 2px;
+  transition: height 0.3s ease;
+}
+
+.ecom-expenses-right-card__bar--blue {
+  background-color: #6a6afe;
+  margin-bottom: 2px;
+}
+
+.ecom-expenses-right-card__bar--orange {
+  background-color: #f9b042;
+}
+
+.ecom-expenses-right-card__loading,
+.ecom-expenses-right-card__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.ecom-expenses-right-card__error {
+  color: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ecom-expenses-right-card {
+    padding: 20px;
+    min-height: 160px;
+  }
+  
+  .ecom-expenses-right-card__content {
+    gap: 16px;
+  }
+  
+  .ecom-expenses-right-card__title {
+    font-size: 15px;
+  }
+  
+  .ecom-expenses-right-card__amount {
+    font-size: 28px;
+  }
+  
+  .ecom-expenses-right-card__change {
+    font-size: 13px;
+  }
+  
+  .ecom-expenses-right-card__period {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+  
+  .ecom-expenses-right-card__chart {
+    height: 100px;
+    gap: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ecom-expenses-right-card {
+    padding: 16px;
+    min-height: 140px;
+  }
+  
+  .ecom-expenses-right-card__content {
+    gap: 12px;
+  }
+  
+  .ecom-expenses-right-card__title {
+    font-size: 14px;
+  }
+  
+  .ecom-expenses-right-card__amount {
+    font-size: 24px;
+  }
+  
+  .ecom-expenses-right-card__change {
+    font-size: 12px;
+  }
+  
+  .ecom-expenses-right-card__period {
+    font-size: 10px;
+    padding: 2px 5px;
+  }
+  
+  .ecom-expenses-right-card__chart {
+    height: 80px;
+    gap: 1px;
+  }
+}

@@ -11,6 +11,7 @@ import EcomPerformanceCard from "../components/cards/EcomPerformanceCard";
 import EcomConversionRateCard from "../components/cards/EcomConversionRateCard";
 import EcomRevenueCard from "../components/cards/EcomRevenueCard";
 import EcomSalesCard from "../components/cards/EcomSalesCard";
+import EcomExpensesRightCard from "../components/cards/EcomExpensesRightCard";
 
 export default function Ecommerce() {
   return (
@@ -61,10 +62,7 @@ export default function Ecommerce() {
 
       <EcomSalesCard />
 
-      <section className="card card--exp-right">
-        <header className="card__header">Expenses</header>
-        <div className="chart-box">{/* <ExpensesSpark /> */}</div>
-      </section>
+      <EcomExpensesRightCard />
 
       {/* Row 4 */}
       <section className="card card--product-table">

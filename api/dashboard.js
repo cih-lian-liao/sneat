@@ -506,6 +506,20 @@ const DashboardDataSchema = new mongoose.Schema({
       changeDirection: { type: String, enum: ['up', 'down'], required: true },
       salesTargetLabel: { type: String, default: 'Sales Target' },
       salesTargetValue: { type: Number, required: true }
+    },
+
+    // Ecommerce Expenses Right (separate from Ecommerce Expenses)
+    ecomExpensesRight: {
+      title: { type: String, default: 'Expenses' },
+      totalAmount: { type: Number, required: true },
+      unit: { type: String, default: 'k' },
+      changePercentage: { type: Number, required: true },
+      changeDirection: { type: String, enum: ['up', 'down'], required: true },
+      period: { type: String, required: true },
+      chartData: [{
+        blue: { type: Number, required: true },
+        orange: { type: Number, required: true }
+      }]
     }
   });
 
@@ -1549,6 +1563,28 @@ function getDefaultData(card = null) {
       changeDirection: 'up',
       salesTargetLabel: 'Sales Target',
       salesTargetValue: 78
+    },
+    ecomExpensesRight: {
+      title: 'Expenses',
+      totalAmount: 84.7,
+      unit: 'k',
+      changePercentage: 8.2,
+      changeDirection: 'down',
+      period: 'JULY 2025',
+      chartData: [
+        { blue: 45, orange: 30 },
+        { blue: 35, orange: 25 },
+        { blue: 50, orange: 35 },
+        { blue: 40, orange: 28 },
+        { blue: 65, orange: 40 },
+        { blue: 30, orange: 20 },
+        { blue: 55, orange: 38 },
+        { blue: 42, orange: 32 },
+        { blue: 38, orange: 26 },
+        { blue: 60, orange: 45 },
+        { blue: 48, orange: 35 },
+        { blue: 35, orange: 28 }
+      ]
     }
   };
   

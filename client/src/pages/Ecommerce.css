@@ -37,7 +37,7 @@
 .card--conversion-rate { grid-area: conversion;  min-height: 320px; }
 .card--ecom-revenue   { grid-area: revRight; }
 .card--ecom-sales     { grid-area: salesRight; }
-.card--exp-right     { grid-area: expRight;  min-height: 160px; }
+.card--ecom-expenses-right { grid-area: expRight;  min-height: 160px; }
 
 .card--product-table { grid-area: productTable; min-height: 360px; }
 .card--total-balance { grid-area: totalBalance; min-height: 360px; }
