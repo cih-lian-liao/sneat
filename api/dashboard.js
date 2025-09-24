@@ -42,7 +42,8 @@ const DashboardDataSchema = new mongoose.Schema({
   },
   
   // Sales Statistics
-  salesStats: {
+  // Analytics Sales Stats (Analytics page)
+  analyticsSalesStats: {
     totalSales: { type: Number, default: 0 },
     changePct: { type: Number, default: 0 },
     changeType: { type: String, enum: ['increase', 'decrease'], default: 'increase' },
@@ -337,18 +338,29 @@ const DashboardDataSchema = new mongoose.Schema({
       }]
     },
 
-    // Sales Stats (CRM)
-    salesStats: {
-      title: { type: String, default: 'Sales Stats' },
-      percentage: { type: Number, required: true },
-      label: { type: String, required: true },
-      iconType: { type: String, default: 'trend-up' },
-      iconColor: { type: String, default: '#10b981' },
-      legend: [{
-        color: { type: String, required: true },
-        label: { type: String, required: true }
-      }]
-    },
+  // Sales Stats (CRM)
+  salesStats: {
+    title: { type: String, default: 'Sales Stats' },
+    percentage: { type: Number, required: true },
+    label: { type: String, required: true },
+    iconType: { type: String, default: 'trend-up' },
+    iconColor: { type: String, default: '#10b981' },
+    legend: [{
+      color: { type: String, required: true },
+      label: { type: String, required: true }
+    }]
+  },
+
+  // Analytics Sales Stats (Analytics page)
+  analyticsSalesStats: {
+    totalSales: { type: Number, default: 0 },
+    changePct: { type: Number, default: 0 },
+    changeType: { type: String, enum: ['increase', 'decrease'], default: 'increase' },
+    chartData: [{
+      month: { type: String, required: true },
+      sales: { type: Number, required: true }
+    }]
+  },
 
     // Team Members
     teamMembers: {
@@ -492,7 +504,7 @@ function getDefaultData(card = null) {
         { day: 'S', revenue: 12000, isHighlighted: false }
       ]
     },
-    salesStats: {
+    analyticsSalesStats: {
       totalSales: 125000,
       changePct: 8.2,
       changeType: 'increase',

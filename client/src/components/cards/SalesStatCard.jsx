@@ -11,7 +11,7 @@ export default function SalesStatCard() {
     const fetchData = async () => {
       try {
         const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
-        const res = await axios.get('/api/dashboard?card=salesStats');
+        const res = await axios.get('/api/dashboard?card=analyticsSalesStats');
         setData(res.data || {});
         setError('');
       } catch (error) {
