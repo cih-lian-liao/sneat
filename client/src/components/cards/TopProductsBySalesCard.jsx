@@ -40,7 +40,9 @@ export default function TopProductsBySalesCard() {
   return (
     <section className="card card--top-sales crm-top-sales-card">
       <header className="crm-top-sales-card__header">
-        <h3 className="crm-top-sales-card__title">{data.title || 'Top Products by Sales'}</h3>
+        <h3 className="crm-top-sales-card__title">
+          Top Products by <span className="crm-top-sales-card__highlight">Sales</span>
+        </h3>
         <button className="crm-top-sales-card__options" aria-label="more">⋯</button>
       </header>
 

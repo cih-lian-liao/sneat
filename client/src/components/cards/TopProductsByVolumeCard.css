@@ -63,12 +63,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 0;
-  border-bottom: 1px solid #f3f4f6;
   transition: background-color 0.2s ease;
-}
-
-.crm-top-volume-card__row:last-child {
-  border-bottom: none;
 }
 
 .crm-top-volume-card__row:hover {

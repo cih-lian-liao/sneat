@@ -31,6 +31,10 @@
   letter-spacing: 0.3px;
 }
 
+.crm-top-sales-card__highlight {
+  color: #7c3aed;
+}
+
 .crm-top-sales-card__options {
   border: none;
   background: transparent;
@@ -59,12 +63,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 0;
-  border-bottom: 1px solid #f3f4f6;
   transition: background-color 0.2s ease;
-}
-
-.crm-top-sales-card__row:last-child {
-  border-bottom: none;
 }
 
 .crm-top-sales-card__row:hover {
@@ -152,6 +151,10 @@
   
   .crm-top-sales-card__title {
     color: #f9fafb;
+  }
+  
+  .crm-top-sales-card__highlight {
+    color: #a78bfa;
   }
   
   .crm-top-sales-card__options:hover {
