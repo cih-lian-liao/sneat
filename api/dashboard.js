@@ -546,6 +546,29 @@ const DashboardDataSchema = new mongoose.Schema({
           bgColor: { type: String, required: true }
         }
       }]
+    },
+
+    // Ecommerce Total Balance
+    ecomTotalBalance: {
+      title: { type: String, default: 'Total Balance' },
+      balances: [{
+        type: { type: String, required: true },
+        amount: { type: Number, required: true },
+        unit: { type: String, default: 'k' },
+        icon: { type: String, required: true },
+        iconBgColor: { type: String, required: true },
+        iconColor: { type: String, required: true }
+      }],
+      chartData: [{
+        month: { type: String, required: true },
+        value: { type: Number, required: true }
+      }],
+      notification: {
+        title: { type: String, required: true },
+        subtitle: { type: String, required: true },
+        iconBgColor: { type: String, required: true },
+        iconColor: { type: String, required: true }
+      }
     }
   });
 
@@ -1742,6 +1765,41 @@ function getDefaultData(card = null) {
           }
         }
       ]
+    },
+    ecomTotalBalance: {
+      title: 'Total Balance',
+      balances: [
+        {
+          type: 'Wallet',
+          amount: 2.54,
+          unit: 'k',
+          icon: '💳',
+          iconBgColor: '#FFF7ED',
+          iconColor: '#F9A825'
+        },
+        {
+          type: 'Paypal',
+          amount: 4.21,
+          unit: 'k',
+          icon: '$',
+          iconBgColor: '#F3F4F6',
+          iconColor: '#6B7280'
+        }
+      ],
+      chartData: [
+        { month: 'Jan', value: 2.1 },
+        { month: 'Feb', value: 2.8 },
+        { month: 'Mar', value: 2.3 },
+        { month: 'Apr', value: 3.2 },
+        { month: 'May', value: 2.9 },
+        { month: 'Jun', value: 4.1 }
+      ],
+      notification: {
+        title: 'You have done 57.6% more sales.',
+        subtitle: 'Check your new badge in your profile.',
+        iconBgColor: '#FFF7ED',
+        iconColor: '#F9A825'
+      }
     }
   };
   

@@ -40,7 +40,7 @@
 .card--ecom-expenses-right { grid-area: expRight; min-height: 160px; }
 
 .card--ecom-product-table { grid-area: productTable; min-height: 400px; }
-.card--total-balance { grid-area: totalBalance; min-height: 360px; }
+.card--ecom-total-balance { grid-area: totalBalance; min-height: 400px; }
 
 /* ====== Cards base ====== */
 .card {

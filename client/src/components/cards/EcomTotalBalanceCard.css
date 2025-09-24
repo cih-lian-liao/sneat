@@ -1,0 +1,297 @@
+.ecom-total-balance-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ecom-total-balance-card__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+}
+
+.ecom-total-balance-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ecom-total-balance-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.ecom-total-balance-card__menu {
+  cursor: pointer;
+}
+
+.ecom-total-balance-card__menu-icon {
+  font-size: 16px;
+  color: #9ca3af;
+  font-weight: bold;
+  transform: rotate(90deg);
+}
+
+.ecom-total-balance-card__balances {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.ecom-total-balance-card__balance-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ecom-total-balance-card__balance-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.ecom-total-balance-card__balance-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ecom-total-balance-card__balance-amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+.ecom-total-balance-card__balance-label {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.ecom-total-balance-card__chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.ecom-total-balance-card__chart-svg {
+  width: 100%;
+  max-width: 280px;
+  height: 120px;
+}
+
+.ecom-total-balance-card__chart-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 280px;
+}
+
+.ecom-total-balance-card__chart-label {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+  text-align: center;
+  flex: 1;
+}
+
+.ecom-total-balance-card__notification {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  margin-top: auto;
+}
+
+.ecom-total-balance-card__notification-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.ecom-total-balance-card__notification-title {
+  font-size: 14px;
+  color: #111827;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.ecom-total-balance-card__notification-subtitle {
+  font-size: 14px;
+  color: #111827;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.ecom-total-balance-card__notification-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 12px;
+}
+
+.ecom-total-balance-card__loading,
+.ecom-total-balance-card__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.ecom-total-balance-card__error {
+  color: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ecom-total-balance-card {
+    padding: 20px;
+    min-height: 350px;
+  }
+  
+  .ecom-total-balance-card__content {
+    gap: 16px;
+  }
+  
+  .ecom-total-balance-card__title {
+    font-size: 18px;
+  }
+  
+  .ecom-total-balance-card__balances {
+    gap: 16px;
+  }
+  
+  .ecom-total-balance-card__balance-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .ecom-total-balance-card__balance-amount {
+    font-size: 20px;
+  }
+  
+  .ecom-total-balance-card__balance-label {
+    font-size: 13px;
+  }
+  
+  .ecom-total-balance-card__chart-svg {
+    height: 100px;
+  }
+  
+  .ecom-total-balance-card__chart-label {
+    font-size: 13px;
+  }
+  
+  .ecom-total-balance-card__notification {
+    padding: 12px;
+  }
+  
+  .ecom-total-balance-card__notification-title,
+  .ecom-total-balance-card__notification-subtitle {
+    font-size: 13px;
+  }
+  
+  .ecom-total-balance-card__notification-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ecom-total-balance-card {
+    padding: 16px;
+    min-height: 300px;
+  }
+  
+  .ecom-total-balance-card__content {
+    gap: 12px;
+  }
+  
+  .ecom-total-balance-card__title {
+    font-size: 16px;
+  }
+  
+  .ecom-total-balance-card__balances {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .ecom-total-balance-card__balance-item {
+    width: 100%;
+  }
+  
+  .ecom-total-balance-card__balance-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  .ecom-total-balance-card__balance-amount {
+    font-size: 18px;
+  }
+  
+  .ecom-total-balance-card__balance-label {
+    font-size: 12px;
+  }
+  
+  .ecom-total-balance-card__chart-svg {
+    height: 80px;
+  }
+  
+  .ecom-total-balance-card__chart-label {
+    font-size: 12px;
+  }
+  
+  .ecom-total-balance-card__notification {
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .ecom-total-balance-card__notification-content {
+    width: 100%;
+  }
+  
+  .ecom-total-balance-card__notification-title,
+  .ecom-total-balance-card__notification-subtitle {
+    font-size: 12px;
+  }
+  
+  .ecom-total-balance-card__notification-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    margin-left: 0;
+    align-self: flex-end;
+  }
+}

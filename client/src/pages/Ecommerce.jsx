@@ -13,6 +13,7 @@ import EcomRevenueCard from "../components/cards/EcomRevenueCard";
 import EcomSalesCard from "../components/cards/EcomSalesCard";
 import EcomExpensesRightCard from "../components/cards/EcomExpensesRightCard";
 import EcomProductTableCard from "../components/cards/EcomProductTableCard";
+import EcomTotalBalanceCard from "../components/cards/EcomTotalBalanceCard";
 
 export default function Ecommerce() {
   return (
@@ -68,10 +69,7 @@ export default function Ecommerce() {
       {/* Row 4 */}
       <EcomProductTableCard />
 
-      <section className="card card--total-balance">
-        <header className="card__header">Total Balance</header>
-        <div className="chart-box">{/* <BalanceDonut /> */}</div>
-      </section>
+      <EcomTotalBalanceCard />
     </div>
   );
 }
