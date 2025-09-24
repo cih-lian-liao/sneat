@@ -1,0 +1,163 @@
+.ecom-performance-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ecom-performance-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ecom-performance-card__title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #374151;
+}
+
+.ecom-performance-card__more {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.ecom-performance-card__more:hover {
+  background: #f3f4f6;
+}
+
+.ecom-performance-card__metrics {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ecom-performance-card__metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ecom-performance-card__metric-label {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.ecom-performance-card__metric-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: #374151;
+}
+
+.ecom-performance-card__chart {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.ecom-performance-card__svg {
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.ecom-performance-card__month-label {
+  font-size: 12px;
+  fill: #9ca3af;
+  font-weight: 500;
+}
+
+.ecom-performance-card__legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.ecom-performance-card__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ecom-performance-card__legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.ecom-performance-card__legend-dot--income {
+  background: #6366f1;
+}
+
+.ecom-performance-card__legend-dot--earning {
+  background: #3b82f6;
+}
+
+.ecom-performance-card__legend-label {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.ecom-performance-card__loading,
+.ecom-performance-card__error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: #6b7280;
+}
+
+.ecom-performance-card__error {
+  color: #ef4444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ecom-performance-card__metrics {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .ecom-performance-card__metric {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .ecom-performance-card__chart {
+    min-height: 160px;
+  }
+  
+  .ecom-performance-card__svg {
+    max-width: 160px;
+    max-height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ecom-performance-card__title {
+    font-size: 18px;
+  }
+  
+  .ecom-performance-card__metric-value {
+    font-size: 16px;
+  }
+  
+  .ecom-performance-card__chart {
+    min-height: 140px;
+  }
+  
+  .ecom-performance-card__svg {
+    max-width: 140px;
+    max-height: 140px;
+  }
+}

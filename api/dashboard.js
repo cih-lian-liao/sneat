@@ -465,9 +465,20 @@ const DashboardDataSchema = new mongoose.Schema({
         statusColor: { type: String, required: true },
         paidBy: { type: String, required: true }
       }]
+    // Ecommerce Performance
+    ecomPerformance: {
+      title: { type: String, default: 'Performance' },
+      metrics: {
+        earning: { type: Number, required: true },
+        sales: { type: Number, required: true }
+      },
+      chartData: {
+        months: [{ type: String, required: true }],
+        income: [{ type: Number, required: true }],
+        earning: [{ type: Number, required: true }]
+      }
     }
-  });
-  
+
 let DashboardData;
 try { 
   DashboardData = mongoose.model('DashboardData'); 
@@ -1444,8 +1455,19 @@ function getDefaultData(card = null) {
           paidBy: 'paypal',
         }
       ]
+    },
+    ecomPerformance: {
+      title: 'Performance',
+      metrics: {
+        earning: 846.17,
+        sales: 25.7
+      },
+      chartData: {
+        months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        income: [65, 45, 35, 25, 55, 70],
+        earning: [80, 60, 40, 30, 70, 85]
+      }
     }
-  };
   
   if (card) {
     return defaultData[card] || { error: `Card '${card}' not found` };
