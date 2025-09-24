@@ -64,34 +64,37 @@ const NewVisitorsCard = () => {
 
   return (
     <section className="card card--new-visitors ecom-new-visitors-card">
-      <div className="ecom-new-visitors-card__header">
-        <h3 className="ecom-new-visitors-card__title">{card.title}</h3>
-        <div className="ecom-new-visitors-card__period">{card.periodLabel}</div>
-      </div>
-
-      <div className="ecom-new-visitors-card__kpis">
-        <div className="ecom-new-visitors-card__percent">{card.percent}%</div>
-        <div className={`ecom-new-visitors-card__delta ${isDown ? 'is-down' : 'is-up'}`}>
-          <span className="ecom-new-visitors-card__delta-icon">{isDown ? '↓' : '↑'}</span>
-          <span>{Math.abs(card.deltaPct)}%</span>
+      <div className="ecom-new-visitors-card__grid">
+        {/* 左列：標題、數值、趨勢 */}
+        <div className="ecom-new-visitors-card__left">
+          <h3 className="ecom-new-visitors-card__title">{card.title}</h3>
+          <div className="ecom-new-visitors-card__percent">{card.percent}%</div>
+          <div className={`ecom-new-visitors-card__delta ${isDown ? 'is-down' : 'is-up'}`}>
+            <span className="ecom-new-visitors-card__delta-icon">{isDown ? '↓' : '↑'}</span>
+            <span>{Math.abs(card.deltaPct)}%</span>
+          </div>
         </div>
-      </div>
 
-      <div className="ecom-new-visitors-card__chart">
-        <div className="ecom-new-visitors-card__bars">
-          {card.weekly.map((d, idx) => (
-            <div key={`${d.label}-${idx}`} className="ecom-new-visitors-card__bar-col">
-              <div
-                className={`ecom-new-visitors-card__bar ${d.highlighted ? 'is-highlighted' : ''}`}
-                style={{ height: `${(d.value / max) * 100}%` }}
-              />
+        {/* 右列：期間與小圖 */}
+        <div className="ecom-new-visitors-card__right">
+          <div className="ecom-new-visitors-card__period">{card.periodLabel}</div>
+          <div className="ecom-new-visitors-card__chart">
+            <div className="ecom-new-visitors-card__bars">
+              {card.weekly.map((d, idx) => (
+                <div key={`${d.label}-${idx}`} className="ecom-new-visitors-card__bar-col">
+                  <div
+                    className={`ecom-new-visitors-card__bar ${d.highlighted ? 'is-highlighted' : ''}`}
+                    style={{ height: `${(d.value / max) * 100}%` }}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="ecom-new-visitors-card__labels">
-          {card.weekly.map((d, idx) => (
-            <div key={`${d.label}-label-${idx}`} className="ecom-new-visitors-card__label">{d.label}</div>
-          ))}
+            <div className="ecom-new-visitors-card__labels">
+              {card.weekly.map((d, idx) => (
+                <div key={`${d.label}-label-${idx}`} className="ecom-new-visitors-card__label">{d.label}</div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
