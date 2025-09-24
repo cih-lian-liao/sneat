@@ -11,6 +11,7 @@ import EarningReportCard from "../components/cards/EarningReportCard";
 import SalesAnalyticsCard from "../components/cards/SalesAnalyticsCard";
 import SalesByCountriesCard from "../components/cards/SalesByCountriesCard";
 import SalesStatsCard from "../components/cards/SalesStatsCard";
+import TeamMembersCard from "../components/cards/TeamMembersCard";
 
 export default function CRM() {
   return (
@@ -42,10 +43,7 @@ export default function CRM() {
       <SalesStatsCard />
 
       {/* row-4 */}
-      <section className="card card--team">
-        <header className="card__header">Team Members</header>
-        <div className="chart-box">{/* <TeamMembers /> */}</div>
-      </section>
+      <TeamMembersCard />
 
       <section className="card card--customer-status">
         <header className="card__header">Customer • Amount • Status</header>

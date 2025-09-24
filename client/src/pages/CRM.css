@@ -21,7 +21,7 @@
         "salesAnalytics salesAnalytics salesCountries salesCountries salesStats salesStats"
     
         /* row-4：左 Team（2欄）、右 Customer 狀態表（2欄） */
-        "team team team customer customer customer";
+        "teamMembers teamMembers teamMembers customer customer customer";
     }
     
     /* ---- Cards base ---- */
@@ -68,7 +68,7 @@
     .card--sales-stats     { grid-area: salesStats;     min-height: 320px; }
     
     /* ---- Row-4 ---- */
-    .card--team            { grid-area: team;     min-height: 360px; }
+    .card--team-members    { grid-area: teamMembers; min-height: 360px; }
     .card--customer-status { grid-area: customer; min-height: 360px; }
     
     /* =========================
@@ -86,7 +86,7 @@
           "topSales topSales topVolume"
           "earning earning salesAnalytics"
           "salesCountries salesStats salesStats"
-          "team team customer";
+          "teamMembers teamMembers customer";
       }
     }
     
@@ -104,7 +104,7 @@
           "earning earning"
           "salesAnalytics salesAnalytics"
           "salesCountries salesStats"
-          "team team"
+          "teamMembers teamMembers"
           "customer customer";
       }
     }
@@ -125,7 +125,7 @@
           "salesAnalytics"
           "salesCountries"
           "salesStats"
-          "team"
+          "teamMembers"
           "customer";
       }
     }

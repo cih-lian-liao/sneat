@@ -348,12 +348,28 @@ const DashboardDataSchema = new mongoose.Schema({
         color: { type: String, required: true },
         label: { type: String, required: true }
       }]
+    },
+
+    // Team Members
+    teamMembers: {
+      title: { type: String, default: 'Team Members' },
+      members: [{
+        id: { type: Number, required: true },
+        name: { type: String, required: true },
+        role: { type: String, required: true },
+        avatar: { type: String, default: null },
+        initials: { type: String, required: true },
+        initialsBgColor: { type: String, required: true },
+        initialsTextColor: { type: String, required: true },
+        project: {
+          name: { type: String, required: true },
+          color: { type: String, required: true }
+        },
+        tasksCompleted: { type: Number, required: true },
+        tasksTotal: { type: Number, required: true },
+        progressColor: { type: String, required: true }
+      }]
     }
-  
-}, { 
-  timestamps: true, 
-  collection: 'dashboard' 
-});
 
 let DashboardData;
 try { 
@@ -1081,8 +1097,92 @@ function getDefaultData(card = null) {
           label: 'Total requirements'
         }
       ]
+    },
+    teamMembers: {
+      title: 'Team Members',
+      members: [
+        {
+          id: 1,
+          name: 'Nathan Wagner',
+          role: 'iOS Developer',
+          avatar: null,
+          initials: 'NW',
+          initialsBgColor: '#e0e7ff',
+          initialsTextColor: '#4f46e5',
+          project: {
+            name: 'ZIPCAR',
+            color: 'purple'
+          },
+          tasksCompleted: 87,
+          tasksTotal: 135,
+          progressColor: '#6366f1'
+        },
+        {
+          id: 2,
+          name: 'Emma Bowen',
+          role: 'Product Designer',
+          avatar: null,
+          initials: 'EB',
+          initialsBgColor: '#fee2e2',
+          initialsTextColor: '#ef4444',
+          project: {
+            name: 'BITBANK',
+            color: 'red'
+          },
+          tasksCompleted: 340,
+          tasksTotal: 420,
+          progressColor: '#ef4444'
+        },
+        {
+          id: 3,
+          name: 'Adrian McGuire',
+          role: 'Frontend Developer',
+          avatar: null,
+          initials: 'AM',
+          initialsBgColor: '#fde68a',
+          initialsTextColor: '#92400e',
+          project: {
+            name: 'PAYERS',
+            color: 'orange'
+          },
+          tasksCompleted: 50,
+          tasksTotal: 82,
+          progressColor: '#f97316'
+        },
+        {
+          id: 4,
+          name: 'Alma Gonzalez',
+          role: 'Backend Developer',
+          avatar: null,
+          initials: 'AG',
+          initialsBgColor: '#e0f2fe',
+          initialsTextColor: '#0ea5e9',
+          project: {
+            name: 'BRANDI',
+            color: 'blue'
+          },
+          tasksCompleted: 98,
+          tasksTotal: 260,
+          progressColor: '#0ea5e9'
+        },
+        {
+          id: 5,
+          name: 'Travis Collins',
+          role: 'DevOps Engineer',
+          avatar: null,
+          initials: 'TC',
+          initialsBgColor: '#e5e7eb',
+          initialsTextColor: '#6b7280',
+          project: {
+            name: 'AVIATO',
+            color: 'gray'
+          },
+          tasksCompleted: 12,
+          tasksTotal: 25,
+          progressColor: '#6b7280'
+        }
+      ]
     }
-  };
   
   if (card) {
     return defaultData[card] || { error: `Card '${card}' not found` };

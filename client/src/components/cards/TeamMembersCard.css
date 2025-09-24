@@ -1,0 +1,375 @@
+/* Team Members Card */
+.team-members-card {
+  background: #ffffff;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 400px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.team-members-card__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 16px;
+}
+
+/* 標題區域 */
+.team-members-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.team-members-card__title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #374151;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.team-members-card__menu {
+  padding: 4px;
+  border-radius: 6px;
+  font-size: 22px;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.team-members-card__menu:hover {
+  background-color: #f3f4f6;
+}
+
+/* 列表標頭 */
+.team-members-card__table-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 12px 0 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.team-members-card__header-name,
+.team-members-card__header-project,
+.team-members-card__header-tasks,
+.team-members-card__header-progress {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.team-members-card__header-progress {
+  text-align: center;
+}
+
+/* 團隊成員列表 */
+.team-members-card__members-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.team-members-card__member-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 8px 0;
+}
+
+/* 成員資訊 */
+.team-members-card__member-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.team-members-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.team-members-card__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-members-card__avatar-initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+.team-members-card__member-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.team-members-card__member-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.2;
+}
+
+.team-members-card__member-role {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
+/* 項目標籤 */
+.team-members-card__member-project {
+  display: flex;
+  align-items: center;
+}
+
+.team-members-card__project-tag {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 任務數量 */
+.team-members-card__member-tasks {
+  font-size: 16px;
+  font-weight: 400;
+  color: #374151;
+  text-align: left;
+}
+
+/* 進度圓圈 */
+.team-members-card__member-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-members-card__progress-circle {
+  position: relative;
+}
+
+.team-members-card__progress-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.team-members-card__progress-bg {
+  opacity: 0.3;
+}
+
+.team-members-card__progress-bar {
+  transition: stroke-dashoffset 0.8s ease-in-out;
+}
+
+/* 載入和錯誤狀態 */
+.team-members-card__loading,
+.team-members-card__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.team-members-card--error .team-members-card__error {
+  color: #dc2626;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .team-members-card {
+    padding: 16px;
+    min-height: 360px;
+  }
+  
+  .team-members-card__content {
+    gap: 14px;
+  }
+  
+  .team-members-card__title {
+    font-size: 20px;
+  }
+  
+  .team-members-card__table-header,
+  .team-members-card__member-row {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  
+  .team-members-card__avatar {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .team-members-card__avatar-initials {
+    font-size: 14px;
+  }
+  
+  .team-members-card__member-name {
+    font-size: 15px;
+  }
+  
+  .team-members-card__member-role {
+    font-size: 13px;
+  }
+  
+  .team-members-card__member-tasks {
+    font-size: 15px;
+  }
+  
+  .team-members-card__project-tag {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+  
+  .team-members-card__progress-svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-members-card {
+    padding: 12px;
+    min-height: 320px;
+  }
+  
+  .team-members-card__content {
+    gap: 12px;
+  }
+  
+  .team-members-card__title {
+    font-size: 18px;
+  }
+  
+  .team-members-card__table-header,
+  .team-members-card__member-row {
+    grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;
+    gap: 8px;
+  }
+  
+  .team-members-card__member-info {
+    gap: 8px;
+  }
+  
+  .team-members-card__avatar {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .team-members-card__avatar-initials {
+    font-size: 12px;
+  }
+  
+  .team-members-card__member-name {
+    font-size: 14px;
+  }
+  
+  .team-members-card__member-role {
+    font-size: 12px;
+  }
+  
+  .team-members-card__member-tasks {
+    font-size: 14px;
+  }
+  
+  .team-members-card__project-tag {
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+  
+  .team-members-card__progress-svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .team-members-card__header-name,
+  .team-members-card__header-project,
+  .team-members-card__header-tasks,
+  .team-members-card__header-progress {
+    font-size: 11px;
+  }
+}
+
+/* 暗色模式 */
+@media (prefers-color-scheme: dark) {
+  .team-members-card {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .team-members-card__title {
+    color: #f9fafb;
+  }
+  
+  .team-members-card__menu {
+    color: #9ca3af;
+  }
+  
+  .team-members-card__menu:hover {
+    background-color: #374151;
+  }
+  
+  .team-members-card__table-header {
+    border-bottom-color: #374151;
+  }
+  
+  .team-members-card__header-name,
+  .team-members-card__header-project,
+  .team-members-card__header-tasks,
+  .team-members-card__header-progress {
+    color: #9ca3af;
+  }
+  
+  .team-members-card__avatar {
+    border-color: #374151;
+  }
+  
+  .team-members-card__member-name {
+    color: #f9fafb;
+  }
+  
+  .team-members-card__member-role {
+    color: #9ca3af;
+  }
+  
+  .team-members-card__member-tasks {
+    color: #f9fafb;
+  }
+  
+  .team-members-card__progress-bg {
+    stroke: #374151;
+  }
+  
+  .team-members-card__loading,
+  .team-members-card__error {
+    color: #9ca3af;
+  }
+  
+  .team-members-card--error .team-members-card__error {
+    color: #f87171;
+  }
+}
