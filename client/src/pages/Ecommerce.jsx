@@ -2,6 +2,7 @@ import React from "react";
 import "./Ecommerce.css";
 import NewVisitorsCard from "../components/cards/NewVisitorsCard";
 import ActivityCard from "../components/cards/ActivityCard";
+import EcomSalesStatCard from "../components/cards/EcomSalesStatCard";
 
 export default function Ecommerce() {
   return (
@@ -33,10 +34,7 @@ export default function Ecommerce() {
       <ActivityCard />
 
       {/* Row 2 */}
-      <section className="card card--sales">
-        <header className="card__header">Sales</header>
-        <div className="chart-box">{/* <SalesMini /> */}</div>
-      </section>
+      <EcomSalesStatCard />
 
       <section className="card card--profit">
         <header className="card__header">Profit</header>
