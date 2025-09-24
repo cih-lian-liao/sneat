@@ -1468,6 +1468,7 @@ function getDefaultData(card = null) {
         earning: [80, 60, 40, 30, 70, 85]
       }
     }
+  };
   
   if (card) {
     return defaultData[card] || { error: `Card '${card}' not found` };
