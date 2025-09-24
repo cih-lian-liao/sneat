@@ -34,7 +34,7 @@
 .card--total-income  { grid-area: totalIncome; min-height: 360px; }
 
 .card--performance   { grid-area: performance; min-height: 320px; }
-.card--conversion    { grid-area: conversion;  min-height: 320px; }
+.card--conversion-rate { grid-area: conversion;  min-height: 320px; }
 .card--rev-right     { grid-area: revRight; }
 .card--sales-right   { grid-area: salesRight; }
 .card--exp-right     { grid-area: expRight;  min-height: 160px; }

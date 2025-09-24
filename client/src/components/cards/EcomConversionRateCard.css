@@ -1,0 +1,249 @@
+.ecom-conversion-rate-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ecom-conversion-rate-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.ecom-conversion-rate-card__title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ecom-conversion-rate-card__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.ecom-conversion-rate-card__subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.ecom-conversion-rate-card__menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.ecom-conversion-rate-card__menu-icon {
+  font-size: 16px;
+  color: #6b7280;
+  font-weight: bold;
+  transform: rotate(90deg);
+}
+
+.ecom-conversion-rate-card__main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ecom-conversion-rate-card__rate-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.ecom-conversion-rate-card__rate-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ecom-conversion-rate-card__rate-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+.ecom-conversion-rate-card__rate-change {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ecom-conversion-rate-card__change-icon {
+  font-size: 12px;
+}
+
+.ecom-conversion-rate-card__trend-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ecom-conversion-rate-card__metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ecom-conversion-rate-card__metric-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.ecom-conversion-rate-card__metric-item:last-child {
+  border-bottom: none;
+}
+
+.ecom-conversion-rate-card__metric-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ecom-conversion-rate-card__metric-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.ecom-conversion-rate-card__metric-value {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.ecom-conversion-rate-card__metric-change {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ecom-conversion-rate-card__metric-change-icon {
+  font-size: 10px;
+}
+
+.ecom-conversion-rate-card__loading,
+.ecom-conversion-rate-card__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.ecom-conversion-rate-card__error {
+  color: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ecom-conversion-rate-card {
+    padding: 20px;
+    min-height: 360px;
+    gap: 16px;
+  }
+  
+  .ecom-conversion-rate-card__title {
+    font-size: 16px;
+  }
+  
+  .ecom-conversion-rate-card__subtitle {
+    font-size: 13px;
+  }
+  
+  .ecom-conversion-rate-card__rate-value {
+    font-size: 28px;
+  }
+  
+  .ecom-conversion-rate-card__rate-change {
+    font-size: 13px;
+  }
+  
+  .ecom-conversion-rate-card__metrics {
+    gap: 12px;
+  }
+  
+  .ecom-conversion-rate-card__metric-item {
+    padding: 10px 0;
+  }
+  
+  .ecom-conversion-rate-card__metric-name {
+    font-size: 13px;
+  }
+  
+  .ecom-conversion-rate-card__metric-value {
+    font-size: 11px;
+  }
+  
+  .ecom-conversion-rate-card__metric-change {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ecom-conversion-rate-card {
+    padding: 16px;
+    min-height: 320px;
+    gap: 12px;
+  }
+  
+  .ecom-conversion-rate-card__title {
+    font-size: 15px;
+  }
+  
+  .ecom-conversion-rate-card__subtitle {
+    font-size: 12px;
+  }
+  
+  .ecom-conversion-rate-card__rate-value {
+    font-size: 24px;
+  }
+  
+  .ecom-conversion-rate-card__rate-change {
+    font-size: 12px;
+  }
+  
+  .ecom-conversion-rate-card__metrics {
+    gap: 10px;
+  }
+  
+  .ecom-conversion-rate-card__metric-item {
+    padding: 8px 0;
+  }
+  
+  .ecom-conversion-rate-card__metric-name {
+    font-size: 12px;
+  }
+  
+  .ecom-conversion-rate-card__metric-value {
+    font-size: 10px;
+  }
+  
+  .ecom-conversion-rate-card__metric-change {
+    font-size: 10px;
+  }
+}

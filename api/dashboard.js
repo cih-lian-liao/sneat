@@ -468,6 +468,22 @@ const DashboardDataSchema = new mongoose.Schema({
         income: [{ type: Number, required: true }],
         earning: [{ type: Number, required: true }]
       }
+    },
+
+    // Ecommerce Conversion Rate
+    ecomConversionRate: {
+      title: { type: String, default: 'Conversion Rate' },
+      subtitle: { type: String, default: 'Compared To Last Month' },
+      mainRate: { type: Number, required: true },
+      changePercentage: { type: Number, required: true },
+      changeDirection: { type: String, enum: ['up', 'down'], required: true },
+      trendData: [{ type: Number, required: true }],
+      metrics: [{
+        name: { type: String, required: true },
+        value: { type: String, required: true },
+        changePercentage: { type: Number, required: true },
+        changeDirection: { type: String, enum: ['up', 'down'], required: true }
+      }]
     }
   });
 
@@ -1459,6 +1475,40 @@ function getDefaultData(card = null) {
         income: [65, 45, 35, 25, 55, 70],
         earning: [80, 60, 40, 30, 70, 85]
       }
+    },
+    ecomConversionRate: {
+      title: 'Conversion Rate',
+      subtitle: 'Compared To Last Month',
+      mainRate: 8.72,
+      changePercentage: 4.8,
+      changeDirection: 'up',
+      trendData: [20, 25, 30, 28, 35, 40, 45, 50, 48, 55, 60, 65],
+      metrics: [
+        {
+          name: 'Impressions',
+          value: '12.4k Visits',
+          changePercentage: 12.8,
+          changeDirection: 'up'
+        },
+        {
+          name: 'Added To Cart',
+          value: '32 Product in cart',
+          changePercentage: -8.3,
+          changeDirection: 'down'
+        },
+        {
+          name: 'Checkout',
+          value: '21 Product checkout',
+          changePercentage: 9.12,
+          changeDirection: 'up'
+        },
+        {
+          name: 'Purchased',
+          value: '12 Orders',
+          changePercentage: 2.24,
+          changeDirection: 'up'
+        }
+      ]
     }
   };
   
