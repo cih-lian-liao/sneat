@@ -82,9 +82,9 @@
 .customer-amount-status-card__customer-row {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
-  gap: 16px;
+  gap: 12px;
   align-items: center;
-  padding: 8px 0;
+  padding: 6px 0;
 }
 
 /* 客戶資訊 */
@@ -127,14 +127,14 @@
 }
 
 .customer-amount-status-card__customer-name {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   color: #374151;
   line-height: 1.2;
 }
 
 .customer-amount-status-card__customer-email {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   color: #6b7280;
   line-height: 1.2;
@@ -142,7 +142,7 @@
 
 /* 金額 */
 .customer-amount-status-card__amount {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   color: #374151;
   text-align: left;
@@ -155,9 +155,9 @@
 }
 
 .customer-amount-status-card__status-badge {
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -170,9 +170,9 @@
 }
 
 .customer-amount-status-card__paid-by-badge {
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -186,13 +186,13 @@
 }
 
 .customer-amount-status-card__action-btn {
-  padding: 8px;
+  padding: 6px;
   border: none;
   background: none;
-  font-size: 18px;
+  font-size: 16px;
   color: #9ca3af;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 4px;
   transition: background-color 0.2s ease;
 }
 
