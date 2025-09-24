@@ -1,5 +1,6 @@
 import React from "react";
 import "./Ecommerce.css";
+import NewVisitorsCard from "../components/cards/NewVisitorsCard";
 
 export default function Ecommerce() {
   return (
@@ -25,10 +26,7 @@ export default function Ecommerce() {
       </section>
 
       {/* New Visitors */}
-      <section className="card card--new-visitors">
-        <header className="card__header">New Visitors</header>
-        <div className="chart-box">{/* <NewVisitorsChart /> */}</div>
-      </section>
+      <NewVisitorsCard />
 
       {/* Activity */}
       <section className="card card--activity">

@@ -52,6 +52,19 @@ const DashboardDataSchema = new mongoose.Schema({
       sales: { type: Number, required: true }
     }]
   },
+  // New Visitors (Ecommerce page)
+  newVisitors: {
+    title: { type: String, default: 'New Visitors' },
+    periodLabel: { type: String, default: 'Last Week' },
+    percent: { type: Number, default: 0 },
+    deltaPct: { type: Number, default: 0 },
+    deltaDirection: { type: String, enum: ['up', 'down'], default: 'down' },
+    weekly: [{
+      label: { type: String, required: true },
+      value: { type: Number, required: true },
+      highlighted: { type: Boolean, default: false }
+    }]
+  },
   
   // Profit Report
   profitReport: {
@@ -515,6 +528,22 @@ function getDefaultData(card = null) {
         { month: 'Apr', sales: 140000 },
         { month: 'May', sales: 130000 },
         { month: 'Jun', sales: 145000 }
+      ]
+    },
+    newVisitors: {
+      title: 'New Visitors',
+      periodLabel: 'Last Week',
+      percent: 23,
+      deltaPct: -8.75,
+      deltaDirection: 'down',
+      weekly: [
+        { label: 'Mo', value: 20 },
+        { label: 'Tu', value: 48 },
+        { label: 'We', value: 42 },
+        { label: 'Th', value: 18 },
+        { label: 'Fr', value: 30 },
+        { label: 'Sa', value: 100, highlighted: true },
+        { label: 'Su', value: 46 }
       ]
     },
     profitReport: {
