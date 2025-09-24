@@ -20,23 +20,58 @@ export default function SalesAnalyticsCard() {
         const defaultData = {
           title: 'Sales Analytics',
           selectedYear: '2025',
-          performanceIndicator: {
-            percentage: 42.6,
-            label: 'Than last year'
-          },
-          heatmapData: {
-            yAxisLabels: ['1k', '2k', '3k', '4k', '5k', '6k', '7k', '8k'],
-            xAxisLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-            data: [
-              [0, 0, 0, 0, 0, 0, 0, 0], // 1k
-              [0, 1, 0, 0, 0, 0, 0, 0], // 2k
-              [0, 0, 1, 0, 0, 0, 0, 0], // 3k
-              [0, 0, 0, 0, 0, 0, 0, 0], // 4k
-              [0, 0, 0, 1, 1, 0, 0, 0], // 5k
-              [0, 0, 0, 0, 0, 1, 0, 0], // 6k
-              [0, 0, 0, 0, 0, 0, 1, 1], // 7k
-              [0, 0, 0, 0, 0, 0, 0, 0]  // 8k
-            ]
+          yearlyData: {
+            '2025': {
+              performanceIndicator: { percentage: 42.6, label: 'Than last year' },
+              heatmapData: {
+                yAxisLabels: ['1k', '2k', '3k', '4k', '5k', '6k', '7k', '8k'],
+                xAxisLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                data: [
+                  [0, 0, 0, 0, 0, 0, 0, 0], // 1k
+                  [0, 1, 0, 0, 0, 0, 0, 0], // 2k
+                  [0, 0, 1, 0, 0, 0, 0, 0], // 3k
+                  [0, 0, 0, 0, 0, 0, 0, 0], // 4k
+                  [0, 0, 0, 1, 1, 0, 0, 0], // 5k
+                  [0, 0, 0, 0, 0, 1, 0, 0], // 6k
+                  [0, 0, 0, 0, 0, 0, 1, 1], // 7k
+                  [0, 0, 0, 0, 0, 0, 0, 0]  // 8k
+                ]
+              }
+            },
+            '2024': {
+              performanceIndicator: { percentage: 28.3, label: 'Than last year' },
+              heatmapData: {
+                yAxisLabels: ['1k', '2k', '3k', '4k', '5k', '6k', '7k', '8k'],
+                xAxisLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                data: [
+                  [1, 0, 0, 0, 0, 0, 0, 0], // 1k
+                  [0, 0, 0, 0, 0, 0, 0, 0], // 2k
+                  [0, 1, 0, 0, 0, 0, 0, 0], // 3k
+                  [0, 0, 1, 0, 0, 0, 0, 0], // 4k
+                  [0, 0, 0, 0, 0, 0, 0, 0], // 5k
+                  [0, 0, 0, 1, 0, 0, 0, 0], // 6k
+                  [0, 0, 0, 0, 1, 0, 0, 0], // 7k
+                  [0, 0, 0, 0, 0, 1, 0, 0]  // 8k
+                ]
+              }
+            },
+            '2023': {
+              performanceIndicator: { percentage: 15.7, label: 'Than last year' },
+              heatmapData: {
+                yAxisLabels: ['1k', '2k', '3k', '4k', '5k', '6k', '7k', '8k'],
+                xAxisLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                data: [
+                  [0, 0, 0, 0, 0, 0, 0, 0], // 1k
+                  [0, 0, 0, 0, 0, 0, 0, 0], // 2k
+                  [0, 0, 0, 0, 0, 0, 0, 0], // 3k
+                  [0, 0, 0, 0, 0, 0, 0, 0], // 4k
+                  [0, 0, 0, 0, 0, 0, 0, 0], // 5k
+                  [0, 0, 0, 0, 0, 0, 0, 0], // 6k
+                  [0, 0, 0, 0, 0, 0, 0, 0], // 7k
+                  [0, 0, 0, 0, 0, 0, 0, 0]  // 8k
+                ]
+              }
+            }
           }
         };
         setData(defaultData);
@@ -66,8 +101,13 @@ export default function SalesAnalyticsCard() {
 
   const {
     title = "Sales Analytics",
-    performanceIndicator = { percentage: 42.6, label: "Than last year" },
-    heatmapData = {
+    yearlyData = {}
+  } = data;
+
+  // 獲取當前選中年份的數據
+  const currentYearData = yearlyData[selectedYear] || yearlyData['2025'] || {
+    performanceIndicator: { percentage: 42.6, label: "Than last year" },
+    heatmapData: {
       yAxisLabels: ['1k', '2k', '3k', '4k', '5k', '6k', '7k', '8k'],
       xAxisLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
       data: [
@@ -81,7 +121,9 @@ export default function SalesAnalyticsCard() {
         [0, 0, 0, 0, 0, 0, 0, 0]
       ]
     }
-  } = data;
+  };
+
+  const { performanceIndicator, heatmapData } = currentYearData;
 
   // 生成熱力圖
   const generateHeatmap = () => {

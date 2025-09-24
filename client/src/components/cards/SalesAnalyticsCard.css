@@ -123,7 +123,7 @@
   color: #9ca3af;
   text-align: right;
   line-height: 1;
-  height: 20px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -143,9 +143,9 @@
 }
 
 .sales-analytics-card__heatmap-cell {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
   background-color: #f3f4f6;
   transition: all 0.2s ease;
 }
@@ -172,7 +172,7 @@
   font-weight: 500;
   color: #9ca3af;
   text-align: center;
-  width: 20px;
+  width: 28px;
   line-height: 1;
 }
 
@@ -222,12 +222,17 @@
   }
   
   .sales-analytics-card__heatmap-cell {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
   }
   
-  .sales-analytics-card__y-label,
+  .sales-analytics-card__y-label {
+    height: 24px;
+    font-size: 11px;
+  }
+  
   .sales-analytics-card__x-label {
+    width: 24px;
     font-size: 11px;
   }
   
@@ -257,17 +262,22 @@
   }
   
   .sales-analytics-card__heatmap-cell {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
   }
   
-  .sales-analytics-card__y-label,
+  .sales-analytics-card__y-label {
+    height: 20px;
+    font-size: 10px;
+  }
+  
   .sales-analytics-card__x-label {
+    width: 20px;
     font-size: 10px;
   }
   
   .sales-analytics-card__x-axis {
-    margin-left: 34px;
+    margin-left: 36px;
   }
 }
 
