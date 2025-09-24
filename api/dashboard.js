@@ -1306,6 +1306,7 @@ function getDefaultData(card = null) {
         }
       ]
     }
+  };
   
   if (card) {
     return defaultData[card] || { error: `Card '${card}' not found` };
