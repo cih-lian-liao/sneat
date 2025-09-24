@@ -10,7 +10,6 @@ const CustomerAmountStatusCard = () => {
 
   // 默認數據
   const defaultData = {
-    title: "Customer • Amount • Status",
     customers: [
       {
         id: 1,
@@ -153,7 +152,7 @@ const CustomerAmountStatusCard = () => {
   // 點擊外部關閉下拉菜單
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (openDropdown && !event.target.closest('.customer-amount-status-card__actions')) {
+      if (openDropdown && !event.target.closest('.crm-customer-amount-status-card__actions')) {
         setOpenDropdown(null);
       }
     };
@@ -166,16 +165,16 @@ const CustomerAmountStatusCard = () => {
 
   if (loading) {
     return (
-      <div className="card card--customer-status customer-amount-status-card">
-        <div className="customer-amount-status-card__loading">載入中...</div>
+      <div className="card card--customer-status crm-customer-amount-status-card">
+        <div className="crm-customer-amount-status-card__loading">載入中...</div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="card card--customer-status customer-amount-status-card customer-amount-status-card--error">
-        <div className="customer-amount-status-card__error">載入失敗: {error}</div>
+      <div className="card card--customer-status crm-customer-amount-status-card crm-customer-amount-status-card--error">
+        <div className="crm-customer-amount-status-card__error">載入失敗: {error}</div>
       </div>
     );
   }
@@ -185,45 +184,37 @@ const CustomerAmountStatusCard = () => {
   const customers = Array.isArray(cardData.customers) ? cardData.customers : [];
 
   return (
-    <div className="card card--customer-status customer-amount-status-card">
-      <div className="customer-amount-status-card__content">
-        {/* 標題區域 */}
-        <div className="customer-amount-status-card__header">
-          <h3 className="customer-amount-status-card__title">{cardData.title}</h3>
-          <div className="customer-amount-status-card__menu">
-            <span>⋯</span>
-          </div>
-        </div>
-
+    <div className="card card--customer-status crm-customer-amount-status-card">
+      <div className="crm-customer-amount-status-card__content">
         {/* 表格標頭 */}
-        <div className="customer-amount-status-card__table-header">
-          <div className="customer-amount-status-card__header-customer">CUSTOMER</div>
-          <div className="customer-amount-status-card__header-amount">AMOUNT</div>
-          <div className="customer-amount-status-card__header-status">STATUS</div>
-          <div className="customer-amount-status-card__header-paid-by">PAID BY</div>
-          <div className="customer-amount-status-card__header-actions">ACTIONS</div>
+        <div className="crm-customer-amount-status-card__table-header">
+          <div className="crm-customer-amount-status-card__header-customer">CUSTOMER</div>
+          <div className="crm-customer-amount-status-card__header-amount">AMOUNT</div>
+          <div className="crm-customer-amount-status-card__header-status">STATUS</div>
+          <div className="crm-customer-amount-status-card__header-paid-by">PAID BY</div>
+          <div className="crm-customer-amount-status-card__header-actions">ACTIONS</div>
         </div>
 
         {/* 客戶列表 */}
-        <div className="customer-amount-status-card__customers-list">
+        <div className="crm-customer-amount-status-card__customers-list">
           {customers.map((customer) => {
             const statusStyles = getStatusStyles(customer.statusColor);
             const paidByStyles = getPaidByStyles(customer.paidBy);
             
             return (
-              <div key={customer.id} className="customer-amount-status-card__customer-row">
+              <div key={customer.id} className="crm-customer-amount-status-card__customer-row">
                 {/* 客戶列 */}
-                <div className="customer-amount-status-card__customer-info">
-                  <div className="customer-amount-status-card__avatar">
+                <div className="crm-customer-amount-status-card__customer-info">
+                  <div className="crm-customer-amount-status-card__avatar">
                     {customer.avatar ? (
                       <img 
                         src={customer.avatar} 
                         alt={customer.name}
-                        className="customer-amount-status-card__avatar-img"
+                        className="crm-customer-amount-status-card__avatar-img"
                       />
                     ) : (
                       <div 
-                        className="customer-amount-status-card__avatar-initials"
+                        className="crm-customer-amount-status-card__avatar-initials"
                         style={{
                           backgroundColor: customer.initialsBgColor,
                           color: customer.initialsTextColor
@@ -233,21 +224,21 @@ const CustomerAmountStatusCard = () => {
                       </div>
                     )}
                   </div>
-                  <div className="customer-amount-status-card__customer-details">
-                    <div className="customer-amount-status-card__customer-name">{customer.name}</div>
-                    <div className="customer-amount-status-card__customer-email">{customer.email}</div>
+                  <div className="crm-customer-amount-status-card__customer-details">
+                    <div className="crm-customer-amount-status-card__customer-name">{customer.name}</div>
+                    <div className="crm-customer-amount-status-card__customer-email">{customer.email}</div>
                   </div>
                 </div>
 
                 {/* 金額列 */}
-                <div className="customer-amount-status-card__amount">
+                <div className="crm-customer-amount-status-card__amount">
                   {formatCurrency(customer.amount)}
                 </div>
 
                 {/* 狀態列 */}
-                <div className="customer-amount-status-card__status">
+                <div className="crm-customer-amount-status-card__status">
                   <div 
-                    className="customer-amount-status-card__status-badge"
+                    className="crm-customer-amount-status-card__status-badge"
                     style={{
                       backgroundColor: statusStyles.bg,
                       color: statusStyles.text
@@ -258,9 +249,9 @@ const CustomerAmountStatusCard = () => {
                 </div>
 
                 {/* 支付方式列 */}
-                <div className="customer-amount-status-card__paid-by">
+                <div className="crm-customer-amount-status-card__paid-by">
                   <div 
-                    className="customer-amount-status-card__paid-by-badge"
+                    className="crm-customer-amount-status-card__paid-by-badge"
                     style={{
                       backgroundColor: paidByStyles.bg,
                       color: paidByStyles.text
@@ -271,9 +262,9 @@ const CustomerAmountStatusCard = () => {
                 </div>
 
                 {/* 操作列 */}
-                <div className="customer-amount-status-card__actions">
+                <div className="crm-customer-amount-status-card__actions">
                   <button 
-                    className="customer-amount-status-card__action-btn" 
+                    className="crm-customer-amount-status-card__action-btn" 
                     aria-label="more"
                     onClick={(e) => handleActionClick(customer.id, e)}
                   >
@@ -281,26 +272,26 @@ const CustomerAmountStatusCard = () => {
                   </button>
                   
                   {openDropdown === customer.id && (
-                    <div className="customer-amount-status-card__dropdown">
+                    <div className="crm-customer-amount-status-card__dropdown">
                       <div 
-                        className="customer-amount-status-card__dropdown-item"
+                        className="crm-customer-amount-status-card__dropdown-item"
                         onClick={() => handleActionSelect('View Transaction', customer.id)}
                       >
-                        <span className="customer-amount-status-card__dropdown-icon">📄</span>
+                        <span className="crm-customer-amount-status-card__dropdown-icon">📄</span>
                         <span>View Transaction</span>
                       </div>
                       <div 
-                        className="customer-amount-status-card__dropdown-item"
+                        className="crm-customer-amount-status-card__dropdown-item"
                         onClick={() => handleActionSelect('Customer Profile', customer.id)}
                       >
-                        <span className="customer-amount-status-card__dropdown-icon">👤</span>
+                        <span className="crm-customer-amount-status-card__dropdown-icon">👤</span>
                         <span>Customer Profile</span>
                       </div>
                       <div 
-                        className="customer-amount-status-card__dropdown-item"
+                        className="crm-customer-amount-status-card__dropdown-item"
                         onClick={() => handleActionSelect('Delete History', customer.id)}
                       >
-                        <span className="customer-amount-status-card__dropdown-icon">🗑️</span>
+                        <span className="crm-customer-amount-status-card__dropdown-icon">🗑️</span>
                         <span>Delete History</span>
                       </div>
                     </div>

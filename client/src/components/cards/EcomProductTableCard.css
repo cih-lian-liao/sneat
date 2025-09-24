@@ -49,7 +49,7 @@
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
   gap: 12px;
-  padding: 12px 0;
+  padding: 6px 0;
   border-bottom: 1px solid #f3f4f6;
   align-items: center;
 }
@@ -236,11 +236,11 @@
   .ecom-product-table-card__row {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 12px;
+    gap: 6px;
+    padding: 10px;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   
   .ecom-product-table-card__cell {
@@ -296,8 +296,8 @@
   
   
   .ecom-product-table-card__row {
-    padding: 10px;
-    gap: 6px;
+    padding: 8px;
+    gap: 4px;
   }
   
   .ecom-product-table-card__product-image {
