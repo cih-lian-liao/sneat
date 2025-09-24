@@ -386,10 +386,14 @@ export default async function handler(req, res) {
 
   try {
     if (mongoose.connection.readyState !== 1) {
-      await mongoose.connect(process.env.MONGO_URI, {
+      const mongoUri = process.env.MONGO_URI || 'mongodb+srv://cihlian:pJsXwiTzqaK4t3A3@sneat.uh4w06f.mongodb.net/mydatas';
+      console.log('Connecting to MongoDB with URI:', mongoUri.replace(/\/\/.*@/, '//***:***@'));
+      
+      await mongoose.connect(mongoUri, {
         useNewUrlParser: true,
         useUnifiedTopology: true
       });
+      console.log('MongoDB connected successfully');
     }
     
     const { card } = req.query;
@@ -418,7 +422,17 @@ export default async function handler(req, res) {
     
     res.json(doc);
   } catch (err) {
-    res.status(500).json({ error: '取得 Dashboard 數據失敗: ' + err.message });
+    console.error('Dashboard API Error:', err);
+    console.error('Error details:', {
+      message: err.message,
+      stack: err.stack,
+      card: req.query.card,
+      connectionState: mongoose.connection.readyState
+    });
+    res.status(500).json({ 
+      error: '取得 Dashboard 數據失敗: ' + err.message,
+      details: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    });
   }
 }
 
