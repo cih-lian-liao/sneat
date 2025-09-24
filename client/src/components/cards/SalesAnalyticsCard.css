@@ -114,7 +114,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 42px;
-  padding-top: 8px;
+  padding-top: 0;
 }
 
 .sales-analytics-card__y-label {
@@ -127,6 +127,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  padding-top: 0;
+  margin-top: 0;
 }
 
 /* 熱力圖 */
@@ -135,6 +137,7 @@
   flex-direction: column;
   gap: 2px;
   flex: 1;
+  padding-top: 0;
 }
 
 .sales-analytics-card__heatmap-row {
@@ -161,7 +164,7 @@
   display: flex;
   justify-content: space-between;
   margin-left: 42px; /* 對齊 Y 軸標籤的寬度 */
-  padding-top: 8px;
+  padding-top: 2px;
 }
 
 .sales-analytics-card__x-label {
@@ -226,6 +229,8 @@
   .sales-analytics-card__y-label {
     height: 28px;
     font-size: 11px;
+    padding-top: 0;
+    margin-top: 0;
   }
   
   .sales-analytics-card__x-label {
@@ -235,6 +240,7 @@
   
   .sales-analytics-card__x-axis {
     margin-left: 40px;
+    padding-top: 2px;
   }
 }
 
@@ -266,6 +272,8 @@
   .sales-analytics-card__y-label {
     height: 24px;
     font-size: 10px;
+    padding-top: 0;
+    margin-top: 0;
   }
   
   .sales-analytics-card__x-label {
@@ -275,6 +283,7 @@
   
   .sales-analytics-card__x-axis {
     margin-left: 38px;
+    padding-top: 2px;
   }
 }
 
