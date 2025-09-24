@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './TeamMembersCard.css';
 
 const TeamMembersCard = () => {
@@ -97,14 +98,10 @@ const TeamMembersCard = () => {
     const fetchTeamMembers = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/dashboard?card=teamMembers');
+        const response = await axios.get('/api/dashboard?card=teamMembers');
         
-        if (!response.ok) {
-          throw new Error('Failed to fetch team members data');
-        }
-        
-        const data = await response.json();
-        setTeamMembers(data);
+        setTeamMembers(response.data);
+        setError(null);
       } catch (err) {
         console.error('Error fetching team members:', err);
         setError(err.message);
