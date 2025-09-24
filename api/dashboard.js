@@ -385,8 +385,7 @@ const DashboardDataSchema = new mongoose.Schema({
         amount: { type: Number, required: true },
         status: { type: String, required: true },
         statusColor: { type: String, required: true },
-        paidBy: { type: String, required: true },
-        paidByIcon: { type: String, default: '💳' }
+        paidBy: { type: String, required: true }
       }]
     }
   });
@@ -1232,7 +1231,6 @@ function getDefaultData(card = null) {
           status: 'PAID',
           statusColor: 'green',
           paidBy: 'mastercard',
-          paidByIcon: '💳'
         },
         {
           id: 2,
@@ -1246,7 +1244,6 @@ function getDefaultData(card = null) {
           status: 'PENDING',
           statusColor: 'orange',
           paidBy: 'visa',
-          paidByIcon: '💳'
         },
         {
           id: 3,
@@ -1260,7 +1257,6 @@ function getDefaultData(card = null) {
           status: 'PENDING',
           statusColor: 'orange',
           paidBy: 'visa',
-          paidByIcon: '💳'
         },
         {
           id: 4,
@@ -1274,7 +1270,6 @@ function getDefaultData(card = null) {
           status: 'PAID',
           statusColor: 'green',
           paidBy: 'paypal',
-          paidByIcon: '💳'
         },
         {
           id: 5,
@@ -1288,7 +1283,6 @@ function getDefaultData(card = null) {
           status: 'PAID',
           statusColor: 'green',
           paidBy: 'mastercard',
-          paidByIcon: '💳'
         },
         {
           id: 6,
@@ -1302,7 +1296,6 @@ function getDefaultData(card = null) {
           status: 'FAILED',
           statusColor: 'red',
           paidBy: 'paypal',
-          paidByIcon: '💳'
         }
       ]
     }

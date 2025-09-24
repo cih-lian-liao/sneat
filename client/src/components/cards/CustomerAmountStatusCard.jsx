@@ -22,8 +22,7 @@ const CustomerAmountStatusCard = () => {
         amount: 459.65,
         status: "PAID",
         statusColor: "green",
-        paidBy: "mastercard",
-        paidByIcon: "💳"
+        paidBy: "mastercard"
       },
       {
         id: 2,
@@ -36,8 +35,7 @@ const CustomerAmountStatusCard = () => {
         amount: 93.81,
         status: "PENDING",
         statusColor: "orange",
-        paidBy: "visa",
-        paidByIcon: "💳"
+        paidBy: "visa"
       },
       {
         id: 3,
@@ -50,8 +48,7 @@ const CustomerAmountStatusCard = () => {
         amount: 934.34,
         status: "PENDING",
         statusColor: "orange",
-        paidBy: "visa",
-        paidByIcon: "💳"
+        paidBy: "visa"
       },
       {
         id: 4,
@@ -64,8 +61,7 @@ const CustomerAmountStatusCard = () => {
         amount: 794.97,
         status: "PAID",
         statusColor: "green",
-        paidBy: "paypal",
-        paidByIcon: "💳"
+        paidBy: "paypal"
       },
       {
         id: 5,
@@ -78,8 +74,7 @@ const CustomerAmountStatusCard = () => {
         amount: 19.49,
         status: "PAID",
         statusColor: "green",
-        paidBy: "mastercard",
-        paidByIcon: "💳"
+        paidBy: "mastercard"
       },
       {
         id: 6,
@@ -92,8 +87,7 @@ const CustomerAmountStatusCard = () => {
         amount: 636.27,
         status: "FAILED",
         statusColor: "red",
-        paidBy: "paypal",
-        paidByIcon: "💳"
+        paidBy: "paypal"
       }
     ]
   };
@@ -129,9 +123,9 @@ const CustomerAmountStatusCard = () => {
 
   const getPaidByStyles = (paidBy) => {
     const styleMap = {
-      mastercard: { bg: '#fee2e2', text: '#dc2626', icon: '💳' },
-      visa: { bg: '#e0e7ff', text: '#4f46e5', icon: '💳' },
-      paypal: { bg: '#e0f2fe', text: '#0ea5e9', icon: '💳' }
+      mastercard: { bg: '#fee2e2', text: '#dc2626' },
+      visa: { bg: '#e0e7ff', text: '#4f46e5' },
+      paypal: { bg: '#e0f2fe', text: '#0ea5e9' }
     };
     return styleMap[paidBy] || styleMap.mastercard;
   };
@@ -245,7 +239,7 @@ const CustomerAmountStatusCard = () => {
                       color: paidByStyles.text
                     }}
                   >
-                    {paidByStyles.icon} {customer.paidBy.toUpperCase()}
+                    {customer.paidBy.toUpperCase()}
                   </div>
                 </div>
 

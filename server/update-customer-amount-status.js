@@ -19,8 +19,7 @@ const dashboardSchema = new mongoose.Schema({
       amount: { type: Number, required: true },
       status: { type: String, required: true },
       statusColor: { type: String, required: true },
-      paidBy: { type: String, required: true },
-      paidByIcon: { type: String, default: '💳' }
+      paidBy: { type: String, required: true }
     }]
   }
 }, { 
@@ -46,7 +45,6 @@ const customerAmountStatusData = {
       status: 'PAID',
       statusColor: 'green',
       paidBy: 'mastercard',
-      paidByIcon: '💳'
     },
     {
       id: 2,
@@ -60,7 +58,6 @@ const customerAmountStatusData = {
       status: 'PENDING',
       statusColor: 'orange',
       paidBy: 'visa',
-      paidByIcon: '💳'
     },
     {
       id: 3,
@@ -74,7 +71,6 @@ const customerAmountStatusData = {
       status: 'PENDING',
       statusColor: 'orange',
       paidBy: 'visa',
-      paidByIcon: '💳'
     },
     {
       id: 4,
@@ -88,7 +84,6 @@ const customerAmountStatusData = {
       status: 'PAID',
       statusColor: 'green',
       paidBy: 'paypal',
-      paidByIcon: '💳'
     },
     {
       id: 5,
@@ -102,7 +97,6 @@ const customerAmountStatusData = {
       status: 'PAID',
       statusColor: 'green',
       paidBy: 'mastercard',
-      paidByIcon: '💳'
     },
     {
       id: 6,
@@ -116,7 +110,6 @@ const customerAmountStatusData = {
       status: 'FAILED',
       statusColor: 'red',
       paidBy: 'paypal',
-      paidByIcon: '💳'
     }
   ]
 };
