@@ -65,7 +65,7 @@ const ActivityCard = () => {
 
   if (loading) {
     return (
-      <section className="card card--activity ecom-activity-card">
+      <section className="card card--ecom-activity ecom-activity-card">
         <div className="ecom-activity-card__loading">載入中...</div>
       </section>
     );
@@ -73,14 +73,14 @@ const ActivityCard = () => {
 
   if (error && !card) {
     return (
-      <section className="card card--activity ecom-activity-card">
+      <section className="card card--ecom-activity ecom-activity-card">
         <div className="ecom-activity-card__error">錯誤: {error}</div>
       </section>
     );
   }
 
   return (
-    <section className="card card--activity ecom-activity-card">
+    <section className="card card--ecom-activity ecom-activity-card">
       <div className="ecom-activity-card__grid">
         {/* 左側 KPI */}
         <div className="ecom-activity-card__left">

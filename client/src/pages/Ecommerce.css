@@ -25,7 +25,7 @@
 /* ====== Area mapping ====== */
 .card--ecom-congrats { grid-area: congrats; min-height: 240px; }
 .card--new-visitors  { grid-area: newVisitors; min-height: 240px; }
-.card--activity      { grid-area: activity;    min-height: 240px; }
+.card--ecom-activity { grid-area: activity;    min-height: 240px; }
 
 .card--sales         { grid-area: sales; }
 .card--profit        { grid-area: profit; }
