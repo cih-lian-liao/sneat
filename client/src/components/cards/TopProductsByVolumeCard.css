@@ -1,0 +1,270 @@
+/* Top Products by Volume Card - 符合專案整體風格 */
+.crm-top-volume-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border: 1px solid #f3f4f6;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.crm-top-volume-card.error {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+/* Header */
+.crm-top-volume-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.crm-top-volume-card__title {
+  margin: 0;
+  font-size: 22px;
+  color: #374151;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.crm-top-volume-card__highlight {
+  color: #7c3aed;
+}
+
+.crm-top-volume-card__options {
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.crm-top-volume-card__options:hover {
+  background-color: #f3f4f6;
+}
+
+/* Product List */
+.crm-top-volume-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.crm-top-volume-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s ease;
+}
+
+.crm-top-volume-card__row:last-child {
+  border-bottom: none;
+}
+
+.crm-top-volume-card__row:hover {
+  background-color: #f8fafc;
+  margin: 0 -12px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* Left Section */
+.crm-top-volume-card__left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.crm-top-volume-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.crm-top-volume-card__avatar-icon {
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+.crm-top-volume-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.crm-top-volume-card__name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #374151;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.crm-top-volume-card__brand {
+  color: #9ca3af;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right Section */
+.crm-top-volume-card__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.crm-top-volume-card__volume {
+  font-weight: 800;
+  color: #374151;
+  font-size: 18px;
+}
+
+.crm-top-volume-card__change {
+  font-weight: 800;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.crm-top-volume-card__change.positive {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.crm-top-volume-card__change.negative {
+  background-color: #fecaca;
+  color: #dc2626;
+}
+
+/* Empty State */
+.crm-top-volume-card__empty {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 16px;
+  padding: 40px 20px;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .crm-top-volume-card {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .crm-top-volume-card__title {
+    color: #f9fafb;
+  }
+  
+  .crm-top-volume-card__highlight {
+    color: #a78bfa;
+  }
+  
+  .crm-top-volume-card__options:hover {
+    background-color: #374151;
+  }
+  
+  .crm-top-volume-card__row {
+    border-bottom-color: #374151;
+  }
+  
+  .crm-top-volume-card__row:hover {
+    background-color: #374151;
+  }
+  
+  .crm-top-volume-card__name {
+    color: #f9fafb;
+  }
+  
+  .crm-top-volume-card__brand {
+    color: #9ca3af;
+  }
+  
+  .crm-top-volume-card__volume {
+    color: #f9fafb;
+  }
+  
+  .crm-top-volume-card__change.positive {
+    background-color: #14532d;
+    color: #4ade80;
+  }
+  
+  .crm-top-volume-card__change.negative {
+    background-color: #7f1d1d;
+    color: #f87171;
+  }
+  
+  .crm-top-volume-card__empty {
+    color: #9ca3af;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .crm-top-volume-card {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .crm-top-volume-card__title {
+    font-size: 20px;
+  }
+  
+  .crm-top-volume-card__left {
+    gap: 12px;
+  }
+  
+  .crm-top-volume-card__avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .crm-top-volume-card__avatar-icon {
+    font-size: 18px;
+  }
+  
+  .crm-top-volume-card__name {
+    font-size: 15px;
+  }
+  
+  .crm-top-volume-card__brand {
+    font-size: 13px;
+  }
+  
+  .crm-top-volume-card__volume {
+    font-size: 16px;
+  }
+  
+  .crm-top-volume-card__change {
+    font-size: 13px;
+    padding: 3px 6px;
+    min-width: 50px;
+  }
+}

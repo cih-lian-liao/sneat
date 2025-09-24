@@ -6,6 +6,7 @@ import SessionsCard from "../components/cards/SessionsCard";
 import OrdersMiniCard from "../components/cards/OrdersMiniCard";
 import LeadsCard from "../components/cards/LeadsCard";
 import TopProductsBySalesCard from "../components/cards/TopProductsBySalesCard";
+import TopProductsByVolumeCard from "../components/cards/TopProductsByVolumeCard";
 
 export default function CRM() {
   return (
@@ -25,10 +26,7 @@ export default function CRM() {
       {/* row-2 */}
       <TopProductsBySalesCard />
 
-      <section className="card card--top-volume">
-        <header className="card__header">Top Products by Volume</header>
-        <div className="chart-box">{/* <TopVolume /> */}</div>
-      </section>
+      <TopProductsByVolumeCard />
 
       <section className="card card--earning">
         <header className="card__header">Earning Report</header>
