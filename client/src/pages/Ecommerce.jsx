@@ -5,19 +5,19 @@ export default function Ecommerce() {
   return (
     <div className="ecom-grid">
       {/* Row 1 */}
-      <section className="card card--congrats">
-        <div className="congrats">
-          <div className="congrats__text">
-            <h2>Congratulations Katie! 🎉</h2>
-            <p>Best seller of the month</p>
-            <div className="congrats__kpi">
-              <strong>$48.9k</strong>
-              <span>78% of target</span>
+      <section className="card card--ecom-congrats ecom-congrats-card">
+        <div className="ecom-congrats-card__grid">
+          <div className="ecom-congrats-card__text">
+            <h2 className="ecom-congrats-card__title">Congratulations Katie!</h2>
+            <p className="ecom-congrats-card__subtitle">Best seller of the month</p>
+            <div className="ecom-congrats-card__kpi">
+              <strong className="ecom-congrats-card__amount">$48.9k</strong>
+              <span className="ecom-congrats-card__note">78% of target</span>
             </div>
-            <button className="btn">VIEW SALES</button>
+            <button className="ecom-congrats-card__button">VIEW SALES</button>
           </div>
           <img
-            className="congrats__img"
+            className="ecom-congrats-card__img"
             src="https://greakproject.vercel.app/images/misc/trophy.png"
             alt="Best seller illustration"
           />
