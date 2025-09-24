@@ -1,13 +1,15 @@
-/* EarningReportCard 樣式 - 基於附圖設計 */
+/* EarningReportCard 樣式 - 符合專案整體風格 */
 .earning-report-card {
   background: #fff;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   min-height: 300px;
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 .earning-report-card:hover {
@@ -18,7 +20,7 @@
 .earning-report-card__content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   height: 100%;
 }
 
@@ -36,11 +38,12 @@
 }
 
 .earning-report-card__title {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
   color: #374151;
   margin: 0;
   line-height: 1.2;
+  letter-spacing: 0.3px;
 }
 
 .earning-report-card__subtitle {
@@ -52,15 +55,17 @@
 }
 
 .earning-report-card__menu {
+  border: none;
+  background: transparent;
   color: #9ca3af;
+  font-size: 22px;
   cursor: pointer;
   padding: 4px;
-  border-radius: 4px;
-  transition: color 0.2s ease, background-color 0.2s ease;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
 }
 
 .earning-report-card__menu:hover {
-  color: #374151;
   background-color: #f3f4f6;
 }
 
@@ -68,7 +73,7 @@
 .earning-report-card__metrics {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .earning-report-card__metric {
@@ -148,7 +153,7 @@
 /* 條形圖區域 */
 .earning-report-card__chart {
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 8px;
 }
 
 .earning-report-card__bars {
@@ -156,7 +161,7 @@
   align-items: end;
   justify-content: space-between;
   gap: 8px;
-  height: 80px;
+  height: 100px;
   padding: 0 4px;
 }
 
@@ -206,6 +211,11 @@
 }
 
 /* 載入和錯誤狀態 */
+.earning-report-card.error {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
 .earning-report-card__loading,
 .earning-report-card__error {
   display: flex;
@@ -258,7 +268,7 @@
   }
   
   .earning-report-card__bars {
-    height: 70px;
+    height: 90px;
     gap: 6px;
   }
   
@@ -292,7 +302,7 @@
   }
   
   .earning-report-card__bars {
-    height: 60px;
+    height: 70px;
     gap: 4px;
   }
 }
