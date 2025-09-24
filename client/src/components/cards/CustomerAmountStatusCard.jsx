@@ -6,6 +6,7 @@ const CustomerAmountStatusCard = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   // 默認數據
   const defaultData = {
@@ -139,6 +140,30 @@ const CustomerAmountStatusCard = () => {
     }).format(amount);
   };
 
+  const handleActionClick = (customerId, event) => {
+    event.stopPropagation();
+    setOpenDropdown(openDropdown === customerId ? null : customerId);
+  };
+
+  const handleActionSelect = (action, customerId) => {
+    console.log(`${action} for customer ${customerId}`);
+    setOpenDropdown(null);
+  };
+
+  // 點擊外部關閉下拉菜單
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (openDropdown && !event.target.closest('.customer-amount-status-card__actions')) {
+        setOpenDropdown(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [openDropdown]);
+
   if (loading) {
     return (
       <div className="card card--customer-status customer-amount-status-card">
@@ -245,9 +270,39 @@ const CustomerAmountStatusCard = () => {
 
                 {/* 操作列 */}
                 <div className="customer-amount-status-card__actions">
-                  <button className="customer-amount-status-card__action-btn" aria-label="more">
+                  <button 
+                    className="customer-amount-status-card__action-btn" 
+                    aria-label="more"
+                    onClick={(e) => handleActionClick(customer.id, e)}
+                  >
                     ⋯
                   </button>
+                  
+                  {openDropdown === customer.id && (
+                    <div className="customer-amount-status-card__dropdown">
+                      <div 
+                        className="customer-amount-status-card__dropdown-item"
+                        onClick={() => handleActionSelect('View Transaction', customer.id)}
+                      >
+                        <span className="customer-amount-status-card__dropdown-icon">📄</span>
+                        <span>View Transaction</span>
+                      </div>
+                      <div 
+                        className="customer-amount-status-card__dropdown-item"
+                        onClick={() => handleActionSelect('Customer Profile', customer.id)}
+                      >
+                        <span className="customer-amount-status-card__dropdown-icon">👤</span>
+                        <span>Customer Profile</span>
+                      </div>
+                      <div 
+                        className="customer-amount-status-card__dropdown-item"
+                        onClick={() => handleActionSelect('Delete History', customer.id)}
+                      >
+                        <span className="customer-amount-status-card__dropdown-icon">🗑️</span>
+                        <span>Delete History</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             );
