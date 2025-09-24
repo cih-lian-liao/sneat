@@ -45,7 +45,7 @@ const EcomPerformanceCard = () => {
   const calculatePoints = (values) => {
     const centerX = 50;
     const centerY = 50;
-    const radius = 30;
+    const radius = 25;
     const angleStep = (2 * Math.PI) / values.length;
     
     return values.map((value, index) => {
@@ -109,18 +109,18 @@ const EcomPerformanceCard = () => {
               key={`grid-${index}`}
               cx="50"
               cy="50"
-              r={30 * scale}
+              r={25 * scale}
               fill="none"
               stroke="#e5e7eb"
-              strokeWidth="0.3"
+              strokeWidth="0.2"
             />
           ))}
           
           {/* Axis lines */}
           {card.chartData.months.map((_, index) => {
             const angle = (index * 2 * Math.PI) / card.chartData.months.length - Math.PI / 2;
-            const x2 = 50 + Math.cos(angle) * 30;
-            const y2 = 50 + Math.sin(angle) * 30;
+            const x2 = 50 + Math.cos(angle) * 25;
+            const y2 = 50 + Math.sin(angle) * 25;
             return (
               <line
                 key={`axis-${index}`}
@@ -129,7 +129,7 @@ const EcomPerformanceCard = () => {
                 x2={x2}
                 y2={y2}
                 stroke="#e5e7eb"
-                strokeWidth="0.3"
+                strokeWidth="0.2"
               />
             );
           })}
@@ -138,23 +138,23 @@ const EcomPerformanceCard = () => {
           <path
             d={createPath(incomePoints)}
             fill="#6366f1"
-            fillOpacity="0.25"
+            fillOpacity="0.2"
             stroke="#6366f1"
-            strokeWidth="1.2"
+            strokeWidth="1"
           />
           <path
             d={createPath(earningPoints)}
             fill="#3b82f6"
-            fillOpacity="0.35"
+            fillOpacity="0.3"
             stroke="#3b82f6"
-            strokeWidth="1.2"
+            strokeWidth="1"
           />
 
           {/* Month labels */}
           {card.chartData.months.map((month, index) => {
             const angle = (index * 2 * Math.PI) / card.chartData.months.length - Math.PI / 2;
-            const x = 50 + Math.cos(angle) * 36;
-            const y = 50 + Math.sin(angle) * 36;
+            const x = 50 + Math.cos(angle) * 30;
+            const y = 50 + Math.sin(angle) * 30;
             return (
               <text
                 key={`label-${month}-${index}`}
