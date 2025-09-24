@@ -59,14 +59,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 160px;
+  min-height: 200px;
 }
 
 .ecom-performance-card__svg {
   width: 100%;
   height: 100%;
-  max-width: 160px;
-  max-height: 160px;
+  max-width: 220px;
+  max-height: 220px;
 }
 
 .ecom-performance-card__month-label {
@@ -134,12 +134,12 @@
   }
   
   .ecom-performance-card__chart {
-    min-height: 120px;
+    min-height: 160px;
   }
   
   .ecom-performance-card__svg {
-    max-width: 120px;
-    max-height: 120px;
+    max-width: 160px;
+    max-height: 160px;
   }
 }
 
@@ -153,11 +153,11 @@
   }
   
   .ecom-performance-card__chart {
-    min-height: 100px;
+    min-height: 140px;
   }
   
   .ecom-performance-card__svg {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 140px;
+    max-height: 140px;
   }
 }
