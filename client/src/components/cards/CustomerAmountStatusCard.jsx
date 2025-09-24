@@ -180,7 +180,9 @@ const CustomerAmountStatusCard = () => {
     );
   }
 
-  const cardData = data || defaultData;
+  // 防禦：確保資料結構正確，避免 customers 為 undefined 導致 .map 錯誤
+  const cardData = (data && Array.isArray(data.customers)) ? data : defaultData;
+  const customers = Array.isArray(cardData.customers) ? cardData.customers : [];
 
   return (
     <div className="card card--customer-status customer-amount-status-card">
@@ -204,7 +206,7 @@ const CustomerAmountStatusCard = () => {
 
         {/* 客戶列表 */}
         <div className="customer-amount-status-card__customers-list">
-          {cardData.customers.map((customer) => {
+          {customers.map((customer) => {
             const statusStyles = getStatusStyles(customer.statusColor);
             const paidByStyles = getPaidByStyles(customer.paidBy);
             
