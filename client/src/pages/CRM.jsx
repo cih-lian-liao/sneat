@@ -9,6 +9,7 @@ import TopProductsBySalesCard from "../components/cards/TopProductsBySalesCard";
 import TopProductsByVolumeCard from "../components/cards/TopProductsByVolumeCard";
 import EarningReportCard from "../components/cards/EarningReportCard";
 import SalesAnalyticsCard from "../components/cards/SalesAnalyticsCard";
+import SalesByCountriesCard from "../components/cards/SalesByCountriesCard";
 
 export default function CRM() {
   return (
@@ -35,10 +36,7 @@ export default function CRM() {
       {/* row-3 */}
       <SalesAnalyticsCard />
 
-      <section className="card card--sales-countries">
-        <header className="card__header">Sales by Countries</header>
-        <div className="chart-box">{/* <SalesByCountries /> */}</div>
-      </section>
+      <SalesByCountriesCard />
 
       <section className="card card--sales-stats">
         <header className="card__header">Sales Stats</header>

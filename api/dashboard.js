@@ -321,6 +321,20 @@ const DashboardDataSchema = new mongoose.Schema({
           }
         }
       }
+    },
+
+    // Sales by Countries (CRM)
+    salesByCountries: {
+      title: { type: String, default: 'Sales by Countries' },
+      subtitle: { type: String, default: 'Monthly Sales Overview' },
+      countries: [{
+        flag: { type: String, required: true },
+        countryName: { type: String, required: true },
+        salesAmount: { type: String, required: true },
+        changePercentage: { type: Number, required: true },
+        changeDirection: { type: String, enum: ['up', 'down'], required: true },
+        rightValue: { type: String, required: true }
+      }]
     }
   
 }, { 
@@ -983,6 +997,60 @@ function getDefaultData(card = null) {
           }
         }
       }
+    },
+    salesByCountries: {
+      title: 'Sales by Countries',
+      subtitle: 'Monthly Sales Overview',
+      countries: [
+        {
+          flag: '🇺🇸',
+          countryName: 'United states of america',
+          salesAmount: '$8,656k',
+          changePercentage: 25.8,
+          changeDirection: 'up',
+          rightValue: '894k'
+        },
+        {
+          flag: '🇧🇷',
+          countryName: 'Brazil',
+          salesAmount: '$2,415k',
+          changePercentage: -6.2,
+          changeDirection: 'down',
+          rightValue: '645k'
+        },
+        {
+          flag: '🇮🇳',
+          countryName: 'India',
+          salesAmount: '$865k',
+          changePercentage: 12.4,
+          changeDirection: 'up',
+          rightValue: '148k'
+        },
+        {
+          flag: '🇦🇺',
+          countryName: 'Australia',
+          salesAmount: '$745k',
+          changePercentage: -11.9,
+          changeDirection: 'down',
+          rightValue: '86k'
+        },
+        {
+          flag: '🇧🇪',
+          countryName: 'Belgium',
+          salesAmount: '$45k',
+          changePercentage: 16.2,
+          changeDirection: 'up',
+          rightValue: '42k'
+        },
+        {
+          flag: '🇨🇳',
+          countryName: 'China',
+          salesAmount: '$12k',
+          changePercentage: 14.8,
+          changeDirection: 'up',
+          rightValue: '8k'
+        }
+      ]
     }
   };
   

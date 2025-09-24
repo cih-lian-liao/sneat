@@ -1,0 +1,358 @@
+/* Sales by Countries Card */
+.sales-by-countries-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 400px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.sales-by-countries-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.sales-by-countries-card__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+}
+
+/* 標題區域 */
+.sales-by-countries-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.sales-by-countries-card__title-section {
+  flex: 1;
+}
+
+.sales-by-countries-card__title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+}
+
+.sales-by-countries-card__subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.sales-by-countries-card__menu {
+  padding: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 22px;
+  color: #6b7280;
+  line-height: 1;
+}
+
+.sales-by-countries-card__menu:hover {
+  background-color: #f3f4f6;
+}
+
+.sales-by-countries-card__menu-icon {
+  display: block;
+  transform: rotate(90deg);
+}
+
+/* 國家列表 */
+.sales-by-countries-card__countries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.sales-by-countries-card__country-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.sales-by-countries-card__country-item:last-child {
+  border-bottom: none;
+}
+
+.sales-by-countries-card__country-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.sales-by-countries-card__flag {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.sales-by-countries-card__country-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.sales-by-countries-card__sales-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sales-by-countries-card__sales-amount {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.sales-by-countries-card__change {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.sales-by-countries-card__change.up {
+  color: #059669;
+}
+
+.sales-by-countries-card__change.down {
+  color: #dc2626;
+}
+
+.sales-by-countries-card__change-icon {
+  font-size: 10px;
+  line-height: 1;
+}
+
+.sales-by-countries-card__change-percentage {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.sales-by-countries-card__country-name {
+  font-size: 13px;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.3;
+}
+
+.sales-by-countries-card__right-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  text-align: right;
+  line-height: 1.2;
+}
+
+/* 載入和錯誤狀態 */
+.sales-by-countries-card.error {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+.sales-by-countries-card__loading,
+.sales-by-countries-card__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.sales-by-countries-card__error {
+  color: #dc2626;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .sales-by-countries-card {
+    padding: 16px;
+    min-height: 350px;
+  }
+  
+  .sales-by-countries-card__content {
+    gap: 16px;
+  }
+  
+  .sales-by-countries-card__title {
+    font-size: 20px;
+  }
+  
+  .sales-by-countries-card__subtitle {
+    font-size: 13px;
+  }
+  
+  .sales-by-countries-card__countries-list {
+    gap: 14px;
+  }
+  
+  .sales-by-countries-card__country-item {
+    padding: 10px 0;
+  }
+  
+  .sales-by-countries-card__flag {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+  
+  .sales-by-countries-card__sales-amount {
+    font-size: 15px;
+  }
+  
+  .sales-by-countries-card__right-value {
+    font-size: 15px;
+  }
+  
+  .sales-by-countries-card__country-name {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sales-by-countries-card {
+    padding: 12px;
+    min-height: 300px;
+  }
+  
+  .sales-by-countries-card__content {
+    gap: 12px;
+  }
+  
+  .sales-by-countries-card__title {
+    font-size: 18px;
+  }
+  
+  .sales-by-countries-card__subtitle {
+    font-size: 12px;
+  }
+  
+  .sales-by-countries-card__header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .sales-by-countries-card__countries-list {
+    gap: 12px;
+  }
+  
+  .sales-by-countries-card__country-item {
+    padding: 8px 0;
+  }
+  
+  .sales-by-countries-card__flag {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+  
+  .sales-by-countries-card__sales-amount {
+    font-size: 14px;
+  }
+  
+  .sales-by-countries-card__right-value {
+    font-size: 14px;
+  }
+  
+  .sales-by-countries-card__country-name {
+    font-size: 11px;
+  }
+  
+  .sales-by-countries-card__change {
+    font-size: 11px;
+  }
+  
+  .sales-by-countries-card__change-percentage {
+    font-size: 11px;
+  }
+}
+
+/* 暗色模式 */
+@media (prefers-color-scheme: dark) {
+  .sales-by-countries-card {
+    background: #1f2937;
+    border-color: #374151;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .sales-by-countries-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .sales-by-countries-card__title {
+    color: #f9fafb;
+  }
+  
+  .sales-by-countries-card__subtitle {
+    color: #9ca3af;
+  }
+  
+  .sales-by-countries-card__menu {
+    color: #9ca3af;
+  }
+  
+  .sales-by-countries-card__menu:hover {
+    background-color: #374151;
+  }
+  
+  .sales-by-countries-card__country-item {
+    border-bottom-color: #374151;
+  }
+  
+  .sales-by-countries-card__flag {
+    background: #374151;
+    border-color: #4b5563;
+  }
+  
+  .sales-by-countries-card__sales-amount {
+    color: #f9fafb;
+  }
+  
+  .sales-by-countries-card__country-name {
+    color: #9ca3af;
+  }
+  
+  .sales-by-countries-card__right-value {
+    color: #f9fafb;
+  }
+  
+  .sales-by-countries-card.error {
+    background: #2d1b1b;
+    border-color: #dc2626;
+  }
+  
+  .sales-by-countries-card__loading,
+  .sales-by-countries-card__error {
+    color: #9ca3af;
+  }
+  
+  .sales-by-countries-card__error {
+    color: #fca5a5;
+  }
+}
