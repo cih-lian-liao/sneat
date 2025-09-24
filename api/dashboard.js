@@ -389,6 +389,7 @@ const DashboardDataSchema = new mongoose.Schema({
         paidByIcon: { type: String, default: '💳' }
       }]
     }
+  });
   
 let DashboardData;
 try { 
