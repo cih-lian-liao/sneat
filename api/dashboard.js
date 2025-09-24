@@ -370,7 +370,8 @@ const DashboardDataSchema = new mongoose.Schema({
         progressColor: { type: String, required: true }
       }]
     }
-
+  });
+  
 let DashboardData;
 try { 
   DashboardData = mongoose.model('DashboardData'); 
