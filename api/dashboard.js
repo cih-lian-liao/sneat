@@ -495,6 +495,17 @@ const DashboardDataSchema = new mongoose.Schema({
       iconType: { type: String, default: 'monitor' },
       iconBgColor: { type: String, default: '#FFF5E0' },
       iconColor: { type: String, default: '#FFAB00' }
+    },
+
+    // Ecommerce Sales (separate from Analytics Sales)
+    ecomSales: {
+      title: { type: String, default: 'Sales' },
+      value: { type: Number, required: true },
+      unit: { type: String, default: 'k' },
+      changePercentage: { type: Number, required: true },
+      changeDirection: { type: String, enum: ['up', 'down'], required: true },
+      salesTargetLabel: { type: String, default: 'Sales Target' },
+      salesTargetValue: { type: Number, required: true }
     }
   });
 
@@ -1529,6 +1540,15 @@ function getDefaultData(card = null) {
       iconType: 'monitor',
       iconBgColor: '#FFF5E0',
       iconColor: '#FFAB00'
+    },
+    ecomSales: {
+      title: 'Sales',
+      value: 482,
+      unit: 'k',
+      changePercentage: 34,
+      changeDirection: 'up',
+      salesTargetLabel: 'Sales Target',
+      salesTargetValue: 78
     }
   };
   
