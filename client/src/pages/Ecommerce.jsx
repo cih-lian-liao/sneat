@@ -3,6 +3,7 @@ import "./Ecommerce.css";
 import NewVisitorsCard from "../components/cards/NewVisitorsCard";
 import ActivityCard from "../components/cards/ActivityCard";
 import EcomSalesStatCard from "../components/cards/EcomSalesStatCard";
+import EcomProfitCard from "../components/cards/EcomProfitCard";
 
 export default function Ecommerce() {
   return (
@@ -36,10 +37,7 @@ export default function Ecommerce() {
       {/* Row 2 */}
       <EcomSalesStatCard />
 
-      <section className="card card--profit">
-        <header className="card__header">Profit</header>
-        <div className="chart-box">{/* <ProfitMini /> */}</div>
-      </section>
+      <EcomProfitCard />
 
       <section className="card card--expenses">
         <header className="card__header">Expenses</header>

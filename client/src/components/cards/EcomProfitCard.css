@@ -1,0 +1,17 @@
+.ecom-profit-card { display: flex; flex-direction: column; gap: 8px; }
+.ecom-profit-card__title { font-size: 14px; color: #6b7280; font-weight: 700; }
+.ecom-profit-card__amount { font-size: 28px; font-weight: 800; color: #334155; }
+
+.ecom-profit-card__chart { margin-top: 4px; }
+.ecom-profit-card__groups { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: end; }
+.ecom-profit-card__group { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+.ecom-profit-card__bars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; align-items: end; width: 100%; height: 90px; }
+.ecom-profit-card__bar { width: 100%; border-radius: 6px; background: rgba(34,197,94,0.3); }
+.ecom-profit-card__bar.is-strong { background: #22c55e; }
+.ecom-profit-card__label { color: #9ca3af; font-size: 14px; }
+
+@media (max-width: 768px) {
+  .ecom-profit-card__amount { font-size: 24px; }
+  .ecom-profit-card__bars { height: 80px; }
+}
+

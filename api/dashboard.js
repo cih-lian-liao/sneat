@@ -77,6 +77,15 @@ const DashboardDataSchema = new mongoose.Schema({
       value: { type: Number, required: true }
     }]
   },
+  // Ecommerce Profit mini card
+  ecomProfit: {
+    title: { type: String, default: 'Profit' },
+    amount: { type: Number, default: 0 },
+    months: [{
+      label: { type: String, required: true },
+      bars: [{ type: Number, required: true }]
+    }]
+  },
   
   // Profit Report
   profitReport: {
@@ -572,6 +581,16 @@ function getDefaultData(card = null) {
         { label: 'Fr', value: 10 },
         { label: 'Sa', value: 55 },
         { label: 'Su', value: 40 }
+      ]
+    },
+    ecomProfit: {
+      title: 'Profit',
+      amount: 624000,
+      months: [
+        { label: 'Jan', bars: [48, 40] },
+        { label: 'Apr', bars: [32, 18] },
+        { label: 'Jul', bars: [46, 60] },
+        { label: 'Oct', bars: [100, 90] }
       ]
     },
     profitReport: {
