@@ -417,17 +417,6 @@ const DashboardDataSchema = new mongoose.Schema({
     }]
   },
 
-  // Analytics Sales Stats (Analytics page)
-  analyticsSalesStats: {
-    totalSales: { type: Number, default: 0 },
-    changePct: { type: Number, default: 0 },
-    changeType: { type: String, enum: ['increase', 'decrease'], default: 'increase' },
-    chartData: [{
-      month: { type: String, required: true },
-      sales: { type: Number, required: true }
-    }]
-  },
-
     // Team Members
     teamMembers: {
       title: { type: String, default: 'Team Members' },
@@ -465,6 +454,8 @@ const DashboardDataSchema = new mongoose.Schema({
         statusColor: { type: String, required: true },
         paidBy: { type: String, required: true }
       }]
+    },
+
     // Ecommerce Performance
     ecomPerformance: {
       title: { type: String, default: 'Performance' },
@@ -478,6 +469,7 @@ const DashboardDataSchema = new mongoose.Schema({
         earning: [{ type: Number, required: true }]
       }
     }
+  });
 
 let DashboardData;
 try { 
@@ -1471,13 +1463,8 @@ function getDefaultData(card = null) {
   };
   
   if (card) {
-    return res.json(defaultData[card] || { error: `Card '${card}' not found` });
+    return defaultData[card] || { error: `Card '${card}' not found` };
   }
   
-  return res.json(defaultData);
-  
-  } catch (error) {
-    console.error('API Error:', error);
-    return res.status(500).json({ error: 'Internal server error', details: error.message });
-  }
+  return defaultData;
 }
