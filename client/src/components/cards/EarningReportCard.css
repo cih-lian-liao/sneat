@@ -153,6 +153,7 @@
 /* 條形圖區域 */
 .earning-report-card__chart {
   padding-top: 8px;
+  margin-top: auto;
 }
 
 .earning-report-card__bars {
