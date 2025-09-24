@@ -484,6 +484,17 @@ const DashboardDataSchema = new mongoose.Schema({
         changePercentage: { type: Number, required: true },
         changeDirection: { type: String, enum: ['up', 'down'], required: true }
       }]
+    },
+
+    // Ecommerce Revenue (separate from Analytics Revenue)
+    ecomRevenue: {
+      title: { type: String, default: 'Revenue' },
+      value: { type: Number, required: true },
+      changePercentage: { type: Number, required: true },
+      changeDirection: { type: String, enum: ['up', 'down'], required: true },
+      iconType: { type: String, default: 'monitor' },
+      iconBgColor: { type: String, default: '#FFF5E0' },
+      iconColor: { type: String, default: '#FFAB00' }
     }
   });
 
@@ -1509,6 +1520,15 @@ function getDefaultData(card = null) {
           changeDirection: 'up'
         }
       ]
+    },
+    ecomRevenue: {
+      title: 'Revenue',
+      value: 42389,
+      changePercentage: 52.76,
+      changeDirection: 'up',
+      iconType: 'monitor',
+      iconBgColor: '#FFF5E0',
+      iconColor: '#FFAB00'
     }
   };
   

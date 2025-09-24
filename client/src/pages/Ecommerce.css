@@ -35,7 +35,7 @@
 
 .card--performance   { grid-area: performance; min-height: 320px; }
 .card--conversion-rate { grid-area: conversion;  min-height: 320px; }
-.card--rev-right     { grid-area: revRight; }
+.card--ecom-revenue   { grid-area: revRight; }
 .card--sales-right   { grid-area: salesRight; }
 .card--exp-right     { grid-area: expRight;  min-height: 160px; }
 

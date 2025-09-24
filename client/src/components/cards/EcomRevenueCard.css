@@ -1,0 +1,167 @@
+.ecom-revenue-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ecom-revenue-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ecom-revenue-card__icon-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ecom-revenue-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ecom-revenue-card__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.ecom-revenue-card__menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.ecom-revenue-card__menu-icon {
+  font-size: 16px;
+  color: #6b7280;
+  font-weight: bold;
+  transform: rotate(90deg);
+}
+
+.ecom-revenue-card__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ecom-revenue-card__metric-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ecom-revenue-card__metric-label {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.ecom-revenue-card__value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+.ecom-revenue-card__change {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ecom-revenue-card__change-icon {
+  font-size: 12px;
+}
+
+.ecom-revenue-card__loading,
+.ecom-revenue-card__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.ecom-revenue-card__error {
+  color: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ecom-revenue-card {
+    padding: 20px;
+    min-height: 160px;
+    gap: 16px;
+  }
+  
+  .ecom-revenue-card__icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .ecom-revenue-card__title {
+    font-size: 16px;
+  }
+  
+  .ecom-revenue-card__value {
+    font-size: 28px;
+  }
+  
+  .ecom-revenue-card__change {
+    font-size: 13px;
+  }
+  
+  .ecom-revenue-card__metric-label {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ecom-revenue-card {
+    padding: 16px;
+    min-height: 140px;
+    gap: 12px;
+  }
+  
+  .ecom-revenue-card__icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .ecom-revenue-card__title {
+    font-size: 15px;
+  }
+  
+  .ecom-revenue-card__value {
+    font-size: 24px;
+  }
+  
+  .ecom-revenue-card__change {
+    font-size: 12px;
+  }
+  
+  .ecom-revenue-card__metric-label {
+    font-size: 12px;
+  }
+}

@@ -9,6 +9,7 @@ import EcomTransactionsCard from "../components/cards/EcomTransactionsCard";
 import EcomTotalIncomeCard from "../components/cards/EcomTotalIncomeCard";
 import EcomPerformanceCard from "../components/cards/EcomPerformanceCard";
 import EcomConversionRateCard from "../components/cards/EcomConversionRateCard";
+import EcomRevenueCard from "../components/cards/EcomRevenueCard";
 
 export default function Ecommerce() {
   return (
@@ -55,10 +56,7 @@ export default function Ecommerce() {
 
       <EcomConversionRateCard />
 
-      <section className="card card--rev-right">
-        <header className="card__header">Revenue</header>
-        <div className="chart-box">{/* <RevenueSpark /> */}</div>
-      </section>
+      <EcomRevenueCard />
 
       <section className="card card--sales-right">
         <header className="card__header">Sales</header>
