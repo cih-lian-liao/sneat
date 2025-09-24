@@ -6,11 +6,10 @@
   padding: 20px;
   min-height: 320px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease;
 }
 
 .sales-by-countries-card:hover {
-  transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -72,7 +71,7 @@
 .sales-by-countries-card__countries-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   flex: 1;
 }
 
@@ -203,7 +202,7 @@
   }
   
   .sales-by-countries-card__countries-list {
-    gap: 10px;
+    gap: 6px;
   }
   
   .sales-by-countries-card__country-item {
@@ -254,7 +253,7 @@
   }
   
   .sales-by-countries-card__countries-list {
-    gap: 8px;
+    gap: 4px;
   }
   
   .sales-by-countries-card__country-item {
