@@ -7,7 +7,7 @@ const MONGO_URI = 'mongodb+srv://cihlian:pJsXwiTzqaK4t3A3@sneat.uh4w06f.mongodb.
 const DashboardDataSchema = new mongoose.Schema({
   ecomExpensesRight: {
     title: { type: String, default: 'Expenses' },
-    totalAmount: { type: Number, required: true },
+    value: { type: Number, required: true },
     unit: { type: String, default: 'k' },
     changePercentage: { type: Number, required: true },
     changeDirection: { type: String, enum: ['up', 'down'], required: true },
@@ -37,7 +37,7 @@ async function updateEcomExpensesRightData() {
 
     const ecomExpensesRightData = {
       title: 'Expenses',
-      totalAmount: 84.7,
+      value: 84.7,
       unit: 'k',
       changePercentage: 8.2,
       changeDirection: 'down',
@@ -47,14 +47,14 @@ async function updateEcomExpensesRightData() {
         { blue: 35, orange: 25 },
         { blue: 50, orange: 35 },
         { blue: 40, orange: 28 },
-        { blue: 65, orange: 40 },
+        { blue: 60, orange: 40 },
         { blue: 30, orange: 20 },
         { blue: 55, orange: 38 },
         { blue: 42, orange: 32 },
         { blue: 38, orange: 26 },
-        { blue: 60, orange: 45 },
-        { blue: 48, orange: 35 },
-        { blue: 35, orange: 28 }
+        { blue: 48, orange: 34 },
+        { blue: 33, orange: 22 },
+        { blue: 52, orange: 36 }
       ]
     };
 

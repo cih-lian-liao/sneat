@@ -32,7 +32,7 @@
   line-height: 1.2;
 }
 
-.ecom-expenses-right-card__amount {
+.ecom-expenses-right-card__value {
   font-size: 32px;
   font-weight: 700;
   color: #111827;
@@ -64,7 +64,7 @@
 }
 
 .ecom-expenses-right-card__chart-section {
-  flex: 1;
+  flex: 2;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -74,32 +74,37 @@
 .ecom-expenses-right-card__chart {
   display: flex;
   align-items: flex-end;
-  gap: 3px;
+  gap: 2px;
   height: 120px;
   width: 100%;
 }
 
 .ecom-expenses-right-card__bar-container {
+  flex: 1;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: 100%;
-  flex: 1;
+  justify-content: flex-end;
 }
 
 .ecom-expenses-right-card__bar {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1px;
+}
+
+.ecom-expenses-right-card__bar-segment {
   border-radius: 2px;
   transition: height 0.3s ease;
 }
 
-.ecom-expenses-right-card__bar--blue {
-  background-color: #6a6afe;
-  margin-bottom: 2px;
+.ecom-expenses-right-card__bar-segment--blue {
+  background-color: #6A6AFE;
 }
 
-.ecom-expenses-right-card__bar--orange {
-  background-color: #f9b042;
+.ecom-expenses-right-card__bar-segment--orange {
+  background-color: #F9B042;
 }
 
 .ecom-expenses-right-card__loading,
@@ -131,7 +136,7 @@
     font-size: 15px;
   }
   
-  .ecom-expenses-right-card__amount {
+  .ecom-expenses-right-card__value {
     font-size: 28px;
   }
   
@@ -146,7 +151,6 @@
   
   .ecom-expenses-right-card__chart {
     height: 100px;
-    gap: 2px;
   }
 }
 
@@ -164,7 +168,7 @@
     font-size: 14px;
   }
   
-  .ecom-expenses-right-card__amount {
+  .ecom-expenses-right-card__value {
     font-size: 24px;
   }
   
@@ -179,6 +183,5 @@
   
   .ecom-expenses-right-card__chart {
     height: 80px;
-    gap: 1px;
   }
 }

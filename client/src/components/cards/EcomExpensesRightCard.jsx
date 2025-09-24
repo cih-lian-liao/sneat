@@ -18,7 +18,7 @@ const EcomExpensesRightCard = () => {
         // 使用預設數據
         setData({
           title: 'Expenses',
-          totalAmount: 84.7,
+          value: 84.7,
           unit: 'k',
           changePercentage: 8.2,
           changeDirection: 'down',
@@ -28,14 +28,14 @@ const EcomExpensesRightCard = () => {
             { blue: 35, orange: 25 },
             { blue: 50, orange: 35 },
             { blue: 40, orange: 28 },
-            { blue: 65, orange: 40 },
+            { blue: 60, orange: 40 },
             { blue: 30, orange: 20 },
             { blue: 55, orange: 38 },
             { blue: 42, orange: 32 },
             { blue: 38, orange: 26 },
-            { blue: 60, orange: 45 },
-            { blue: 48, orange: 35 },
-            { blue: 35, orange: 28 }
+            { blue: 48, orange: 34 },
+            { blue: 33, orange: 22 },
+            { blue: 52, orange: 36 }
           ]
         });
       } finally {
@@ -58,6 +58,11 @@ const EcomExpensesRightCard = () => {
     return `$${value}${unit}`;
   };
 
+  const getMaxValue = () => {
+    if (!data?.chartData) return 100;
+    return Math.max(...data.chartData.map(item => item.blue + item.orange));
+  };
+
   if (loading) {
     return (
       <section className="card card--ecom-expenses-right ecom-expenses-right-card">
@@ -74,13 +79,15 @@ const EcomExpensesRightCard = () => {
     );
   }
 
+  const maxValue = getMaxValue();
+
   return (
     <section className="card card--ecom-expenses-right ecom-expenses-right-card">
       <div className="ecom-expenses-right-card__content">
         <div className="ecom-expenses-right-card__left-section">
           <h3 className="ecom-expenses-right-card__title">{data.title}</h3>
-          <div className="ecom-expenses-right-card__amount">
-            {formatCurrency(data.totalAmount, data.unit)}
+          <div className="ecom-expenses-right-card__value">
+            {formatCurrency(data.value, data.unit)}
           </div>
           <div 
             className="ecom-expenses-right-card__change"
@@ -98,16 +105,18 @@ const EcomExpensesRightCard = () => {
 
         <div className="ecom-expenses-right-card__chart-section">
           <div className="ecom-expenses-right-card__chart">
-            {data.chartData.map((bar, index) => (
+            {data.chartData.map((item, index) => (
               <div key={index} className="ecom-expenses-right-card__bar-container">
-                <div 
-                  className="ecom-expenses-right-card__bar ecom-expenses-right-card__bar--blue"
-                  style={{ height: `${bar.blue}%` }}
-                ></div>
-                <div 
-                  className="ecom-expenses-right-card__bar ecom-expenses-right-card__bar--orange"
-                  style={{ height: `${bar.orange}%` }}
-                ></div>
+                <div className="ecom-expenses-right-card__bar">
+                  <div 
+                    className="ecom-expenses-right-card__bar-segment ecom-expenses-right-card__bar-segment--blue"
+                    style={{ height: `${(item.blue / maxValue) * 100}%` }}
+                  ></div>
+                  <div 
+                    className="ecom-expenses-right-card__bar-segment ecom-expenses-right-card__bar-segment--orange"
+                    style={{ height: `${(item.orange / maxValue) * 100}%` }}
+                  ></div>
+                </div>
               </div>
             ))}
           </div>
