@@ -1,0 +1,27 @@
+.ecom-activity-card { display: flex; flex-direction: column; height: 100%; }
+.ecom-activity-card__grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 12px; align-items: start; height: 100%; }
+.ecom-activity-card__left { display: flex; flex-direction: column; gap: 10px; height: 100%; }
+.ecom-activity-card__right { display: flex; flex-direction: column; gap: 8px; height: 100%; }
+
+.ecom-activity-card__title { font-size: 16px; font-weight: 800; color: #374151; margin: 0; }
+.ecom-activity-card__period { color: #9ca3af; font-size: 13px; text-align: right; }
+
+.ecom-activity-card__percent { font-size: 30px; font-weight: 700; color: #334155; line-height: 1; margin-top: auto; }
+.ecom-activity-card__delta { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 12px; }
+.ecom-activity-card__delta.is-up { color: #16a34a; }
+.ecom-activity-card__delta.is-down { color: #dc2626; }
+.ecom-activity-card__delta-icon { font-size: 16px; align-self: flex-end; }
+
+.ecom-activity-card__chart { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+.ecom-activity-card__spark { width: 100%; height: 90px; }
+.ecom-activity-card__labels { display: grid; grid-template-columns: repeat(7, 1fr); color: #9ca3af; font-size: 13px; }
+.ecom-activity-card__label { text-align: center; }
+
+@media (max-width: 768px) {
+  .ecom-activity-card__grid { grid-template-columns: 1fr; }
+  .ecom-activity-card__period { text-align: left; }
+  .ecom-activity-card__percent { font-size: 28px; }
+  .ecom-activity-card__labels { font-size: 12px; }
+}
+
+
