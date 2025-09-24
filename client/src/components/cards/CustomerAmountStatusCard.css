@@ -1,0 +1,392 @@
+/* Customer Amount Status Card */
+.customer-amount-status-card {
+  background: #ffffff;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 400px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.customer-amount-status-card__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 16px;
+}
+
+/* 標題區域 */
+.customer-amount-status-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.customer-amount-status-card__title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #374151;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.customer-amount-status-card__menu {
+  padding: 4px;
+  border-radius: 6px;
+  font-size: 22px;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.customer-amount-status-card__menu:hover {
+  background-color: #f3f4f6;
+}
+
+/* 表格標頭 */
+.customer-amount-status-card__table-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+  gap: 16px;
+  padding: 12px 0 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.customer-amount-status-card__header-customer,
+.customer-amount-status-card__header-amount,
+.customer-amount-status-card__header-status,
+.customer-amount-status-card__header-paid-by,
+.customer-amount-status-card__header-actions {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.customer-amount-status-card__header-amount,
+.customer-amount-status-card__header-status,
+.customer-amount-status-card__header-paid-by,
+.customer-amount-status-card__header-actions {
+  text-align: center;
+}
+
+/* 客戶列表 */
+.customer-amount-status-card__customers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.customer-amount-status-card__customer-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+  gap: 16px;
+  align-items: center;
+  padding: 8px 0;
+}
+
+/* 客戶資訊 */
+.customer-amount-status-card__customer-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.customer-amount-status-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.customer-amount-status-card__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.customer-amount-status-card__avatar-initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+.customer-amount-status-card__customer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.customer-amount-status-card__customer-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.2;
+}
+
+.customer-amount-status-card__customer-email {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
+/* 金額 */
+.customer-amount-status-card__amount {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+}
+
+/* 狀態標籤 */
+.customer-amount-status-card__status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.customer-amount-status-card__status-badge {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 支付方式標籤 */
+.customer-amount-status-card__paid-by {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.customer-amount-status-card__paid-by-badge {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 操作按鈕 */
+.customer-amount-status-card__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.customer-amount-status-card__action-btn {
+  padding: 8px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  color: #9ca3af;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.customer-amount-status-card__action-btn:hover {
+  background-color: #f3f4f6;
+}
+
+/* 載入和錯誤狀態 */
+.customer-amount-status-card__loading,
+.customer-amount-status-card__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.customer-amount-status-card--error .customer-amount-status-card__error {
+  color: #dc2626;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .customer-amount-status-card {
+    padding: 16px;
+    min-height: 360px;
+  }
+  
+  .customer-amount-status-card__content {
+    gap: 14px;
+  }
+  
+  .customer-amount-status-card__title {
+    font-size: 20px;
+  }
+  
+  .customer-amount-status-card__table-header,
+  .customer-amount-status-card__customer-row {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 0.5fr;
+    gap: 12px;
+  }
+  
+  .customer-amount-status-card__avatar {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .customer-amount-status-card__avatar-initials {
+    font-size: 14px;
+  }
+  
+  .customer-amount-status-card__customer-name {
+    font-size: 15px;
+  }
+  
+  .customer-amount-status-card__customer-email {
+    font-size: 13px;
+  }
+  
+  .customer-amount-status-card__amount {
+    font-size: 15px;
+  }
+  
+  .customer-amount-status-card__status-badge,
+  .customer-amount-status-card__paid-by-badge {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .customer-amount-status-card {
+    padding: 12px;
+    min-height: 320px;
+  }
+  
+  .customer-amount-status-card__content {
+    gap: 12px;
+  }
+  
+  .customer-amount-status-card__title {
+    font-size: 18px;
+  }
+  
+  .customer-amount-status-card__table-header,
+  .customer-amount-status-card__customer-row {
+    grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr 0.4fr;
+    gap: 8px;
+  }
+  
+  .customer-amount-status-card__customer-info {
+    gap: 8px;
+  }
+  
+  .customer-amount-status-card__avatar {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .customer-amount-status-card__avatar-initials {
+    font-size: 12px;
+  }
+  
+  .customer-amount-status-card__customer-name {
+    font-size: 14px;
+  }
+  
+  .customer-amount-status-card__customer-email {
+    font-size: 12px;
+  }
+  
+  .customer-amount-status-card__amount {
+    font-size: 14px;
+  }
+  
+  .customer-amount-status-card__status-badge,
+  .customer-amount-status-card__paid-by-badge {
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+  
+  .customer-amount-status-card__header-customer,
+  .customer-amount-status-card__header-amount,
+  .customer-amount-status-card__header-status,
+  .customer-amount-status-card__header-paid-by,
+  .customer-amount-status-card__header-actions {
+    font-size: 11px;
+  }
+}
+
+/* 暗色模式 */
+@media (prefers-color-scheme: dark) {
+  .customer-amount-status-card {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .customer-amount-status-card__title {
+    color: #f9fafb;
+  }
+  
+  .customer-amount-status-card__menu {
+    color: #9ca3af;
+  }
+  
+  .customer-amount-status-card__menu:hover {
+    background-color: #374151;
+  }
+  
+  .customer-amount-status-card__table-header {
+    border-bottom-color: #374151;
+  }
+  
+  .customer-amount-status-card__header-customer,
+  .customer-amount-status-card__header-amount,
+  .customer-amount-status-card__header-status,
+  .customer-amount-status-card__header-paid-by,
+  .customer-amount-status-card__header-actions {
+    color: #9ca3af;
+  }
+  
+  .customer-amount-status-card__avatar {
+    border-color: #374151;
+  }
+  
+  .customer-amount-status-card__customer-name {
+    color: #f9fafb;
+  }
+  
+  .customer-amount-status-card__customer-email {
+    color: #9ca3af;
+  }
+  
+  .customer-amount-status-card__amount {
+    color: #f9fafb;
+  }
+  
+  .customer-amount-status-card__action-btn {
+    color: #9ca3af;
+  }
+  
+  .customer-amount-status-card__action-btn:hover {
+    background-color: #374151;
+  }
+  
+  .customer-amount-status-card__loading,
+  .customer-amount-status-card__error {
+    color: #9ca3af;
+  }
+  
+  .customer-amount-status-card--error .customer-amount-status-card__error {
+    color: #f87171;
+  }
+}

@@ -369,8 +369,26 @@ const DashboardDataSchema = new mongoose.Schema({
         tasksTotal: { type: Number, required: true },
         progressColor: { type: String, required: true }
       }]
+    },
+
+    // Customer Amount Status
+    customerAmountStatus: {
+      title: { type: String, default: 'Customer • Amount • Status' },
+      customers: [{
+        id: { type: Number, required: true },
+        name: { type: String, required: true },
+        email: { type: String, required: true },
+        avatar: { type: String, default: null },
+        initials: { type: String, required: true },
+        initialsBgColor: { type: String, required: true },
+        initialsTextColor: { type: String, required: true },
+        amount: { type: Number, required: true },
+        status: { type: String, required: true },
+        statusColor: { type: String, required: true },
+        paidBy: { type: String, required: true },
+        paidByIcon: { type: String, default: '💳' }
+      }]
     }
-  });
   
 let DashboardData;
 try { 
@@ -1197,8 +1215,96 @@ function getDefaultData(card = null) {
           progressColor: '#6b7280'
         }
       ]
+    },
+    customerAmountStatus: {
+      title: 'Customer • Amount • Status',
+      customers: [
+        {
+          id: 1,
+          name: 'Henry Barnes',
+          email: 'jok@puc.co.uk',
+          avatar: null,
+          initials: 'HB',
+          initialsBgColor: '#e0e7ff',
+          initialsTextColor: '#4f46e5',
+          amount: 459.65,
+          status: 'PAID',
+          statusColor: 'green',
+          paidBy: 'mastercard',
+          paidByIcon: '💳'
+        },
+        {
+          id: 2,
+          name: 'Herman Holland',
+          email: 'sami@lelo.com',
+          avatar: null,
+          initials: 'HH',
+          initialsBgColor: '#fee2e2',
+          initialsTextColor: '#ef4444',
+          amount: 93.81,
+          status: 'PENDING',
+          statusColor: 'orange',
+          paidBy: 'visa',
+          paidByIcon: '💳'
+        },
+        {
+          id: 3,
+          name: 'Hallie Warner',
+          email: 'initus@odemi.com',
+          avatar: null,
+          initials: 'HW',
+          initialsBgColor: '#fef3c7',
+          initialsTextColor: '#d97706',
+          amount: 934.34,
+          status: 'PENDING',
+          statusColor: 'orange',
+          paidBy: 'visa',
+          paidByIcon: '💳'
+        },
+        {
+          id: 4,
+          name: 'John Davidson',
+          email: 'tum@upkesja.gov',
+          avatar: null,
+          initials: 'JD',
+          initialsBgColor: '#e0f2fe',
+          initialsTextColor: '#0ea5e9',
+          amount: 794.97,
+          status: 'PAID',
+          statusColor: 'green',
+          paidBy: 'paypal',
+          paidByIcon: '💳'
+        },
+        {
+          id: 5,
+          name: 'Cora Schmidt',
+          email: 'wipare@tin.com',
+          avatar: null,
+          initials: 'CS',
+          initialsBgColor: '#e5e7eb',
+          initialsTextColor: '#6b7280',
+          amount: 19.49,
+          status: 'PAID',
+          statusColor: 'green',
+          paidBy: 'mastercard',
+          paidByIcon: '💳'
+        },
+        {
+          id: 6,
+          name: 'Betty Ross',
+          email: 'nur@kaomor.edu',
+          avatar: null,
+          initials: 'BR',
+          initialsBgColor: '#fce7f3',
+          initialsTextColor: '#be185d',
+          amount: 636.27,
+          status: 'FAILED',
+          statusColor: 'red',
+          paidBy: 'paypal',
+          paidByIcon: '💳'
+        }
+      ]
     }
-  };
   
   if (card) {
     return defaultData[card] || { error: `Card '${card}' not found` };
