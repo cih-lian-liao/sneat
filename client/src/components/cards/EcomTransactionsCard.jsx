@@ -38,7 +38,7 @@ const EcomTransactionsCard = () => {
 
   if (loading) {
     return (
-      <section className="card card--ecom-transactions ecom-transactions-card">
+      <section className="card card--transactions ecom-transactions-card">
         <div className="ecom-transactions-card__loading">載入中...</div>
       </section>
     );
@@ -46,14 +46,14 @@ const EcomTransactionsCard = () => {
 
   if (error && !card) {
     return (
-      <section className="card card--ecom-transactions ecom-transactions-card">
+      <section className="card card--transactions ecom-transactions-card">
         <div className="ecom-transactions-card__error">錯誤: {error}</div>
       </section>
     );
   }
 
   return (
-    <section className="card card--ecom-transactions ecom-transactions-card">
+    <section className="card card--transactions ecom-transactions-card">
       <div className="ecom-transactions-card__row">
         <div className="ecom-transactions-card__icon">
           <img src={card.iconUrl} alt="card" />

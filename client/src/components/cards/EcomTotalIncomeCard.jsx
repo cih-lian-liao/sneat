@@ -60,17 +60,17 @@ const EcomTotalIncomeCard = () => {
 
   if (loading) {
     return (
-      <section className="card card--ecom-total-income ecom-total-income-card"><div>載入中...</div></section>
+      <section className="card card--total-income ecom-total-income-card"><div>載入中...</div></section>
     );
   }
   if (error && !card) {
     return (
-      <section className="card card--ecom-total-income ecom-total-income-card"><div style={{color:'red'}}>錯誤: {error}</div></section>
+      <section className="card card--total-income ecom-total-income-card"><div style={{color:'red'}}>錯誤: {error}</div></section>
     );
   }
 
   return (
-    <section className="card card--ecom-total-income ecom-total-income-card">
+    <section className="card card--total-income ecom-total-income-card">
       <div className="ecom-total-income-card__grid">
         <div className="ecom-total-income-card__chart">
           <div className="ecom-total-income-card__title">{card.title}</div>

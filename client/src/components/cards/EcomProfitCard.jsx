@@ -44,7 +44,7 @@ const EcomProfitCard = () => {
 
   if (loading) {
     return (
-      <section className="card card--ecom-profit ecom-profit-card">
+      <section className="card card--profit ecom-profit-card">
         <div className="ecom-profit-card__loading">載入中...</div>
       </section>
     );
@@ -52,14 +52,14 @@ const EcomProfitCard = () => {
 
   if (error && !card) {
     return (
-      <section className="card card--ecom-profit ecom-profit-card">
+      <section className="card card--profit ecom-profit-card">
         <div className="ecom-profit-card__error">錯誤: {error}</div>
       </section>
     );
   }
 
   return (
-    <section className="card card--ecom-profit ecom-profit-card">
+    <section className="card card--profit ecom-profit-card">
       <div className="ecom-profit-card__title">{card.title}</div>
       <div className="ecom-profit-card__amount">{Math.round(card.amount/1000)}k</div>
 
