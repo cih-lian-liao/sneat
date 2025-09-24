@@ -170,7 +170,7 @@ export default function EarningReportCard() {
   };
 
   return (
-    <section className="card card--earning-report earning-report-card">
+    <section className="card card--earning earning-report-card">
       <div className="earning-report-card__content">
         {/* 標題區域 */}
         <div className="earning-report-card__header">
