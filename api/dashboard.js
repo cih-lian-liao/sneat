@@ -1471,10 +1471,10 @@ function getDefaultData(card = null) {
   };
   
   if (card) {
-    return defaultData[card] || { error: `Card '${card}' not found` };
+    return res.json(defaultData[card] || { error: `Card '${card}' not found` });
   }
   
-  return defaultData;
+  return res.json(defaultData);
   
   } catch (error) {
     console.error('API Error:', error);
