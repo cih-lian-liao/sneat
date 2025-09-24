@@ -68,7 +68,7 @@
 .customer-amount-status-card__header-status,
 .customer-amount-status-card__header-paid-by,
 .customer-amount-status-card__header-actions {
-  text-align: center;
+  text-align: left;
 }
 
 /* 客戶列表 */
@@ -146,17 +146,17 @@
   font-size: 16px;
   font-weight: 600;
   color: #374151;
-  text-align: center;
+  text-align: left;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100%;
 }
 
 /* 狀態標籤 */
 .customer-amount-status-card__status {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
 }
@@ -173,7 +173,7 @@
 /* 支付方式標籤 */
 .customer-amount-status-card__paid-by {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
 }
@@ -190,7 +190,7 @@
 /* 操作按鈕 */
 .customer-amount-status-card__actions {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
 }
