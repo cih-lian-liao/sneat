@@ -281,6 +281,26 @@ const DashboardDataSchema = new mongoose.Schema({
         current: [{ type: Number, required: true }],
         previous: [{ type: Number, required: true }]
       }
+    },
+
+    // Earning Report (CRM)
+    earningReport: {
+      reportTitle: { type: String, default: 'Earning Report' },
+      reportSubtitle: { type: String, default: 'Weekly Earnings Overview' },
+      metrics: [{
+        name: { type: String, required: true },
+        secondaryInfo: { type: String, required: true },
+        value: { type: Number, required: true },
+        changePercentage: { type: Number, required: true },
+        changeDirection: { type: String, enum: ['up', 'down'], required: true },
+        iconType: { type: String, required: true },
+        iconColor: { type: String, required: true }
+      }],
+      dailyData: [{
+        day: { type: String, required: true },
+        value: { type: Number, required: true },
+        highlighted: { type: Boolean, default: false }
+      }]
     }
   
 }, { 
@@ -844,6 +864,48 @@ function getDefaultData(card = null) {
         current: [2.2, 1.8, 4.1, 3.2, 3.4, 2.1, 4.5],
         previous: [1.6, 2.4, 2.2, 1.9, 1.7, 1.5, 2.0]
       }
+    },
+    earningReport: {
+      reportTitle: 'Earning Report',
+      reportSubtitle: 'Weekly Earnings Overview',
+      metrics: [
+        {
+          name: 'Net Profit',
+          secondaryInfo: '12.4k Sales',
+          value: 1619,
+          changePercentage: 18.6,
+          changeDirection: 'up',
+          iconType: 'trend-up',
+          iconColor: 'purple'
+        },
+        {
+          name: 'Total Income',
+          secondaryInfo: 'Sales, Affiliation',
+          value: 3571,
+          changePercentage: 39.6,
+          changeDirection: 'up',
+          iconType: 'dollar-sign',
+          iconColor: 'green'
+        },
+        {
+          name: 'Total Expenses',
+          secondaryInfo: 'ADVT, Marketing',
+          value: 430,
+          changePercentage: 52.8,
+          changeDirection: 'up',
+          iconType: 'credit-card',
+          iconColor: 'gray'
+        }
+      ],
+      dailyData: [
+        { day: 'Mo', value: 1200, highlighted: false },
+        { day: 'Tu', value: 1800, highlighted: false },
+        { day: 'We', value: 2200, highlighted: false },
+        { day: 'Th', value: 1900, highlighted: false },
+        { day: 'Fr', value: 2800, highlighted: true },
+        { day: 'Sa', value: 1600, highlighted: false },
+        { day: 'Su', value: 1400, highlighted: false }
+      ]
     }
   };
   
