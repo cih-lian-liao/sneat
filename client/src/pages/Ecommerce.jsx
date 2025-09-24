@@ -24,9 +24,16 @@ export default function Ecommerce() {
         </div>
       </section>
 
-      <section className="card card--visitors">
-        <header className="card__header">New Visitors Activity</header>
-        <div className="chart-box">{/* <VisitorsChart /> */}</div>
+      {/* New Visitors */}
+      <section className="card card--new-visitors">
+        <header className="card__header">New Visitors</header>
+        <div className="chart-box">{/* <NewVisitorsChart /> */}</div>
+      </section>
+
+      {/* Activity */}
+      <section className="card card--activity">
+        <header className="card__header">Activity</header>
+        <div className="chart-box">{/* <ActivityChart /> */}</div>
       </section>
 
       {/* Row 2 */}

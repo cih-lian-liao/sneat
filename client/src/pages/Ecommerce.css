@@ -7,8 +7,8 @@
   /* Desktop: 6 欄 */
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
-    /* Row 1：左半 Congrat、右半 Visitors */
-    "congrats congrats visitors visitors visitors visitors"
+    /* Row 1：左半 Congrat、右半拆成 NewVisitors 與 Activity */
+    "congrats congrats newVisitors newVisitors activity activity"
 
     /* Row 2：左側 2x2（Sales/Profit + Expenses/Transactions），右側 Total Income 直向跨兩列 */
     "sales      profit       totalIncome totalIncome totalIncome totalIncome"
@@ -24,7 +24,8 @@
 
 /* ====== Area mapping ====== */
 .card--congrats      { grid-area: congrats; min-height: 240px; }
-.card--visitors      { grid-area: visitors; min-height: 240px; }
+.card--new-visitors  { grid-area: newVisitors; min-height: 240px; }
+.card--activity      { grid-area: activity;    min-height: 240px; }
 
 .card--sales         { grid-area: sales; }
 .card--profit        { grid-area: profit; }
@@ -95,7 +96,7 @@
   .ecom-grid {
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
-      "congrats congrats visitors visitors"
+      "congrats congrats newVisitors activity"
       "sales    profit    totalIncome totalIncome"
       "expenses transactions totalIncome totalIncome"
       "performance performance conversion conversion"
@@ -111,7 +112,8 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
       "congrats congrats"
-      "visitors visitors"
+      "newVisitors newVisitors"
+      "activity activity"
 
       "sales profit"
       "expenses transactions"
@@ -133,7 +135,8 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "congrats"
-      "visitors"
+      "newVisitors"
+      "activity"
       "sales"
       "profit"
       "expenses"
