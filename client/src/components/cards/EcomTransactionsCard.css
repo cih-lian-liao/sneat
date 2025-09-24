@@ -1,0 +1,13 @@
+.ecom-transactions-card { display: flex; flex-direction: column; gap: 10px; }
+.ecom-transactions-card__row { display: flex; align-items: center; justify-content: space-between; }
+.ecom-transactions-card__icon { width: 44px; height: 44px; border-radius: 12px; background: #eef2ff; display: flex; align-items: center; justify-content: center; }
+.ecom-transactions-card__icon img { width: 28px; height: 28px; object-fit: contain; filter: hue-rotate(240deg) saturate(120%); opacity: 0.9; }
+.ecom-transactions-card__more { border: 0; background: transparent; color: #9aa2b1; font-size: 18px; line-height: 1; cursor: pointer; }
+
+.ecom-transactions-card__title { font-size: 16px; font-weight: 800; color: #64748b; }
+.ecom-transactions-card__amount { font-size: 28px; font-weight: 800; color: #334155; }
+.ecom-transactions-card__delta { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 14px; }
+.ecom-transactions-card__delta.is-up { color: #16a34a; }
+.ecom-transactions-card__delta.is-down { color: #dc2626; }
+.ecom-transactions-card__delta-arrow { font-size: 16px; }
+

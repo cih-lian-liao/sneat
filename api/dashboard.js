@@ -92,6 +92,14 @@ const DashboardDataSchema = new mongoose.Schema({
     percent: { type: Number, default: 0 },
     note: { type: String, default: '' }
   },
+  // Ecommerce Transactions mini card
+  ecomTransactions: {
+    title: { type: String, default: 'Transactions' },
+    amount: { type: Number, default: 0 },
+    deltaPct: { type: Number, default: 0 },
+    deltaDirection: { type: String, enum: ['up','down'], default: 'up' },
+    iconUrl: { type: String, default: '' }
+  },
   
   // Profit Report
   profitReport: {
@@ -603,6 +611,13 @@ function getDefaultData(card = null) {
       title: 'Expenses',
       percent: 72,
       note: '$2k Expenses more than last month'
+    },
+    ecomTransactions: {
+      title: 'Transactions',
+      amount: 14854,
+      deltaPct: 17.53,
+      deltaDirection: 'up',
+      iconUrl: 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png'
     },
     profitReport: {
       totalProfit: 45000,
