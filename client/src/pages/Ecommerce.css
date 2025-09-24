@@ -75,11 +75,11 @@
   gap: 12px;
 }
 
-.ecom-congrats-card__title { margin: 0 0 6px; font-size: 22px; color: #374151; font-weight: 800; letter-spacing: 0.2px; }
-.ecom-congrats-card__subtitle { margin: 0 0 16px; color: #6b7280; font-size: 16px; }
-.ecom-congrats-card__kpi { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
-.ecom-congrats-card__amount { font-size: 40px; color: #6366f1; line-height: 1; }
-.ecom-congrats-card__note { color: #9ca3af; font-size: 18px; }
+.ecom-congrats-card__title { margin: 0 0 6px; font-size: 20px; color: #374151; font-weight: 800; letter-spacing: 0.2px; }
+.ecom-congrats-card__subtitle { margin: 0 0 16px; color: #6b7280; font-size: 14px; }
+.ecom-congrats-card__kpi { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; }
+.ecom-congrats-card__amount { font-size: 36px; color: #6366f1; line-height: 1; }
+.ecom-congrats-card__note { color: #9ca3af; font-size: 16px; }
 .ecom-congrats-card__img { width: 100%; height: auto; object-fit: contain; }
 .ecom-congrats-card__button { padding: 10px 16px; border-radius: 10px; border: 1px solid #c7d2fe; background: #6366f1; color: #fff; font-weight: 700; letter-spacing: 0.5px; box-shadow: 0 1px 2px rgba(99,102,241,0.2); }
 .ecom-congrats-card__button:hover { filter: brightness(0.95); }
