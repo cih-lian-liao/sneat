@@ -1,0 +1,323 @@
+/* Sales Stats Card */
+.sales-stats-card {
+  background: #ffffff;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 320px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.sales-stats-card__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 16px;
+}
+
+/* 標題區域 */
+.sales-stats-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.sales-stats-card__title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #374151;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+}
+
+.sales-stats-card__menu {
+  padding: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 22px;
+  color: #6b7280;
+  line-height: 1;
+}
+
+.sales-stats-card__menu:hover {
+  background-color: #f3f4f6;
+}
+
+.sales-stats-card__menu-icon {
+  display: block;
+  transform: rotate(90deg);
+}
+
+/* 圓形圖表容器 */
+.sales-stats-card__chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 20px 0;
+}
+
+.sales-stats-card__circular-chart {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+.sales-stats-card__chart-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sales-stats-card__chart-bg {
+  opacity: 0.3;
+}
+
+.sales-stats-card__chart-progress {
+  transition: stroke-dasharray 0.8s ease-in-out;
+}
+
+/* 中心內容 */
+.sales-stats-card__chart-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.sales-stats-card__chart-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.sales-stats-card__trend-icon {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.sales-stats-card__stars {
+  display: flex;
+  gap: 2px;
+}
+
+.sales-stats-card__star {
+  font-size: 10px;
+  color: #10b981;
+  line-height: 1;
+}
+
+.sales-stats-card__percentage {
+  font-size: 32px;
+  font-weight: 800;
+  color: #374151;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.sales-stats-card__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  line-height: 1;
+}
+
+/* 圖例 */
+.sales-stats-card__legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: auto;
+}
+
+.sales-stats-card__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sales-stats-card__legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.sales-stats-card__legend-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  line-height: 1;
+}
+
+/* 載入和錯誤狀態 */
+.sales-stats-card.error {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+.sales-stats-card__loading,
+.sales-stats-card__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.sales-stats-card__error {
+  color: #dc2626;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .sales-stats-card {
+    padding: 16px;
+    min-height: 280px;
+  }
+  
+  .sales-stats-card__content {
+    gap: 14px;
+  }
+  
+  .sales-stats-card__title {
+    font-size: 20px;
+  }
+  
+  .sales-stats-card__chart-container {
+    padding: 16px 0;
+  }
+  
+  .sales-stats-card__circular-chart {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .sales-stats-card__percentage {
+    font-size: 28px;
+  }
+  
+  .sales-stats-card__label {
+    font-size: 13px;
+  }
+  
+  .sales-stats-card__legend {
+    gap: 20px;
+  }
+  
+  .sales-stats-card__legend-label {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sales-stats-card {
+    padding: 12px;
+    min-height: 260px;
+  }
+  
+  .sales-stats-card__content {
+    gap: 12px;
+  }
+  
+  .sales-stats-card__title {
+    font-size: 18px;
+  }
+  
+  .sales-stats-card__header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .sales-stats-card__chart-container {
+    padding: 12px 0;
+  }
+  
+  .sales-stats-card__circular-chart {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .sales-stats-card__percentage {
+    font-size: 24px;
+  }
+  
+  .sales-stats-card__label {
+    font-size: 12px;
+  }
+  
+  .sales-stats-card__trend-icon {
+    font-size: 14px;
+  }
+  
+  .sales-stats-card__star {
+    font-size: 8px;
+  }
+  
+  .sales-stats-card__legend {
+    gap: 16px;
+  }
+  
+  .sales-stats-card__legend-label {
+    font-size: 11px;
+  }
+}
+
+/* 暗色模式 */
+@media (prefers-color-scheme: dark) {
+  .sales-stats-card {
+    background: #1f2937;
+    border-color: #374151;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .sales-stats-card__title {
+    color: #f9fafb;
+  }
+  
+  .sales-stats-card__menu {
+    color: #9ca3af;
+  }
+  
+  .sales-stats-card__menu:hover {
+    background-color: #374151;
+  }
+  
+  .sales-stats-card__chart-bg {
+    stroke: #4b5563;
+  }
+  
+  .sales-stats-card__percentage {
+    color: #f9fafb;
+  }
+  
+  .sales-stats-card__label {
+    color: #9ca3af;
+  }
+  
+  .sales-stats-card__legend-label {
+    color: #f9fafb;
+  }
+  
+  .sales-stats-card.error {
+    background: #2d1b1b;
+    border-color: #dc2626;
+  }
+  
+  .sales-stats-card__loading,
+  .sales-stats-card__error {
+    color: #9ca3af;
+  }
+  
+  .sales-stats-card__error {
+    color: #fca5a5;
+  }
+}

@@ -335,6 +335,19 @@ const DashboardDataSchema = new mongoose.Schema({
         changeDirection: { type: String, enum: ['up', 'down'], required: true },
         rightValue: { type: String, required: true }
       }]
+    },
+
+    // Sales Stats (CRM)
+    salesStats: {
+      title: { type: String, default: 'Sales Stats' },
+      percentage: { type: Number, required: true },
+      label: { type: String, required: true },
+      iconType: { type: String, default: 'trend-up' },
+      iconColor: { type: String, default: '#10b981' },
+      legend: [{
+        color: { type: String, required: true },
+        label: { type: String, required: true }
+      }]
     }
   
 }, { 
@@ -1049,6 +1062,23 @@ function getDefaultData(card = null) {
           changePercentage: 14.8,
           changeDirection: 'up',
           rightValue: '8k'
+        }
+      ]
+    },
+    salesStats: {
+      title: 'Sales Stats',
+      percentage: 75,
+      label: 'Sales',
+      iconType: 'trend-up',
+      iconColor: '#10b981',
+      legend: [
+        {
+          color: '#10b981',
+          label: 'Conversion Ratio'
+        },
+        {
+          color: '#e5e7eb',
+          label: 'Total requirements'
         }
       ]
     }
