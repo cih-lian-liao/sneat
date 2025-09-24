@@ -69,7 +69,7 @@ export default function EarningReportCard() {
 
   if (loading) {
     return (
-      <section className="card card--earning-report earning-report-card">
+      <section className="card card--earning earning-report-card">
         <div className="earning-report-card__loading">載入中...</div>
       </section>
     );
@@ -77,7 +77,7 @@ export default function EarningReportCard() {
 
   if (error) {
     return (
-      <section className="card card--earning-report earning-report-card">
+      <section className="card card--earning earning-report-card">
         <div className="earning-report-card__error">錯誤: {error}</div>
       </section>
     );

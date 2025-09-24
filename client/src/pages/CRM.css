@@ -14,7 +14,7 @@
         "ratings ratings overview overview  sessions orders"
         "ratings ratings overview overview leads leads"
     
-        /* row-2：左 Top Sales（2欄）、中 Top Volume（1欄）、右 Earning（1欄） */
+        /* row-2：左 Top Sales（2欄）、中 Top Volume（2欄）、右 Earning（2欄） */
         "topSales topSales topVolume topVolume earning earning"
     
         /* row-3：左 Sales Analytics（2欄）、中 Countries（1欄）、右 Stats（1欄） */
@@ -84,7 +84,7 @@
           "ratings  overview overview"
           "sessions orders   leads"
           "topSales topSales topVolume"
-          "earning  salesAnalytics salesAnalytics"
+          "earning earning salesAnalytics"
           "salesCountries salesStats salesStats"
           "team team customer";
       }
@@ -100,7 +100,8 @@
           "sessions orders"
           "leads    leads"
           "topSales topSales"
-          "topVolume earning"
+          "topVolume topVolume"
+          "earning earning"
           "salesAnalytics salesAnalytics"
           "salesCountries salesStats"
           "team team"
