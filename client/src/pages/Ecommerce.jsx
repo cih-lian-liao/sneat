@@ -12,6 +12,7 @@ import EcomConversionRateCard from "../components/cards/EcomConversionRateCard";
 import EcomRevenueCard from "../components/cards/EcomRevenueCard";
 import EcomSalesCard from "../components/cards/EcomSalesCard";
 import EcomExpensesRightCard from "../components/cards/EcomExpensesRightCard";
+import EcomProductTableCard from "../components/cards/EcomProductTableCard";
 
 export default function Ecommerce() {
   return (
@@ -65,12 +66,7 @@ export default function Ecommerce() {
       <EcomExpensesRightCard />
 
       {/* Row 4 */}
-      <section className="card card--product-table">
-        <header className="card__header">Product / Category / Payment / Order Status</header>
-        <div className="table-box">
-          {/* <ProductTable /> 或多欄組合區塊 */}
-        </div>
-      </section>
+      <EcomProductTableCard />
 
       <section className="card card--total-balance">
         <header className="card__header">Total Balance</header>

@@ -1,0 +1,331 @@
+.ecom-product-table-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ecom-product-table-card__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ecom-product-table-card__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+.ecom-product-table-card__table {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ecom-product-table-card__header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 2px solid #e5e7eb;
+  font-weight: 700;
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ecom-product-table-card__header-cell {
+  display: flex;
+  align-items: center;
+}
+
+.ecom-product-table-card__body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.ecom-product-table-card__row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #f3f4f6;
+  align-items: center;
+}
+
+.ecom-product-table-card__row:last-child {
+  border-bottom: none;
+}
+
+.ecom-product-table-card__cell {
+  display: flex;
+  align-items: center;
+}
+
+.ecom-product-table-card__product-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ecom-product-table-card__product-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #e5e7eb;
+}
+
+.ecom-product-table-card__product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ecom-product-table-card__product-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.ecom-product-table-card__product-brand {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
+.ecom-product-table-card__category-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ecom-product-table-card__category-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.ecom-product-table-card__category-name {
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.ecom-product-table-card__payment-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ecom-product-table-card__payment-amount {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ecom-product-table-card__paid-amount {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+.ecom-product-table-card__total-amount {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.ecom-product-table-card__payment-status {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.ecom-product-table-card__status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  width: fit-content;
+}
+
+.ecom-product-table-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ecom-product-table-card__actions-icon {
+  font-size: 16px;
+  color: #6b7280;
+  font-weight: bold;
+  transform: rotate(90deg);
+}
+
+.ecom-product-table-card__loading,
+.ecom-product-table-card__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.ecom-product-table-card__error {
+  color: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .ecom-product-table-card__header,
+  .ecom-product-table-card__row {
+    grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+    gap: 12px;
+  }
+  
+  .ecom-product-table-card__product-image {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .ecom-product-table-card__product-name {
+    font-size: 13px;
+  }
+  
+  .ecom-product-table-card__product-brand {
+    font-size: 11px;
+  }
+  
+  .ecom-product-table-card__category-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  .ecom-product-table-card__category-name {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ecom-product-table-card {
+    padding: 16px;
+    min-height: 350px;
+  }
+  
+  .ecom-product-table-card__title {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .ecom-product-table-card__header,
+  .ecom-product-table-card__row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .ecom-product-table-card__header-cell {
+    display: none;
+  }
+  
+  .ecom-product-table-card__row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .ecom-product-table-card__cell {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .ecom-product-table-card__cell::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #6b7280;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  
+  .ecom-product-table-card__product-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .ecom-product-table-card__product-image {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .ecom-product-table-card__category-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .ecom-product-table-card__payment-info {
+    align-items: flex-end;
+  }
+  
+  .ecom-product-table-card__status-badge {
+    margin-left: auto;
+  }
+  
+  .ecom-product-table-card__actions {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .ecom-product-table-card {
+    padding: 12px;
+    min-height: 300px;
+  }
+  
+  .ecom-product-table-card__title {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  
+  .ecom-product-table-card__row {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .ecom-product-table-card__product-image {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .ecom-product-table-card__product-name {
+    font-size: 12px;
+  }
+  
+  .ecom-product-table-card__product-brand {
+    font-size: 10px;
+  }
+}
