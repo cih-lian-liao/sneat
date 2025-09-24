@@ -6,6 +6,7 @@ import EcomSalesStatCard from "../components/cards/EcomSalesStatCard";
 import EcomProfitCard from "../components/cards/EcomProfitCard";
 import EcomExpensesCard from "../components/cards/EcomExpensesCard";
 import EcomTransactionsCard from "../components/cards/EcomTransactionsCard";
+import EcomTotalIncomeCard from "../components/cards/EcomTotalIncomeCard";
 
 export default function Ecommerce() {
   return (
@@ -45,10 +46,7 @@ export default function Ecommerce() {
 
       <EcomTransactionsCard />
 
-      <section className="card card--total-income">
-        <header className="card__header">Total Income Report</header>
-        <div className="chart-box">{/* <TotalIncomeChart /> */}</div>
-      </section>
+      <EcomTotalIncomeCard />
 
       {/* Row 3 */}
       <section className="card card--performance">

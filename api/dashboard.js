@@ -100,6 +100,24 @@ const DashboardDataSchema = new mongoose.Schema({
     deltaDirection: { type: String, enum: ['up','down'], default: 'up' },
     iconUrl: { type: String, default: '' }
   },
+  // Ecommerce Total Income
+  ecomTotalIncome: {
+    title: { type: String, default: 'Total Income' },
+    subtitle: { type: String, default: 'Yearly report overview' },
+    series: [{ type: Number }],
+    labels: [{ type: String }],
+    yTicks: [{ type: String }],
+    reportTitle: { type: String, default: 'Report' },
+    reportSubtitle: { type: String, default: '' },
+    items: [{
+      icon: { type: String, default: '' },
+      label: { type: String, required: true },
+      amount: { type: Number, required: true },
+      delta: { type: Number, required: true },
+      dir: { type: String, enum: ['up','down'], default: 'up' },
+      color: { type: String, default: '#10b981' }
+    }]
+  },
   
   // Profit Report
   profitReport: {
@@ -618,6 +636,20 @@ function getDefaultData(card = null) {
       deltaPct: 17.53,
       deltaDirection: 'up',
       iconUrl: 'https://greakproject.vercel.app/images/cards/stats-vertical-wallet.png'
+    },
+    ecomTotalIncome: {
+      title: 'Total Income',
+      subtitle: 'Yearly report overview',
+      series: [3200,3200,4800,4800,3000,3000,1600,1600,3600,3600,5600,5600],
+      labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+      yTicks: ['$1k','$2k','$3k','$4k','$5k','$6k'],
+      reportTitle: 'Report',
+      reportSubtitle: 'Monthly Avg. $45.578k',
+      items: [
+        { icon: '💳', label: 'Income', amount: 42845, delta: 2.7, dir: 'up', color: '#10b981' },
+        { icon: '🛍️', label: 'Expense', amount: 38658, delta: 1.15, dir: 'down', color: '#ef4444' },
+        { icon: '💼', label: 'Profit', amount: 18220, delta: 1.34, dir: 'up', color: '#10b981' }
+      ]
     },
     profitReport: {
       totalProfit: 45000,
