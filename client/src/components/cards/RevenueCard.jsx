@@ -47,7 +47,7 @@ export default function RevenueCard() {
 
   if (loading) {
     return (
-      <section className="card revenue-card">
+      <section className="card crm-revenue-card">
         <div>載入中...</div>
       </section>
     );
@@ -55,7 +55,7 @@ export default function RevenueCard() {
 
   if (error) {
     return (
-      <section className="card revenue-card">
+      <section className="card crm-revenue-card">
         <div style={{ color: 'red' }}>錯誤: {error}</div>
       </section>
     );
@@ -85,22 +85,22 @@ export default function RevenueCard() {
   const maxRevenue = Math.max(...weeklyData.map(item => item.revenue));
 
   return (
-    <section className="card revenue-card">
-      <div className="revenue-card__content">
-        <h3 className="revenue-card__title">{title}</h3>
+    <section className="card crm-revenue-card">
+      <div className="crm-revenue-card__content">
+        <h3 className="crm-revenue-card__title">{title}</h3>
         
-        <div className="revenue-card__value">
+        <div className="crm-revenue-card__value">
           {formatValue(totalRevenue)}
         </div>
         
-        <div className="revenue-card__chart">
-          <div className="weekly-chart">
+        <div className="crm-revenue-card__chart">
+          <div className="crm-revenue-card__weekly-chart">
             {weeklyData.map((item, index) => {
               const height = (item.revenue / maxRevenue) * 100;
               return (
-                <div key={index} className="chart-column">
+                <div key={index} className="crm-revenue-card__chart-column">
                   <div 
-                    className={`chart-bar ${item.isHighlighted ? 'highlighted' : ''}`}
+                    className={`crm-revenue-card__chart-bar ${item.isHighlighted ? 'highlighted' : ''}`}
                     style={{ height: `${height}%` }}
                   ></div>
                 </div>
@@ -108,9 +108,9 @@ export default function RevenueCard() {
             })}
           </div>
           
-          <div className="chart-labels">
+          <div className="crm-revenue-card__chart-labels">
             {weeklyData.map((item, index) => (
-              <div key={index} className="chart-label">
+              <div key={index} className="crm-revenue-card__chart-label">
                 {item.day}
               </div>
             ))}

@@ -1,5 +1,5 @@
 /* RevenueCard.css - 按照附圖設計週收入條形圖 */
-.revenue-card {
+.crm-revenue-card {
   background: #fff;
   border-radius: 12px;
   padding: 20px;
@@ -8,12 +8,12 @@
   min-height: 180px;
 }
 
-.revenue-card:hover {
+.crm-revenue-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.revenue-card__content {
+.crm-revenue-card__content {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -21,7 +21,7 @@
 }
 
 /* 標題 */
-.revenue-card__title {
+.crm-revenue-card__title {
   font-size: 14px;
   color: #94a3b8;
   font-weight: 600;
@@ -30,7 +30,7 @@
 }
 
 /* 主要數值 */
-.revenue-card__value {
+.crm-revenue-card__value {
   font-size: clamp(24px, 2.5vw + 10px, 32px);
   font-weight: 700;
   color: #334155;
@@ -38,7 +38,7 @@
 }
 
 /* 圖表容器 */
-.revenue-card__chart {
+.crm-revenue-card__chart {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -47,7 +47,7 @@
 }
 
 /* 週收入條形圖 */
-.weekly-chart {
+.crm-revenue-card__weekly-chart {
   display: flex;
   align-items: end;
   justify-content: space-between;
@@ -56,7 +56,7 @@
   padding: 0 12px;
 }
 
-.chart-column {
+.crm-revenue-card__chart-column {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -65,22 +65,22 @@
   height: 100%;
 }
 
-.chart-bar {
+.crm-revenue-card__chart-bar {
   width: 100%;
   border-radius: 3px 3px 0 0;
   transition: all 0.3s ease;
-  animation: growUp 0.8s ease-out;
+  animation: crmRevenueGrowUp 0.8s ease-out;
   background: linear-gradient(to top, #A8B2FF, #E3DDFD);
   min-height: 8px;
 }
 
-.chart-bar.highlighted {
+.crm-revenue-card__chart-bar.highlighted {
   background: linear-gradient(to top, #7367F0, #A8B2FF);
-  animation: growUpHighlight 0.8s ease-out;
+  animation: crmRevenueGrowUpHighlight 0.8s ease-out;
 }
 
 /* 條形圖動畫 */
-@keyframes growUp {
+@keyframes crmRevenueGrowUp {
   from {
     height: 0;
     opacity: 0;
@@ -90,7 +90,7 @@
   }
 }
 
-@keyframes growUpHighlight {
+@keyframes crmRevenueGrowUpHighlight {
   from {
     height: 0;
     opacity: 0;
@@ -104,14 +104,14 @@
 }
 
 /* X 軸標籤 */
-.chart-labels {
+.crm-revenue-card__chart-labels {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   padding: 0 12px;
 }
 
-.chart-label {
+.crm-revenue-card__chart-label {
   flex: 1;
   text-align: center;
   font-size: 12px;
@@ -121,68 +121,68 @@
 
 /* 響應式設計 */
 @media (max-width: 768px) {
-  .revenue-card {
+  .crm-revenue-card {
     padding: 16px;
     min-height: 160px;
   }
   
-  .revenue-card__value {
+  .crm-revenue-card__value {
     font-size: 20px;
   }
   
-  .weekly-chart {
+  .crm-revenue-card__weekly-chart {
     height: 50px;
   }
   
-  .chart-labels {
+  .crm-revenue-card__chart-labels {
     font-size: 11px;
   }
 }
 
 /* 暗色模式 */
 @media (prefers-color-scheme: dark) {
-  .revenue-card {
+  .crm-revenue-card {
     background: #0b1020;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
   
-  .revenue-card__title {
+  .crm-revenue-card__title {
     color: #8b95a7;
   }
   
-  .revenue-card__value {
+  .crm-revenue-card__value {
     color: #d9e1f2;
   }
   
-  .chart-label {
+  .crm-revenue-card__chart-label {
     color: #8b95a7;
   }
 }
 
 /* 載入狀態 */
-.revenue-card__value:empty::after {
+.crm-revenue-card__value:empty::after {
   content: "—";
   color: #94a3b8;
 }
 
 /* 錯誤狀態 */
-.revenue-card__value[data-error="true"] {
+.crm-revenue-card__value[data-error="true"] {
   color: #dc2626;
 }
 
 /* 確保圖表在卡片內正確顯示 */
-.revenue-card__chart svg {
+.crm-revenue-card__chart svg {
   max-width: 100%;
   height: auto;
 }
 
 /* 條形圖懸停效果 */
-.chart-bar:hover {
+.crm-revenue-card__chart-bar:hover {
   opacity: 0.8;
   transform: scaleY(1.05);
 }
 
-.chart-bar.highlighted:hover {
+.crm-revenue-card__chart-bar.highlighted:hover {
   opacity: 0.9;
   transform: scaleY(1.08);
 }
