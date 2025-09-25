@@ -245,6 +245,161 @@
   line-height: 1.2;
 }
 
+/* Notifications Dropdown */
+.app-toolbar__notifications-dropdown {
+  position: relative;
+}
+
+.app-toolbar__notifications-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  min-width: 360px;
+  max-width: 400px;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.app-toolbar__notifications-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.app-toolbar__notifications-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.app-toolbar__notifications-badge {
+  background: #8b5cf6;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.app-toolbar__notifications-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.app-toolbar__notification-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.app-toolbar__notification-item:hover {
+  background: #f8fafc;
+}
+
+.app-toolbar__notification-item:last-child {
+  border-bottom: none;
+}
+
+.app-toolbar__notification-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.app-toolbar__notification-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-toolbar__notification-initials {
+  width: 100%;
+  height: 100%;
+  background: #8b5cf6;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.app-toolbar__notification-paypal {
+  width: 100%;
+  height: 100%;
+  background: #ffc439;
+  color: #003087;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.app-toolbar__notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.app-toolbar__notification-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.app-toolbar__notification-subtitle {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.3;
+}
+
+.app-toolbar__notification-time {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-left: 12px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  padding-top: 2px;
+}
+
+.app-toolbar__notifications-footer {
+  padding: 16px 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.app-toolbar__notifications-read-all {
+  width: 100%;
+  background: #8b5cf6;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.app-toolbar__notifications-read-all:hover {
+  background: #7c3aed;
+}
+
 .app-toolbar__avatar {
   display: inline-flex;
   align-items: center;
@@ -370,6 +525,18 @@
 .dark .app-toolbar__app-icon { background: #374151; }
 .dark .app-toolbar__app-title { color: #ffffff; }
 .dark .app-toolbar__app-subtitle { color: #9ca3af; }
+.dark .app-toolbar__notifications-menu { background: #1f2937; border-color: #374151; }
+.dark .app-toolbar__notifications-header { border-bottom-color: #374151; }
+.dark .app-toolbar__notifications-title { color: #ffffff; }
+.dark .app-toolbar__notification-item { border-bottom-color: #374151; }
+.dark .app-toolbar__notification-item:hover { background: #374151; }
+.dark .app-toolbar__notification-initials { background: #7c3aed; }
+.dark .app-toolbar__notification-title { color: #ffffff; }
+.dark .app-toolbar__notification-subtitle { color: #9ca3af; }
+.dark .app-toolbar__notification-time { color: #6b7280; }
+.dark .app-toolbar__notifications-footer { border-top-color: #374151; }
+.dark .app-toolbar__notifications-read-all { background: #7c3aed; }
+.dark .app-toolbar__notifications-read-all:hover { background: #6d28d9; }
 .dark .app-search-modal__container { background: #111827; }
 .dark .app-search-modal__header { border-bottom-color: #1f2937; color: #9ca3af; }
 .dark .app-search-modal__list li { color: #e5e7eb; }

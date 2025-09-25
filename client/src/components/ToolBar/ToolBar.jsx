@@ -5,6 +5,7 @@ export default function ToolBar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isAppsOpen, setIsAppsOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -13,6 +14,7 @@ export default function ToolBar() {
         setIsSearchOpen(false);
         setIsLanguageOpen(false);
         setIsAppsOpen(false);
+        setIsNotificationsOpen(false);
       }
       if ((e.ctrlKey || e.metaKey) && e.key === "/") setIsSearchOpen(true);
     };
@@ -29,10 +31,13 @@ export default function ToolBar() {
       if (isAppsOpen && !event.target.closest('.app-toolbar__apps-dropdown')) {
         setIsAppsOpen(false);
       }
+      if (isNotificationsOpen && !event.target.closest('.app-toolbar__notifications-dropdown')) {
+        setIsNotificationsOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isLanguageOpen, isAppsOpen]);
+  }, [isLanguageOpen, isAppsOpen, isNotificationsOpen]);
 
   // 暗色模式切換
   const toggleDarkMode = () => {
@@ -163,10 +168,79 @@ export default function ToolBar() {
             </div>
           )}
         </div>
-        <button className="app-toolbar__action app-toolbar__action--notification" aria-label="Notifications">
-          <span className="app-toolbar__action-icon" aria-hidden>🔔</span>
-          <span className="app-toolbar__badge" aria-hidden />
-        </button>
+        <div className="app-toolbar__notifications-dropdown">
+          <button 
+            className="app-toolbar__action app-toolbar__action--notification" 
+            aria-label="Notifications"
+            onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
+          >
+            <span className="app-toolbar__action-icon" aria-hidden>🔔</span>
+            <span className="app-toolbar__badge" aria-hidden />
+          </button>
+          {isNotificationsOpen && (
+            <div className="app-toolbar__notifications-menu">
+              <div className="app-toolbar__notifications-header">
+                <span className="app-toolbar__notifications-title">Notifications</span>
+                <span className="app-toolbar__notifications-badge">6 NEW</span>
+              </div>
+              <div className="app-toolbar__notifications-list">
+                <div className="app-toolbar__notification-item">
+                  <div className="app-toolbar__notification-avatar">
+                    <img src="https://i.pravatar.cc/40?img=1" alt="Flora" />
+                  </div>
+                  <div className="app-toolbar__notification-content">
+                    <div className="app-toolbar__notification-title">Congratulation Flora! 🎉</div>
+                    <div className="app-toolbar__notification-subtitle">Won the monthly best seller badge</div>
+                  </div>
+                  <div className="app-toolbar__notification-time">Today</div>
+                </div>
+                <div className="app-toolbar__notification-item">
+                  <div className="app-toolbar__notification-avatar">
+                    <div className="app-toolbar__notification-initials">RA</div>
+                  </div>
+                  <div className="app-toolbar__notification-content">
+                    <div className="app-toolbar__notification-title">New user registered.</div>
+                    <div className="app-toolbar__notification-subtitle">5 hours ago</div>
+                  </div>
+                  <div className="app-toolbar__notification-time">Yesterday</div>
+                </div>
+                <div className="app-toolbar__notification-item">
+                  <div className="app-toolbar__notification-avatar">
+                    <img src="https://i.pravatar.cc/40?img=2" alt="User" />
+                  </div>
+                  <div className="app-toolbar__notification-content">
+                    <div className="app-toolbar__notification-title">New message received 👋</div>
+                    <div className="app-toolbar__notification-subtitle">You have 10 unread messages</div>
+                  </div>
+                  <div className="app-toolbar__notification-time">11 Aug</div>
+                </div>
+                <div className="app-toolbar__notification-item">
+                  <div className="app-toolbar__notification-avatar">
+                    <div className="app-toolbar__notification-paypal">P</div>
+                  </div>
+                  <div className="app-toolbar__notification-content">
+                    <div className="app-toolbar__notification-title">Paypal</div>
+                    <div className="app-toolbar__notification-subtitle">Received Payment</div>
+                  </div>
+                  <div className="app-toolbar__notification-time">25 May</div>
+                </div>
+                <div className="app-toolbar__notification-item">
+                  <div className="app-toolbar__notification-avatar">
+                    <img src="https://i.pravatar.cc/40?img=3" alt="John" />
+                  </div>
+                  <div className="app-toolbar__notification-content">
+                    <div className="app-toolbar__notification-title">Received Order 📦</div>
+                    <div className="app-toolbar__notification-subtitle">New order received from John</div>
+                  </div>
+                  <div className="app-toolbar__notification-time">19 Mar</div>
+                </div>
+              </div>
+              <div className="app-toolbar__notifications-footer">
+                <button className="app-toolbar__notifications-read-all">READ ALL NOTIFICATIONS</button>
+              </div>
+            </div>
+          )}
+        </div>
         <div className="app-toolbar__avatar">
           <img src="https://i.pravatar.cc/40?img=5" alt="User" />
         </div>
