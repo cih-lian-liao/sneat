@@ -87,7 +87,14 @@ export default function RevenueCard() {
   return (
     <section className="card crm-revenue-card">
       <div className="crm-revenue-card__content">
-        <h3 className="crm-revenue-card__title">{title}</h3>
+        <div className="crm-revenue-card__header">
+          <h3 className="crm-revenue-card__title">{title}</h3>
+          <div className="menu-dots" aria-label="More actions">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
         
         <div className="crm-revenue-card__value">
           {formatValue(totalRevenue)}

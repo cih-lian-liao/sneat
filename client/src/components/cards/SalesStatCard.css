@@ -23,13 +23,19 @@
   object-fit: contain;
 }
 
-.sales-stat__more {
-  border: 0;
-  background: transparent;
-  color: #9aa2b1;
-  font-size: 18px;
-  line-height: 1;
+.menu-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   cursor: pointer;
+  padding: 4px;
+}
+
+.menu-dots span {
+  width: 3px;
+  height: 3px;
+  background: #9aa2b1;
+  border-radius: 50%;
 }
 
 /* 標題 */
@@ -65,5 +71,5 @@
   .sales-stat { background: #0b1020; }
   .sales-stat__title { color: #8b95a7; }
   .sales-stat__value { color: #d9e1f2; }
-  .sales-stat__more  { color: #6b7280; }
+  .menu-dots span { background: #6b7280; }
 }

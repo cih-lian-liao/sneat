@@ -9,7 +9,20 @@
 
 .ecom-sales-stat__row { display: flex; align-items: center; justify-content: space-between; }
 .ecom-sales-stat__icon { width: 44px; height: 44px; border-radius: 10px; background: #f3f6ff; object-fit: contain; }
-.ecom-sales-stat__more { border: 0; background: transparent; color: #9aa2b1; font-size: 18px; line-height: 1; cursor: pointer; }
+.menu-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.menu-dots span {
+  width: 3px;
+  height: 3px;
+  background: #9aa2b1;
+  border-radius: 50%;
+}
 
 .ecom-sales-stat__title { font-size: 14px; color: #94a3b8; font-weight: 600; letter-spacing: 0.2px; }
 .ecom-sales-stat__value { font-size: clamp(22px, 2.2vw + 8px, 30px); font-weight: 700; color: #334155; }
@@ -23,7 +36,7 @@
   .ecom-sales-stat { background: #0b1020; }
   .ecom-sales-stat__title { color: #8b95a7; }
   .ecom-sales-stat__value { color: #d9e1f2; }
-  .ecom-sales-stat__more  { color: #6b7280; }
+  .menu-dots span { background: #6b7280; }
 }
 
 

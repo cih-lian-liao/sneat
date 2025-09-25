@@ -97,6 +97,11 @@ export default function OrderCard() {
       <div className="order-card__content">
         <div className="order-card__header">
           <div className="order-card__title">Order</div>
+          <div className="menu-dots" aria-label="More actions">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
         
         <div className="order-card__value">

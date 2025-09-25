@@ -20,6 +20,12 @@
   height: 100%;
 }
 
+.crm-revenue-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* 標題 */
 .crm-revenue-card__title {
   font-size: 14px;
@@ -27,6 +33,21 @@
   font-weight: 600;
   letter-spacing: 0.2px;
   margin: 0;
+}
+
+.menu-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.menu-dots span {
+  width: 3px;
+  height: 3px;
+  background: #9aa2b1;
+  border-radius: 50%;
 }
 
 /* 主要數值 */
@@ -156,6 +177,10 @@
   
   .crm-revenue-card__chart-label {
     color: #8b95a7;
+  }
+  
+  .menu-dots span {
+    background: #6b7280;
   }
 }
 

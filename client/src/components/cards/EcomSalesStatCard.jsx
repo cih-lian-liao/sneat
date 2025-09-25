@@ -55,7 +55,11 @@ export default function EcomSalesStatCard() {
           width="40"
           height="40"
         />
-        <button className="ecom-sales-stat__more" aria-label="More actions">⋮</button>
+        <div className="menu-dots" aria-label="More actions">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
 
       <div className="ecom-sales-stat__title">{title}</div>
