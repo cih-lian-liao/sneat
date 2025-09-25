@@ -291,44 +291,27 @@
 }
 
 .tr-gauge {
+  width: 120px;
+  height: 120px;
   position: relative;
-  width: 160px; /* 放大尺寸 */
-  height: 80px; /* 放大尺寸 */
-  overflow: hidden; /* 裁剪半圓儀表下半部，避免溢出 */
 }
 
-.tr-gauge-svg {
+.tr-gauge svg {
   width: 100%;
   height: 100%;
-  transform: rotate(-90deg); /* Start from left */
+  display: block;
 }
 
-/* 漸層描邊更柔順 */
-.tr-gauge-svg path[stroke="url(#gaugeGradient)"] {
-  filter: drop-shadow(0 2px 4px rgba(139, 92, 246, 0.25));
+.tr-gauge__value {
+  font-size: 16px;
+  fill: #1f2937;
+  font-weight: 800;
 }
 
-.tr-gauge-text {
-  position: absolute;
-  top: 58%; /* 針對較大尺寸微調置中 */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 2;
-}
-
-.tr-gauge-percentage {
-  font-size: 22px; /* 放大數字 */
-  font-weight: 700;
-  color: #1f2937;
-  line-height: 1;
-}
-
-.tr-gauge-label {
-  font-size: 12px; /* 放大標籤 */
-  color: #6b7280;
-  margin-top: 2px;
-  font-weight: 500;
+.tr-gauge__label {
+  font-size: 11px;
+  fill: #6b7280;
+  font-weight: 600;
 }
 
 .tr-company-growth {
@@ -487,14 +470,14 @@
   
   .tr-gauge {
     width: 80px;
-    height: 40px;
+    height: 80px;
   }
   
-  .tr-gauge-percentage {
+  .tr-gauge__value {
     font-size: 14px;
   }
   
-  .tr-gauge-label {
+  .tr-gauge__label {
     font-size: 9px;
   }
   
@@ -626,16 +609,16 @@
     box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.1);
   }
   
-  .gauge-svg path:first-child {
+  .tr-gauge circle:first-child {
     stroke: #4b5563;
   }
   
-  .gauge-percentage {
-    color: #f9fafb;
+  .tr-gauge__value {
+    fill: #f9fafb;
   }
   
-  .gauge-label {
-    color: #9ca3af;
+  .tr-gauge__label {
+    fill: #9ca3af;
   }
   
   .company-growth__percentage {

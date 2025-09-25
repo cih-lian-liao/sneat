@@ -218,32 +218,28 @@ export default function TotalRevenueCard() {
           {/* 增長儀表 */}
           <div className="tr-growth-section">
             <div className="tr-gauge">
-              <svg className="tr-gauge-svg" viewBox="0 0 100 50">
+              <svg viewBox="0 0 100 100">
                 <defs>
                   <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#8b5cf6" />
                     <stop offset="100%" stopColor="#06b6d4" />
                   </linearGradient>
                 </defs>
-                <path
-                  d="M 15 40 A 35 35 0 0 1 85 40"
-                  fill="none"
-                  stroke="#e5e7eb"
-                  strokeWidth="6"
+                <circle cx="50" cy="50" r="36" fill="none" stroke="#e5e7eb" strokeWidth="12" />
+                <circle 
+                  cx="50" 
+                  cy="50" 
+                  r="36" 
+                  fill="none" 
+                  stroke="url(#gaugeGradient)" 
+                  strokeWidth="12" 
+                  strokeLinecap="round" 
+                  strokeDasharray={`${(growthMetrics.growthPercentage || 0) * 2.26} 226`} 
+                  transform="rotate(-90 50 50)" 
                 />
-                <path
-                  d="M 15 40 A 35 35 0 0 1 85 40"
-                  fill="none"
-                  stroke="url(#gaugeGradient)"
-                  strokeWidth="6"
-                  strokeDasharray={`${(growthMetrics.growthPercentage || 0) * 1.1} 110`}
-                  strokeLinecap="round"
-                />
+                <text x="50" y="45" textAnchor="middle" className="tr-gauge__value">{growthMetrics.growthPercentage || 0}%</text>
+                <text x="50" y="62" textAnchor="middle" className="tr-gauge__label">Growth</text>
               </svg>
-              <div className="tr-gauge-text">
-                <div className="tr-gauge-percentage">{growthMetrics.growthPercentage || 0}%</div>
-                <div className="tr-gauge-label">Growth</div>
-              </div>
             </div>
             
             <div className="tr-company-growth">
