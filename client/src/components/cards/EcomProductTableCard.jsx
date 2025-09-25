@@ -162,7 +162,7 @@ const EcomProductTableCard = () => {
   if (loading) {
     return (
       <section className="card card--ecom-product-table ecom-product-table-card">
-        <div className="ecom-product-table-card__loading">載入中...</div>
+        <div className="ecom-product-table-card__loading">Loading...</div>
       </section>
     );
   }

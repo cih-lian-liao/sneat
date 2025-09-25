@@ -70,7 +70,7 @@ export default function EarningReportCard() {
   if (loading) {
     return (
       <section className="card card--earning earning-report-card">
-        <div className="earning-report-card__loading">載入中...</div>
+        <div className="earning-report-card__loading">Loading...</div>
       </section>
     );
   }

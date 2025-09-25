@@ -32,7 +32,7 @@ export default function CustomerRatingsCard() {
     })();
   }, []);
 
-  if (loading) return <section className="card card--ratings">載入中...</section>;
+  if (loading) return <section className="card card--ratings">Loading...</section>;
   if (error) return <section className="card card--ratings error">錯誤: {error}</section>;
 
   const { title = "Customer Ratings", rating = 4.0, changePoints = 5.0 } = data;

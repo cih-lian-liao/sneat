@@ -169,7 +169,7 @@ const TeamMembersCard = () => {
   if (loading) {
     return (
       <div className="card card--team-members team-members-card">
-        <div className="team-members-card__loading">載入中...</div>
+        <div className="team-members-card__loading">Loading...</div>
       </div>
     );
   }

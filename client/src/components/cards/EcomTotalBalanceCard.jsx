@@ -76,7 +76,7 @@ const EcomTotalBalanceCard = () => {
   if (loading) {
     return (
       <section className="card card--ecom-total-balance ecom-total-balance-card">
-        <div className="ecom-total-balance-card__loading">載入中...</div>
+        <div className="ecom-total-balance-card__loading">Loading...</div>
       </section>
     );
   }

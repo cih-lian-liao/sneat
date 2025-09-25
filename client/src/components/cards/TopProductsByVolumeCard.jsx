@@ -32,7 +32,7 @@ export default function TopProductsByVolumeCard() {
     })();
   }, []);
 
-  if (loading) return <section className="card card--top-volume crm-top-volume-card">載入中...</section>;
+  if (loading) return <section className="card card--top-volume crm-top-volume-card">Loading...</section>;
   if (error) return <section className="card card--top-volume crm-top-volume-card error">錯誤: {error}</section>;
 
   const formatVolume = (volume) => `${volume}k`;

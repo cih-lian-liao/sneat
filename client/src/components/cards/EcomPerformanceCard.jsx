@@ -70,7 +70,7 @@ const EcomPerformanceCard = () => {
   if (loading) {
     return (
       <section className="card card--performance ecom-performance-card">
-        <div className="ecom-performance-card__loading">載入中...</div>
+        <div className="ecom-performance-card__loading">Loading...</div>
       </section>
     );
   }

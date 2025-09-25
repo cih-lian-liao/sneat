@@ -39,7 +39,7 @@ export default function OrderStatisticsCard() {
     fetchData();
   }, []);
 
-  if (loading) return <section className="card card--order-statistics">載入中...</section>;
+  if (loading) return <section className="card card--order-statistics">Loading...</section>;
   if (error) return <section className="card card--order-statistics error">錯誤: {error}</section>;
 
   const formatValue = (value) => {

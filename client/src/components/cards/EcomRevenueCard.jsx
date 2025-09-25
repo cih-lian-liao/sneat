@@ -82,7 +82,7 @@ const EcomRevenueCard = () => {
   if (loading) {
     return (
       <section className="card card--ecom-revenue ecom-revenue-card">
-        <div className="ecom-revenue-card__loading">載入中...</div>
+        <div className="ecom-revenue-card__loading">Loading...</div>
       </section>
     );
   }

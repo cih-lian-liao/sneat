@@ -43,7 +43,7 @@ export default function SalesStatCard() {
   if (loading) {
     return (
       <section className="card card--sales-analysis sales-stat">
-        <div>載入中...</div>
+        <div>Loading...</div>
       </section>
     );
   }

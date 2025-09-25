@@ -49,7 +49,7 @@ const NewVisitorsCard = () => {
   if (loading) {
     return (
       <section className="card card--new-visitors ecom-new-visitors-card">
-        <div className="ecom-new-visitors-card__loading">載入中...</div>
+        <div className="ecom-new-visitors-card__loading">Loading...</div>
       </section>
     );
   }

@@ -20,7 +20,7 @@ export default function OrdersMiniCard() {
     })();
   },[]);
 
-  if(loading) return <section className="card card--orders">載入中...</section>;
+  if(loading) return <section className="card card--orders">Loading...</section>;
   if(error) return <section className="card card--orders error">錯誤: {error}</section>;
 
   const { title='Order', amount=0, changePct=0, icon='🧊' } = data;

@@ -82,7 +82,7 @@ const SalesByCountriesCard = () => {
   if (loading) {
     return (
       <section className="card card--sales-countries sales-by-countries-card">
-        <div className="sales-by-countries-card__loading">載入中...</div>
+        <div className="sales-by-countries-card__loading">Loading...</div>
       </section>
     );
   }

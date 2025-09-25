@@ -27,7 +27,7 @@ export default function ProfitReportCard() {
     fetchData();
   }, []);
 
-  if (loading) return <section className="card card--profit-report"><div>載入中...</div></section>;
+  if (loading) return <section className="card card--profit-report"><div>Loading...</div></section>;
   if (error) return <section className="card card--profit-report"><div style={{color:'red'}}>錯誤: {error}</div></section>;
 
   const title = 'Profit Report';

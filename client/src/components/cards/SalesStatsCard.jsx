@@ -45,7 +45,7 @@ const SalesStatsCard = () => {
   if (loading) {
     return (
       <section className="card card--sales-stats sales-stats-card">
-        <div className="sales-stats-card__loading">載入中...</div>
+        <div className="sales-stats-card__loading">Loading...</div>
       </section>
     );
   }

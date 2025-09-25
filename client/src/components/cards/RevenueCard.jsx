@@ -48,7 +48,7 @@ export default function RevenueCard() {
   if (loading) {
     return (
       <section className="card crm-revenue-card">
-        <div>載入中...</div>
+        <div>Loading...</div>
       </section>
     );
   }

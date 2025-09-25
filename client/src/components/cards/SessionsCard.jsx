@@ -26,7 +26,7 @@ export default function SessionsCard() {
     })();
   }, []);
 
-  if (loading) return <section className="card card--sessions">載入中...</section>;
+  if (loading) return <section className="card card--sessions">Loading...</section>;
   if (error) return <section className="card card--sessions error">錯誤: {error}</section>;
 
   const { title='Sessions', total=0, chartData=[] } = data;

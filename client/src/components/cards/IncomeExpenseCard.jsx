@@ -82,7 +82,7 @@ export default function IncomeExpenseCard() {
     fetchData();
   }, []);
 
-  if (loading) return <section className="card card--income-expense">載入中...</section>;
+  if (loading) return <section className="card card--income-expense">Loading...</section>;
   if (error) return <section className="card card--income-expense error">錯誤: {error}</section>;
 
   const currentData = data[activeTab] || {};

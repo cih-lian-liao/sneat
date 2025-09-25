@@ -99,7 +99,7 @@ export default function TransactionsCard() {
     fetchData();
   }, []);
 
-  if (loading) return <section className="card card--transactions">載入中...</section>;
+  if (loading) return <section className="card card--transactions">Loading...</section>;
   if (error) return <section className="card card--transactions error">錯誤: {error}</section>;
 
   const formatAmount = (amount, isPositive) => {

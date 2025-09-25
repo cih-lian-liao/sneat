@@ -60,7 +60,7 @@ const EcomTotalIncomeCard = () => {
 
   if (loading) {
     return (
-      <section className="card card--total-income ecom-total-income-card"><div>載入中...</div></section>
+      <section className="card card--total-income ecom-total-income-card"><div>Loading...</div></section>
     );
   }
   if (error && !card) {

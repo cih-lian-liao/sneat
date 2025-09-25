@@ -29,7 +29,7 @@ export default function OverviewSalesActivityCard() {
     })();
   }, []);
 
-  if (loading) return <section className="card card--overview">載入中...</section>;
+  if (loading) return <section className="card card--overview">Loading...</section>;
   if (error) return <section className="card card--overview error">錯誤: {error}</section>;
 
   const { title, subtitle, months = [], primary = [], secondary = [] } = data;

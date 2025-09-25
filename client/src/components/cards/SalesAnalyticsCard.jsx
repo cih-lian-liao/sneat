@@ -86,7 +86,7 @@ export default function SalesAnalyticsCard() {
   if (loading) {
     return (
       <section className="card card--sales-analytics sales-analytics-card">
-        <div className="sales-analytics-card__loading">載入中...</div>
+        <div className="sales-analytics-card__loading">Loading...</div>
       </section>
     );
   }

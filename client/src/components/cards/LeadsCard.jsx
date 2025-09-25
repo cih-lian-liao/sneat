@@ -12,7 +12,7 @@ export default function LeadsCard(){
     finally{ setLoading(false); }
   })();},[]);
 
-  if(loading) return <section className="card card--leads">載入中...</section>;
+  if(loading) return <section className="card card--leads">Loading...</section>;
   if(error) return <section className="card card--leads error">錯誤: {error}</section>;
 
   const { title='Generated Leads', subtitle='Monthly Report', total=0, changePct=0, gaugePct=25 } = data;

@@ -94,7 +94,7 @@ export default function ActivityTimelineCard() {
     fetchData();
   }, []);
 
-  if (loading) return <section className="card card--timeline">載入中...</section>;
+  if (loading) return <section className="card card--timeline">Loading...</section>;
   if (error) return <section className="card card--timeline error">錯誤: {error}</section>;
 
   return (

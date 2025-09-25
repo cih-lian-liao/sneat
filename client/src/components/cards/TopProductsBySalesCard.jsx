@@ -32,7 +32,7 @@ export default function TopProductsBySalesCard() {
     })();
   }, []);
 
-  if (loading) return <section className="card card--top-sales crm-top-sales-card">載入中...</section>;
+  if (loading) return <section className="card card--top-sales crm-top-sales-card">Loading...</section>;
   if (error) return <section className="card card--top-sales crm-top-sales-card error">錯誤: {error}</section>;
 
   const formatCurrency = (amount) => amount.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });

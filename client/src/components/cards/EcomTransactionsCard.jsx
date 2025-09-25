@@ -39,7 +39,7 @@ const EcomTransactionsCard = () => {
   if (loading) {
     return (
       <section className="card card--transactions ecom-transactions-card">
-        <div className="ecom-transactions-card__loading">載入中...</div>
+        <div className="ecom-transactions-card__loading">Loading...</div>
       </section>
     );
   }

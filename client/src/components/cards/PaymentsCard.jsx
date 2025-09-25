@@ -29,7 +29,7 @@ export default function PaymentsCard() {
   if (loading) {
     return (
       <section className="card card--payments payments-card">
-        <div>載入中...</div>
+        <div>Loading...</div>
       </section>
     );
   }

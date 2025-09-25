@@ -27,7 +27,7 @@ export default function EcomSalesStatCard() {
   if (loading) {
     return (
       <section className="card card--sales ecom-sales-stat">
-        <div>載入中...</div>
+        <div>Loading...</div>
       </section>
     );
   }

@@ -29,7 +29,7 @@ export default function OrderCard() {
   if (loading) {
     return (
       <section className="card card--order-analysis order-card">
-        <div>載入中...</div>
+        <div>Loading...</div>
       </section>
     );
   }

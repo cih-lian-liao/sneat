@@ -66,7 +66,7 @@ const ActivityCard = () => {
   if (loading) {
     return (
       <section className="card card--ecom-activity ecom-activity-card">
-        <div className="ecom-activity-card__loading">載入中...</div>
+        <div className="ecom-activity-card__loading">Loading...</div>
       </section>
     );
   }

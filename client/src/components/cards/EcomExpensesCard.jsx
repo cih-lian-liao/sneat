@@ -41,7 +41,7 @@ const EcomExpensesCard = () => {
   if (loading) {
     return (
       <section className="card card--expenses ecom-expenses-card">
-        <div className="ecom-expenses-card__loading">載入中...</div>
+        <div className="ecom-expenses-card__loading">Loading...</div>
       </section>
     );
   }

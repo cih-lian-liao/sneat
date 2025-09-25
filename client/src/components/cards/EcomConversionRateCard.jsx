@@ -69,7 +69,7 @@ const EcomConversionRateCard = () => {
   if (loading) {
     return (
       <section className="card card--conversion-rate ecom-conversion-rate-card">
-        <div className="ecom-conversion-rate-card__loading">載入中...</div>
+        <div className="ecom-conversion-rate-card__loading">Loading...</div>
       </section>
     );
   }

@@ -81,7 +81,7 @@ export default function TotalRevenueCard() {
   if (loading) {
     return (
       <section className="card card--total-revenue">
-        <div className="loading">載入中...</div>
+        <div className="loading">Loading...</div>
       </section>
     );
   }

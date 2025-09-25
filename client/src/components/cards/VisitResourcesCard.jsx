@@ -188,7 +188,7 @@ export default function VisitResourcesCard() {
     fetchData();
   }, []);
 
-  if (loading) return <section className="card card--visit-resources">載入中...</section>;
+  if (loading) return <section className="card card--visit-resources">Loading...</section>;
   if (error) return <section className="card card--visit-resources error">錯誤: {error}</section>;
 
   const formatVisits = (visits) => {

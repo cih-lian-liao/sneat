@@ -166,7 +166,7 @@ const CustomerAmountStatusCard = () => {
   if (loading) {
     return (
       <div className="card card--customer-status crm-customer-amount-status-card">
-        <div className="crm-customer-amount-status-card__loading">載入中...</div>
+        <div className="crm-customer-amount-status-card__loading">Loading...</div>
       </div>
     );
   }
