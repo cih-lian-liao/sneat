@@ -61,12 +61,12 @@
 }
 
 /* 簡易條狀圖 - 重新設計 */
-.total-revenue-card__simple-chart {
+.total-revenue-card __simple-chart {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   align-items: end;
   gap: 12px;
-  height: 280px;
+  height: 320px;
   background: #f8fafc;
   border-radius: 12px;
   padding: 20px;
