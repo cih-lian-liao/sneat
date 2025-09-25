@@ -6,7 +6,15 @@
 .dark .card {
   background: #1e293b;
   border-color: #334155;
-  color: #e5e7eb;
+  color: #ffffff;
+}
+
+.dark .card-title {
+  color: #ffffff;
+}
+
+.dark .card-header h2 {
+  color: #ffffff;
 }
 
    .crm-grid {

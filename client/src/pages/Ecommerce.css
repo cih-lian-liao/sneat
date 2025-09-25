@@ -1,4 +1,19 @@
 /* ====== Layout base ====== */
+
+/* Dark mode support for cards */
+.dark .card {
+  background: #1e293b;
+  border-color: #334155;
+  color: #ffffff;
+}
+
+.dark .card-title {
+  color: #ffffff;
+}
+
+.dark .card-header h2 {
+  color: #ffffff;
+}
 .ecom-grid {
   --gap: 16px;
   display: grid;

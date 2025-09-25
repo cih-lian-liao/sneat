@@ -27,6 +27,23 @@ body {
 }
 
 .dark body {
-  color: #e5e7eb;
+  color: #ffffff;
   background: #0f172a;
+}
+
+/* Global dark mode text colors */
+.dark * {
+  color: inherit;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #ffffff;
+}
+
+.dark p, .dark span, .dark div, .dark a {
+  color: #ffffff;
+}
+
+.dark .card-title, .dark .card-header h2 {
+  color: #ffffff;
 }

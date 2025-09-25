@@ -7,7 +7,7 @@
   background: #ffffff;
   border-right: 1px solid #eee;
   padding: 10px;
-  transition: width 200ms ease, transform 200ms ease;
+  transition: width 200ms ease, transform 200ms ease, background-color 0.3s ease, border-color 0.3s ease;
   width: 260px;
   align-content: start; /* 靠上對齊整體內容 */
 }
@@ -27,7 +27,12 @@
   height: 28px;
 }
 
-.app-sidebar__brand-name { font-weight: 800; font-size: 16px; color: #111827; }
+.app-sidebar__brand-name { 
+  font-weight: 800; 
+  font-size: 16px; 
+  color: #111827; 
+  transition: color 0.3s ease;
+}
 
 .app-sidebar__toggle {
   margin-left: auto;
@@ -38,6 +43,7 @@
   height: 30px;
   cursor: pointer;
   color: #374151;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 /* Nav */
@@ -52,9 +58,14 @@
   border-radius: 10px;
   color: #374151;
   text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.app-sidebar__link.is-active { background: #eef2ff; color: #4f46e5; font-weight: 700; }
+.app-sidebar__link.is-active { 
+  background: #eef2ff; 
+  color: #4f46e5; 
+  font-weight: 700; 
+}
 
 .app-sidebar__icon { width: 20px; display: inline-flex; justify-content: center; }
 .app-sidebar__label { white-space: nowrap; }
@@ -75,17 +86,60 @@
 }
 
 /* Footer */
-.app-sidebar__footer { padding-top: 6px; border-top: 1px solid #eee; }
+.app-sidebar__footer { 
+  padding-top: 6px; 
+  border-top: 1px solid #eee; 
+  transition: border-color 0.3s ease;
+}
 .app-sidebar__user { display: flex; align-items: center; gap: 8px; padding: 6px; }
 .app-sidebar__user img { width: 32px; height: 32px; border-radius: 9999px; }
-.app-sidebar__user-name { font-weight: 700; color: #111827; }
-.app-sidebar__user-role { font-size: 12px; color: #6b7280; }
+.app-sidebar__user-name { 
+  font-weight: 700; 
+  color: #111827; 
+  transition: color 0.3s ease;
+}
+.app-sidebar__user-role { 
+  font-size: 12px; 
+  color: #6b7280; 
+  transition: color 0.3s ease;
+}
 
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   .app-sidebar { background: #0f172a; border-right-color: #1f2937; }
   .app-sidebar__brand-name, .app-sidebar__label, .app-sidebar__user-name { color: #e5e7eb; }
   .app-sidebar__user-role { color: #94a3b8; }
+  .app-sidebar__link { color: #e5e7eb; }
   .app-sidebar__link.is-active { background: #1e293b; color: #93c5fd; }
   .app-sidebar__toggle { background: #0f172a; border-color: #1f2937; color: #e5e7eb; }
+  .app-sidebar__footer { border-top-color: #334155; }
+}
+
+/* Manual dark mode class */
+.dark .app-sidebar { 
+  background: #0f172a; 
+  border-right-color: #1f2937; 
+}
+.dark .app-sidebar__brand-name, 
+.dark .app-sidebar__label, 
+.dark .app-sidebar__user-name { 
+  color: #e5e7eb; 
+}
+.dark .app-sidebar__user-role { 
+  color: #94a3b8; 
+}
+.dark .app-sidebar__link { 
+  color: #e5e7eb; 
+}
+.dark .app-sidebar__link.is-active { 
+  background: #1e293b; 
+  color: #93c5fd; 
+}
+.dark .app-sidebar__toggle { 
+  background: #0f172a; 
+  border-color: #1f2937; 
+  color: #e5e7eb; 
+}
+.dark .app-sidebar__footer { 
+  border-top-color: #334155; 
 }
