@@ -8,6 +8,9 @@
 .layout__sidebar {
   background: #fff;
   border-right: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  height: 100dvh; /* 固定全高 */
 }
 
 .layout__body {
