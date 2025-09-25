@@ -20,6 +20,13 @@
 .app-toolbar__search-icon {
   font-size: 18px;
   color: #6b7280;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .app-toolbar__search-input {
