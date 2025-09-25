@@ -110,7 +110,7 @@ export default function ToolBar() {
           </span>
         </button>
         <button className="app-toolbar__action" aria-label="Apps">
-          <span className="app-toolbar__action-icon" aria-hidden>▦</span>
+          <span className="app-toolbar__action-icon app-toolbar__grid-icon" aria-hidden></span>
         </button>
         <button className="app-toolbar__action app-toolbar__action--notification" aria-label="Notifications">
           <span className="app-toolbar__action-icon" aria-hidden>🔔</span>

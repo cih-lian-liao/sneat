@@ -70,6 +70,33 @@
   font-size: 18px;
 }
 
+/* Grid icon for Apps button */
+.app-toolbar__grid-icon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.app-toolbar__grid-icon::before,
+.app-toolbar__grid-icon::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.app-toolbar__grid-icon::before {
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  box-shadow: 
+    8px 0 0 currentColor,
+    0 8px 0 currentColor,
+    8px 8px 0 currentColor;
+}
+
 .app-toolbar__action--notification .app-toolbar__badge {
   position: absolute;
   top: 6px;
