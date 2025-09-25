@@ -6,6 +6,7 @@ export default function ToolBar() {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isAppsOpen, setIsAppsOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -15,6 +16,7 @@ export default function ToolBar() {
         setIsLanguageOpen(false);
         setIsAppsOpen(false);
         setIsNotificationsOpen(false);
+        setIsUserMenuOpen(false);
       }
       if ((e.ctrlKey || e.metaKey) && e.key === "/") setIsSearchOpen(true);
     };
@@ -34,10 +36,13 @@ export default function ToolBar() {
       if (isNotificationsOpen && !event.target.closest('.app-toolbar__notifications-dropdown')) {
         setIsNotificationsOpen(false);
       }
+      if (isUserMenuOpen && !event.target.closest('.app-toolbar__user-dropdown')) {
+        setIsUserMenuOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isLanguageOpen, isAppsOpen, isNotificationsOpen]);
+  }, [isLanguageOpen, isAppsOpen, isNotificationsOpen, isUserMenuOpen]);
 
   // 暗色模式切換
   const toggleDarkMode = () => {
@@ -241,8 +246,64 @@ export default function ToolBar() {
             </div>
           )}
         </div>
-        <div className="app-toolbar__avatar">
-          <img src="https://i.pravatar.cc/40?img=5" alt="User" />
+        <div className="app-toolbar__user-dropdown">
+          <button 
+            className="app-toolbar__avatar"
+            onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+          >
+            <img src="https://i.pravatar.cc/40?img=5" alt="User" />
+          </button>
+          {isUserMenuOpen && (
+            <div className="app-toolbar__user-menu">
+              <div className="app-toolbar__user-info">
+                <div className="app-toolbar__user-avatar">
+                  <img src="https://i.pravatar.cc/40?img=5" alt="Lily Liao" />
+                  <div className="app-toolbar__user-status"></div>
+                </div>
+                <div className="app-toolbar__user-details">
+                  <div className="app-toolbar__user-name">Lily Liao</div>
+                  <div className="app-toolbar__user-role">Admin</div>
+                </div>
+              </div>
+              <div className="app-toolbar__user-divider"></div>
+              <div className="app-toolbar__user-section">
+                <div className="app-toolbar__user-item">
+                  <span className="app-toolbar__user-icon">👤</span>
+                  <span className="app-toolbar__user-text">Profile</span>
+                </div>
+                <div className="app-toolbar__user-item">
+                  <span className="app-toolbar__user-icon">📧</span>
+                  <span className="app-toolbar__user-text">Inbox</span>
+                </div>
+                <div className="app-toolbar__user-item">
+                  <span className="app-toolbar__user-icon">💬</span>
+                  <span className="app-toolbar__user-text">Chat</span>
+                </div>
+              </div>
+              <div className="app-toolbar__user-divider"></div>
+              <div className="app-toolbar__user-section">
+                <div className="app-toolbar__user-item">
+                  <span className="app-toolbar__user-icon">⚙️</span>
+                  <span className="app-toolbar__user-text">Settings</span>
+                </div>
+                <div className="app-toolbar__user-item">
+                  <span className="app-toolbar__user-icon">💰</span>
+                  <span className="app-toolbar__user-text">Pricing</span>
+                </div>
+                <div className="app-toolbar__user-item">
+                  <span className="app-toolbar__user-icon">❓</span>
+                  <span className="app-toolbar__user-text">FAQ</span>
+                </div>
+              </div>
+              <div className="app-toolbar__user-divider"></div>
+              <div className="app-toolbar__user-section">
+                <div className="app-toolbar__user-item">
+                  <span className="app-toolbar__user-icon">🚪</span>
+                  <span className="app-toolbar__user-text">Sign Out</span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

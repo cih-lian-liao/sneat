@@ -410,12 +410,125 @@
   overflow: hidden;
   border: 2px solid #fff;
   box-shadow: 0 0 0 2px #22c55e20;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: none;
+  padding: 0;
+}
+
+.app-toolbar__avatar:hover {
+  transform: scale(1.05);
 }
 
 .app-toolbar__avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* User Dropdown */
+.app-toolbar__user-dropdown {
+  position: relative;
+}
+
+.app-toolbar__user-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  min-width: 240px;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.app-toolbar__user-info {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+}
+
+.app-toolbar__user-avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 12px;
+}
+
+.app-toolbar__user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-toolbar__user-status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background: #10b981;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
+.app-toolbar__user-details {
+  flex: 1;
+}
+
+.app-toolbar__user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 2px;
+}
+
+.app-toolbar__user-role {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.app-toolbar__user-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 0;
+}
+
+.app-toolbar__user-section {
+  padding: 8px 0;
+}
+
+.app-toolbar__user-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.app-toolbar__user-item:hover {
+  background: #f8fafc;
+}
+
+.app-toolbar__user-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.app-toolbar__user-text {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
 }
 
 .app-search-modal {
@@ -537,6 +650,14 @@
 .dark .app-toolbar__notifications-footer { border-top-color: #374151; }
 .dark .app-toolbar__notifications-read-all { background: #7c3aed; }
 .dark .app-toolbar__notifications-read-all:hover { background: #6d28d9; }
+.dark .app-toolbar__user-menu { background: #1f2937; border-color: #374151; }
+.dark .app-toolbar__user-avatar { border-color: #374151; }
+.dark .app-toolbar__user-status { border-color: #1f2937; }
+.dark .app-toolbar__user-name { color: #ffffff; }
+.dark .app-toolbar__user-role { color: #9ca3af; }
+.dark .app-toolbar__user-divider { background: #374151; }
+.dark .app-toolbar__user-item:hover { background: #374151; }
+.dark .app-toolbar__user-text { color: #e5e7eb; }
 .dark .app-search-modal__container { background: #111827; }
 .dark .app-search-modal__header { border-bottom-color: #1f2937; color: #9ca3af; }
 .dark .app-search-modal__list li { color: #e5e7eb; }
