@@ -2,6 +2,13 @@
    CRM Page Layout (6 columns)
    ========================= */
 
+/* Dark mode support for cards */
+.dark .card {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e5e7eb;
+}
+
    .crm-grid {
       --gap: 16px;
       display: grid;

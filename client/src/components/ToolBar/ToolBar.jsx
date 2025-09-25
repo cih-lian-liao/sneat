@@ -4,6 +4,7 @@ import "./ToolBar.css";
 export default function ToolBar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -27,6 +28,33 @@ export default function ToolBar() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isLanguageOpen]);
+
+  // 暗色模式切換
+  const toggleDarkMode = () => {
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    
+    // 保存到 localStorage
+    localStorage.setItem('darkMode', newDarkMode.toString());
+  };
+
+  // 初始化暗色模式
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    setIsDarkMode(savedDarkMode);
+    
+    if (savedDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
 
   return (
     <div className="app-toolbar" role="toolbar" aria-label="Global toolbar">
@@ -72,8 +100,14 @@ export default function ToolBar() {
             </div>
           )}
         </div>
-        <button className="app-toolbar__action" aria-label="Theme">
-          <span className="app-toolbar__action-icon" aria-hidden>☾</span>
+        <button 
+          className="app-toolbar__action" 
+          aria-label="Theme"
+          onClick={toggleDarkMode}
+        >
+          <span className="app-toolbar__action-icon" aria-hidden>
+            {isDarkMode ? '☀️' : '☾'}
+          </span>
         </button>
         <button className="app-toolbar__action" aria-label="Apps">
           <span className="app-toolbar__action-icon" aria-hidden>▦</span>
