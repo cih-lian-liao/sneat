@@ -1,6 +1,6 @@
 .layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: max-content 1fr; /* 依 sidebar 寬度自動伸縮 */
   min-height: 100dvh;
   background: #fafafa;
 }
