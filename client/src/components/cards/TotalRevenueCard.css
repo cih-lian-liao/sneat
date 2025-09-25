@@ -32,6 +32,9 @@
 
 /* 標題區域 */
 .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 8px;
 }
 
@@ -288,7 +291,7 @@
 /* 年份選擇器 */
 .total-revenue-card__year-selector {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
 }
 
 .total-revenue-card__year-select {
@@ -681,6 +684,10 @@
   }
   
   .total-revenue-card__kpi-card-amount {
+    color: #f9fafb;
+  }
+  
+  .card-title {
     color: #f9fafb;
   }
 }

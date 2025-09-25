@@ -127,6 +127,17 @@ export default function TotalRevenueCard() {
       {/* 標題區域 */}
       <div className="card-header">
         <h2 className="card-title">{data.title || 'Total Revenue'}</h2>
+        <div className="total-revenue-card__year-selector">
+          <select 
+            className="total-revenue-card__year-select" 
+            value={selectedYear}
+            onChange={(e) => setSelectedYear(e.target.value)}
+          >
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
       </div>
 
       {/* 主要內容區域 */}
@@ -202,19 +213,6 @@ export default function TotalRevenueCard() {
 
         {/* 右側：統計區域 */}
         <div className="total-revenue-card__stats-section">
-          {/* 年份選擇器 */}
-          <div className="total-revenue-card__year-selector">
-            <select 
-              className="total-revenue-card__year-select" 
-              value={selectedYear}
-              onChange={(e) => setSelectedYear(e.target.value)}
-            >
-              <option value="2025">2025</option>
-              <option value="2024">2024</option>
-              <option value="2023">2023</option>
-            </select>
-          </div>
-
           {/* 增長儀表 */}
           <div className="total-revenue-card__growth-section">
             <div className="total-revenue-card__gauge">
