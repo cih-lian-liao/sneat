@@ -43,7 +43,7 @@
 }
 
 /* 主要內容區域 */
-.tr-content {
+.total-revenue-card__content {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 24px;
@@ -52,53 +52,83 @@
 }
 
 /* 左側：柱狀圖區域 */
-.tr-chart-section {
+.total-revenue-card__chart-section {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* 簡易條狀圖 */
-.tr-simple-chart {
+/* 簡易條狀圖 - 重新設計 */
+.total-revenue-card__simple-chart {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   align-items: end;
-  gap: 10px;
-  height: 320px; /* 提高高度以提升可見性 */
-  background: #f8fafc;
-  border-radius: 8px;
-  padding: 16px;
+  gap: 12px;
+  height: 280px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.tr-simple-col {
+.total-revenue-card__chart-column {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  height: 100%; /* 讓每個欄位填滿容器高度，百分比柱狀圖才有基準 */
+  gap: 12px;
+  height: 100%;
 }
 
-.tr-simple-barbox {
+.total-revenue-card__bar-container {
   display: flex;
   align-items: flex-end;
   justify-content: center;
   width: 100%;
   height: 100%;
-  min-height: 120px; /* 確保在某些環境下仍有高度可供百分比計算 */
+  min-height: 120px;
+  position: relative;
 }
 
-.tr-simple-bar {
-  width: 16px;
-  background: #8b5cf6;
-  border-radius: 3px 3px 0 0;
-  transition: height 0.3s ease, background-color 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+.total-revenue-card__bar-container::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 1px;
+  background: #cbd5e1;
+  opacity: 0.3;
 }
 
-.tr-simple-label {
-  font-size: 10px;
-  color: #6b7280;
-  font-weight: 500;
+.total-revenue-card__bar {
+  width: 20px;
+  background: linear-gradient(180deg, #8b5cf6 0%, #a855f7 50%, #c084fc 100%);
+  border-radius: 10px 10px 0 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.2);
+  position: relative;
+  min-height: 4px;
+}
+
+.total-revenue-card__bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
+  border-radius: 10px 10px 0 0;
+}
+
+.total-revenue-card__month-label {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .tr-chart-header {
@@ -246,7 +276,7 @@
 }
 
 /* 右側：統計區域 */
-.tr-stats-section {
+.total-revenue-card__stats-section {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -254,71 +284,72 @@
 }
 
 /* 年份選擇器 */
-.tr-year-selector {
+.total-revenue-card__year-selector {
   display: flex;
   justify-content: flex-end;
 }
 
-.tr-year-select {
+.total-revenue-card__year-select {
   background: white;
   border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 16px;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
   color: #374151;
   cursor: pointer;
   appearance: none;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 6px center;
+  background-position: right 8px center;
   background-repeat: no-repeat;
   background-size: 12px;
-  padding-right: 24px;
-  font-weight: 500;
+  padding-right: 28px;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
-.tr-year-select:focus {
+.total-revenue-card__year-select:focus {
   outline: none;
   border-color: #8b5cf6;
-  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.1);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
 }
 
 /* 增長儀表區域 */
-.tr-growth-section {
+.total-revenue-card__growth-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
 }
 
-.tr-gauge {
+.total-revenue-card__gauge {
   width: 120px;
   height: 120px;
   position: relative;
 }
 
-.tr-gauge svg {
+.total-revenue-card__gauge svg {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.tr-gauge__value {
+.total-revenue-card__gauge-value {
   font-size: 16px;
   fill: #1f2937;
   font-weight: 800;
 }
 
-.tr-gauge__label {
+.total-revenue-card__gauge-label {
   font-size: 11px;
   fill: #6b7280;
   font-weight: 600;
 }
 
-.tr-company-growth {
+.total-revenue-card__company-growth {
   text-align: center;
 }
 
-.tr-company-growth__percentage {
+.total-revenue-card__company-growth-percentage {
   display: block;
   font-size: 14px;
   font-weight: 600;
@@ -326,78 +357,81 @@
   margin-bottom: 2px;
 }
 
-.tr-company-growth__text {
+.total-revenue-card__company-growth-text {
   font-size: 10px;
   color: #6b7280;
   font-weight: 500;
 }
 
 /* 收入卡片區域 */
-.tr-kpi-cards {
+.total-revenue-card__kpi-cards {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.tr-kpi-card {
+.total-revenue-card__kpi-card {
   display: flex;
   align-items: center;
-  padding: 8px 10px;
+  padding: 10px 12px;
   background: #f8fafc;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid #e5e7eb;
   transition: all 0.2s ease;
-  min-height: 36px;
+  min-height: 40px;
 }
 
-.tr-kpi-card.is-active {
-  background: #f0f0ff;
+.total-revenue-card__kpi-card.is-active {
+  background: linear-gradient(135deg, #f0f0ff 0%, #f8fafc 100%);
   border-color: #8b5cf6;
-  box-shadow: 0 1px 3px rgba(139, 92, 246, 0.1);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.15);
 }
 
-.tr-kpi-card__icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
+.total-revenue-card__kpi-card-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
   color: white;
-  margin-right: 8px;
+  margin-right: 10px;
   flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.tr-kpi-card__content {
+.total-revenue-card__kpi-card-content {
   flex: 1;
   min-width: 0;
 }
 
-.tr-kpi-card__year {
-  font-size: 10px;
+.total-revenue-card__kpi-card-year {
+  font-size: 11px;
   color: #6b7280;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
   line-height: 1.2;
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.tr-kpi-card__amount {
-  font-size: 12px;
-  font-weight: 600;
+.total-revenue-card__kpi-card-amount {
+  font-size: 13px;
+  font-weight: 700;
   color: #1f2937;
   line-height: 1.2;
 }
 
 /* 響應式設計 */
 @media (max-width: 1024px) {
-  .tr-content {
+  .total-revenue-card__content {
     grid-template-columns: 1fr;
     gap: 20px;
   }
   
-  .tr-stats-section {
+  .total-revenue-card__stats-section {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -405,35 +439,35 @@
     gap: 16px;
   }
   
-  .tr-year-selector {
+  .total-revenue-card__year-selector {
     order: 1;
     flex-basis: 100%;
     justify-content: center;
   }
   
-  .tr-growth-section {
+  .total-revenue-card__growth-section {
     order: 2;
     flex: 1;
   }
   
-  .tr-kpi-cards {
+  .total-revenue-card__kpi-cards {
     order: 3;
     flex-direction: row;
     flex: 1;
     gap: 8px;
   }
   
-  .tr-kpi-card {
+  .total-revenue-card__kpi-card {
     flex: 1;
     flex-direction: column;
     text-align: center;
-    padding: 6px;
-    min-height: 32px;
+    padding: 8px;
+    min-height: 36px;
   }
   
-  .tr-kpi-card__icon {
+  .total-revenue-card__kpi-card-icon {
     margin-right: 0;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
   }
 }
 
@@ -464,47 +498,47 @@
     height: 160px;
   }
   
-  .tr-stats-section {
+  .total-revenue-card__stats-section {
     gap: 16px;
   }
   
-  .tr-gauge {
+  .total-revenue-card__gauge {
     width: 80px;
     height: 80px;
   }
   
-  .tr-gauge__value {
+  .total-revenue-card__gauge-value {
     font-size: 14px;
   }
   
-  .tr-gauge__label {
+  .total-revenue-card__gauge-label {
     font-size: 9px;
   }
   
-  .tr-company-growth__percentage {
+  .total-revenue-card__company-growth-percentage {
     font-size: 12px;
   }
   
-  .tr-company-growth__text {
+  .total-revenue-card__company-growth-text {
     font-size: 9px;
   }
   
-  .tr-kpi-cards {
+  .total-revenue-card__kpi-cards {
     flex-direction: row;
     gap: 6px;
   }
   
-  .tr-kpi-card {
+  .total-revenue-card__kpi-card {
     flex: 1;
     flex-direction: column;
     text-align: center;
-    padding: 4px;
-    min-height: 28px;
+    padding: 6px;
+    min-height: 32px;
   }
   
-  .tr-kpi-card__icon {
+  .total-revenue-card__kpi-card-icon {
     margin-right: 0;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
   }
 }
 
@@ -531,37 +565,37 @@
     height: 140px;
   }
   
-  .tr-stats-section {
+  .total-revenue-card__stats-section {
     flex-direction: column;
     align-items: center;
     gap: 12px;
   }
   
-  .tr-year-selector {
+  .total-revenue-card__year-selector {
     order: 0;
     flex-basis: auto;
   }
   
-  .tr-growth-section {
+  .total-revenue-card__growth-section {
     order: 1;
   }
   
-  .tr-kpi-cards {
+  .total-revenue-card__kpi-cards {
     order: 2;
     flex-direction: column;
     width: 100%;
     gap: 6px;
   }
   
-  .tr-kpi-card {
+  .total-revenue-card__kpi-card {
     flex-direction: row;
     text-align: left;
-    padding: 6px 8px;
-    min-height: 28px;
+    padding: 8px 10px;
+    min-height: 32px;
   }
   
-  .tr-kpi-card__icon {
-    margin-right: 6px;
+  .total-revenue-card__kpi-card-icon {
+    margin-right: 8px;
     margin-bottom: 0;
   }
 }
@@ -598,53 +632,53 @@
     color: #9ca3af;
   }
   
-  .tr-year-select {
+  .total-revenue-card__year-select {
     background: #1f2937;
     border-color: #4b5563;
     color: #f9fafb;
   }
   
-  .tr-year-select:focus {
+  .total-revenue-card__year-select:focus {
     border-color: #a855f7;
-    box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.1);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
   }
   
-  .tr-gauge circle:first-child {
+  .total-revenue-card__gauge circle:first-child {
     stroke: #4b5563;
   }
   
-  .tr-gauge__value {
+  .total-revenue-card__gauge-value {
     fill: #f9fafb;
   }
   
-  .tr-gauge__label {
+  .total-revenue-card__gauge-label {
     fill: #9ca3af;
   }
   
-  .company-growth__percentage {
+  .total-revenue-card__company-growth-percentage {
     color: #f9fafb;
   }
   
-  .company-growth__text {
+  .total-revenue-card__company-growth-text {
     color: #9ca3af;
   }
   
-  .revenue-card {
+  .total-revenue-card__kpi-card {
     background: #374151;
     border-color: #4b5563;
   }
   
-  .revenue-card.is-active {
-    background: #4b5563;
+  .total-revenue-card__kpi-card.is-active {
+    background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
     border-color: #a855f7;
-    box-shadow: 0 1px 3px rgba(168, 85, 247, 0.1);
+    box-shadow: 0 2px 8px rgba(168, 85, 247, 0.15);
   }
   
-  .revenue-card__year {
+  .total-revenue-card__kpi-card-year {
     color: #9ca3af;
   }
   
-  .revenue-card__amount {
+  .total-revenue-card__kpi-card-amount {
     color: #f9fafb;
   }
 }

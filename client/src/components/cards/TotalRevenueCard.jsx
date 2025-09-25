@@ -130,11 +130,11 @@ export default function TotalRevenueCard() {
       </div>
 
       {/* 主要內容區域 */}
-      <div className="tr-content">
+      <div className="total-revenue-card__content">
         {/* 左側：柱狀圖區域 */}
-        <div className="tr-chart-section">
+        <div className="total-revenue-card__chart-section">
           {useSimpleChart ? (
-            <div className="tr-simple-chart">
+            <div className="total-revenue-card__simple-chart">
               {(chartData.months || []).map((month, index) => {
                 const seriesKey = selectedYear === '2025' ? 'data2025' : (selectedYear === '2024' ? 'data2024' : 'data2023');
                 const series = chartData[seriesKey] || [];
@@ -142,15 +142,15 @@ export default function TotalRevenueCard() {
                 const simpleMax = Math.max(1, ...((series).map(v => Math.abs(v))));
                 const height = simpleMax > 0 ? (value / simpleMax) * 100 : 0;
                 return (
-                  <div key={month} className="tr-simple-col">
-                    <div className="tr-simple-barbox">
+                  <div key={month} className="total-revenue-card__chart-column">
+                    <div className="total-revenue-card__bar-container">
                       <div
-                        className="tr-simple-bar"
-                        style={{ height: value > 0 ? `${height}%` : '2px', backgroundColor: '#8b5cf6' }}
+                        className="total-revenue-card__bar"
+                        style={{ height: value > 0 ? `${height}%` : '2px' }}
                         title={`${month}: ${value}`}
                       ></div>
                     </div>
-                    <div className="tr-simple-label">{month}</div>
+                    <div className="total-revenue-card__month-label">{month}</div>
                   </div>
                 );
               })}
@@ -201,11 +201,11 @@ export default function TotalRevenueCard() {
         </div>
 
         {/* 右側：統計區域 */}
-        <div className="tr-stats-section">
+        <div className="total-revenue-card__stats-section">
           {/* 年份選擇器 */}
-          <div className="tr-year-selector">
+          <div className="total-revenue-card__year-selector">
             <select 
-              className="tr-year-select" 
+              className="total-revenue-card__year-select" 
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
             >
@@ -216,8 +216,8 @@ export default function TotalRevenueCard() {
           </div>
 
           {/* 增長儀表 */}
-          <div className="tr-growth-section">
-            <div className="tr-gauge">
+          <div className="total-revenue-card__growth-section">
+            <div className="total-revenue-card__gauge">
               <svg viewBox="0 0 100 100">
                 <defs>
                   <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -237,30 +237,30 @@ export default function TotalRevenueCard() {
                   strokeDasharray={`${(growthMetrics.growthPercentage || 0) * 2.26} 226`} 
                   transform="rotate(-90 50 50)" 
                 />
-                <text x="50" y="45" textAnchor="middle" className="tr-gauge__value">{growthMetrics.growthPercentage || 0}%</text>
-                <text x="50" y="62" textAnchor="middle" className="tr-gauge__label">Growth</text>
+                <text x="50" y="45" textAnchor="middle" className="total-revenue-card__gauge-value">{growthMetrics.growthPercentage || 0}%</text>
+                <text x="50" y="62" textAnchor="middle" className="total-revenue-card__gauge-label">Growth</text>
               </svg>
             </div>
             
-            <div className="tr-company-growth">
-              <span className="tr-company-growth__percentage">{growthMetrics.companyGrowth || 0}%</span>
-              <span className="tr-company-growth__text">Company Growth</span>
+            <div className="total-revenue-card__company-growth">
+              <span className="total-revenue-card__company-growth-percentage">{growthMetrics.companyGrowth || 0}%</span>
+              <span className="total-revenue-card__company-growth-text">Company Growth</span>
             </div>
           </div>
 
           {/* 收入卡片 */}
-          <div className="tr-kpi-cards">
+          <div className="total-revenue-card__kpi-cards">
             {revenueCards.map((card, index) => (
-              <div key={card.year} className={`tr-kpi-card ${index === 0 ? 'is-active' : ''}`}>
+              <div key={card.year} className={`total-revenue-card__kpi-card ${index === 0 ? 'is-active' : ''}`}>
                 <div 
-                  className="tr-kpi-card__icon" 
+                  className="total-revenue-card__kpi-card-icon" 
                   style={{ backgroundColor: card.color }}
                 >
                   {card.icon}
                 </div>
-                <div className="tr-kpi-card__content">
-                  <div className="tr-kpi-card__year">{card.year}</div>
-                  <div className="tr-kpi-card__amount">{formatAmount(card.amount)}</div>
+                <div className="total-revenue-card__kpi-card-content">
+                  <div className="total-revenue-card__kpi-card-year">{card.year}</div>
+                  <div className="total-revenue-card__kpi-card-amount">{formatAmount(card.amount)}</div>
                 </div>
               </div>
             ))}
