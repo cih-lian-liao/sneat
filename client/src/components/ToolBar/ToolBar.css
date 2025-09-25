@@ -80,6 +80,44 @@
   border-radius: 9999px;
 }
 
+/* Language Dropdown */
+.app-toolbar__language-dropdown {
+  position: relative;
+}
+
+.app-toolbar__language-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  min-width: 120px;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.app-toolbar__language-option {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.app-toolbar__language-option:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.app-toolbar__language-option.is-selected {
+  background: #eef2ff;
+  color: #4f46e5;
+  font-weight: 600;
+}
+
 .app-toolbar__avatar {
   display: inline-flex;
   align-items: center;
@@ -176,6 +214,10 @@
   .app-toolbar__search-input { color: #e5e7eb; }
   .app-toolbar__search-input::placeholder { color: #6b7280; }
   .app-toolbar__action { color: #e5e7eb; }
+  .app-toolbar__language-menu { background: #1f2937; border-color: #374151; }
+  .app-toolbar__language-option { color: #9ca3af; }
+  .app-toolbar__language-option:hover { background: #374151; color: #e5e7eb; }
+  .app-toolbar__language-option.is-selected { background: #1e293b; color: #93c5fd; }
   .app-search-modal__container { background: #111827; }
   .app-search-modal__header { border-bottom-color: #1f2937; color: #9ca3af; }
   .app-search-modal__list li { color: #e5e7eb; }

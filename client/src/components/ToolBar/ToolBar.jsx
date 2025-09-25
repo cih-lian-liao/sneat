@@ -3,15 +3,30 @@ import "./ToolBar.css";
 
 export default function ToolBar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "Escape") setIsSearchOpen(false);
+      if (e.key === "Escape") {
+        setIsSearchOpen(false);
+        setIsLanguageOpen(false);
+      }
       if ((e.ctrlKey || e.metaKey) && e.key === "/") setIsSearchOpen(true);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  // 點擊外部關閉語言選單
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isLanguageOpen && !event.target.closest('.app-toolbar__language-dropdown')) {
+        setIsLanguageOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isLanguageOpen]);
 
   return (
     <div className="app-toolbar" role="toolbar" aria-label="Global toolbar">
@@ -35,9 +50,28 @@ export default function ToolBar() {
       <div className="app-toolbar__spacer" />
 
       <div className="app-toolbar__actions">
-        <button className="app-toolbar__action" aria-label="Language">
-          <span className="app-toolbar__action-icon" aria-hidden>文</span>
-        </button>
+        <div className="app-toolbar__language-dropdown">
+          <button 
+            className="app-toolbar__action" 
+            aria-label="Language"
+            onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+          >
+            <span className="app-toolbar__action-icon" aria-hidden>文</span>
+          </button>
+          {isLanguageOpen && (
+            <div className="app-toolbar__language-menu">
+              <div className="app-toolbar__language-option is-selected">
+                English
+              </div>
+              <div className="app-toolbar__language-option">
+                French
+              </div>
+              <div className="app-toolbar__language-option">
+                Arabic
+              </div>
+            </div>
+          )}
+        </div>
         <button className="app-toolbar__action" aria-label="Theme">
           <span className="app-toolbar__action-icon" aria-hidden>☾</span>
         </button>
