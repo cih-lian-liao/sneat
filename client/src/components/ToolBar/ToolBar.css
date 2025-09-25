@@ -80,40 +80,22 @@
   border-radius: 9999px;
 }
 
-.app-toolbar__user {
-  display: flex;
+.app-toolbar__avatar {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 4px 8px;
-  border-radius: 8px;
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #22c55e20;
 }
 
-.app-toolbar__user img {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
+.app-toolbar__avatar img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-}
-
-.app-toolbar__user-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.app-toolbar__user-name {
-  font-size: 13px;
-  font-weight: 600;
-  color: #111827;
-  line-height: 1.2;
-}
-
-.app-toolbar__user-role {
-  font-size: 11px;
-  color: #6b7280;
-  line-height: 1.2;
 }
 
 .app-search-modal {
@@ -194,9 +176,6 @@
   .app-toolbar__search-input { color: #e5e7eb; }
   .app-toolbar__search-input::placeholder { color: #6b7280; }
   .app-toolbar__action { color: #e5e7eb; }
-  .app-toolbar__user { background: #1f2937; border-color: #374151; }
-  .app-toolbar__user-name { color: #e5e7eb; }
-  .app-toolbar__user-role { color: #9ca3af; }
   .app-search-modal__container { background: #111827; }
   .app-search-modal__header { border-bottom-color: #1f2937; color: #9ca3af; }
   .app-search-modal__list li { color: #e5e7eb; }

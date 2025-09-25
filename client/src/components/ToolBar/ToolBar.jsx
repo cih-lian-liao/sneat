@@ -48,12 +48,8 @@ export default function ToolBar() {
           <span className="app-toolbar__action-icon" aria-hidden>🔔</span>
           <span className="app-toolbar__badge" aria-hidden />
         </button>
-        <div className="app-toolbar__user">
+        <div className="app-toolbar__avatar">
           <img src="https://i.pravatar.cc/40?img=5" alt="User" />
-          <div className="app-toolbar__user-info">
-            <div className="app-toolbar__user-name">Lily</div>
-            <div className="app-toolbar__user-role">Admin</div>
-          </div>
         </div>
       </div>
 
