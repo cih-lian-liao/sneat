@@ -32,7 +32,7 @@ export default function Sidebar() {
           aria-expanded={!collapsed}
           onClick={() => setCollapsed((v) => !v)}
         >
-          {collapsed ? "◀" : "➤"}
+          {collapsed ? "➤" : "◀"}
         </button>
       </div>
 
