@@ -57,7 +57,7 @@ export default function Sidebar() {
         <div className="app-sidebar__user">
           <img src="https://i.pravatar.cc/40?img=5" alt="User" />
           <div className="app-sidebar__user-info">
-            <div className="app-sidebar__user-name">Lily</div>
+            <div className="app-sidebar__user-name">Lily Liao</div>
             <div className="app-sidebar__user-role">Admin</div>
           </div>
         </div>
