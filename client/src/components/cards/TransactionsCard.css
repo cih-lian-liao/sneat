@@ -133,13 +133,8 @@
   line-height: 1.2;
 }
 
-.transaction__amount.positive {
-  color: #10b981;
-}
-
-.transaction__amount.negative {
-  color: #ef4444;
-}
+.transaction__amount.positive { color: #10b981; }
+.transaction__amount.negative { color: #ef4444; }
 
 .transaction__currency {
   font-size: 11px;
@@ -147,171 +142,38 @@
   font-weight: 500;
 }
 
-/* 浮動設定按鈕 */
-.transactions__settings {
-  position: absolute;
-  top: 50%;
-  right: -10px;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  background: #8b5cf6;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
-  transition: all 0.2s ease;
-  z-index: 10;
-}
-
-.transactions__settings:hover {
-  background: #7c3aed;
-  transform: translateY(-50%) scale(1.05);
-  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4);
-}
-
-.transactions__settings svg {
-  color: #fff;
-  width: 20px;
-  height: 20px;
-}
-
 /* 響應式設計 */
 @media (max-width: 768px) {
-  .transactions {
-    padding: 16px;
-    gap: 12px;
-  }
-  
-  .transactions__title {
-    font-size: 16px;
-  }
-  
-  .transaction__item {
-    padding: 10px 0;
-  }
-  
-  .transaction__left {
-    gap: 8px;
-  }
-  
-  .transaction__icon {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .icon-symbol {
-    font-size: 14px;
-  }
-  
-  .transaction__type {
-    font-size: 11px;
-  }
-  
-  .transaction__description {
-    font-size: 13px;
-  }
-  
-  .transaction__amount {
-    font-size: 13px;
-  }
-  
-  .transaction__currency {
-    font-size: 10px;
-  }
-  
-  .transactions__settings {
-    width: 36px;
-    height: 36px;
-    right: -8px;
-  }
-  
-  .transactions__settings svg {
-    width: 18px;
-    height: 18px;
-  }
+  .transactions { padding: 16px; gap: 12px; }
+  .transactions__title { font-size: 16px; }
+  .transaction__item { padding: 10px 0; }
+  .transaction__left { gap: 8px; }
+  .transaction__icon { width: 32px; height: 32px; }
+  .icon-symbol { font-size: 14px; }
+  .transaction__type { font-size: 11px; }
+  .transaction__description { font-size: 13px; }
+  .transaction__amount { font-size: 13px; }
+  .transaction__currency { font-size: 10px; }
 }
 
 /* 動畫效果 */
-.transaction__item {
-  transition: all 0.2s ease;
-}
-
-.transaction__item:hover {
-  background-color: #f9fafb;
-  border-radius: 8px;
-  padding: 12px 8px;
-}
-
-.transactions__settings {
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(-50%);
-  }
-  50% {
-    transform: translateY(-60%);
-  }
-}
+.transaction__item { transition: all 0.2s ease; }
+.transaction__item:hover { background-color: #f9fafb; border-radius: 8px; padding: 12px 8px; }
 
 /* 深色模式支持 */
 @media (prefers-color-scheme: dark) {
-  .transactions {
-    background: #1f2937;
-    border-color: #374151;
-    color: #f9fafb;
-  }
-  
-  .transactions__title {
-    color: #f9fafb;
-  }
-  
-  .transactions__options:hover {
-    background-color: #374151;
-  }
-  
-  .options-dots span {
-    background-color: #9ca3af;
-  }
-  
-  
-  .transaction__item:hover {
-    background-color: #374151;
-  }
-  
-  .transaction__type {
-    color: #9ca3af;
-  }
-  
-  .transaction__description {
-    color: #d1d5db;
-  }
-  
-  .transaction__currency {
-    color: #9ca3af;
-  }
+  .transactions { background: #1f2937; border-color: #374151; color: #f9fafb; }
+  .transactions__title { color: #f9fafb; }
+  .transactions__options:hover { background-color: #374151; }
+  .options-dots span { background-color: #9ca3af; }
+  .transaction__item:hover { background-color: #374151; }
+  .transaction__type { color: #9ca3af; }
+  .transaction__description { color: #d1d5db; }
+  .transaction__currency { color: #9ca3af; }
 }
 
 /* 滾動條樣式 */
-.transactions__list::-webkit-scrollbar {
-  width: 4px;
-}
-
-.transactions__list::-webkit-scrollbar-track {
-  background: #f1f5f9;
-  border-radius: 2px;
-}
-
-.transactions__list::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 2px;
-}
-
-.transactions__list::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
+.transactions__list::-webkit-scrollbar { width: 4px; }
+.transactions__list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 2px; }
+.transactions__list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+.transactions__list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
