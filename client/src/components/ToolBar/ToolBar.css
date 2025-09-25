@@ -145,6 +145,106 @@
   font-weight: 600;
 }
 
+/* Apps Dropdown */
+.app-toolbar__apps-dropdown {
+  position: relative;
+}
+
+.app-toolbar__apps-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  min-width: 320px;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.app-toolbar__apps-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.app-toolbar__apps-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.app-toolbar__apps-add {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #6b7280;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.app-toolbar__apps-add:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.app-toolbar__apps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 20px;
+}
+
+.app-toolbar__app-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.app-toolbar__app-item:hover {
+  background: #f8fafc;
+}
+
+.app-toolbar__app-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.app-toolbar__app-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 2px;
+}
+
+.app-toolbar__app-subtitle {
+  font-size: 11px;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
 .app-toolbar__avatar {
   display: inline-flex;
   align-items: center;
@@ -261,6 +361,15 @@
 .dark .app-toolbar__language-option { color: #9ca3af; }
 .dark .app-toolbar__language-option:hover { background: #374151; color: #e5e7eb; }
 .dark .app-toolbar__language-option.is-selected { background: #1e293b; color: #93c5fd; }
+.dark .app-toolbar__apps-menu { background: #1f2937; border-color: #374151; }
+.dark .app-toolbar__apps-header { border-bottom-color: #374151; }
+.dark .app-toolbar__apps-title { color: #ffffff; }
+.dark .app-toolbar__apps-add { background: #374151; border-color: #4b5563; color: #9ca3af; }
+.dark .app-toolbar__apps-add:hover { background: #4b5563; border-color: #6b7280; }
+.dark .app-toolbar__app-item:hover { background: #374151; }
+.dark .app-toolbar__app-icon { background: #374151; }
+.dark .app-toolbar__app-title { color: #ffffff; }
+.dark .app-toolbar__app-subtitle { color: #9ca3af; }
 .dark .app-search-modal__container { background: #111827; }
 .dark .app-search-modal__header { border-bottom-color: #1f2937; color: #9ca3af; }
 .dark .app-search-modal__list li { color: #e5e7eb; }

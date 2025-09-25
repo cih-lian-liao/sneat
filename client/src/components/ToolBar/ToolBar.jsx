@@ -4,6 +4,7 @@ import "./ToolBar.css";
 export default function ToolBar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isAppsOpen, setIsAppsOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -11,6 +12,7 @@ export default function ToolBar() {
       if (e.key === "Escape") {
         setIsSearchOpen(false);
         setIsLanguageOpen(false);
+        setIsAppsOpen(false);
       }
       if ((e.ctrlKey || e.metaKey) && e.key === "/") setIsSearchOpen(true);
     };
@@ -18,16 +20,19 @@ export default function ToolBar() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // 點擊外部關閉語言選單
+  // 點擊外部關閉下拉選單
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isLanguageOpen && !event.target.closest('.app-toolbar__language-dropdown')) {
         setIsLanguageOpen(false);
       }
+      if (isAppsOpen && !event.target.closest('.app-toolbar__apps-dropdown')) {
+        setIsAppsOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isLanguageOpen]);
+  }, [isLanguageOpen, isAppsOpen]);
 
   // 暗色模式切換
   const toggleDarkMode = () => {
@@ -109,9 +114,55 @@ export default function ToolBar() {
             {isDarkMode ? '☀️' : '☾'}
           </span>
         </button>
-        <button className="app-toolbar__action" aria-label="Apps">
-          <span className="app-toolbar__action-icon app-toolbar__grid-icon" aria-hidden></span>
-        </button>
+        <div className="app-toolbar__apps-dropdown">
+          <button 
+            className="app-toolbar__action" 
+            aria-label="Apps"
+            onClick={() => setIsAppsOpen(!isAppsOpen)}
+          >
+            <span className="app-toolbar__action-icon app-toolbar__grid-icon" aria-hidden></span>
+          </button>
+          {isAppsOpen && (
+            <div className="app-toolbar__apps-menu">
+              <div className="app-toolbar__apps-header">
+                <span className="app-toolbar__apps-title">Shortcuts</span>
+                <button className="app-toolbar__apps-add">+</button>
+              </div>
+              <div className="app-toolbar__apps-grid">
+                <div className="app-toolbar__app-item">
+                  <div className="app-toolbar__app-icon">📅</div>
+                  <div className="app-toolbar__app-title">Calendar</div>
+                  <div className="app-toolbar__app-subtitle">Appointments</div>
+                </div>
+                <div className="app-toolbar__app-item">
+                  <div className="app-toolbar__app-icon">🧾</div>
+                  <div className="app-toolbar__app-title">Invoice App</div>
+                  <div className="app-toolbar__app-subtitle">Manage Accounts</div>
+                </div>
+                <div className="app-toolbar__app-item">
+                  <div className="app-toolbar__app-icon">👤</div>
+                  <div className="app-toolbar__app-title">Users</div>
+                  <div className="app-toolbar__app-subtitle">Manage Users</div>
+                </div>
+                <div className="app-toolbar__app-item">
+                  <div className="app-toolbar__app-icon">🛡️</div>
+                  <div className="app-toolbar__app-title">Role Management</div>
+                  <div className="app-toolbar__app-subtitle">Permissions</div>
+                </div>
+                <div className="app-toolbar__app-item">
+                  <div className="app-toolbar__app-icon">📊</div>
+                  <div className="app-toolbar__app-title">Dashboard</div>
+                  <div className="app-toolbar__app-subtitle">User Dashboard</div>
+                </div>
+                <div className="app-toolbar__app-item">
+                  <div className="app-toolbar__app-icon">⚙️</div>
+                  <div className="app-toolbar__app-title">Settings</div>
+                  <div className="app-toolbar__app-subtitle">Account Settings</div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
         <button className="app-toolbar__action app-toolbar__action--notification" aria-label="Notifications">
           <span className="app-toolbar__action-icon" aria-hidden>🔔</span>
           <span className="app-toolbar__badge" aria-hidden />
