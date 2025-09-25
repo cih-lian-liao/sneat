@@ -64,7 +64,15 @@
 .app-sidebar.is-collapsed .app-sidebar__label,
 .app-sidebar.is-collapsed .app-sidebar__user-info { display: none; }
 
-.app-sidebar.is-collapsed .app-sidebar__toggle { transform: rotate(180deg); }
+.app-sidebar.is-collapsed .app-sidebar__item {
+  display: flex;
+  justify-content: center;
+}
+
+.app-sidebar.is-collapsed .app-sidebar__link {
+  justify-content: center;
+  padding: 8px;
+}
 
 /* Footer */
 .app-sidebar__footer { padding-top: 6px; border-top: 1px solid #eee; }
