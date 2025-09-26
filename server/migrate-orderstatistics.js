@@ -12,7 +12,7 @@ const seedData = JSON.parse(fs.readFileSync(seedPath, 'utf-8'));
 async function migrateData() {
   try {
     // 連接 MongoDB
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://cihlian:pJsXwiTzqaK4t3A3@sneat.uh4w06f.mongodb.net/mydatas', {
+    await mongoose.connect(process.env.MONGO_URI || 'process.env.MONGO_URI', {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });

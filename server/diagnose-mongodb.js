@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 async function diagnoseMongoDB() {
-  const mongoUri = 'mongodb+srv://cihlian:pJsXwiTzqaK4t3A3@sneat.uh4w06f.mongodb.net/mydatas';
+  const mongoUri = 'process.env.MONGO_URI';
   
   console.log('🔍 MongoDB Atlas 診斷開始...');
   console.log('連接字符串:', mongoUri.replace(/\/\/.*@/, '//***:***@'));

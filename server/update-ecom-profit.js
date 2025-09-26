@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const MONGODB_URI = process.env.MONGO_URI || 'mongodb+srv://cihlian:pJsXwiTzqaK4t3A3@sneat.uh4w06f.mongodb.net/mydatas';
+const MONGODB_URI = process.env.MONGO_URI || 'process.env.MONGO_URI';
 
 const dashboardSchema = new mongoose.Schema({
   ecomProfit: {

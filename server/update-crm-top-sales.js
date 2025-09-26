@@ -17,7 +17,7 @@ const DashboardDataSchema = new mongoose.Schema({
 const DashboardData = mongoose.model('DashboardData', DashboardDataSchema, 'dashboard');
 
 async function run() {
-  const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://cihlian:pJsXwiTzqaK4t3A3@sneat.uh4w06f.mongodb.net/mydatas';
+  const MONGO_URI = process.env.MONGO_URI || 'process.env.MONGO_URI';
 
   const payload = {
     title: 'Top Products by Sales',

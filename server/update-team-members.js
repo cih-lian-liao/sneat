@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 // MongoDB Atlas 連接字符串
-const MONGODB_URI = process.env.MONGO_URI || 'mongodb+srv://cihlian:pJsXwiTzqaK4t3A3@sneat.uh4w06f.mongodb.net/mydatas';
+const MONGODB_URI = process.env.MONGO_URI || 'process.env.MONGO_URI';
 
 // DashboardData Schema
 const dashboardSchema = new mongoose.Schema({

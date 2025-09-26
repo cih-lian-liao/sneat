@@ -587,7 +587,10 @@ export default async function handler(req, res) {
 
   try {
     if (mongoose.connection.readyState !== 1) {
-      const mongoUri = process.env.MONGO_URI || 'mongodb+srv://cihlian:pJsXwiTzqaK4t3A3@sneat.uh4w06f.mongodb.net/mydatas';
+      const mongoUri = process.env.MONGO_URI;
+      if (!mongoUri) {
+        throw new Error('MONGO_URI environment variable is not set');
+      }
       console.log('Connecting to MongoDB with URI:', mongoUri.replace(/\/\/.*@/, '//***:***@'));
       
       await mongoose.connect(mongoUri, {

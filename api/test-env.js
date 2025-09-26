@@ -3,7 +3,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   
   try {
-    const mongoUri = process.env.MONGO_URI || 'mongodb+srv://cihlian:pJsXwiTzqaK4t3A3@sneat.uh4w06f.mongodb.net/mydatas';
+    const mongoUri = process.env.MONGO_URI || 'process.env.MONGO_URI';
     
     res.json({
       hasMongoUri: !!process.env.MONGO_URI,

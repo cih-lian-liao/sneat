@@ -1,7 +1,7 @@
 // 測試 MongoDB Atlas 連接和數據
 const mongoose = require('mongoose');
 
-const MONGO_URI = "mongodb+srv://cihlian:pJsXwiTzqaK4t3A3@sneat.uh4w06f.mongodb.net/mydatas";
+const MONGO_URI = "process.env.MONGO_URI";
 
 const TotalRevenueSchema = new mongoose.Schema({
   year: { 

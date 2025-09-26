@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 // MongoDB Atlas 連接字符串
-const MONGO_URI = "mongodb+srv://cihlian:pJsXwiTzqaK4t3A3@sneat.uh4w06f.mongodb.net/mydatas";
+const MONGO_URI = "process.env.MONGO_URI";
 
 // 新的 Total Revenue Schema
 const TotalRevenueSchema = new mongoose.Schema({

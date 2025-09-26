@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // MongoDB 連接
-const MONGO_URI = 'mongodb+srv://cihlian:pJsXwiTzqaK4t3A3@sneat.uh4w06f.mongodb.net/mydatas';
+const MONGO_URI = 'process.env.MONGO_URI';
 
 // Schema 定義
 const DashboardDataSchema = new mongoose.Schema({
