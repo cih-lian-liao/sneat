@@ -12,7 +12,7 @@ export default function OrderCard() {
       try {
         // 直接使用 localhost:54112，不依賴環境變量
         const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:54112';
-        const res = await axios.get('/api/dashboard?card=orderChart');
+        const res = await axios.get('/api/dashboard?card=orderStatistics');
         setData(res.data || {});
         setError('');
       } catch (error) {
